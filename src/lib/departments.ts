@@ -5,7 +5,6 @@ export type DepartmentId =
   | "uniforms"
   | "marketing"
   | "data-tech"
-  | "workboard-tasks"
   | "visitors";
 
 export type DepartmentPhase = 1 | 2 | 3 | 4;
@@ -37,7 +36,6 @@ const LIVE_ENV: Record<DepartmentId, string> = {
   uniforms: "WORKPLACE_UNIFORMS_URL",
   marketing: "WORKPLACE_MARKETING_URL",
   "data-tech": "WORKPLACE_DATA_TECH_URL",
-  "workboard-tasks": "WORKPLACE_WORKBOARD_TASKS_URL",
   visitors: "WORKPLACE_VISITORS_URL",
 };
 
@@ -48,7 +46,6 @@ const LOCAL_ENV: Record<DepartmentId, string> = {
   uniforms: "WORKPLACE_UNIFORMS_LOCAL_URL",
   marketing: "WORKPLACE_MARKETING_LOCAL_URL",
   "data-tech": "WORKPLACE_DATA_TECH_LOCAL_URL",
-  "workboard-tasks": "WORKPLACE_WORKBOARD_TASKS_LOCAL_URL",
   visitors: "WORKPLACE_VISITORS_LOCAL_URL",
 };
 
@@ -168,24 +165,6 @@ export const departments: Department[] = [
     deskPath: "desks/data-tech",
   },
   {
-    id: "workboard-tasks",
-    name: "Workboard Tasks",
-    kicker: "Project boards",
-    summary:
-      "Kanban boards, sprints, and assigned work — the Data & Tech project of workboard tasks.",
-    phase: 1,
-    phaseNote: "Opens the live project boards in Data & Tech.",
-    href: "https://dataandtech.silverleaf.co.tz/dashboard/systems",
-    liveUrl: "https://dataandtech.silverleaf.co.tz/dashboard/systems",
-    localUrl: "http://localhost:4050/dashboard/systems",
-    localPort: 4050,
-    desks: ["Project boards", "Kanban", "Sprints", "Assignments"],
-    accent: "navy",
-    repo: "https://github.com/kitili/silverleaf-data-and-tech.git",
-    branch: "main",
-    deskPath: "desks/data-tech",
-  },
-  {
     id: "visitors",
     name: "Visitors",
     kicker: "Front desk",
@@ -290,7 +269,7 @@ export const hubPhases = [
   {
     id: 3,
     title: "Aligned desks",
-    body: "Ops, Uniforms, Marketing, Data & Tech, Workboard Tasks, Talent Academy, and Visitors live in desks/ and pull from origin every day.",
+    body: "Ops, Uniforms, Marketing, Data & Tech, Talent Academy, and Visitors live in desks/ and pull from origin every day.",
     current: true,
   },
   {

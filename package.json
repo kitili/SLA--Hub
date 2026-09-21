@@ -2,7 +2,7 @@
   "name": "silverleaf-hub",
   "version": "0.1.0",
   "private": true,
-  "description": "Silverleaf Academy workplace hub — one app for Onboarding, Talent Academy, Ops, Uniforms, Marketing, Data & Tech, Workboard Tasks, and Visitors",
+  "description": "Silverleaf Academy workplace hub — one app for Onboarding, Talent Academy, Ops, Uniforms, Marketing, Data & Tech, and Visitors",
   "scripts": {
     "dev": "next dev --port 3100",
     "build": "next build",
