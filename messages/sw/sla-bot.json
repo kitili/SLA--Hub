@@ -1,0 +1,25 @@
+{
+  "slaBot": {
+    "kicker": "Msaidizi wa onboarding",
+    "title": "SLA-bot",
+    "open": "Uliza SLA-bot",
+    "close": "Funga",
+    "welcome": "Uliza kuhusu sehemu, sera, saini, au unachofaa kufanya baadaye. Ninatumia maudhui ya sasa ya hub na maendeleo yako. Maoni huenda kwa HR; matatizo ya teknolojia huenda kwa Mourine na IT.",
+    "placeholder": "Uliza swali, au andika maoni / tatizo la teknolojia…",
+    "send": "Tuma",
+    "sending": "Inatuma…",
+    "error": "SLA-bot haikuweza kujibu. Jaribu tena baadaye.",
+    "starters": {
+      "help": "Unaweza kusaidia nini?",
+      "whatNext": "Nifanye nini baadaye katika onboarding?",
+      "feedback": "Maoni: sehemu ya sera ilikuwa wazi lakini ninataka mifano zaidi.",
+      "tech": "Tatizo la teknolojia: siwezi kufungua PDF ya sera kwenye simu yangu."
+    },
+    "starterLabels": {
+      "help": "Msaada",
+      "whatNext": "Ifuatayo?",
+      "feedback": "Tuma maoni",
+      "tech": "Ripoti tatizo la tech"
+    }
+  }
+}

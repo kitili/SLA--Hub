@@ -1,0 +1,25 @@
+{
+  "signoff": {
+    "pageTitle": "Final Sign-Off",
+    "notEligibleTitle": "Complete the Required Sections First",
+    "notEligibleBody": "To sign off on your onboarding, you must pass the checkpoints for the required sections (Welcome, Policies, and Digital Tools). Please return to the dashboard and complete any that remain.",
+    "progressNote": "{passed} of {total} required section checkpoints passed",
+    "backToDashboard": "Back to dashboard",
+    "alreadySignedTitle": "Onboarding Complete",
+    "alreadySignedBody": "You have already signed off on your onboarding. Thank you!",
+    "signedOn": "Signed on {date}",
+    "acknowledgementTitle": "Onboarding Acknowledgement",
+    "acknowledgementTextEN": "I, the undersigned, confirm that I have read, understood, and agree to abide by all materials contained in the Silverleaf Academy Staff Onboarding Programme. I acknowledge that I have completed all required sections, including the relevant checkpoint assessments, and that I understand the responsibilities, policies, and standards expected of me as a member of the Silverleaf Academy team.",
+    "acknowledgementTextSW": "Mimi, aliyeweka sahihi hapa chini, nathibitisha kwamba nimesoma, nimeelewa, na ninakubali kuzingatia nyenzo zote zilizomo katika Mpango wa Mafunzo ya Awali ya Wafanyakazi wa Silverleaf Academy. Ninakiri kwamba nimekamilisha sehemu zote zinazohitajika, ikiwemo tathmini husika za ukaguzi, na kwamba ninaelewa majukumu, sera, na viwango vinavyotarajiwa kwangu kama mwanachama wa timu ya Silverleaf Academy.",
+    "checkboxLabel": "I have read and understood the acknowledgement above, and I agree to its terms.",
+    "submitButton": "I Acknowledge",
+    "submitting": "Saving…",
+    "completionTitle": "Onboarding Complete!",
+    "completionBody": "Congratulations — you have successfully completed the Silverleaf Academy onboarding programme. Your acknowledgement has been recorded.",
+    "completionSignedOn": "Signed off on {date}",
+    "backToDashboardAfterSign": "Return to dashboard",
+    "errorNotEligible": "You must complete the required section checkpoints before signing off.",
+    "errorNoContentVersion": "No onboarding content version is available yet. Please contact an administrator.",
+    "errorGeneric": "Something went wrong. Please try again."
+  }
+}

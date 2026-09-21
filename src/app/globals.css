@@ -1,0 +1,124 @@
+/*
+ * Silverleaf Academy — global brand stylesheet
+ * Source: Silverleaf Academy Brand Guidelines — March 2023
+ */
+
+:root {
+  --electric-blue: #002368;
+  --light-blue: #80bfec;
+  --silver: #818283;
+  --gold: #ffc952;
+  --white: #ffffff;
+  --black: #000000;
+  --gray: #ececec;
+  --electric-blue-50: #8091b3;
+  --light-blue-30: #d9ecf9;
+  --gold-15: #fff7e5;
+
+  --navy: var(--electric-blue);
+  --navy-light: #003a8c;
+  --navy-dark: #001a4d;
+
+  --ink: #14233b;
+  --ink-muted: #4f555f;
+  --ink-faint: #646a74;
+  --success: #167a37;
+  --success-15: #e3f3e8;
+
+  --app-bg: #f4f7fb;
+  --card: var(--white);
+  --card-border: rgba(0, 35, 104, 0.1);
+  --track: #d5dce6;
+
+  --shadow: 0 2px 10px rgba(0, 35, 104, 0.1);
+  --shadow-lg: 0 10px 34px rgba(0, 35, 104, 0.16);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --focus-ring: 0 0 0 3px rgba(255, 201, 82, 0.7);
+
+  --brand-navy: #002368;
+  --on-brand: #ffffff;
+
+  --font-sans: "Bai Jamjuree", Helvetica, Arial, sans-serif;
+  --font-display: "Montserrat", Helvetica, Arial, sans-serif;
+  --sidebar: 280px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--app-bg);
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  color: var(--electric-blue);
+  line-height: 1.2;
+}
+
+a {
+  color: var(--electric-blue);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.brand-logo--dark {
+  display: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--navy-dark);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

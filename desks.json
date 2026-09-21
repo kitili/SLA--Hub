@@ -1,0 +1,89 @@
+{
+  "desks": [
+    {
+      "id": "onboarding",
+      "name": "Onboarding",
+      "path": "desks/onboarding",
+      "repo": "https://github.com/kitili/SLA-Onboarding-hub.git",
+      "branch": "main",
+      "port": 3000,
+      "cwd": ".",
+      "inHub": true,
+      "liveUrl": "https://sla-onboarding-hub-steel.vercel.app",
+      "fallback": "/home/kiki/silverleaf-onboarding-hub"
+    },
+    {
+      "id": "talent-academy",
+      "name": "Talent Academy",
+      "path": "desks/talent-academy",
+      "repo": "https://github.com/kitili/SLA-Talent-Academy.git",
+      "branch": "main",
+      "port": 8765,
+      "cwd": ".",
+      "dev": "PORT=8765 npm run dev",
+      "liveUrl": "http://localhost:8765",
+      "fallback": "/home/kiki/Talent_Academy/Silverleaf-main"
+    },
+    {
+      "id": "ops",
+      "name": "Ops",
+      "path": "desks/ops",
+      "repo": "https://github.com/kitili/OPS_SYSTEM.git",
+      "branch": "main",
+      "port": 3020,
+      "cwd": ".",
+      "dev": "npx next dev --port 3020",
+      "liveUrl": "https://ops-transport-system.vercel.app",
+      "fallback": "/home/kiki/OPS_SYSTEM"
+    },
+    {
+      "id": "uniforms",
+      "name": "Uniforms",
+      "path": "desks/uniforms",
+      "repo": "https://github.com/kitili/school_uniforms.git",
+      "branch": "main",
+      "port": 3010,
+      "cwd": ".",
+      "dev": "npm run dev",
+      "liveUrl": "https://school-uniforms-lyart.vercel.app",
+      "fallback": "/home/kiki/silverleaf-uniforms"
+    },
+    {
+      "id": "marketing",
+      "name": "Marketing",
+      "path": "desks/marketing",
+      "repo": "https://github.com/kitili/SLA-Marketing-S.E.git",
+      "branch": "marketing",
+      "port": 3180,
+      "cwd": "web",
+      "dev": "npm run dev",
+      "liveUrl": "https://sla-marketing-web.vercel.app",
+      "fallback": "/home/kiki/Documents/marketing-and-student-experience-main"
+    },
+    {
+      "id": "data-tech",
+      "name": "Data & Tech",
+      "path": "desks/data-tech",
+      "repo": "https://github.com/kitili/silverleaf-data-and-tech.git",
+      "branch": "main",
+      "port": 4050,
+      "cwd": ".",
+      "dev": "npm run dev",
+      "liveUrl": "https://data-and-tech.vercel.app",
+      "fallback": "/home/kiki/DataAndTech"
+    },
+    {
+      "id": "visitors",
+      "name": "Visitors",
+      "path": "desks/visitors",
+      "repo": "https://github.com/kitili/SLA.git",
+      "branch": "main",
+      "port": 3108,
+      "cwd": ".",
+      "dev": "npm run dev",
+      "liveUrl": "http://localhost:3108",
+      "fallback": "/home/kiki/Downloads/silverleaf-visitor-log",
+      "syncData": true
+    }
+  ]
+}

@@ -1,0 +1,373 @@
+{
+  "admin": {
+    "title": "Admin",
+    "subtitle": "Content management & member monitoring",
+    "nav": {
+      "members": "Members",
+      "sections": "Sections",
+      "quizzes": "Quizzes",
+      "materials": "Materials",
+      "hiring": "Hiring",
+      "hiringBoard": "Candidate board",
+      "hiringNewCandidate": "Add candidate",
+      "hiringPerformanceTasks": "Performance tasks",
+      "home": "HR home",
+      "onboardingGroup": "Onboarding",
+      "hiringGroup": "Hiring",
+      "campuses": "Campuses",
+      "slaBot": "SLA-bot",
+      "backToHub": "Back to hub",
+      "systemGroup": "System",
+      "settings": "Settings",
+      "hiringPositions": "Job positions",
+      "hiringImport": "Import from sheet"
+    },
+    "settings": "Settings",
+    "common": {
+      "save": "Save",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "create": "Create",
+      "add": "Add",
+      "remove": "Remove",
+      "replace": "Update",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "published": "Published",
+      "hidden": "Hidden",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "saving": "Saving…",
+      "uploading": "Uploading…",
+      "none": "None",
+      "yes": "Yes",
+      "no": "No",
+      "confirmDelete": "Are you sure? This cannot be undone.",
+      "translationPending": "Translation pending",
+      "englishLabel": "English (EN)",
+      "swahiliLabel": "Swahili (SW)",
+      "optional": "optional",
+      "required": "required"
+    },
+    "members": {
+      "heading": "Member monitoring",
+      "description": "Track onboarding progress and spot members who are falling behind.",
+      "campusHelp": "Campus is assigned by HR in Admin: open a member's profile and choose their campus from the dropdown. Staff cannot set this themselves. Until HR assigns a campus, the member shows as unassigned.",
+      "stats": {
+        "registered": "Members registered",
+        "completed": "Fully completed",
+        "checkpoints": "Checkpoints total",
+        "atRisk": "At risk"
+      },
+      "table": {
+        "name": "Name",
+        "email": "Email",
+        "completion": "Completion",
+        "lastLogin": "Last login",
+        "startDate": "Start date",
+        "status": "Status",
+        "risk": "Risk",
+        "bio": "Bio"
+      },
+      "status": {
+        "complete": "Complete",
+        "inProgress": "In progress",
+        "notStarted": "Not started"
+      },
+      "risk": {
+        "green": "On track",
+        "orange": "Slipping",
+        "red": "Off track"
+      },
+      "filter": {
+        "atRiskOnly": "Show at-risk only",
+        "all": "Show all",
+        "campus": "Filter by campus",
+        "campusAll": "All campuses",
+        "unassigned": "Unassigned campus"
+      },
+      "never": "Never",
+      "empty": "No members yet.",
+      "sortHint": "Click a column header to sort.",
+      "downloadBio": "Download bio as PDF",
+      "viewProfile": "View",
+      "noBio": "—"
+    },
+    "memberDetail": {
+      "backToMembers": "← Back to members",
+      "heading": "Member profile",
+      "name": "Name",
+      "email": "Email",
+      "position": "Position",
+      "campusHeading": "Campus assignment",
+      "campusHelp": "Choose this member's campus. This does not change their onboarding progress.",
+      "onboardingProgress": {
+        "heading": "Onboarding progress",
+        "readOnly": "Progress is saved automatically when the member completes learning items and checkpoints. HR cannot edit or reset it here.",
+        "stepsNote": "{done} of {total} learning steps completed · {checkpoints} of {sections} section checkpoints passed",
+        "sectionLabel": "Section {number}",
+        "checkpointPassed": "Checkpoint passed"
+      },
+      "policySignatures": {
+        "heading": "Policy digital signatures",
+        "readOnly": "Each signature is the member’s typed full name after reading that policy.",
+        "signed": "Signed by {name} · {when}",
+        "notSigned": "Not signed yet"
+      },
+      "noBio": "This member has not submitted a bio yet.",
+      "downloadPdf": "Download full bio (PDF)",
+      "qualifications": {
+        "heading": "Qualifications & education",
+        "level": "Level",
+        "qualification": "Qualification",
+        "institution": "Institution",
+        "yearObtained": "Year",
+        "empty": "No qualifications entered."
+      },
+      "documents": {
+        "heading": "Certificates & documents",
+        "empty": "No certificates uploaded.",
+        "download": "Download",
+        "size": "Size"
+      }
+    },
+    "sections": {
+      "heading": "Sections",
+      "description": "Author the onboarding content tree. Reorder, hide drafts, translate. Open a section and use Add learning item to create new topics.",
+      "new": "New section",
+      "create": "Create section",
+      "edit": "Edit section",
+      "fields": {
+        "id": "Section ID (slug)",
+        "idHint": "Lowercase, hyphenated, e.g. \"health-safety\". Cannot be changed later.",
+        "icon": "Icon",
+        "iconHint": "An emoji or short token shown in the section header.",
+        "titleEn": "Title (English)",
+        "titleSw": "Title (Swahili)",
+        "descriptionEn": "Description (English)",
+        "descriptionSw": "Description (Swahili)"
+      },
+      "list": {
+        "order": "Order",
+        "title": "Title",
+        "items": "Items",
+        "quiz": "Quiz",
+        "status": "Status",
+        "actions": "Actions",
+        "itemCount": "{count, plural, =0 {No items} one {# item} other {# items}}",
+        "hasQuiz": "Quiz set",
+        "noQuiz": "No quiz",
+        "manageQuiz": "Manage quiz",
+        "manageItems": "Items & materials"
+      },
+      "empty": "No sections yet. Create the first one.",
+      "created": "Section created.",
+      "updated": "Section updated.",
+      "errors": {
+        "idTaken": "A section with that ID already exists.",
+        "notFound": "Section not found."
+      },
+      "items": {
+        "new": "Add learning item",
+        "create": "Create learning item",
+        "help": "Add a new topic to this section, then upload its file under Materials.",
+        "created": "Learning item created ({id}). Upload a file under Materials to attach content.",
+        "fields": {
+          "titleEn": "Title (English)",
+          "titleSw": "Title (Swahili)",
+          "titlePlaceholder": "e.g. Company history and founding story",
+          "noteEn": "Note (English)",
+          "noteSw": "Note (Swahili)",
+          "type": "Type",
+          "id": "Item ID",
+          "idPlaceholder": "Leave blank to auto-assign",
+          "idHint": "Optional. Example: 1-8. Leave blank and we’ll assign the next ID."
+        },
+        "types": {
+          "pdf": "PDF document",
+          "docx": "Word document",
+          "video": "Video",
+          "image": "Image",
+          "pptx": "PowerPoint",
+          "link": "Link"
+        },
+        "errors": {
+          "idTaken": "A learning item with that ID already exists."
+        }
+      }
+    },
+    "quizzes": {
+      "heading": "Checkpoint quiz",
+      "description": "Author the questions for this section's checkpoint. Mark the correct option for each question.",
+      "forSection": "Checkpoint for: {section}",
+      "passRule": "Pass rule",
+      "passThreshold": "Correct answers required to pass",
+      "passThresholdHint": "Default is all questions correct (100%).",
+      "questionCount": "{count, plural, =0 {No questions} one {# question} other {# questions}}",
+      "addQuestion": "Add question",
+      "editQuestion": "Edit question",
+      "question": "Question",
+      "questionTextEn": "Question (English)",
+      "questionTextSw": "Question (Swahili)",
+      "options": "Answer options",
+      "optionTextEn": "Option (English)",
+      "optionTextSw": "Option (Swahili)",
+      "addOption": "Add option",
+      "removeOption": "Remove option",
+      "markCorrect": "Correct answer",
+      "correct": "Correct",
+      "noQuizYet": "No quiz exists for this section yet. Add a question to create one.",
+      "empty": "No questions yet.",
+      "saved": "Quiz saved.",
+      "questionAdded": "Question added.",
+      "questionUpdated": "Question updated.",
+      "questionDeleted": "Question deleted.",
+      "errors": {
+        "needOneCorrect": "Each question needs at least one correct option.",
+        "needTwoOptions": "Each question needs at least two options.",
+        "notFound": "Quiz or question not found."
+      }
+    },
+    "materials": {
+      "heading": "Materials",
+      "description": "Upload files and attach them to a section item. Tag the language.",
+      "upload": "Upload material",
+      "uploadHeading": "Upload a file",
+      "fields": {
+        "file": "File",
+        "sectionItem": "Attach to item",
+        "language": "Language"
+      },
+      "languageOptions": {
+        "en": "English",
+        "sw": "Swahili",
+        "none": "Untagged"
+      },
+      "list": {
+        "filename": "File",
+        "item": "Attached item",
+        "language": "Language",
+        "size": "Size",
+        "uploaded": "Uploaded",
+        "actions": "Actions"
+      },
+      "noItems": "Create a section with items before uploading materials.",
+      "empty": "No materials uploaded yet.",
+      "uploaded": "Material uploaded.",
+      "replaced": "Material replaced.",
+      "deleted": "Material deleted.",
+      "errors": {
+        "noFile": "Choose a file to upload.",
+        "noItem": "Choose an item to attach the file to.",
+        "tooLarge": "File is too large.",
+        "notFound": "Material not found."
+      }
+    },
+    "errors": {
+      "forbidden": "You do not have permission to view this page.",
+      "generic": "Something went wrong. Please try again.",
+      "validation": "Please correct the highlighted fields."
+    },
+    "portal": {
+      "heading": "HR backend",
+      "description": "Choose a workspace. Onboarding and hiring live in one place — same sign-in, same database.",
+      "onboarding": {
+        "title": "Onboarding hub",
+        "description": "Track staff progress, manage learning content, quizzes, materials, and campuses.",
+        "cta": "Open onboarding admin",
+        "links": {
+          "sections": "Sections",
+          "materials": "Materials",
+          "quizzes": "Quizzes",
+          "campuses": "Campuses"
+        }
+      },
+      "hiring": {
+        "title": "Hiring portal",
+        "description": "Kanban board for candidates, culture/performance pipeline, and public apply link.",
+        "cta": "Open hiring board"
+      }
+    },
+    "hiring": {
+      "heading": "HR Hiring",
+      "description": "Candidate pipeline with culture video and performance task stages.",
+      "edAdminNote": "When someone is hired, a staff onboarding record is created. Create their ed-admin account, then they can sign in and appear under Onboarding hub → Members.",
+      "backToJobs": "Back to hiring",
+      "board": {
+        "heading": "Candidate board",
+        "description": "Move candidates through culture and performance stages with NEXT buttons. Emails stub locally until SMTP is configured.",
+        "applyLink": "Public apply:",
+        "manualEntry": "HR manual entry",
+        "csvImport": "Import CSV",
+        "count": "{count} candidate(s)",
+        "filtered": "(filtered)",
+        "emptyColumn": "Empty",
+        "otherStages": "Other stages"
+      },
+      "import": {
+        "heading": "Import candidates",
+        "description": "Bulk-load candidates from a CSV file. Each row uses the same fields as manual HR entry."
+      },
+      "candidate": {
+        "backToBoard": "Board",
+        "advanceHeading": "Advance pipeline",
+        "newHeading": "Add candidate",
+        "newDescription": "Manual HR entry — same fields as the public apply form.",
+        "pipelineLog": "Pipeline log",
+        "noEvents": "No events yet.",
+        "fields": {
+          "email": "Email",
+          "applicationCheck": "Application check",
+          "linkedin": "LinkedIn",
+          "cv": "CV",
+          "cultureMarker": "Culture marker",
+          "performanceMarker": "Performance marker",
+          "cultureVideo": "Culture video",
+          "performanceSubmission": "Performance submission",
+          "notes": "HR notes"
+        }
+      }
+    },
+    "briefings": {
+      "heading": "Policy briefings",
+      "intro": "When you upload or replace a policy file, a new 3-minute briefing is drafted from that document. Preview it here, then publish so members see the updated version. Until you publish, members keep the current briefing.",
+      "draftKeepsLive": "Members still see the last published briefing (or the original video) until you publish this draft.",
+      "generate": "Generate briefing",
+      "regenerate": "Generate new draft",
+      "generating": "Writing briefing…",
+      "generatingHint": "Writing a briefing from the current policy file. This page will refresh when the draft is ready.",
+      "publish": "Publish briefing",
+      "publishing": "Publishing…",
+      "fromFile": "From {file}",
+      "generatorAi": "written by AI from the document",
+      "generatorExtractive": "auto-summary from the document",
+      "status": {
+        "none": "No briefing yet",
+        "generating": "Generating",
+        "draft": "Draft — review before members see it",
+        "published": "Published",
+        "failed": "Could not generate"
+      }
+    },
+    "slaBot": {
+      "pageTitle": "SLA-bot alerts",
+      "heading": "Open alerts & feedback",
+      "back": "HR home",
+      "intro": "SLA-bot notifies you here when a learner sends feedback, reports a tech issue, or raises an urgent concern. Tech issues are also emailed to mourine@silverleaf.co.tz and it@silverleaf.co.tz.",
+      "empty": "No open SLA-bot alerts.",
+      "resolve": "Mark resolved",
+      "refreshKnowledge": "Refresh knowledge",
+      "refreshing": "Refreshing…",
+      "knowledgeCount": "{count} learner chunks and {adminCount} admin chunks indexed",
+      "emailedTo": "Email → {to} ({status})",
+      "sent": "sent or stubbed",
+      "notSent": "failed",
+      "kinds": {
+        "feedback": "Feedback",
+        "tech_issue": "Tech issue",
+        "alarm": "Urgent alert"
+      }
+    }
+  }
+}

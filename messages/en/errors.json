@@ -1,0 +1,21 @@
+{
+  "errors": {
+    "unauthorized": {
+      "title": "Access restricted",
+      "body": "You don't have permission to access this area. If you think this is a mistake, please contact your line manager.",
+      "cta": "Back to dashboard",
+      "iconLabel": "Padlock"
+    },
+    "notFound": {
+      "title": "Page not found",
+      "body": "We could not find the page you were looking for. It may have been moved or the link may be incorrect.",
+      "cta": "Back to dashboard"
+    },
+    "generic": {
+      "title": "Something went wrong",
+      "body": "An unexpected error occurred. Please try again, or return to the dashboard.",
+      "retry": "Try again",
+      "cta": "Back to dashboard"
+    }
+  }
+}

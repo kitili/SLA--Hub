@@ -1,0 +1,340 @@
+/*
+ * Material viewer styles. Brand tokens from globals.css.
+ */
+
+/* ── PDF mobile fallback ─────────────────────────────────────────────────── */
+/*
+ * Mobile browsers (iOS Safari in particular) cannot render PDFs inside an
+ * <iframe>. On mobile we hide the iframe and show a prominent open button
+ * instead. The button is hidden on desktop where the iframe works fine.
+ */
+
+.pdfMobileOpen {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .pdfFrame {
+    display: none;
+  }
+
+  .pdfMobileOpen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    background: var(--electric-blue);
+    color: var(--white);
+    padding: 1.1rem 1.5rem;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    min-height: 60px;
+    margin: 0.5rem 0 0.75rem;
+    box-shadow: var(--shadow);
+  }
+
+  .pdfMobileOpen:hover {
+    background: var(--navy-light);
+    text-decoration: none;
+  }
+}
+
+/* ── Mobile overrides (≤600px) ──────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .viewerTopbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .viewerDoneWrap,
+  .viewerDoneButton,
+  .viewerDoneBadge {
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .back {
+    padding: 0.6rem 0;
+    display: inline-block;
+  }
+
+  .title {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .openLink {
+    padding: 0.75rem 1.3rem;
+    display: inline-block;
+  }
+
+  .openLinkQuiet {
+    display: inline-block;
+    padding: 0.6rem 0;
+  }
+
+  .placeholder p {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 4rem;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--electric-blue);
+}
+
+.viewerTopbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.viewerTopbar .back {
+  margin-bottom: 0;
+}
+
+.viewerDoneWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.viewerDoneButton,
+.viewerDoneBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.viewerDoneButton {
+  background: var(--gold);
+  color: var(--navy);
+  border: 1px solid var(--gold);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.viewerDoneButton:hover:not(:disabled) {
+  filter: brightness(0.96);
+}
+
+.viewerDoneButton:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.viewerDoneBadge {
+  background: #e6f4ea;
+  color: #1e7e34;
+}
+
+.viewerDoneError {
+  color: #b32d23;
+  font-size: 0.78rem;
+  max-width: 24ch;
+  text-align: right;
+}
+
+.viewerDoneHint {
+  margin: 0;
+  color: var(--muted, #627d98);
+  font-size: 0.78rem;
+  max-width: 36ch;
+  text-align: right;
+  line-height: 1.4;
+  white-space: normal;
+}
+
+.title {
+  font-size: 1.4rem;
+  color: var(--electric-blue);
+  margin-bottom: 1rem;
+}
+
+/* ── PDF ──────────────────────────────────────────────────────────────── */
+
+.pdfFrame {
+  width: 100%;
+  height: 80vh;
+  min-height: 480px;
+  border: 1px solid var(--gray);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+/* ── Image ────────────────────────────────────────────────────────────── */
+
+.imageWrap {
+  display: flex;
+  justify-content: center;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Video ────────────────────────────────────────────────────────────── */
+
+.videoWrap {
+  background: var(--black);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.video {
+  width: 100%;
+  max-height: 80vh;
+  display: block;
+  background: #000;
+  object-fit: contain;
+}
+
+/* ── Word / local Office files ─────────────────────────────────────────── */
+
+.docxWrap {
+  background: var(--white);
+  border: 1px solid var(--gray);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.docxStatus {
+  color: var(--ink-muted);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.docxPreview {
+  min-height: 480px;
+}
+
+.docxContent {
+  color: var(--black);
+}
+
+.localFilePanel {
+  text-align: center;
+  background: var(--white);
+  border: 1px solid var(--gray);
+  border-radius: var(--radius);
+  padding: 2.5rem 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.localFileIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  min-height: 56px;
+  padding: 0 0.75rem;
+  border-radius: 999px;
+  background: var(--gold-15);
+  color: var(--electric-blue);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+}
+
+.localFilePanel h1 {
+  color: var(--electric-blue);
+  font-size: 1.25rem;
+}
+
+.localFilePanel p {
+  color: var(--ink-muted);
+  max-width: 52ch;
+  margin: 0.5rem auto 0;
+}
+
+/* ── Placeholders (coming soon / not found / unsupported) ─────────────── */
+
+.placeholder {
+  text-align: center;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 3rem 1.5rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.placeholder span {
+  font-size: 2.5rem;
+}
+
+.placeholder h1 {
+  font-size: 1.3rem;
+  color: var(--electric-blue);
+}
+
+.placeholder p {
+  color: var(--ink-muted);
+  max-width: 46ch;
+}
+
+/* ── Open links ───────────────────────────────────────────────────────── */
+
+.openLink {
+  margin-top: 0.5rem;
+  display: inline-block;
+  background: var(--electric-blue);
+  color: var(--white);
+  padding: 0.6rem 1.3rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.openLink:hover {
+  background: var(--navy-light);
+  text-decoration: none;
+}
+
+.openRow {
+  margin-top: 0.75rem;
+  text-align: right;
+}
+
+.openLinkQuiet {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--electric-blue);
+}

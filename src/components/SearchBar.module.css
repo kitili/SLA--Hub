@@ -1,0 +1,132 @@
+/* SearchBar.module.css — ported from legacy/client/src/components/SearchBar.css */
+
+.searchContainer {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--white);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  box-shadow: var(--shadow);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.searchBoxFocused {
+  border-color: var(--gold);
+  box-shadow: var(--shadow-lg);
+}
+
+.searchIcon {
+  color: var(--navy);
+  opacity: 0.7;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: var(--navy);
+  background: transparent;
+}
+
+.searchInput::placeholder {
+  color: var(--ink-faint, #646a74);
+}
+
+.searchResults {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  max-height: 360px;
+  overflow-y: auto;
+  z-index: 200;
+}
+
+.searchResultItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid var(--gray);
+  transition: background 0.15s;
+}
+
+.searchResultItem:last-child {
+  border-bottom: none;
+}
+
+.searchResultItem:hover {
+  background: var(--gray);
+  text-decoration: none;
+}
+
+.resultTitle {
+  display: block;
+  font-weight: 600;
+  color: var(--navy);
+  font-size: 0.9rem;
+}
+
+.resultSection {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--ink-faint, #646a74);
+  margin-top: 0.15rem;
+}
+
+.searchEmpty {
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--ink-faint, #646a74);
+  font-size: 0.9rem;
+}
+
+/* ── Mobile overrides (phones ≤ 600px) ─────────────────────────────── */
+@media (max-width: 600px) {
+  .searchContainer {
+    max-width: 100%;
+  }
+
+  .searchBox {
+    min-height: 44px;
+    padding: 0.625rem 0.875rem;
+  }
+
+  .searchInput {
+    min-height: 44px;
+    padding: 0.375rem 0;
+  }
+
+  .searchResultItem {
+    min-height: 44px;
+    padding: 0.75rem 0.875rem;
+    align-items: flex-start;
+  }
+
+  .resultTitle {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .resultSection {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}

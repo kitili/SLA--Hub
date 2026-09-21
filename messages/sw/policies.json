@@ -1,0 +1,29 @@
+{
+  "policies": {
+    "declarationTitle": "Tamko la mwisho la sera",
+    "declarationIntro": "Umetia saini kidijitali kila sera hapo juu. Sasa thibitisha kwamba unaelewa na unakubali kuzifuata kwa ujumla.",
+    "declarationTextEN": "I confirm that I have read, understood, and agree to abide by all Silverleaf Academy staff policies and procedures presented in this section, including the Staff Handbook, HR policies, safeguarding requirements, and operational compliance standards. I understand that these policies govern my conduct and responsibilities as a member of the Silverleaf team, and that I am expected to follow them in my day-to-day work.",
+    "declarationTextSW": "Ninathibitisha kwamba nimesoma, nimeelewa, na ninakubali kuzingatia sera na taratibu zote za wafanyakazi za Silverleaf Academy zilizowasilishwa katika sehemu hii, ikiwemo Mwongozo wa Wafanyakazi, sera za HR, mahitaji ya ulinzi wa watoto, na viwango vya utii wa uendeshaji. Ninaelewa kwamba sera hizi zinatawala tabia na majukumu yangu kama mwanachama wa timu ya Silverleaf, na kwamba inatarajiwa nizizingatie katika kazi yangu ya kila siku.",
+    "checkboxLabel": "Nimesoma na kuelewa tamko hapo juu, na ninakubali kuzingatia sera zote katika sehemu hii.",
+    "submitButton": "Ninatamka na nakubali",
+    "submitting": "Inahifadhi…",
+    "errorIncomplete": "Tafadhali tia saini kidijitali kila sera hapo juu kabla ya tamko la mwisho.",
+    "errorGeneric": "Kuna tatizo limetokea. Tafadhali jaribu tena.",
+    "itemSignature": {
+      "badge": "Saini ya kidijitali",
+      "title": "Tia saini sera hii",
+      "intro": "Baada ya kutazama video na kufungua “{policy}”, andika jina lako kamili ili kutia saini kidijitali kwamba umesoma na unakubali kuifuata.",
+      "nameLabel": "Jina kamili (saini ya kidijitali)",
+      "namePlaceholder": "Andika jina lako kamili la kisheria",
+      "nameHint": "Jina uliloandika huhifadhiwa kama saini yako ya kidijitali kwa sera hii.",
+      "checkboxLabel": "Nimesoma “{policy}” na ninakubali kuifuata katika kazi yangu katika Silverleaf.",
+      "ackText": "Ninathibitisha kwamba nimesoma, nimeelewa, na ninakubali kuzingatia “{policy}”.",
+      "submit": "Tia saini sera hii",
+      "submitting": "Inahifadhi saini…",
+      "signedTitle": "Sera imetiwa saini kidijitali",
+      "signedBy": "Imesainiwa na {name}",
+      "errorName": "Tafadhali andika jina lako kamili ili kusaini.",
+      "errorGeneric": "Imeshindikana kuhifadhi saini yako. Tafadhali jaribu tena."
+    }
+  }
+}

@@ -1,0 +1,177 @@
+.form {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid #cfe2f7;
+  border-radius: 10px;
+  background: linear-gradient(160deg, #f7fbff 0%, #ffffff 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
+.badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #0b6bcb;
+  background: #dff0ff;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+}
+
+.title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f2744;
+}
+
+.intro {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #334e68;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #0f2744;
+}
+
+.field input {
+  min-height: 44px;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #c5d4e4;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 500;
+  color: #0f2744;
+  background: #fff;
+}
+
+.field input:focus {
+  outline: 2px solid #0b6bcb;
+  outline-offset: 1px;
+}
+
+.hint {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #627d98;
+}
+
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: #243b53;
+}
+
+.checkbox input {
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.error {
+  margin: 0;
+  padding: 0.65rem 0.8rem;
+  border-radius: 8px;
+  background: #fff5f5;
+  border: 1px solid #f5c2c7;
+  color: #842029;
+  font-weight: 600;
+  font-size: 0.86rem;
+}
+
+.submit {
+  align-self: flex-start;
+  min-height: 44px;
+  padding: 0.7rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--navy, #002368);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.signedBox {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  background: #e6f4ea;
+  border: 1px solid #b7dfc3;
+}
+
+.signedTitle {
+  margin: 0 0 0.25rem;
+  font-weight: 700;
+  color: #1e7e34;
+  font-size: 0.9rem;
+}
+
+.signedMeta {
+  margin: 0;
+  font-size: 0.84rem;
+  color: #2f5d3a;
+}
+
+@media (max-width: 600px) {
+  .submit {
+    width: 100%;
+  }
+}
+
+:global([data-theme="dark"]) .form {
+  background: linear-gradient(160deg, #152338 0%, #1e2d40 100%);
+  border-color: #2d4460;
+}
+
+:global([data-theme="dark"]) .title,
+:global([data-theme="dark"]) .field,
+:global([data-theme="dark"]) .checkbox {
+  color: #e8eef6;
+}
+
+:global([data-theme="dark"]) .intro,
+:global([data-theme="dark"]) .hint {
+  color: #b6c5d8;
+}
+
+:global([data-theme="dark"]) .field input {
+  background: #0f1c2c;
+  border-color: #2d4460;
+  color: #e8eef6;
+}
+
+:global([data-theme="dark"]) .signedBox {
+  background: #1a3a28;
+  border-color: #2f6b45;
+}
+
+:global([data-theme="dark"]) .signedTitle,
+:global([data-theme="dark"]) .signedMeta {
+  color: #b7dfc3;
+}

@@ -1,0 +1,75 @@
+{
+  "syncedAt": "2026-09-21T09:07:20.817741+00:00",
+  "desks": {
+    "onboarding": {
+      "repo": "https://github.com/kitili/SLA-Onboarding-hub.git",
+      "branch": "main",
+      "sha": "3b5c8fe9d8462e49fa0f106611fb34873b4893d9",
+      "path": "desks/onboarding",
+      "port": 3000,
+      "liveUrl": "https://sla-onboarding-hub-steel.vercel.app",
+      "status": "updated",
+      "syncedAt": "2026-09-21T09:06:51.392440+00:00"
+    },
+    "talent-academy": {
+      "repo": "https://github.com/kitili/SLA-Talent-Academy.git",
+      "branch": "main",
+      "sha": null,
+      "path": "desks/talent-academy",
+      "port": 8765,
+      "liveUrl": "http://localhost:8765",
+      "status": "copied",
+      "syncedAt": "2026-09-21T09:06:51.399455+00:00"
+    },
+    "ops": {
+      "repo": "https://github.com/kitili/OPS_SYSTEM.git",
+      "branch": "main",
+      "sha": "1825d1ec82948f1037e50e3b2829cbb917414332",
+      "path": "desks/ops",
+      "port": 3020,
+      "liveUrl": "https://ops-transport-system.vercel.app",
+      "status": "updated",
+      "syncedAt": "2026-09-21T09:06:57.692756+00:00"
+    },
+    "uniforms": {
+      "repo": "https://github.com/kitili/school_uniforms.git",
+      "branch": "main",
+      "sha": "8b73c7c9e536f8b93d4a74a7ba51bec6e31f4f92",
+      "path": "desks/uniforms",
+      "port": 3010,
+      "liveUrl": "https://school-uniforms-lyart.vercel.app",
+      "status": "updated",
+      "syncedAt": "2026-09-21T09:07:04.113649+00:00"
+    },
+    "marketing": {
+      "repo": "https://github.com/kitili/SLA-Marketing-S.E.git",
+      "branch": "marketing",
+      "sha": "d54f100b78ec9dcb7e493be1d3ede5c57d1ec759",
+      "path": "desks/marketing",
+      "port": 3180,
+      "liveUrl": "https://sla-marketing-web.vercel.app",
+      "status": "updated",
+      "syncedAt": "2026-09-21T09:07:18.434210+00:00"
+    },
+    "data-tech": {
+      "repo": "https://github.com/kitili/silverleaf-data-and-tech.git",
+      "branch": "main",
+      "sha": "1155014ba1ca0eb0f9241d868b00ead6ce6d06bd",
+      "path": "desks/data-tech",
+      "port": 4050,
+      "liveUrl": "https://data-and-tech.vercel.app",
+      "status": "updated",
+      "syncedAt": "2026-09-21T09:07:20.811858+00:00"
+    },
+    "visitors": {
+      "repo": "https://github.com/kitili/SLA.git",
+      "branch": "main",
+      "sha": null,
+      "path": "desks/visitors",
+      "port": 3108,
+      "liveUrl": "http://localhost:3108",
+      "status": "copied",
+      "syncedAt": "2026-09-21T09:07:20.817716+00:00"
+    }
+  }
+}

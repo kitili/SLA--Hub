@@ -1,0 +1,373 @@
+{
+  "admin": {
+    "title": "Msimamizi",
+    "subtitle": "Usimamizi wa maudhui na ufuatiliaji wa wanachama",
+    "nav": {
+      "members": "Wanachama",
+      "sections": "Sehemu",
+      "quizzes": "Maswali",
+      "materials": "Nyenzo",
+      "hiring": "Kuajiri",
+      "hiringBoard": "Ubao wa waombaji",
+      "hiringPerformanceTasks": "Kazi za tathmini",
+      "hiringNewCandidate": "Ongeza mwombaji",
+      "home": "Nyumbani HR",
+      "onboardingGroup": "Onboarding",
+      "hiringGroup": "Kuajiri",
+      "campuses": "Kampasi",
+      "slaBot": "SLA-bot",
+      "backToHub": "Rudi kwenye kituo",
+      "systemGroup": "Mfumo",
+      "settings": "Mipangilio",
+      "hiringPositions": "Nafasi za kazi",
+      "hiringImport": "Ingiza kutoka sheet"
+    },
+    "settings": "Mipangilio",
+    "common": {
+      "save": "Hifadhi",
+      "cancel": "Ghairi",
+      "edit": "Hariri",
+      "delete": "Futa",
+      "create": "Tengeneza",
+      "add": "Ongeza",
+      "remove": "Ondoa",
+      "replace": "Badilisha",
+      "publish": "Chapisha",
+      "unpublish": "Ondoa kuchapishwa",
+      "published": "Imechapishwa",
+      "hidden": "Imefichwa",
+      "moveUp": "Sogeza juu",
+      "moveDown": "Sogeza chini",
+      "saving": "Inahifadhi…",
+      "uploading": "Inapakia…",
+      "none": "Hakuna",
+      "yes": "Ndiyo",
+      "no": "Hapana",
+      "confirmDelete": "Una uhakika? Kitendo hiki hakiwezi kutenduliwa.",
+      "translationPending": "Tafsiri inasubiri",
+      "englishLabel": "Kiingereza (EN)",
+      "swahiliLabel": "Kiswahili (SW)",
+      "optional": "si lazima",
+      "required": "lazima"
+    },
+    "members": {
+      "heading": "Ufuatiliaji wa wanachama",
+      "description": "Fuatilia maendeleo ya uingizaji na ugundue wanachama wanaorudi nyuma.",
+      "campusHelp": "Kampasi huwekwa na HR kwenye Admin: fungua wasifu wa mwanachama na uchague kampasi kutoka kwenye orodha. Mfanyakazi hawezi kuiweka mwenyewe. Mpaka HR aiweke, mwanachama anaonekana bila kampasi.",
+      "stats": {
+        "registered": "Wanachama waliosajiliwa",
+        "completed": "Waliokamilisha kabisa",
+        "checkpoints": "Jumla ya vituo",
+        "atRisk": "Katika hatari"
+      },
+      "table": {
+        "name": "Jina",
+        "email": "Barua pepe",
+        "completion": "Ukamilishaji",
+        "lastLogin": "Kuingia mwisho",
+        "startDate": "Tarehe ya kuanza",
+        "status": "Hali",
+        "risk": "Hatari",
+        "bio": "Wasifu"
+      },
+      "status": {
+        "complete": "Imekamilika",
+        "inProgress": "Inaendelea",
+        "notStarted": "Haijaanza"
+      },
+      "risk": {
+        "green": "Yuko sawa",
+        "orange": "Anarudi nyuma",
+        "red": "Yuko nje ya njia"
+      },
+      "filter": {
+        "atRiskOnly": "Onyesha walio hatarini tu",
+        "all": "Onyesha wote",
+        "campus": "Chuja kwa kampasi",
+        "campusAll": "Kampasi zote",
+        "unassigned": "Bila kampasi"
+      },
+      "never": "Kamwe",
+      "empty": "Hakuna wanachama bado.",
+      "sortHint": "Bofya kichwa cha safu ili kupanga.",
+      "downloadBio": "Pakua wasifu kama PDF",
+      "viewProfile": "Tazama",
+      "noBio": "—"
+    },
+    "memberDetail": {
+      "backToMembers": "← Rudi kwa wanachama",
+      "heading": "Wasifu wa mwanachama",
+      "name": "Jina",
+      "email": "Barua pepe",
+      "position": "Nafasi",
+      "campusHeading": "Kampasi",
+      "campusHelp": "Chagua kampasi ya mwanachama. Hii haibadilishi maendeleo yake ya uingizaji.",
+      "onboardingProgress": {
+        "heading": "Maendeleo ya uingizaji",
+        "readOnly": "Maendeleo yanahifadhiwa kiotomatiki mwanachama anapokamilisha vipengele na vituo. HR haiwezi kuyahariri au kuyafuta hapa.",
+        "stepsNote": "Hatua {done} kati ya {total} zimekamilika · vituo {checkpoints} kati ya {sections} vimepita",
+        "sectionLabel": "Sehemu {number}",
+        "checkpointPassed": "Kituo kimepita"
+      },
+      "policySignatures": {
+        "heading": "Saini za kidijitali za sera",
+        "readOnly": "Kila saini ni jina kamili la mwanachama baada ya kusoma sera hiyo.",
+        "signed": "Imesainiwa na {name} · {when}",
+        "notSigned": "Bado haijatiwa saini"
+      },
+      "noBio": "Mwanachama huyu bado hajawasilisha wasifu.",
+      "downloadPdf": "Pakua wasifu kamili (PDF)",
+      "qualifications": {
+        "heading": "Sifa na elimu",
+        "level": "Ngazi",
+        "qualification": "Sifa",
+        "institution": "Taasisi",
+        "yearObtained": "Mwaka",
+        "empty": "Hakuna sifa zilizoingizwa."
+      },
+      "documents": {
+        "heading": "Vyeti na nyaraka",
+        "empty": "Hakuna vyeti vilivyopakiwa.",
+        "download": "Pakua",
+        "size": "Ukubwa"
+      }
+    },
+    "sections": {
+      "heading": "Sehemu",
+      "description": "Tunga mti wa maudhui ya uingizaji. Panga upya, ficha rasimu, tafsiri.",
+      "new": "Sehemu mpya",
+      "create": "Tengeneza sehemu",
+      "edit": "Hariri sehemu",
+      "fields": {
+        "id": "Kitambulisho cha sehemu (slug)",
+        "idHint": "Herufi ndogo, zilizotenganishwa kwa kistari, k.m. \"health-safety\". Haiwezi kubadilishwa baadaye.",
+        "icon": "Aikoni",
+        "iconHint": "Emoji au alama fupi inayoonyeshwa kwenye kichwa cha sehemu.",
+        "titleEn": "Kichwa (Kiingereza)",
+        "titleSw": "Kichwa (Kiswahili)",
+        "descriptionEn": "Maelezo (Kiingereza)",
+        "descriptionSw": "Maelezo (Kiswahili)"
+      },
+      "list": {
+        "order": "Mpangilio",
+        "title": "Kichwa",
+        "items": "Vipengele",
+        "quiz": "Maswali",
+        "status": "Hali",
+        "actions": "Vitendo",
+        "itemCount": "{count, plural, =0 {Hakuna vipengele} one {kipengele #} other {vipengele #}}",
+        "hasQuiz": "Maswali yamewekwa",
+        "noQuiz": "Hakuna maswali",
+        "manageQuiz": "Simamia maswali",
+        "manageItems": "Vipengele na nyenzo"
+      },
+      "empty": "Hakuna sehemu bado. Tengeneza ya kwanza.",
+      "created": "Sehemu imetengenezwa.",
+      "updated": "Sehemu imesasishwa.",
+      "errors": {
+        "idTaken": "Sehemu yenye kitambulisho hicho tayari ipo.",
+        "notFound": "Sehemu haijapatikana."
+      },
+      "items": {
+        "new": "Ongeza kipengele cha kujifunza",
+        "create": "Tengeneza kipengele cha kujifunza",
+        "help": "Ongeza mada mpya katika sehemu hii, kisha pakia faili yake chini ya Nyenzo.",
+        "created": "Kipengele cha kujifunza kimetengenezwa ({id}). Pakia faili chini ya Nyenzo ili kuambatanisha maudhui.",
+        "fields": {
+          "titleEn": "Kichwa (Kiingereza)",
+          "titleSw": "Kichwa (Kiswahili)",
+          "titlePlaceholder": "mf. Historia ya kampuni na hadithi ya kuanzishwa",
+          "noteEn": "Maelezo (Kiingereza)",
+          "noteSw": "Maelezo (Kiswahili)",
+          "type": "Aina",
+          "id": "Kitambulisho cha kipengele",
+          "idPlaceholder": "Acha wazi ili kupewa kiotomatiki",
+          "idHint": "Si lazima. Mfano: 1-8. Acha wazi nasi tutapeana kitambulisho kinachofuata."
+        },
+        "types": {
+          "pdf": "Hati ya PDF",
+          "docx": "Hati ya Word",
+          "video": "Video",
+          "image": "Picha",
+          "pptx": "PowerPoint",
+          "link": "Kiungo"
+        },
+        "errors": {
+          "idTaken": "Kipengele cha kujifunza chenye kitambulisho hicho tayari kipo."
+        }
+      }
+    },
+    "quizzes": {
+      "heading": "Maswali ya kituo",
+      "description": "Tunga maswali ya kituo cha sehemu hii. Weka alama kwenye jibu sahihi kwa kila swali.",
+      "forSection": "Kituo cha: {section}",
+      "passRule": "Kanuni ya kufaulu",
+      "passThreshold": "Majibu sahihi yanayohitajika kufaulu",
+      "passThresholdHint": "Chaguo-msingi ni maswali yote sahihi (100%).",
+      "questionCount": "{count, plural, =0 {Hakuna maswali} one {swali #} other {maswali #}}",
+      "addQuestion": "Ongeza swali",
+      "editQuestion": "Hariri swali",
+      "question": "Swali",
+      "questionTextEn": "Swali (Kiingereza)",
+      "questionTextSw": "Swali (Kiswahili)",
+      "options": "Chaguo za majibu",
+      "optionTextEn": "Chaguo (Kiingereza)",
+      "optionTextSw": "Chaguo (Kiswahili)",
+      "addOption": "Ongeza chaguo",
+      "removeOption": "Ondoa chaguo",
+      "markCorrect": "Jibu sahihi",
+      "correct": "Sahihi",
+      "noQuizYet": "Hakuna maswali kwa sehemu hii bado. Ongeza swali ili kuyatengeneza.",
+      "empty": "Hakuna maswali bado.",
+      "saved": "Maswali yamehifadhiwa.",
+      "questionAdded": "Swali limeongezwa.",
+      "questionUpdated": "Swali limesasishwa.",
+      "questionDeleted": "Swali limefutwa.",
+      "errors": {
+        "needOneCorrect": "Kila swali linahitaji angalau chaguo moja sahihi.",
+        "needTwoOptions": "Kila swali linahitaji angalau chaguo mbili.",
+        "notFound": "Maswali au swali halijapatikana."
+      }
+    },
+    "materials": {
+      "heading": "Nyenzo",
+      "description": "Pakia faili na uziambatanishe na kipengele cha sehemu. Weka lebo ya lugha.",
+      "upload": "Pakia nyenzo",
+      "uploadHeading": "Pakia faili",
+      "fields": {
+        "file": "Faili",
+        "sectionItem": "Ambatanisha na kipengele",
+        "language": "Lugha"
+      },
+      "languageOptions": {
+        "en": "Kiingereza",
+        "sw": "Kiswahili",
+        "none": "Bila lebo"
+      },
+      "list": {
+        "filename": "Faili",
+        "item": "Kipengele kilichoambatanishwa",
+        "language": "Lugha",
+        "size": "Ukubwa",
+        "uploaded": "Imepakiwa",
+        "actions": "Vitendo"
+      },
+      "noItems": "Tengeneza sehemu yenye vipengele kabla ya kupakia nyenzo.",
+      "empty": "Hakuna nyenzo zilizopakiwa bado.",
+      "uploaded": "Nyenzo imepakiwa.",
+      "replaced": "Nyenzo imebadilishwa.",
+      "deleted": "Nyenzo imefutwa.",
+      "errors": {
+        "noFile": "Chagua faili la kupakia.",
+        "noItem": "Chagua kipengele cha kuambatanisha faili.",
+        "tooLarge": "Faili ni kubwa mno.",
+        "notFound": "Nyenzo haijapatikana."
+      }
+    },
+    "errors": {
+      "forbidden": "Huna ruhusa ya kuona ukurasa huu.",
+      "generic": "Hitilafu imetokea. Tafadhali jaribu tena.",
+      "validation": "Tafadhali sahihisha sehemu zilizoangaziwa."
+    },
+    "portal": {
+      "heading": "Backend ya HR",
+      "description": "Chagua eneo la kazi. Onboarding na kuajiri viko kwenye mfumo mmoja — uingiaji na hifadhidata moja.",
+      "onboarding": {
+        "title": "Kituo cha onboarding",
+        "description": "Fuatilia maendeleo ya wafanyakazi, simamia maudhui, maswali, nyenzo, na kampasi.",
+        "cta": "Fungua admin ya onboarding",
+        "links": {
+          "sections": "Sehemu",
+          "materials": "Nyenzo",
+          "quizzes": "Maswali",
+          "campuses": "Kampasi"
+        }
+      },
+      "hiring": {
+        "title": "Portal ya kuajiri",
+        "description": "Ubao wa waombaji, hatua za culture/performance, na kiungo cha kuomba kazi.",
+        "cta": "Fungua ubao wa kuajiri"
+      }
+    },
+    "hiring": {
+      "heading": "Kuajiri (HR)",
+      "description": "Pipeline ya waombaji na hatua za video ya culture na kazi ya utendaji.",
+      "edAdminNote": "Mtu akajiriwa, rekodi ya onboarding huundwa. Unda akaunti yake ya ed-admin, kisha anaweza kuingia na kuonekana chini ya Onboarding hub → Members.",
+      "backToJobs": "Rudi kwenye kuajiri",
+      "board": {
+        "heading": "Ubao wa waombaji",
+        "description": "Sogeza waombaji kupitia hatua za culture na performance kwa vitufe vya NEXT.",
+        "applyLink": "Kuomba kazi (umma):",
+        "manualEntry": "Ingizo la HR",
+        "csvImport": "Ingiza CSV",
+        "count": "Waombaji {count}",
+        "filtered": "(yamechujwa)",
+        "emptyColumn": "Tupu",
+        "otherStages": "Hatua nyingine"
+      },
+      "import": {
+        "heading": "Ingiza waombaji",
+        "description": "Pakia waombaji kutoka faili ya CSV. Kila safu inatumia sehemu sawa na ingizo la HR."
+      },
+      "candidate": {
+        "backToBoard": "Ubao",
+        "advanceHeading": "Sogeza pipeline",
+        "newHeading": "Ongeza mwombaji",
+        "newDescription": "Ingizo la HR — sehemu sawa na fomu ya kuomba kazi.",
+        "pipelineLog": "Rekodi za pipeline",
+        "noEvents": "Hakuna matukio bado.",
+        "fields": {
+          "email": "Barua pepe",
+          "applicationCheck": "Ukaguzi wa maombi",
+          "linkedin": "LinkedIn",
+          "cv": "CV",
+          "cultureMarker": "Alama ya culture",
+          "performanceMarker": "Alama ya performance",
+          "cultureVideo": "Video ya culture",
+          "performanceSubmission": "Wasilisho la performance",
+          "notes": "Maelezo ya HR"
+        }
+      }
+    },
+    "briefings": {
+      "heading": "Maelezo mafupi ya sera",
+      "intro": "Unapopakia au kubadilisha faili la sera, maelezo mafupi ya dakika 3 yanaandaliwa kutoka kwenye waraka huo. Hakiki hapa, kisha chapisha ili wafanyakazi waone toleo jipya. Hadi uchapishe, wataendelea kuona maelezo ya sasa.",
+      "draftKeepsLive": "Wafanyakazi bado wanaona maelezo yaliyochapishwa mwisho (au video ya awali) hadi uchapishe rasimu hii.",
+      "generate": "Tengeneza maelezo mafupi",
+      "regenerate": "Tengeneza rasimu mpya",
+      "generating": "Inaandika maelezo…",
+      "generatingHint": "Inaandika maelezo kutoka kwenye faili la sera. Ukurasa huu utajisasisha rasimu iko tayari.",
+      "publish": "Chapisha maelezo mafupi",
+      "publishing": "Inachapisha…",
+      "fromFile": "Kutoka {file}",
+      "generatorAi": "imeandikwa na AI kutoka kwenye waraka",
+      "generatorExtractive": "muhtasari otomatiki kutoka kwenye waraka",
+      "status": {
+        "none": "Bado hakuna maelezo mafupi",
+        "generating": "Inatengenezwa",
+        "draft": "Rasimu — hakiki kabla wafanyakazi hawajaona",
+        "published": "Imechapishwa",
+        "failed": "Imeshindikana kutengeneza"
+      }
+    },
+    "slaBot": {
+      "pageTitle": "Arifa za SLA-bot",
+      "heading": "Arifa na maoni yaliyo wazi",
+      "back": "Nyumbani HR",
+      "intro": "SLA-bot inakuarifu hapa mwanachama anapotuma maoni, kuripoti tatizo la teknolojia, au kutoa wasiwasi wa dharura. Matatizo ya teknolojia pia yanatumwa kwa mourine@silverleaf.co.tz na it@silverleaf.co.tz.",
+      "empty": "Hakuna arifa za SLA-bot zilizo wazi.",
+      "resolve": "Weka kuwa imetatuliwa",
+      "refreshKnowledge": "Sasisha maarifa",
+      "refreshing": "Inasasisha…",
+      "knowledgeCount": "Vipande {count} vya mwanafunzi na {adminCount} vya admin vimeorodheshwa",
+      "emailedTo": "Barua pepe → {to} ({status})",
+      "sent": "imetumwa au stub",
+      "notSent": "imeshindikana",
+      "kinds": {
+        "feedback": "Maoni",
+        "tech_issue": "Tatizo la teknolojia",
+        "alarm": "Arifa ya dharura"
+      }
+    }
+  }
+}

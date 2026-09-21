@@ -1,0 +1,163 @@
+/* StaffRegistration.module.css — ported from legacy/client/src/components/StaffRegistration.css */
+
+.staffRegistrationOverlay {
+  position: fixed;
+  inset: 0;
+  /* Fully opaque navy so the page chrome behind (white nav with a navy
+     brandmark) doesn't ghost through and render the logo illegible. */
+  background: var(--brand-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1.5rem;
+}
+
+.staffRegistrationCard {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  border-top: 4px solid var(--gold);
+}
+
+.regLogo {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+}
+
+.regLogo :global(.brand-logo) {
+  width: 48px;
+  height: 48px;
+}
+
+.staffRegistrationCard h1 {
+  font-size: 1.5rem;
+  color: var(--electric-blue);
+  margin-bottom: 0.5rem;
+}
+
+.regSub {
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.regOffline {
+  font-size: 0.8rem;
+  color: #856404;
+  background: #fff3cd;
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+}
+
+.regForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.regForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--electric-blue);
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--ink-faint);
+}
+
+.regForm input {
+  padding: 0.65rem 0.85rem;
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: var(--card);
+}
+
+.regForm input:focus {
+  outline: none;
+  border-color: var(--light-blue);
+}
+
+.regError {
+  color: #c0392b;
+  font-size: 0.85rem;
+  background: #fdecea;
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-sm);
+}
+
+.regSubmit {
+  margin-top: 0.5rem;
+  padding: 0.85rem;
+  background: var(--brand-navy);
+  color: var(--on-brand);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 1rem;
+  transition: background 0.15s;
+}
+
+.regSubmit:hover:not(:disabled) {
+  background: var(--navy-light);
+}
+
+.regSubmit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.otpLink {
+  display: block;
+  margin-top: 14px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--electric-blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background: none;
+  border: none;
+  padding: 0;
+  width: 100%;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ── Mobile overrides (phones ≤ 600px) ── */
+@media (max-width: 600px) {
+  .staffRegistrationOverlay {
+    /* Tighter overlay padding so the card isn't cramped at 360px */
+    padding: 1rem;
+  }
+
+  .staffRegistrationCard {
+    /* Reduce card padding so inner content has breathing room at 360px */
+    padding: 1.5rem;
+  }
+
+  .regForm input {
+    /* Ensure inputs meet the 44px touch-target minimum */
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+
+  .regSubmit {
+    /* Full-width, at least 44px tall for comfortable tapping */
+    width: 100%;
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+}

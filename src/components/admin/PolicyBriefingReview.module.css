@@ -1,0 +1,26 @@
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.card {
+  padding: 1rem 1.05rem 1.1rem;
+  border: 1px solid var(--card-border, #e2e8f0);
+  border-radius: var(--radius-sm, 8px);
+  background: var(--card, var(--white, #fff));
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}

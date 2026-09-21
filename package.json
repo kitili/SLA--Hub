@@ -1,0 +1,61 @@
+{
+  "name": "silverleaf-hub",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Silverleaf Academy workplace hub — one app for Onboarding, Talent Academy, Ops, Uniforms, Marketing, Data & Tech, and Visitors",
+  "scripts": {
+    "dev": "next dev --port 3100",
+    "build": "next build",
+    "vercel-build": "npm run db:migrate && next build",
+    "start": "next start --port 3100",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "tsx --conditions=react-server --import ./src/lib/db/scripts/ts-resolve.mjs ./src/lib/db/scripts/migrate.ts",
+    "db:seed": "tsx --conditions=react-server --import ./src/lib/db/scripts/ts-resolve.mjs ./src/lib/db/scripts/seed.ts",
+    "db:reset": "rm -rf .pglite && DATABASE_URL= npm run db:migrate && DATABASE_URL= npm run db:seed",
+    "desks:sync": "python3 scripts/sync-desks.py",
+    "desks:status": "python3 scripts/sync-desks.py --status",
+    "desks:dev": "bash scripts/dev-desks.sh",
+    "desks:sync:daily": "bash scripts/install-daily-sync.sh",
+    "visitors:sync": "python3 scripts/sync-visitor-data.py",
+    "visitors:sync:watch": "python3 scripts/sync-visitor-data.py --watch",
+    "marketing:export-live": "python3 scripts/export-marketing-live.py"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.8",
+    "@fontsource/bai-jamjuree": "^5.3.0",
+    "@fontsource/montserrat": "^5.3.0",
+    "@react-pdf/renderer": "^4.5.1",
+    "@vercel/blob": "^2.4.1",
+    "better-sqlite3": "^11.10.0",
+    "docx-preview": "^0.4.0",
+    "drizzle-orm": "^0.45.2",
+    "googleapis": "^174.0.1",
+    "mammoth": "^1.12.1",
+    "next": "15.5.19",
+    "next-intl": "^4.14.5",
+    "nodemailer": "^9.0.3",
+    "postgres": "^3.4.9",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "server-only": "^0.0.1",
+    "unpdf": "^1.7.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^20.19.0",
+    "@types/nodemailer": "^8.0.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "drizzle-kit": "^0.31.10",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "15.5.19",
+    "tsx": "^4.22.4",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

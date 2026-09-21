@@ -1,0 +1,55 @@
+{
+  "common": {
+    "appName": "Kituo cha Uingizaji cha Silverleaf",
+    "loading": "Inapakia…",
+    "save": "Hifadhi",
+    "cancel": "Ghairi",
+    "next": "Endelea",
+    "back": "Rudi",
+    "submit": "Wasilisha",
+    "language": "Lugha",
+    "english": "Kiingereza",
+    "swahili": "Kiswahili"
+  },
+  "nav": {
+    "dashboard": "Dashibodi",
+    "section": "Sehemu",
+    "documentViewer": "Kiangalizi cha Hati",
+    "admin": "Msimamizi",
+    "signOut": "Toka",
+    "menu": "Menyu",
+    "closeMenu": "Funga menyu",
+    "theme": "Mandhari ya rangi",
+    "themeLight": "Mwanga",
+    "themeDark": "Giza"
+  },
+  "adminGate": {
+    "title": "Eneo la wasimamizi pekee",
+    "body": "Eneo hili ni la wasimamizi. Akaunti yako haina ufikiaji wa msimamizi. Ikiwa unadhani hili ni kosa, tafadhali wasiliana na meneja wako.",
+    "dismiss": "Sawa, nimeelewa",
+    "close": "Funga"
+  },
+  "auth": {
+    "signIn": "Ingia",
+    "register": "Jisajili",
+    "fullName": "Jina kamili",
+    "email": "Barua pepe",
+    "adminPin": "PIN ya Msimamizi",
+    "enterPin": "Weka PIN",
+    "invalidPin": "PIN si sahihi. Tafadhali jaribu tena."
+  },
+  "idle": {
+    "title": "Bado upo?",
+    "message": "Utatolewa kwa kutotumia kwa muda wa sekunde {seconds}.",
+    "stay": "Endelea kuwa umeingia"
+  },
+  "quiz": {
+    "title": "Jaribio la Ukaguzi",
+    "question": "Swali",
+    "of": "kati ya",
+    "correct": "Sahihi!",
+    "incorrect": "Bado kidogo — jaribu tena.",
+    "passed": "Umefaulu ukaguzi huu.",
+    "retry": "Jaribu tena"
+  }
+}

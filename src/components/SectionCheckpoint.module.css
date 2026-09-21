@@ -1,0 +1,105 @@
+/* SectionCheckpoint.module.css — ported from legacy/client/src/components/SectionCheckpoint.css */
+
+.sectionCheckpoint {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--navy);
+  background: linear-gradient(135deg, #f0f4fa 0%, var(--white) 100%);
+}
+
+.sectionCheckpoint.passed {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-color: #1e7e34;
+  background: #e6f4ea;
+  color: #1e7e34;
+  font-weight: 600;
+}
+
+.sectionCheckpoint.locked {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  border-color: #ccc;
+  background: var(--gray);
+  opacity: 0.85;
+}
+
+.sectionCheckpoint.locked strong {
+  display: block;
+  color: var(--navy);
+  margin-bottom: 0.25rem;
+}
+
+.sectionCheckpoint.locked p {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.sectionCheckpointIntro {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: var(--navy);
+}
+
+.sectionCheckpointIntro strong {
+  display: block;
+  font-size: 1.05rem;
+  margin-bottom: 0.25rem;
+}
+
+.sectionCheckpointIntro p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.sectionRetryNote {
+  padding: 0.75rem 1rem;
+  background: #fff8e6;
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+
+.btnStartSectionQuiz {
+  padding: 0.75rem 1.5rem;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.15s;
+}
+
+.btnStartSectionQuiz:hover {
+  background: var(--navy-light);
+}
+
+/* ── Mobile overrides ─────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  /* Ensure long hint / checkpoint text wraps instead of being clipped */
+  .sectionCheckpoint.locked p,
+  .sectionCheckpointIntro p {
+    overflow-wrap: anywhere;
+  }
+
+  /* Give the text container flex-shrink room so it doesn't overflow the emoji */
+  .sectionCheckpoint.locked > div,
+  .sectionCheckpointIntro > div {
+    min-width: 0;
+  }
+
+  /* Full-width, tappable quiz button (≥ 44 px touch target) */
+  .btnStartSectionQuiz {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    text-align: center;
+  }
+}

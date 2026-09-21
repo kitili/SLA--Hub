@@ -1,0 +1,25 @@
+{
+  "adminSlaBot": {
+    "kicker": "Msaidizi wa HR",
+    "title": "HR-bot",
+    "open": "Uliza HR-bot",
+    "close": "Funga",
+    "welcome": "Uliza jinsi ya kuendesha lango la HR: wanachama, sehemu, maswali, ajira, au arifa za SLA-bot. Ninatumia mwongozo wa admin na muhtasari wa sasa. SLA-bot ya mwanafunzi haioni mazungumzo haya.",
+    "placeholder": "Uliza kuhusu wanachama, ajira, au kurasa za admin…",
+    "send": "Tuma",
+    "sending": "Inatuma…",
+    "error": "HR-bot haikuweza kujibu. Jaribu tena baadaye.",
+    "starters": {
+      "help": "Unaweza kusaidia nini?",
+      "members": "Nani yuko hatarini au hajakamilisha onboarding?",
+      "hiring": "Kuna wagombea wangapi katika kila hatua ya ajira?",
+      "alerts": "Nashughulikiaje arifa za SLA-bot?"
+    },
+    "starterLabels": {
+      "help": "Msaada",
+      "members": "Wanachama",
+      "hiring": "Ajira",
+      "alerts": "Arifa"
+    }
+  }
+}

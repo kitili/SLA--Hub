@@ -1,0 +1,24 @@
+node_modules/
+.next/
+out/
+build/
+.DS_Store
+*.pem
+*.log
+npm-debug.log*
+.env
+.env*.local
+!.env.example
+*.tsbuildinfo
+.vercel
+data/
+.claude/
+
+.onboarding-live/
+.pglite/
+documents/hiring-uploads/
+.desks-sync.log
+
+# Desk checkouts live on disk; only the lockfile is committed.
+/desks/*/
+!/desks/.gitkeep

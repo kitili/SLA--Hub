@@ -1,0 +1,492 @@
+/* DocumentCard.module.css — ported from legacy/client/src/components/DocumentCard.css */
+
+.documentCard {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--navy);
+  transition: box-shadow 0.2s;
+}
+
+.documentCard.complete {
+  border-left-color: #1e7e34;
+}
+
+.documentCard.locked {
+  border-left-color: #ccc;
+  opacity: 0.7;
+}
+
+.documentCard:hover:not(.locked) {
+  box-shadow: var(--shadow-lg);
+}
+
+.documentHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.documentNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.documentCard.complete .documentNumber {
+  background: #1e7e34;
+}
+
+.documentInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.documentEyebrow {
+  display: block;
+  color: var(--electric-blue);
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.2rem;
+}
+
+.documentTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.4;
+}
+
+.documentNote {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
+.completeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  background: #e6f4ea;
+  color: #1e7e34;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.quizReadyBadge {
+  display: inline-flex;
+  padding: 0.25rem 0.65rem;
+  background: var(--gold-15);
+  color: var(--electric-blue);
+  border: 1px solid var(--gold);
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+}
+
+.lockedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  background: var(--gray);
+  color: var(--ink-muted);
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.lockedMessage {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+.documentFiles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.fileLink,
+.directoryLink {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.6rem 0.85rem;
+  background: var(--gray);
+  border-radius: var(--radius-sm);
+  color: var(--navy);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: background 0.15s, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.directoryLink {
+  padding: 0.85rem 1rem;
+  background:
+    linear-gradient(135deg, rgba(128, 191, 236, 0.28), transparent 55%),
+    var(--light-blue-30);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 14px rgba(0, 35, 104, 0.06);
+}
+
+.fileLink:hover,
+.directoryLink:hover {
+  background: var(--light-blue);
+  color: var(--navy-dark);
+  text-decoration: none;
+}
+
+.directoryLink:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 35, 104, 0.1);
+}
+
+.directoryIcon {
+  flex-shrink: 0;
+  font-size: 1.05rem;
+}
+
+.fileCopy {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+.fileName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.directoryHint {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+
+.viewIcon {
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.viewLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--electric-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+}
+
+.videoSolo {
+  margin-top: 1.15rem;
+}
+
+.videoGallery {
+  margin-top: 1.15rem;
+  padding: 1rem 1rem 1.1rem;
+  border-radius: var(--radius);
+  background:
+    radial-gradient(120% 80% at 0% 0%, rgba(255, 201, 82, 0.14), transparent 42%),
+    linear-gradient(165deg, rgba(128, 191, 236, 0.24) 0%, transparent 48%),
+    var(--light-blue-30);
+  border: 1px solid var(--card-border);
+}
+
+.videoGalleryHeader {
+  margin-bottom: 0.85rem;
+}
+
+.videoGalleryKicker {
+  margin: 0 0 0.3rem;
+  display: inline-flex;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--electric-blue);
+  background: color-mix(in srgb, var(--card) 78%, transparent);
+}
+
+.videoGalleryTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.videoGalleryLead {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--ink-muted);
+}
+
+.teamPicker {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.teamPick {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  text-align: left;
+  text-decoration: none;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: color-mix(in srgb, var(--card) 72%, transparent);
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.teamPick:hover {
+  background: color-mix(in srgb, var(--card) 95%, transparent);
+  border-color: var(--card-border);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.teamPickIndex {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--navy);
+  background: rgba(255, 201, 82, 0.9);
+  border-radius: 999px;
+  padding: 0.14rem 0.38rem;
+}
+
+.teamPickCopy {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.teamPickName {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.25;
+}
+
+.teamPickRole {
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  line-height: 1.3;
+}
+
+.teamPickAction {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--electric-blue);
+}
+
+.videoCard {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.videoFrame {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: linear-gradient(160deg, #001a4d 0%, #0f2744 55%, #14233b 100%);
+  box-shadow: 0 8px 22px rgba(0, 35, 104, 0.14);
+  border: 1px solid var(--card-border);
+}
+
+.videoLoadingHint {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.72);
+  pointer-events: none;
+}
+
+.welcomeVideo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  display: block;
+  border: none;
+  background: transparent;
+}
+
+.videoCaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  padding: 0 0.15rem;
+}
+
+.videoName {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.videoRole {
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  line-height: 1.35;
+}
+
+.videoPreview {
+  margin-top: 1rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--black);
+}
+
+.videoLabel {
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #dff0ff;
+  background: #0f2744;
+}
+
+@media (max-width: 520px) {
+  .videoGallery {
+    padding: 0.9rem 0.8rem 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .teamPick,
+  .directoryLink:hover {
+    transition: none;
+  }
+
+  .teamPick:hover,
+  .directoryLink:hover {
+    transform: none;
+  }
+}
+
+.readActions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gray);
+}
+
+.btnMarkRead {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  background: var(--gold);
+  color: var(--navy);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: filter 0.15s;
+}
+
+.btnMarkRead:hover {
+  filter: brightness(0.95);
+}
+
+.btnMarkRead:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .documentHeader {
+    flex-wrap: wrap;
+  }
+
+  .completeBadge,
+  .quizReadyBadge,
+  .lockedBadge {
+    /* Drop onto its own line under the title. Subtract the indent from the
+       width (box-sizing: border-box) so the right edge lands exactly at the
+       header edge instead of overflowing by the margin amount. */
+    width: calc(100% - 32px - 1rem);
+    margin-left: calc(32px + 1rem);
+    justify-content: center;
+  }
+
+  .documentTitle,
+  .documentNote {
+    overflow-wrap: anywhere;
+  }
+
+  .fileName {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-overflow: unset;
+  }
+
+  .btnMarkRead {
+    min-height: 44px;
+    width: 100%;
+    justify-content: center;
+  }
+}

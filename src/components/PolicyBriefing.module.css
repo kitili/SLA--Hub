@@ -1,0 +1,191 @@
+.panel {
+  margin: 0.85rem 0 0.25rem;
+  padding: 1rem 1.1rem;
+  border-radius: 10px;
+  background: linear-gradient(160deg, #eef6ff 0%, #f8fbff 55%, #ffffff 100%);
+  border: 1px solid #cfe2f7;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #0b6bcb;
+  background: #dff0ff;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+}
+
+.title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f2744;
+}
+
+.videoWrap {
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0f2744;
+}
+
+.videoLabel {
+  margin: 0;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #dff0ff;
+}
+
+.video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  background: #000;
+}
+
+.pending {
+  margin: 0;
+  padding: 0.85rem 0.9rem;
+  border-radius: 8px;
+  background: #0f2744;
+  color: #dff0ff;
+  font-size: 0.88rem;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.stage {
+  position: relative;
+  min-height: 220px;
+  padding: 1.15rem 1.2rem 1.4rem;
+  border-radius: 8px;
+  background:
+    linear-gradient(160deg, #0f2744 0%, #123a66 55%, #0b6bcb 140%);
+  color: #f8fafc;
+  overflow: hidden;
+}
+
+.stageKicker {
+  margin: 0 0 0.45rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e8b931;
+}
+
+.stageHeading {
+  margin: 0 0 0.65rem;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.stageBody {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #e8eef6;
+  max-width: 52rem;
+}
+
+.stageBar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  background: #e8b931;
+}
+
+.playOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(15 39 68 / 0.35);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 0;
+  cursor: pointer;
+}
+
+.playOverlay:hover {
+  background: rgb(15 39 68 / 0.5);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.controlBtn {
+  border: 1px solid #cfe2f7;
+  background: #fff;
+  color: #0f2744;
+  border-radius: 999px;
+  padding: 0.28rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.controlBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.slideCount {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: #486581;
+}
+
+.speechHint {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #486581;
+}
+
+:global([data-theme="dark"]) .controlBtn {
+  background: #152338;
+  color: #e8eef6;
+  border-color: #2d4460;
+}
+
+:global([data-theme="dark"]) .slideCount,
+:global([data-theme="dark"]) .speechHint {
+  color: #9fb3c8;
+}
+
+:global([data-theme="dark"]) .panel {
+  background: linear-gradient(160deg, #152338 0%, #1a2738 60%, #1e2d40 100%);
+  border-color: #2d4460;
+}
+
+:global([data-theme="dark"]) .title,
+:global([data-theme="dark"]) .nextStep {
+  color: #e8eef6;
+}

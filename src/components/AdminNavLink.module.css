@@ -1,0 +1,72 @@
+/* AdminNavLink.module.css */
+
+/* Button styled to be visually indistinguishable from the sibling text links
+   in `.site-nav__links` (which are bare <a> using the global anchor styles). */
+.navLink {
+  font-size: inherit;
+  font-weight: inherit;
+  color: var(--electric-blue);
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: inherit;
+}
+
+.navLink:hover {
+  text-decoration: underline;
+}
+
+/* ── Explanation modal — mirrors AdminPinModal's brand overlay ───────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 35, 104, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1.5rem;
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  border-top: 4px solid var(--gold);
+  text-align: center;
+}
+
+.icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  color: var(--electric-blue);
+  margin-bottom: 0.5rem;
+}
+
+.body {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.dismiss {
+  padding: 0.75rem 1.5rem;
+  background: var(--electric-blue);
+  color: var(--white);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+}
+
+.dismiss:hover {
+  background: var(--navy-light);
+}

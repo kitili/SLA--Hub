@@ -1,0 +1,232 @@
+.root {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.65rem;
+  max-width: min(100vw - 1.5rem, 24rem);
+}
+
+.panel {
+  width: min(100vw - 1.5rem, 24rem);
+  max-height: min(70vh, 34rem);
+  display: flex;
+  flex-direction: column;
+  background: var(--white, #fff);
+  border: 1px solid var(--border, #d7e2ee);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgb(15 39 68 / 0.18);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.85rem 0.95rem 0.65rem;
+  background: linear-gradient(135deg, #0f2744 0%, #0b6bcb 120%);
+  color: #fff;
+}
+
+.headerAdmin {
+  background: linear-gradient(135deg, #3d2a12 0%, #c47b17 120%);
+}
+
+.kicker {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.title {
+  margin: 0.15rem 0 0;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.iconBtn {
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.starters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0.55rem 0.75rem 0.15rem;
+}
+
+.chip {
+  border: 1px solid #cfe2f7;
+  background: #f4f9ff;
+  color: #0f2744;
+  border-radius: 999px;
+  padding: 0.22rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.messages {
+  flex: 1;
+  overflow: auto;
+  padding: 0.65rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  background: #f7fafc;
+}
+
+.welcome {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #486581;
+  line-height: 1.45;
+}
+
+.bubbleUser,
+.bubbleBot {
+  max-width: 92%;
+  padding: 0.55rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.bubbleUser {
+  align-self: flex-end;
+  background: #0b6bcb;
+  color: #fff;
+}
+
+.bubbleBot {
+  align-self: flex-start;
+  background: #fff;
+  border: 1px solid #d7e2ee;
+  color: #0f2744;
+}
+
+.composer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.45rem;
+  padding: 0.65rem 0.75rem 0.8rem;
+  border-top: 1px solid #e2e8f0;
+  background: #fff;
+}
+
+.input {
+  resize: none;
+  border: 1px solid #cfe2f7;
+  border-radius: 10px;
+  padding: 0.45rem 0.55rem;
+  font: inherit;
+  font-size: 0.86rem;
+}
+
+.send {
+  align-self: end;
+  border: 0;
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  background: #0b6bcb;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.send:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.error {
+  margin: 0 0.75rem;
+  color: #b32d23;
+  font-size: 0.8rem;
+}
+
+.fab {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  background: #0f2744;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgb(15 39 68 / 0.28);
+}
+
+.fabAdmin {
+  background: #7a4a0d;
+  box-shadow: 0 10px 24px rgb(122 74 13 / 0.28);
+}
+
+.fabLabel {
+  font-size: 0.68rem;
+  opacity: 0.8;
+  font-weight: 600;
+}
+
+.fabName {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+:global([data-theme="dark"]) .panel,
+:global([data-theme="dark"]) .composer,
+:global([data-theme="dark"]) .bubbleBot {
+  background: #152338;
+  border-color: #2d4460;
+  color: #e8eef6;
+}
+
+:global([data-theme="dark"]) .messages {
+  background: #101c2c;
+}
+
+:global([data-theme="dark"]) .chip {
+  background: #1a2b40;
+  border-color: #2d4460;
+  color: #e8eef6;
+}
+
+:global([data-theme="dark"]) .input {
+  background: #101c2c;
+  border-color: #2d4460;
+  color: #e8eef6;
+}
+
+@media (max-width: 480px) {
+  .root {
+    right: 0.65rem;
+    bottom: 0.65rem;
+  }
+}
