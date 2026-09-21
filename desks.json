@@ -69,7 +69,7 @@
       "port": 4050,
       "cwd": ".",
       "dev": "npm run dev",
-      "liveUrl": "https://data-and-tech.vercel.app",
+      "liveUrl": "https://dataandtech.silverleaf.co.tz",
       "fallback": "/home/kiki/DataAndTech"
     },
     {
@@ -81,7 +81,7 @@
       "port": 3108,
       "cwd": ".",
       "dev": "npm run dev",
-      "liveUrl": "http://localhost:3108",
+      "liveUrl": "https://v-isitors.vercel.app",
       "fallback": "/home/kiki/Downloads/silverleaf-visitor-log",
       "syncData": true
     }

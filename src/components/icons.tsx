@@ -125,6 +125,15 @@ export function DepartmentIcon({
       </Svg>
     );
   }
+  if (id === "workboard-tasks") {
+    return (
+      <Svg className={className}>
+        <rect x="3.5" y="4" width="5" height="16" rx="1" />
+        <rect x="9.5" y="4" width="5" height="10" rx="1" />
+        <rect x="15.5" y="4" width="5" height="13" rx="1" />
+      </Svg>
+    );
+  }
   if (id === "visitors") {
     return (
       <Svg className={className}>

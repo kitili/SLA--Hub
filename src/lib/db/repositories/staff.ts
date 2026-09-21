@@ -13,8 +13,9 @@ import "server-only";
  * pass that decision in as `isAdmin`. This keeps the data layer pure and free of
  * raw SQL leaking to callers.
  */
-import { eq } from "drizzle-orm";
+import { eq, ne } from "drizzle-orm";
 
+import { namesAreSimilar, normalizePersonName } from "@/lib/email";
 import { db } from "../client";
 import { staff, type Staff } from "../schema";
 
@@ -35,6 +36,27 @@ export async function findStaffByEmail(
   return rows[0];
 }
 
+/** Other staff rows whose display name is the same or very similar. */
+export async function findStaffWithSimilarName(
+  fullName: string,
+  exceptId?: string,
+): Promise<Staff[]> {
+  const needle = normalizePersonName(fullName);
+  if (!needle) return [];
+  const rows = exceptId
+    ? await db.select().from(staff).where(ne(staff.id, exceptId))
+    : await db.select().from(staff);
+  return rows.filter(
+    (row) => Boolean(normalizePersonName(row.fullName)) && namesAreSimilar(row.fullName, fullName),
+  );
+}
+
+/** Emails already claimed — used to suggest a free firstname.lastname@silverleaf.co.tz. */
+export async function listStaffEmails(): Promise<string[]> {
+  const rows = await db.select({ email: staff.email }).from(staff);
+  return rows.map((row) => row.email);
+}
+
 /** Find a staff member by id, or `undefined`. */
 export async function findStaffById(id: string): Promise<Staff | undefined> {
   const rows = await db.select().from(staff).where(eq(staff.id, id)).limit(1);
@@ -47,6 +69,22 @@ export async function touchLastActive(id: string): Promise<void> {
     .update(staff)
     .set({ lastActiveAt: new Date() })
     .where(eq(staff.id, id));
+}
+
+/** Move a staff row to a unique work email. Fails if that email is taken. */
+export async function updateStaffEmail(
+  id: string,
+  email: string,
+): Promise<Staff | undefined> {
+  const normalized = normalizeEmail(email);
+  const taken = await findStaffByEmail(normalized);
+  if (taken && taken.id !== id) return undefined;
+  const rows = await db
+    .update(staff)
+    .set({ email: normalized, lastActiveAt: new Date() })
+    .where(eq(staff.id, id))
+    .returning();
+  return rows[0];
 }
 
 /** Set the admin flag for a staff id and return the updated row. */

@@ -1,0 +1,8 @@
+desks
+data
+.pglite
+.onboarding-live
+documents
+*.log
+.env
+.env*.local

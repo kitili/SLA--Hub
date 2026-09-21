@@ -321,9 +321,11 @@
 }
 
 .cardLocal {
+  align-self: flex-start;
   background: var(--gray);
   color: var(--navy);
   border: 1px solid var(--card-border);
+  margin-top: 0.45rem;
 }
 
 .phases {

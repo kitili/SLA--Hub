@@ -57,7 +57,10 @@ const globalForDb = globalThis as unknown as {
 function pgliteDataDir(): string {
   const inMemory =
     process.env.NODE_ENV === "test" || process.env.PGLITE_MEMORY === "1";
-  return inMemory ? "memory://" : PGLITE_DATA_DIR;
+  if (inMemory) return "memory://";
+  // Vercel serverless is read-only except /tmp. Local dev keeps `.pglite/`.
+  if (process.env.VERCEL) return "/tmp/silverleaf-pglite";
+  return PGLITE_DATA_DIR;
 }
 
 function createSingleton(): DbSingleton {

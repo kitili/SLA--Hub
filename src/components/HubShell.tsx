@@ -82,6 +82,8 @@ export default function HubShell({
             <a
               key={department.id}
               href={href}
+              target="_blank"
+              rel="noreferrer"
               onClick={() => window.localStorage.setItem(LAST_DESK_KEY, department.href)}
             >
               {label}

@@ -16,23 +16,23 @@ describe("sendOtpEmail SMTP gating", () => {
     expect(result.ok).toBe(true);
   });
 
-  it("fails in production when SMTP is unset", async () => {
+  it("shows the code on the sign-in page in production when SMTP is unset", async () => {
     vi.stubEnv("NODE_ENV", "production");
     vi.stubEnv("SMTP_HOST", "");
     vi.stubEnv("SMTP_USER", "");
     vi.stubEnv("SMTP_PASS", "");
     const { sendOtpEmail } = await import("./otp-mail");
     const result = await sendOtpEmail("hr@silverleaf.co.tz", "123456");
-    expect(result.ok).toBe(false);
-    expect(result.error).toMatch(/not configured/i);
+    expect(result.ok).toBe(true);
+    expect(result.previewCode).toBe("123456");
   });
 
-  it("hides OTP sign-in in production when SMTP is unset", async () => {
+  it("keeps OTP sign-in available in production when SMTP is unset", async () => {
     vi.stubEnv("NODE_ENV", "production");
     vi.stubEnv("SMTP_HOST", "");
     vi.stubEnv("SMTP_USER", "");
     vi.stubEnv("SMTP_PASS", "");
     const { isOtpSignInAvailable } = await import("./otp-mail");
-    expect(isOtpSignInAvailable()).toBe(false);
+    expect(isOtpSignInAvailable()).toBe(true);
   });
 });

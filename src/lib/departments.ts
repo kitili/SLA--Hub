@@ -5,6 +5,7 @@ export type DepartmentId =
   | "uniforms"
   | "marketing"
   | "data-tech"
+  | "workboard-tasks"
   | "visitors";
 
 export type DepartmentPhase = 1 | 2 | 3 | 4;
@@ -25,6 +26,8 @@ export interface Department {
   repo: string;
   branch: string;
   deskPath: string;
+  /** False when the desk only runs on this computer and is not on Vercel yet. */
+  hosted?: boolean;
 }
 
 const LIVE_ENV: Record<DepartmentId, string> = {
@@ -34,6 +37,7 @@ const LIVE_ENV: Record<DepartmentId, string> = {
   uniforms: "WORKPLACE_UNIFORMS_URL",
   marketing: "WORKPLACE_MARKETING_URL",
   "data-tech": "WORKPLACE_DATA_TECH_URL",
+  "workboard-tasks": "WORKPLACE_WORKBOARD_TASKS_URL",
   visitors: "WORKPLACE_VISITORS_URL",
 };
 
@@ -44,6 +48,7 @@ const LOCAL_ENV: Record<DepartmentId, string> = {
   uniforms: "WORKPLACE_UNIFORMS_LOCAL_URL",
   marketing: "WORKPLACE_MARKETING_LOCAL_URL",
   "data-tech": "WORKPLACE_DATA_TECH_LOCAL_URL",
+  "workboard-tasks": "WORKPLACE_WORKBOARD_TASKS_LOCAL_URL",
   visitors: "WORKPLACE_VISITORS_LOCAL_URL",
 };
 
@@ -61,7 +66,7 @@ export const departments: Department[] = [
       "Staff workplace, policies, hiring, SLA-bot, and campus onboarding — the same desk people already use to join Silverleaf.",
     phase: 1,
     phaseNote: "In this hub at /en. Source of truth: desks/onboarding (pulled daily from live).",
-    href: "/en",
+    href: "https://sla-onboarding-hub-steel.vercel.app",
     liveUrl: "https://sla-onboarding-hub-steel.vercel.app",
     localUrl: "http://localhost:3000",
     localPort: 3000,
@@ -76,13 +81,14 @@ export const departments: Department[] = [
     name: "Talent Academy",
     kicker: "Teacher training",
     summary:
-      "Fellows, trainers, weekly competencies, and certificates — Silverleaf’s teacher training academy.",
+      "Fellows, trainers, weekly competencies, and certificates — the Silverleaf teacher training academy on this computer. Not hosted yet.",
     phase: 1,
-    phaseNote: "Opens the Talent Academy running in your other Cursor workspace at localhost:8765.",
-    href: "/departments/talent-academy",
+    phaseNote: "Local only at localhost:8765. Not on Vercel yet.",
+    href: "http://localhost:8765",
     liveUrl: "http://localhost:8765",
     localUrl: "http://localhost:8765",
     localPort: 8765,
+    hosted: false,
     desks: ["Fellows", "Trainers", "Courses", "Certificates"],
     accent: "gold",
     repo: "https://github.com/kitili/SLA-Talent-Academy.git",
@@ -97,7 +103,7 @@ export const departments: Department[] = [
       "Day-to-day operations: transport, facilities, kitchen, and ticketing across campuses.",
     phase: 1,
     phaseNote: "Current live code in desks/ops. Hub opens local :3020 if running, else Vercel.",
-    href: "/departments/ops",
+    href: "https://ops-transport-system.vercel.app",
     liveUrl: "https://ops-transport-system.vercel.app",
     localUrl: "http://localhost:3020",
     localPort: 3020,
@@ -115,7 +121,7 @@ export const departments: Department[] = [
       "Tailoring, warehouses, parent orders, purchase orders, sewing, and campus distribution.",
     phase: 1,
     phaseNote: "Current live code in desks/uniforms. Hub opens local :3010 if running, else Vercel.",
-    href: "/departments/uniforms",
+    href: "https://school-uniforms-lyart.vercel.app",
     liveUrl: "https://school-uniforms-lyart.vercel.app",
     localUrl: "http://localhost:3010",
     localPort: 3010,
@@ -133,7 +139,7 @@ export const departments: Department[] = [
       "Official brand, inbound leads, campus marketing, and student-experience dashboards.",
     phase: 1,
     phaseNote: "Current live code in desks/marketing. Hub opens local :3180 if running, else Vercel.",
-    href: "/departments/marketing",
+    href: "https://sla-marketing-web.vercel.app",
     liveUrl: "https://sla-marketing-web.vercel.app",
     localUrl: "http://localhost:3180",
     localPort: 3180,
@@ -151,11 +157,29 @@ export const departments: Department[] = [
       "Tickets, tech tools, system boards, sprints, and 1–5s — the Data & Tech workplace.",
     phase: 1,
     phaseNote: "Current live code in desks/data-tech. Hub opens local :4050 if running, else Vercel.",
-    href: "/departments/data-tech",
-    liveUrl: "https://data-and-tech.vercel.app",
+    href: "https://dataandtech.silverleaf.co.tz",
+    liveUrl: "https://dataandtech.silverleaf.co.tz",
     localUrl: "http://localhost:4050",
     localPort: 4050,
     desks: ["Tickets", "Tech tools", "Systems", "1–5s & pulse"],
+    accent: "navy",
+    repo: "https://github.com/kitili/silverleaf-data-and-tech.git",
+    branch: "main",
+    deskPath: "desks/data-tech",
+  },
+  {
+    id: "workboard-tasks",
+    name: "Workboard Tasks",
+    kicker: "Project boards",
+    summary:
+      "Kanban boards, sprints, and assigned work — the Data & Tech project of workboard tasks.",
+    phase: 1,
+    phaseNote: "Opens the live project boards in Data & Tech.",
+    href: "https://dataandtech.silverleaf.co.tz/dashboard/systems",
+    liveUrl: "https://dataandtech.silverleaf.co.tz/dashboard/systems",
+    localUrl: "http://localhost:4050/dashboard/systems",
+    localPort: 4050,
+    desks: ["Project boards", "Kanban", "Sprints", "Assignments"],
     accent: "navy",
     repo: "https://github.com/kitili/silverleaf-data-and-tech.git",
     branch: "main",
@@ -169,8 +193,8 @@ export const departments: Department[] = [
       "Campus visitor log — sign-in, QR self check-in, history, and photos across Usa River, Arusha Modern, Kijenge, Ilboru, and Boma.",
     phase: 1,
     phaseNote: "Opens the Visitor Log at localhost:3108 with the current visit records.",
-    href: "/departments/visitors",
-    liveUrl: "http://localhost:3108",
+    href: "https://v-isitors.vercel.app",
+    liveUrl: "https://v-isitors.vercel.app",
     localUrl: "http://localhost:3108",
     localPort: 3108,
     desks: ["Front desk", "Self check-in", "Visit history", "QR posters"],
@@ -189,19 +213,14 @@ export function isInHubApp(department: Department) {
   return department.id === "onboarding";
 }
 
-/** In-hub path. Onboarding stays here; other desks hit /departments/[slug] then local or live. */
+/** One click from the hub opens the live department system. */
 export function hubEntryHref(department: Department) {
-  return department.href;
+  return resolveDepartment(department).liveUrl;
 }
 
-/** After the hub route: prefer a running local desk, otherwise the live site. */
-export function entryUrl(
-  department: Department,
-  availability?: { liveAvailable: boolean; localAvailable: boolean },
-) {
-  if (isInHubApp(department)) return department.href;
-  if (availability?.localAvailable) return department.localUrl;
-  return department.liveUrl;
+/** Always the live site — never localhost from Vercel. */
+export function entryUrl(department: Department) {
+  return resolveDepartment(department).liveUrl;
 }
 
 export function isExternalUrl(url: string) {
@@ -209,9 +228,12 @@ export function isExternalUrl(url: string) {
 }
 
 export function resolveDepartment(department: Department): Department {
-  const liveUrl = envUrl(LIVE_ENV[department.id], department.liveUrl);
   const localUrl = envUrl(LOCAL_ENV[department.id], department.localUrl);
   const localPort = Number.parseInt(new URL(localUrl).port, 10) || department.localPort;
+  if (department.hosted === false) {
+    return { ...department, href: localUrl, liveUrl: localUrl, localUrl, localPort };
+  }
+  const liveUrl = envUrl(LIVE_ENV[department.id], department.liveUrl);
   return { ...department, liveUrl, localUrl, localPort };
 }
 
@@ -268,7 +290,7 @@ export const hubPhases = [
   {
     id: 3,
     title: "Aligned desks",
-    body: "Ops, Uniforms, Marketing, Data & Tech, Talent Academy, and Visitors live in desks/ and pull from origin every day.",
+    body: "Ops, Uniforms, Marketing, Data & Tech, Workboard Tasks, Talent Academy, and Visitors live in desks/ and pull from origin every day.",
     current: true,
   },
   {

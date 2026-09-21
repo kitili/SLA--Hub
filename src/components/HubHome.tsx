@@ -109,6 +109,9 @@ export default function HubHome({
                 <span className={styles.cardKicker}>{department.kicker}</span>
                 <h2>{department.name}</h2>
                 <p>{department.summary}</p>
+                {department.hosted === false ? (
+                  <span className={styles.cardLocal}>Local only · not hosted yet</span>
+                ) : null}
                 <span className={styles.cardOpen}>
                   Open <ArrowIcon />
                 </span>
@@ -135,7 +138,7 @@ function DeskLink({
   const href = hubEntryHref(department);
   if (isExternalUrl(href)) {
     return (
-      <a className={className} href={href} onClick={onOpen}>
+      <a className={className} href={href} target="_blank" rel="noreferrer" onClick={onOpen}>
         {children}
       </a>
     );

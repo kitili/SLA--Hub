@@ -36,3 +36,64 @@ export function validateStaffEmail(email: string): string | null {
   }
   return null;
 }
+
+const USERNAME_DOMAIN = "silverleaf.co.tz";
+
+export function getPreferredWorkDomain(): string {
+  return USERNAME_DOMAIN;
+}
+
+/** Lowercase name with punctuation stripped — used to spot similar people. */
+export function normalizePersonName(name: string): string {
+  return name
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+export function namesAreSimilar(a: string, b: string): boolean {
+  const left = normalizePersonName(a);
+  const right = normalizePersonName(b);
+  if (!left || !right) return false;
+  if (left === right) return true;
+  const leftParts = left.split(" ");
+  const rightParts = right.split(" ");
+  if (leftParts[0] !== rightParts[0]) return false;
+  const leftLast = leftParts.slice(1).join(" ");
+  const rightLast = rightParts.slice(1).join(" ");
+  if (!leftLast || !rightLast) return leftParts.length === 1 && rightParts.length === 1;
+  return leftLast === rightLast || leftLast.startsWith(rightLast) || rightLast.startsWith(leftLast);
+}
+
+/** Accept `paul.kimaro` or `paul.kimaro@silverleaf.co.tz`. Always ends @silverleaf.co.tz. */
+export function parseUniqueWorkEmail(input: string): string | null {
+  const raw = input.trim().toLowerCase();
+  if (!raw) return null;
+  const email = raw.includes("@") ? raw : `${raw}@${USERNAME_DOMAIN}`;
+  if (!isAllowedStaffEmail(email)) return null;
+  if (!email.endsWith(`@${USERNAME_DOMAIN}`)) return null;
+  const local = email.slice(0, email.lastIndexOf("@"));
+  if (!/^[a-z0-9][a-z0-9._-]{1,62}$/.test(local)) return null;
+  if (local.includes("..") || local.endsWith(".") || local.endsWith("-")) return null;
+  return email;
+}
+
+export function suggestWorkEmailFromName(fullName: string, taken: Set<string> = new Set()): string {
+  const parts = normalizePersonName(fullName).split(" ").filter(Boolean);
+  const first = parts[0] ?? "staff";
+  const last = parts.slice(1).join("");
+  const bases = last
+    ? [`${first}.${last}`, `${first}${last}`, `${first}.${last[0]}`]
+    : [first];
+  for (const base of bases) {
+    const email = `${base}@${USERNAME_DOMAIN}`;
+    if (!taken.has(email)) return email;
+  }
+  for (let i = 2; i < 50; i += 1) {
+    const email = `${first}.${last || "staff"}${i}@${USERNAME_DOMAIN}`;
+    if (!taken.has(email)) return email;
+  }
+  return `${first}.${Date.now()}@${USERNAME_DOMAIN}`;
+}

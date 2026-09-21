@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import { entryUrl, getDepartment, resolveDepartment } from "@/lib/departments";
-import { probeUrl } from "@/lib/probe-url";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -24,12 +23,8 @@ export default async function DepartmentPage({
   const { slug } = await params;
   const found = getDepartment(slug);
   if (!found) notFound();
-  if (found.id === "onboarding") redirect("/en");
+  if (found.id === "onboarding") redirect(entryUrl(resolveDepartment(found)));
 
   const department = resolveDepartment(found);
-  const [liveAvailable, localAvailable] = await Promise.all([
-    probeUrl(department.liveUrl),
-    probeUrl(department.localUrl),
-  ]);
-  redirect(entryUrl(department, { liveAvailable, localAvailable }));
+  redirect(entryUrl(department));
 }

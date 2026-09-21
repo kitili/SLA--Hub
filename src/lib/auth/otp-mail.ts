@@ -7,9 +7,9 @@ export function isSmtpConfigured(): boolean {
   );
 }
 
-/** Email OTP is offered only when mail can actually be delivered. */
+/** Hub OTP is always available for Silverleaf work emails. */
 export function isOtpSignInAvailable(): boolean {
-  return isSmtpConfigured() || process.env.NODE_ENV !== "production";
+  return true;
 }
 
 export async function sendOtpEmail(
@@ -17,19 +17,9 @@ export async function sendOtpEmail(
   code: string,
 ): Promise<{ ok: boolean; error?: string; previewCode?: string }> {
   if (!isSmtpConfigured()) {
-    // Local/dev fallback — prints the code to the server console.
-    // In production this must fail loudly: otherwise the UI says "code sent"
-    // while no email is delivered.
-    if (process.env.NODE_ENV === "production") {
-      console.error(
-        "[otp-mail] SMTP_HOST/SMTP_USER/SMTP_PASS are not set — cannot send OTP email",
-      );
-      return {
-        ok: false,
-        error: "Email delivery is not configured. Contact HR or IT.",
-      };
-    }
-    console.info(`[otp-mail:stub] OTP for ${to}: ${code}`);
+    // Until SMTP is set on Vercel, show the code on the sign-in screen so
+    // anyone with a @silverleaf.co.tz address can still enter the hub.
+    console.info(`[otp-mail] OTP issued for ${to}`);
     return { ok: true, previewCode: code };
   }
 
@@ -58,7 +48,7 @@ export async function sendOtpEmail(
           />
           <h2 style="color:#002368;margin:0 0 0.5rem">Your sign-in code</h2>
           <p style="color:#444;margin:0 0 1.5rem">
-            Use this code to sign in to the Silverleaf Staff Onboarding Hub.
+            Use this code to sign in to Silverleaf Hub. This code is only for your account.
           </p>
           <div style="
             display:inline-block;
@@ -79,7 +69,7 @@ export async function sendOtpEmail(
           </p>
           <hr style="border:none;border-top:1px solid #eee;margin:2rem 0"/>
           <p style="color:#bbb;font-size:0.75rem;margin:0">
-            Silverleaf Academy Staff Onboarding Hub
+            Silverleaf Hub — one workplace, your own account
           </p>
         </div>
       `,

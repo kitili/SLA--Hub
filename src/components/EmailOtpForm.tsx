@@ -3,11 +3,11 @@
 import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { requestOtpAction, verifyOtpAction } from "@/lib/actions/otp";
-import { setNameAction } from "@/lib/actions/auth";
+import { claimUniqueUsernameAction, setNameAction } from "@/lib/actions/auth";
 import BrandLogo from "@/components/BrandLogo";
 import styles from "./EmailOtpForm.module.css";
 
-type Step = "email" | "code" | "name";
+type Step = "email" | "code" | "name" | "username";
 
 export default function EmailOtpForm({ deliveryConfigured = true }: { deliveryConfigured?: boolean }) {
   const router = useRouter();
@@ -16,6 +16,7 @@ export default function EmailOtpForm({ deliveryConfigured = true }: { deliveryCo
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [fullName, setFullName] = useState("");
+  const [username, setUsername] = useState("");
   const [error, setError] = useState("");
   const [previewCode, setPreviewCode] = useState("");
   const verifying = useRef(false);
@@ -30,7 +31,7 @@ export default function EmailOtpForm({ deliveryConfigured = true }: { deliveryCo
         return;
       }
       if (result.error === "invalid-email") {
-        setError("Use a Silverleaf work email (@silverleaf.co.tz or @silverleaf.ac.tz).");
+        setError("Use your own Silverleaf work email ending in @silverleaf.co.tz.");
       } else if (result.error === "rate-limited") {
         setError("Too many codes. Wait a few minutes and try again.");
       } else {
@@ -79,11 +80,31 @@ export default function EmailOtpForm({ deliveryConfigured = true }: { deliveryCo
         router.refresh();
         return;
       }
+      if (!result.ok && "suggestion" in result && result.suggestion) {
+        setUsername(result.suggestion);
+        setStep("username");
+        setError("");
+        return;
+      }
+      setError(result.ok ? "" : result.error);
+    });
+  }
+
+  function handleClaimUsername(event: React.FormEvent) {
+    event.preventDefault();
+    setError("");
+    startTransition(async () => {
+      const result = await claimUniqueUsernameAction(username);
+      if (result.ok) {
+        router.push("/hub");
+        router.refresh();
+        return;
+      }
       setError(result.error);
     });
   }
 
-  const stepIndex = step === "email" ? 0 : step === "code" ? 1 : 2;
+  const stepIndex = step === "email" ? 0 : step === "code" ? 1 : step === "name" ? 2 : 3;
 
   return (
     <div className={styles.overlay}>
@@ -91,14 +112,14 @@ export default function EmailOtpForm({ deliveryConfigured = true }: { deliveryCo
         <BrandLogo variant="tagline" width={220} height={56} priority />
         <h2>One workplace for every Silverleaf desk</h2>
         <p>
-          Sign in with your work email. From here you can open Onboarding, Talent Academy, Ops, Uniforms, Marketing, Data & Tech, and Visitors without a pile of bookmarks.
+          Sign in with your own @silverleaf.co.tz work email. We send a code to you only — Maureen, Paul, and everyone else each have their own account.
         </p>
         <div className={styles.points}>
           <span>
             <i className={styles.dot} /> One-time code — no password
           </span>
           <span>
-            <i className={styles.dot} /> Your session stays on this device
+            <i className={styles.dot} /> One person, one work email, one account
           </span>
           <span>
             <i className={styles.dot} /> Click a desk to open that system
@@ -112,6 +133,7 @@ export default function EmailOtpForm({ deliveryConfigured = true }: { deliveryCo
             <span className={styles.step} data-on={stepIndex >= 0} />
             <span className={styles.step} data-on={stepIndex >= 1} />
             <span className={styles.step} data-on={stepIndex >= 2} />
+            <span className={styles.step} data-on={stepIndex >= 3} />
           </div>
         ) : null}
 
@@ -119,6 +141,32 @@ export default function EmailOtpForm({ deliveryConfigured = true }: { deliveryCo
           <>
             <h1>Sign-in is not available</h1>
             <p className={styles.sub}>Email delivery is not configured yet. Ask IT to set SMTP.</p>
+          </>
+        ) : step === "username" ? (
+          <>
+            <h1>Pick your own work email</h1>
+            <p className={styles.sub}>
+              Someone with a similar name already has an account. Do not share theirs. Choose a unique email that ends with @silverleaf.co.tz.
+            </p>
+            <form onSubmit={handleClaimUsername} className={styles.form}>
+              <label>
+                Your unique work email
+                <input
+                  type="email"
+                  value={username}
+                  onChange={(event) => setUsername(event.target.value)}
+                  placeholder="firstname.lastname@silverleaf.co.tz"
+                  required
+                  autoFocus
+                  disabled={pending}
+                  autoComplete="email"
+                />
+              </label>
+              {error ? <p className={styles.error}>{error}</p> : null}
+              <button type="submit" className={styles.submit} disabled={pending}>
+                {pending ? "Saving…" : "Use this email"}
+              </button>
+            </form>
           </>
         ) : step === "name" ? (
           <>
@@ -147,7 +195,7 @@ export default function EmailOtpForm({ deliveryConfigured = true }: { deliveryCo
         ) : step === "email" ? (
           <>
             <h1>Sign in to Silverleaf Hub</h1>
-            <p className={styles.sub}>Use your Silverleaf work email. We send a 6-digit code. Your session is a cookie on this device only — other people can be signed in on theirs at the same time.</p>
+            <p className={styles.sub}>Anyone with a @silverleaf.co.tz email can sign in. Use your own address, not a colleague&apos;s. We send a 6-digit code.</p>
             <form onSubmit={handleRequestCode} className={styles.form}>
               <label>
                 Work email
@@ -176,7 +224,7 @@ export default function EmailOtpForm({ deliveryConfigured = true }: { deliveryCo
             <p className={styles.sub}>We sent a 6-digit code to {email}.</p>
             {previewCode ? (
               <p className={styles.preview}>
-                Local preview code: <strong>{previewCode}</strong>
+                Your sign-in code: <strong>{previewCode}</strong>
               </p>
             ) : null}
             <form onSubmit={handleVerifyCode} className={styles.form}>

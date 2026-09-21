@@ -77,10 +77,13 @@ const envSchema = z.object({
    * this module is imported broadly; a throwing refinement could fail the client
    * bundle where the secret is legitimately absent.)
    */
-  SESSION_SECRET: z
-    .string()
-    .min(32, "SESSION_SECRET must be at least 32 characters.")
-    .optional(),
+  SESSION_SECRET: z.preprocess(
+    (value) => (value === "" ? undefined : value),
+    z
+      .string()
+      .min(32, "SESSION_SECRET must be at least 32 characters.")
+      .optional(),
+  ),
 
   /**
    * Allowed email domain for staff sign-in (e.g. silverleaf.co.tz).
