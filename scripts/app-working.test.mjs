@@ -14,7 +14,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 const EXPECTED_DESKS = [
   { id: "onboarding", name: "Onboarding", port: 3000, live: "sla-onboarding-hub-steel.vercel.app" },
-  { id: "talent-academy", name: "Talent Academy", port: 8765 },
+  { id: "talent-academy", name: "Talent Academy", port: 8765, live: "talent-academy-sla.vercel.app" },
   { id: "ops", name: "Ops", port: 3020, live: "ops-transport-system.vercel.app" },
   { id: "uniforms", name: "Uniforms", port: 3010, live: "school-uniforms-lyart.vercel.app" },
   { id: "marketing", name: "Marketing", port: 3180, live: "sla-marketing-web.vercel.app" },
@@ -72,7 +72,7 @@ test("hosted desks stay on live sites even if laptop env points at localhost", (
   const source = read("src/lib/departments.ts");
   assert.match(source, /Hosted desks ignore these so a laptop \.env cannot retarget live sites/);
   assert.match(source, /const liveUrl = department\.liveUrl/);
-  assert.match(source, /hosted: false/);
+  assert.match(source, /talent-academy-sla\.vercel\.app/);
   assert.doesNotMatch(
     source,
     /const liveUrl = envUrl\(LIVE_ENV\[department\.id\], department\.liveUrl\)/,

@@ -17,7 +17,7 @@
       "sha": null,
       "path": "desks/talent-academy",
       "port": 8765,
-      "liveUrl": "http://localhost:8765",
+      "liveUrl": "https://talent-academy-sla.vercel.app",
       "status": "copied",
       "syncedAt": "2026-09-21T09:06:51.399455+00:00"
     },
@@ -70,6 +70,16 @@
       "liveUrl": "http://localhost:3108",
       "status": "copied",
       "syncedAt": "2026-09-21T09:07:20.817716+00:00"
+    },
+    "workboard-tasks": {
+      "repo": "https://github.com/kitili/workboard-tasks.git",
+      "branch": "main",
+      "sha": "6f12f51bab5b91f7c9aa2974ba1b2059b7a89c35",
+      "path": "desks/workboard-tasks",
+      "port": 3200,
+      "liveUrl": "https://silverleaf-tasks.vercel.app",
+      "status": "cloned",
+      "syncedAt": "2026-09-21T21:15:00.000000+00:00"
     }
   }
 }

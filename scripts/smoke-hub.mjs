@@ -9,7 +9,7 @@ const WORKBOARD_LIVE = process.env.SMOKE_WORKBOARD_URL || "https://silverleaf-ta
 
 const DESKS = [
   { id: "onboarding", name: "Onboarding", location: /^https:\/\/sla-onboarding-hub-steel\.vercel\.app/ },
-  { id: "talent-academy", name: "Talent Academy", location: /^http:\/\/localhost:8765/ },
+  { id: "talent-academy", name: "Talent Academy", location: /^https:\/\/talent-academy-sla\.vercel\.app/ },
   { id: "ops", name: "Ops", location: /^https:\/\/ops-transport-system\.vercel\.app/ },
   { id: "uniforms", name: "Uniforms", location: /^https:\/\/school-uniforms-lyart\.vercel\.app/ },
   { id: "marketing", name: "Marketing", location: /^https:\/\/sla-marketing-web\.vercel\.app/ },

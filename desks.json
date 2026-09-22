@@ -21,7 +21,7 @@
       "port": 8765,
       "cwd": ".",
       "dev": "PORT=8765 npm run dev",
-      "liveUrl": "http://localhost:8765",
+      "liveUrl": "https://talent-academy-sla.vercel.app",
       "fallback": "/home/kiki/Talent_Academy/Silverleaf-main"
     },
     {
@@ -84,6 +84,17 @@
       "liveUrl": "https://v-isitors.vercel.app",
       "fallback": "/home/kiki/Downloads/silverleaf-visitor-log",
       "syncData": true
+    },
+    {
+      "id": "workboard-tasks",
+      "name": "Workboard Tasks",
+      "path": "desks/workboard-tasks",
+      "repo": "https://github.com/kitili/workboard-tasks.git",
+      "branch": "main",
+      "port": 3200,
+      "cwd": ".",
+      "dev": "npx next dev --port 3200",
+      "liveUrl": "https://silverleaf-tasks.vercel.app"
     }
   ]
 }

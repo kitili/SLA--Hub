@@ -2,7 +2,7 @@
 
 One workplace for Silverleaf Academy departments: **Onboarding**, **Talent Academy**, **Ops**, **Uniforms**, **Marketing**, **Data & Tech**, **Visitors**, and **Workboard Tasks**.
 
-Sign in here once. Hosted desks always open their live sites (Onboarding, Ops, Uniforms, Marketing, Data & Tech, Visitors, Workboard Tasks). Talent Academy is not hosted yet, so it stays on this computer. Laptop env cannot retarget a hosted desk.
+Sign in here once. Hosted desks always open their live sites. Laptop env cannot retarget a hosted desk.
 
 ## Run the hub
 
@@ -26,7 +26,7 @@ npm run desks:sync
 |---|---|---|---|
 | Hub | this app | — | http://localhost:3100 |
 | Onboarding | in-app `/en`, source at `desks/onboarding` | https://sla-onboarding-hub-steel.vercel.app | http://localhost:3000 |
-| Talent Academy | `desks/talent-academy` | not hosted yet — http://localhost:8765 | http://localhost:8765 |
+| Talent Academy | `desks/talent-academy` | https://talent-academy-sla.vercel.app | http://localhost:8765 |
 | Ops | `desks/ops` | https://ops-transport-system.vercel.app | http://localhost:3020 |
 | Uniforms | `desks/uniforms` | https://school-uniforms-lyart.vercel.app | http://localhost:3010 |
 | Marketing | `desks/marketing/web` | https://sla-marketing-web.vercel.app | http://localhost:3180 |
@@ -52,7 +52,7 @@ Start the external desks together:
 npm run desks:dev
 ```
 
-Then click a card on the hub. Hosted desks open the live site. Talent Academy opens localhost:8765.
+Then click a card on the hub. Hosted desks open the live site.
 
 ## Align every day
 
