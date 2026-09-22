@@ -30,7 +30,7 @@ export default function HubShell({
   departments = defaultDepartments,
 }: {
   children: React.ReactNode;
-  user: { fullName: string; email: string };
+  user: { fullName: string; email: string; isAdmin?: boolean };
   departments?: Department[];
 }) {
   const pathname = usePathname();
@@ -68,6 +68,12 @@ export default function HubShell({
         <DepartmentIcon id="home" />
         Hub home
       </Link>
+      {user.isAdmin ? (
+        <Link href="/activity" data-active={pathname === "/activity" || pathname.startsWith("/activity/")}>
+          <DepartmentIcon id="home" />
+          Who entered
+        </Link>
+      ) : null}
       {departments.map((department) => {
         const href = hubEntryHref(department);
         const active = isDepartmentPath(pathname, department);
@@ -84,7 +90,7 @@ export default function HubShell({
               href={href}
               target="_blank"
               rel="noreferrer"
-              onClick={() => window.localStorage.setItem(LAST_DESK_KEY, department.href)}
+              onClick={() => window.localStorage.setItem(LAST_DESK_KEY, href)}
             >
               {label}
             </a>
@@ -96,7 +102,7 @@ export default function HubShell({
             href={href}
             data-active={active}
             aria-current={active ? "page" : undefined}
-            onClick={() => window.localStorage.setItem(LAST_DESK_KEY, department.href)}
+            onClick={() => window.localStorage.setItem(LAST_DESK_KEY, href)}
           >
             {label}
           </Link>
@@ -128,8 +134,8 @@ export default function HubShell({
         Skip to content
       </a>
       <aside className={styles.sidebar}>
-        <Link href="/hub" className={styles.brand}>
-          <BrandLogo variant="tagline" width={188} height={48} priority />
+        <Link href="/hub" className={styles.brand} aria-label="Silverleaf Academy workplace">
+          <BrandLogo variant="tagline" width={252} height={64} priority />
         </Link>
         <p className={styles.kicker}>Workplace</p>
         {nav}
@@ -137,8 +143,8 @@ export default function HubShell({
       </aside>
       <div className={styles.main}>
         <header className={styles.top}>
-          <Link href="/hub">
-            <BrandLogo variant="tagline" width={148} height={38} />
+          <Link href="/hub" aria-label="Silverleaf Academy workplace">
+            <BrandLogo variant="tagline" width={196} height={50} />
           </Link>
           <button
             type="button"
@@ -154,7 +160,7 @@ export default function HubShell({
           <button type="button" className={styles.backdrop} aria-label="Close menu" onClick={() => setMenuOpen(false)} />
           <div className={styles.panel} role="dialog" aria-modal="true" aria-label="Workplace menu">
             <div className={styles.drawerHead}>
-              <BrandLogo variant="tagline" width={150} height={38} />
+              <BrandLogo variant="tagline" width={196} height={50} />
               <button type="button" className={styles.closeBtn} aria-label="Close menu" onClick={() => setMenuOpen(false)}>
                 <CloseIcon />
               </button>

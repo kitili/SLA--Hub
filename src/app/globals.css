@@ -41,7 +41,7 @@
 
   --font-sans: "Bai Jamjuree", Helvetica, Arial, sans-serif;
   --font-display: "Montserrat", Helvetica, Arial, sans-serif;
-  --sidebar: 280px;
+  --sidebar: 320px;
 }
 
 *,
@@ -90,6 +90,12 @@ button {
 img {
   max-width: 100%;
   display: block;
+}
+
+.brand-logo {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .brand-logo--dark {

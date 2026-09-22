@@ -67,8 +67,8 @@ export default function Layout({
           <Image
             src={brand.logos.brandmarkWhite}
             alt={brand.name}
-            width={120}
-            height={36}
+            width={168}
+            height={50}
             className={styles.headerLogo}
             priority
           />

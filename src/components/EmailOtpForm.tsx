@@ -109,7 +109,8 @@ export default function EmailOtpForm({ deliveryConfigured = true }: { deliveryCo
   return (
     <div className={styles.overlay}>
       <div className={styles.panel}>
-        <BrandLogo variant="tagline" width={220} height={56} priority />
+        <BrandLogo variant="tagline" width={300} height={76} priority />
+        <p className={styles.tagline}>The Future Starts Here</p>
         <h2>One workplace for every Silverleaf desk</h2>
         <p>
           Sign in with your own @silverleaf.co.tz work email. We send a code to you only — Maureen, Paul, and everyone else each have their own account.
@@ -127,7 +128,7 @@ export default function EmailOtpForm({ deliveryConfigured = true }: { deliveryCo
         </div>
       </div>
       <div className={styles.card}>
-        <BrandLogo variant="logomark" width={48} height={48} className={styles.logo} priority />
+        <BrandLogo variant="logomark" width={72} height={72} className={styles.logo} priority />
         {deliveryConfigured ? (
           <div className={styles.steps} aria-hidden="true">
             <span className={styles.step} data-on={stepIndex >= 0} />

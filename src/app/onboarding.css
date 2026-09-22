@@ -314,7 +314,7 @@ textarea:focus-visible {
   gap: 1.5rem;
   padding: 0.75rem 1.5rem;
   background: var(--white, #fff);
-  border-bottom: 1px solid var(--light-blue, #e2e8f0);
+  border-bottom: 3px solid var(--gold);
 }
 
 .site-nav__brand {
@@ -442,7 +442,7 @@ textarea:focus-visible {
   /* Shrink the brandmark a touch so the bar stays compact next to the toggle. */
   .site-nav__brand img {
     width: auto;
-    height: 40px;
+    height: 52px;
   }
 
   .site-nav__toggle {

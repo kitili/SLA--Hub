@@ -28,21 +28,29 @@
     radial-gradient(420px 220px at 0% 0%, rgba(128, 191, 236, 0.18), transparent 60%),
     linear-gradient(180deg, var(--navy-dark), var(--brand-navy));
   color: var(--on-brand);
-  padding: 1.3rem 0.95rem 1.2rem;
+  padding: 1.45rem 1.1rem 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 1.15rem;
   overflow-y: auto;
+  border-top: 4px solid var(--gold);
 }
 
 .brand {
   display: block;
-  padding: 0.2rem 0.45rem 0.35rem;
+  padding: 0.55rem 0.45rem 0.85rem;
+}
+
+.brand :global(.brand-logo) {
+  width: 100%;
+  max-width: 252px;
+  height: auto;
 }
 
 .kicker {
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--gold);
   padding: 0 0.7rem;
@@ -126,17 +134,18 @@
 .signOut {
   margin-top: 0.8rem;
   width: 100%;
-  background: rgba(255, 255, 255, 0.08);
-  color: white;
-  font-weight: 700;
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-family: var(--font-display);
+  font-weight: 800;
   font-size: 0.82rem;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 10px;
-  padding: 0.55rem 0.7rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  padding: 0.62rem 0.7rem;
 }
 
 .signOut:hover {
-  background: rgba(255, 255, 255, 0.14);
+  background: #ffd56f;
 }
 
 .main {
@@ -177,10 +186,16 @@
     justify-content: space-between;
     gap: 1rem;
     background: var(--brand-navy);
-    padding: 0.75rem 0.9rem;
+    padding: 0.85rem 1rem;
     position: sticky;
     top: 0;
     z-index: 20;
+    border-bottom: 4px solid var(--gold);
+  }
+
+  .top :global(.brand-logo) {
+    width: min(196px, 58vw);
+    height: auto;
   }
 
   .menuBtn,

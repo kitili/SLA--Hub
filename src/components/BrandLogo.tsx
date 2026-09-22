@@ -25,11 +25,12 @@ export default function BrandLogo({
 
   return (
     <Image
-      className={className}
+      className={["brand-logo", className].filter(Boolean).join(" ")}
       src={src}
       alt={brand.name}
       width={width}
       height={height}
+      style={{ width, height: "auto" }}
       priority={priority}
       unoptimized
     />

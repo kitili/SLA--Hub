@@ -61,7 +61,7 @@ export default function SiteNav({ children, openLabel, closeLabel }: SiteNavProp
   return (
     <nav className="site-nav" data-open={open || undefined}>
       <Link href="/" className="site-nav__brand" aria-label={brand.name}>
-        <BrandLogo variant="brandmark" width={118} height={52} priority />
+        <BrandLogo variant="brandmark" width={168} height={74} priority />
       </Link>
 
       <button

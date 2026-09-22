@@ -26,10 +26,11 @@
 }
 
 .heroKicker {
+  font-family: var(--font-display);
   color: var(--gold);
   font-size: 0.75rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -161,14 +162,14 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1rem;
 }
 
 .card {
   background: var(--card);
   border: 1px solid var(--card-border);
-  border-radius: 16px;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
@@ -226,10 +227,11 @@
 }
 
 .cardKicker {
+  font-family: var(--font-display);
   color: var(--ink-faint);
   font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -706,4 +708,71 @@
   border: 1px solid var(--card-border);
   border-radius: 16px;
   padding: 1.4rem;
+}
+
+.heroLink {
+  background: var(--gold) !important;
+  border-color: var(--gold) !important;
+  color: var(--navy-dark) !important;
+  text-decoration: none;
+}
+
+.activity {
+  margin-top: 1.6rem;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 1rem 1.15rem 0.4rem;
+}
+
+.activityHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.activityHead h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.activityHead a {
+  color: var(--electric-blue);
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.activity ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.activity li {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr) auto;
+  gap: 0.6rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--card-border);
+  font-size: 0.9rem;
+}
+
+.activity li span {
+  color: var(--ink-muted);
+}
+
+.activity li em {
+  font-style: normal;
+  color: var(--ink-faint);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .activity li {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
 }
