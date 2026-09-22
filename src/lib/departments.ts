@@ -5,7 +5,8 @@ export type DepartmentId =
   | "uniforms"
   | "marketing"
   | "data-tech"
-  | "visitors";
+  | "visitors"
+  | "workboard-tasks";
 
 export type DepartmentPhase = 1 | 2 | 3 | 4;
 
@@ -29,7 +30,8 @@ export interface Department {
   hosted?: boolean;
 }
 
-const LIVE_ENV: Record<DepartmentId, string> = {
+/** Documented env names. Hosted desks ignore these so a laptop .env cannot retarget live sites. */
+export const LIVE_ENV: Record<DepartmentId, string> = {
   onboarding: "WORKPLACE_ONBOARDING_URL",
   "talent-academy": "WORKPLACE_TALENT_ACADEMY_URL",
   ops: "WORKPLACE_OPS_URL",
@@ -37,6 +39,7 @@ const LIVE_ENV: Record<DepartmentId, string> = {
   marketing: "WORKPLACE_MARKETING_URL",
   "data-tech": "WORKPLACE_DATA_TECH_URL",
   visitors: "WORKPLACE_VISITORS_URL",
+  "workboard-tasks": "WORKPLACE_WORKBOARD_TASKS_URL",
 };
 
 const LOCAL_ENV: Record<DepartmentId, string> = {
@@ -47,11 +50,24 @@ const LOCAL_ENV: Record<DepartmentId, string> = {
   marketing: "WORKPLACE_MARKETING_LOCAL_URL",
   "data-tech": "WORKPLACE_DATA_TECH_LOCAL_URL",
   visitors: "WORKPLACE_VISITORS_LOCAL_URL",
+  "workboard-tasks": "WORKPLACE_WORKBOARD_TASKS_LOCAL_URL",
 };
 
 function envUrl(key: string, fallback: string) {
   const value = process.env[key]?.trim();
   return value || fallback;
+}
+
+export function isHostedDesk(department: Department) {
+  return department.hosted !== false;
+}
+
+function localPortFromUrl(url: string, fallback: number) {
+  try {
+    return Number.parseInt(new URL(url).port, 10) || fallback;
+  } catch {
+    return fallback;
+  }
 }
 
 export const departments: Department[] = [
@@ -62,7 +78,7 @@ export const departments: Department[] = [
     summary:
       "Staff workplace, policies, hiring, SLA-bot, and campus onboarding — the same desk people already use to join Silverleaf.",
     phase: 1,
-    phaseNote: "In this hub at /en. Source of truth: desks/onboarding (pulled daily from live).",
+    phaseNote: "Always opens the live Onboarding site.",
     href: "https://sla-onboarding-hub-steel.vercel.app",
     liveUrl: "https://sla-onboarding-hub-steel.vercel.app",
     localUrl: "http://localhost:3000",
@@ -72,6 +88,24 @@ export const departments: Department[] = [
     repo: "https://github.com/kitili/SLA-Onboarding-hub.git",
     branch: "main",
     deskPath: "desks/onboarding",
+  },
+  {
+    id: "workboard-tasks",
+    name: "Workboard Tasks",
+    kicker: "Daily work",
+    summary:
+      "Daily 5, project boards, tasks, and WhatsApp updates — the Silverleaf workboard staff already use.",
+    phase: 1,
+    phaseNote: "Always opens the live Workboard site.",
+    href: "https://silverleaf-tasks.vercel.app",
+    liveUrl: "https://silverleaf-tasks.vercel.app",
+    localUrl: "http://localhost:3200",
+    localPort: 3200,
+    desks: ["Today", "Daily 5", "Boards", "Projects", "Tasks"],
+    accent: "navy",
+    repo: "https://github.com/kitili/workboard-tasks.git",
+    branch: "main",
+    deskPath: "desks/workboard-tasks",
   },
   {
     id: "talent-academy",
@@ -99,7 +133,7 @@ export const departments: Department[] = [
     summary:
       "Day-to-day operations: transport, facilities, kitchen, and ticketing across campuses.",
     phase: 1,
-    phaseNote: "Current live code in desks/ops. Hub opens local :3020 if running, else Vercel.",
+    phaseNote: "Always opens the live Ops site.",
     href: "https://ops-transport-system.vercel.app",
     liveUrl: "https://ops-transport-system.vercel.app",
     localUrl: "http://localhost:3020",
@@ -117,7 +151,7 @@ export const departments: Department[] = [
     summary:
       "Tailoring, warehouses, parent orders, purchase orders, sewing, and campus distribution.",
     phase: 1,
-    phaseNote: "Current live code in desks/uniforms. Hub opens local :3010 if running, else Vercel.",
+    phaseNote: "Always opens the live Uniforms site.",
     href: "https://school-uniforms-lyart.vercel.app",
     liveUrl: "https://school-uniforms-lyart.vercel.app",
     localUrl: "http://localhost:3010",
@@ -135,7 +169,7 @@ export const departments: Department[] = [
     summary:
       "Official brand, inbound leads, campus marketing, and student-experience dashboards.",
     phase: 1,
-    phaseNote: "Current live code in desks/marketing. Hub opens local :3180 if running, else Vercel.",
+    phaseNote: "Always opens the live Marketing site.",
     href: "https://sla-marketing-web.vercel.app",
     liveUrl: "https://sla-marketing-web.vercel.app",
     localUrl: "http://localhost:3180",
@@ -153,7 +187,7 @@ export const departments: Department[] = [
     summary:
       "Tickets, tech tools, system boards, sprints, and 1–5s — the Data & Tech workplace.",
     phase: 1,
-    phaseNote: "Current live code in desks/data-tech. Hub opens local :4050 if running, else Vercel.",
+    phaseNote: "Always opens the live Data & Tech site.",
     href: "https://dataandtech.silverleaf.co.tz",
     liveUrl: "https://dataandtech.silverleaf.co.tz",
     localUrl: "http://localhost:4050",
@@ -171,7 +205,7 @@ export const departments: Department[] = [
     summary:
       "Campus visitor log — sign-in, QR self check-in, history, and photos across Usa River, Arusha Modern, Kijenge, Ilboru, and Boma.",
     phase: 1,
-    phaseNote: "Opens the Visitor Log at localhost:3108 with the current visit records.",
+    phaseNote: "Always opens the live Visitor Log.",
     href: "https://v-isitors.vercel.app",
     liveUrl: "https://v-isitors.vercel.app",
     localUrl: "http://localhost:3108",
@@ -192,12 +226,12 @@ export function isInHubApp(department: Department) {
   return department.id === "onboarding";
 }
 
-/** One click from the hub opens the live department system. */
+/** One click from the hub: hosted live site, or local only if not hosted yet. */
 export function hubEntryHref(department: Department) {
-  return resolveDepartment(department).liveUrl;
+  return entryUrl(department);
 }
 
-/** Always the live site — never localhost from Vercel. */
+/** Hosted desks always use the catalog live URL. Laptop env cannot change that. */
 export function entryUrl(department: Department) {
   return resolveDepartment(department).liveUrl;
 }
@@ -208,12 +242,28 @@ export function isExternalUrl(url: string) {
 
 export function resolveDepartment(department: Department): Department {
   const localUrl = envUrl(LOCAL_ENV[department.id], department.localUrl);
-  const localPort = Number.parseInt(new URL(localUrl).port, 10) || department.localPort;
-  if (department.hosted === false) {
-    return { ...department, href: localUrl, liveUrl: localUrl, localUrl, localPort };
+  const localPort = localPortFromUrl(localUrl, department.localPort);
+
+  if (!isHostedDesk(department)) {
+    return {
+      ...department,
+      hosted: false,
+      href: localUrl,
+      liveUrl: localUrl,
+      localUrl,
+      localPort,
+    };
   }
-  const liveUrl = envUrl(LIVE_ENV[department.id], department.liveUrl);
-  return { ...department, liveUrl, localUrl, localPort };
+
+  const liveUrl = department.liveUrl;
+  return {
+    ...department,
+    hosted: true,
+    href: liveUrl,
+    liveUrl,
+    localUrl,
+    localPort,
+  };
 }
 
 export function resolveDepartments(): Department[] {
@@ -269,7 +319,7 @@ export const hubPhases = [
   {
     id: 3,
     title: "Aligned desks",
-    body: "Ops, Uniforms, Marketing, Data & Tech, Talent Academy, and Visitors live in desks/ and pull from origin every day.",
+    body: "Ops, Uniforms, Marketing, Data & Tech, Talent Academy, Visitors, and Workboard Tasks live in desks/ and pull from origin every day.",
     current: true,
   },
   {

@@ -1,8 +1,8 @@
 # Silverleaf Hub
 
-One workplace for Silverleaf Academy departments: **Onboarding**, **Talent Academy**, **Ops**, **Uniforms**, **Marketing**, **Data & Tech**, and **Visitors**.
+One workplace for Silverleaf Academy departments: **Onboarding**, **Talent Academy**, **Ops**, **Uniforms**, **Marketing**, **Data & Tech**, **Visitors**, and **Workboard Tasks**.
 
-Sign in here once. Onboarding runs in this app. The other desks live as their own repos under `desks/` and open on a unique local port when they are running, otherwise their live Vercel site.
+Sign in here once. Hosted desks always open their live sites (Onboarding, Ops, Uniforms, Marketing, Data & Tech, Visitors, Workboard Tasks). Talent Academy is not hosted yet, so it stays on this computer. Laptop env cannot retarget a hosted desk.
 
 ## Run the hub
 
@@ -32,6 +32,7 @@ npm run desks:sync
 | Marketing | `desks/marketing/web` | https://sla-marketing-web.vercel.app | http://localhost:3180 |
 | Data & Tech | `desks/data-tech` | https://dataandtech.silverleaf.co.tz | http://localhost:4050 |
 | Visitors | `desks/visitors` | https://v-isitors.vercel.app | http://localhost:3108 |
+| Workboard Tasks | `desks/workboard-tasks` | https://silverleaf-tasks.vercel.app | http://localhost:3200 |
 
 Visit records live in SQLite (`data/visits.db`) plus photos, not in git. Pull them into this workspace any time with:
 
@@ -51,7 +52,7 @@ Start the external desks together:
 npm run desks:dev
 ```
 
-Then click a card on the hub. If that port is up, you enter the local copy. If not, you enter live.
+Then click a card on the hub. Hosted desks open the live site. Talent Academy opens localhost:8765.
 
 ## Align every day
 
@@ -73,4 +74,4 @@ Work in each desk the usual way (`cd desks/ops`, branch, PR, push). Do not merge
 
 OTP is the same pattern as the Onboarding Hub: work email → 6-digit code → httpOnly cookie on this device (8 hours). Many people can be signed in at once; each browser has its own cookie.
 
-Ops, Uniforms, Marketing, Data & Tech, Talent Academy, and Visitors still have their own logins until every app shares `*.silverleaf.co.tz` and one parent-domain session.
+Ops, Uniforms, Marketing, Data & Tech, Talent Academy, Visitors, and Workboard Tasks still have their own logins until every app shares `*.silverleaf.co.tz` and one parent-domain session.
