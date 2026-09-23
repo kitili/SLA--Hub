@@ -141,6 +141,13 @@
       "when": 1786300000008,
       "tag": "0019_row_level_security",
       "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "7",
+      "when": 1786300000009,
+      "tag": "0020_access_events",
+      "breakpoints": true
     }
   ]
 }

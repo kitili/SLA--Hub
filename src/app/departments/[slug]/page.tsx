@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
+import { recordDeskOpen } from "@/lib/access";
 import { entryUrl, getDepartment, resolveDepartment } from "@/lib/departments";
 
 export const dynamic = "force-dynamic";
@@ -23,8 +24,10 @@ export default async function DepartmentPage({
   const { slug } = await params;
   const found = getDepartment(slug);
   if (!found) notFound();
+  await recordDeskOpen(found.id, `/departments/${found.id}`);
   if (found.id === "onboarding") redirect(entryUrl(resolveDepartment(found)));
 
   const department = resolveDepartment(found);
+  await recordDeskOpen(department.id, `/departments/${department.id}`);
   redirect(entryUrl(department));
 }

@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { hubEntryHref, isExternalUrl, type Department } from "@/lib/departments";
 import { LAST_DESK_KEY } from "@/lib/last-desk";
+import { accessActionLabel, formatAccessWhen } from "@/lib/access-copy";
 import { ArrowIcon, DepartmentIcon, SearchIcon } from "@/components/icons";
 import styles from "./hub.module.css";
 
@@ -19,9 +20,20 @@ function matchesLastDesk(department: Department, lastHref: string | null) {
 export default function HubHome({
   firstName,
   departments,
+  isAdmin = false,
+  recentAccess = [],
 }: {
   firstName?: string;
   departments: Department[];
+  isAdmin?: boolean;
+  recentAccess?: Array<{
+    id: string;
+    name: string;
+    email: string;
+    action: string;
+    part: string | null;
+    at: string;
+  }>;
 }) {
   const [query, setQuery] = useState("");
   const [today, setToday] = useState("");
@@ -60,6 +72,11 @@ export default function HubHome({
         <div className={styles.heroMeta}>
           <span>{today || "Tanzania"}</span>
           <span>Signed in on this device</span>
+          {isAdmin ? (
+            <Link href="/activity" className={styles.heroLink}>
+              Who entered
+            </Link>
+          ) : null}
         </div>
       </section>
 
@@ -67,7 +84,7 @@ export default function HubHome({
         <DeskLink
           department={lastDesk}
           className={styles.continue}
-          onOpen={() => window.localStorage.setItem(LAST_DESK_KEY, lastDesk.href)}
+          onOpen={() => window.localStorage.setItem(LAST_DESK_KEY, hubEntryHref(lastDesk))}
         >
           <DepartmentIcon id={lastDesk.id} className={styles.continueIcon} />
           <div>
@@ -101,7 +118,7 @@ export default function HubHome({
               <DeskLink
                 department={department}
                 className={styles.cardMain}
-                onOpen={() => window.localStorage.setItem(LAST_DESK_KEY, department.href)}
+                onOpen={() => window.localStorage.setItem(LAST_DESK_KEY, hubEntryHref(department))}
               >
                 <span className={styles.cardIcon}>
                   <DepartmentIcon id={department.id} />
@@ -120,6 +137,27 @@ export default function HubHome({
           ))}
         </div>
       )}
+
+      {isAdmin && recentAccess.length > 0 ? (
+        <section className={styles.activity}>
+          <div className={styles.activityHead}>
+            <h2>Who just entered</h2>
+            <Link href="/activity">Full log</Link>
+          </div>
+          <ul>
+            {recentAccess.map((event) => (
+              <li key={event.id}>
+                <strong>{event.name || event.email}</strong>
+                <span>
+                  {accessActionLabel(event.action)}
+                  {event.part ? ` · ${event.part}` : ""}
+                </span>
+                <em>{formatAccessWhen(event.at)}</em>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
     </div>
   );
 }

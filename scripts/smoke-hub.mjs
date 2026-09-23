@@ -6,9 +6,10 @@
 
 const BASE = process.env.SMOKE_BASE || "http://127.0.0.1:3100";
 const WORKBOARD_LIVE = process.env.SMOKE_WORKBOARD_URL || "https://silverleaf-tasks.vercel.app";
+const LESSON_PLANS_LIVE = process.env.SMOKE_LESSON_PLANS_URL || "https://silverleaf-lesson-plans.vercel.app";
 
 const DESKS = [
-  { id: "onboarding", name: "Onboarding", location: /^https:\/\/sla-onboarding-hub-steel\.vercel\.app/ },
+  { id: "onboarding", name: "Onboarding", location: /^https:\/\/onboarding\.silverleaf\.co\.tz/ },
   { id: "talent-academy", name: "Talent Academy", location: /^https:\/\/talent-academy-sla\.vercel\.app/ },
   { id: "ops", name: "Ops", location: /^https:\/\/ops-transport-system\.vercel\.app/ },
   { id: "uniforms", name: "Uniforms", location: /^https:\/\/school-uniforms-lyart\.vercel\.app/ },
@@ -16,6 +17,7 @@ const DESKS = [
   { id: "data-tech", name: "Data & Tech", location: /^https:\/\/dataandtech\.silverleaf\.co\.tz/ },
   { id: "visitors", name: "Visitors", location: /^https:\/\/v-isitors\.vercel\.app/ },
   { id: "workboard-tasks", name: "Workboard Tasks", location: /^https:\/\/silverleaf-tasks\.vercel\.app/ },
+  { id: "lesson-plans", name: "Lesson Plans", location: /^https:\/\/silverleaf-lesson-plans\.vercel\.app/ },
 ];
 
 function assert(condition, message) {
@@ -59,6 +61,8 @@ async function main() {
   const login = await req("/login");
   assert(login.status === 200, `/login expected 200, got ${login.status}`);
   assert(/sign in|work email|Silverleaf/i.test(login.text), "/login missing sign-in copy");
+  assert(/Staff ID|ed-admin/i.test(login.text), "/login missing Staff ID field");
+  assert(/password/i.test(login.text), "/login missing password field");
   checks.push("login page");
 
   const gated = await req("/hub");
@@ -87,8 +91,11 @@ async function main() {
   checks.push("activity log");
 
   const onboarding = await req("/en", { headers: { cookie } });
-  assert(onboarding.status === 200, `/en expected 200, got ${onboarding.status}`);
-  assert(/onboarding|welcome/i.test(onboarding.text), "/en missing onboarding dashboard");
+  assert(isRedirect(onboarding.status), `/en should open live onboarding, got ${onboarding.status}`);
+  assert(
+    /onboarding\.silverleaf\.co\.tz/i.test(onboarding.location),
+    `/en redirected to ${onboarding.location}`,
+  );
   checks.push("onboarding");
 
   const missing = await req("/departments/not-a-desk", { headers: { cookie } });
@@ -125,6 +132,15 @@ async function main() {
   const workboardLogin = await req(`${WORKBOARD_LIVE.replace(/\/$/, "")}/login`);
   assert(workboardLogin.status === 200, `live Workboard /login expected 200, got ${workboardLogin.status}`);
   checks.push("live workboard login");
+
+  const lessonPlans = await req(LESSON_PLANS_LIVE);
+  assert([200, 307, 308].includes(lessonPlans.status), `live Lesson Plans expected 200/307, got ${lessonPlans.status}`);
+  assert(
+    /Silverleaf Lesson Plans|lesson plan|sign in|Welcome/i.test(lessonPlans.text) ||
+      /silverleaf-lesson-plans|\/en/i.test(lessonPlans.location),
+    "live Lesson Plans missing dashboard",
+  );
+  checks.push("live lesson plans");
 
   console.log(`smoke ok  ${BASE}`);
   for (const name of checks) console.log(`  pass  ${name}`);

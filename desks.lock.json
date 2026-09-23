@@ -7,7 +7,7 @@
       "sha": "3b5c8fe9d8462e49fa0f106611fb34873b4893d9",
       "path": "desks/onboarding",
       "port": 3000,
-      "liveUrl": "https://sla-onboarding-hub-steel.vercel.app",
+      "liveUrl": "https://onboarding.silverleaf.co.tz",
       "status": "updated",
       "syncedAt": "2026-09-21T09:06:51.392440+00:00"
     },
@@ -80,6 +80,16 @@
       "liveUrl": "https://silverleaf-tasks.vercel.app",
       "status": "cloned",
       "syncedAt": "2026-09-21T21:15:00.000000+00:00"
+    },
+    "lesson-plans": {
+      "repo": "https://github.com/kitili/silverleaf-lesson-plans.git",
+      "branch": "main",
+      "sha": null,
+      "path": "desks/lesson-plans",
+      "port": 3300,
+      "liveUrl": "https://silverleaf-lesson-plans.vercel.app",
+      "status": "copied",
+      "syncedAt": "2026-09-23T08:47:00.000000+00:00"
     }
   }
 }

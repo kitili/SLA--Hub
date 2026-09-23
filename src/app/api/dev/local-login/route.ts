@@ -34,7 +34,7 @@ export async function GET(request: Request): Promise<NextResponse> {
   });
 
   const url = new URL(request.url);
-  url.pathname = asAdmin ? "/en/admin" : "/en";
+  url.pathname = "/hub";
   url.search = "";
   if (url.hostname === "0.0.0.0") url.hostname = "localhost";
   return NextResponse.redirect(url);

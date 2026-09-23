@@ -4,7 +4,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
+import { recordDeskOpen } from "@/lib/access";
 import { getCurrentUser } from "@/lib/auth";
+import { entryUrl, getDepartment, resolveDepartment } from "@/lib/departments";
 import {
   getMemberDashboard,
   type NextStep,
@@ -47,6 +49,10 @@ export default async function DashboardPage({
 
   const user = await getCurrentUser();
   if (!user) redirect("/login");
+  await recordDeskOpen("onboarding", `/${locale}`);
+
+  const live = getDepartment("onboarding");
+  if (live) redirect(entryUrl(resolveDepartment(live)));
 
   // ── Authenticated, no name yet → name-setup prompt ───────────────────
   if (!user.fullName?.trim()) {

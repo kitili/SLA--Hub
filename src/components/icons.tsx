@@ -135,6 +135,24 @@ export function DepartmentIcon({
       </Svg>
     );
   }
+  if (id === "workboard-tasks") {
+    return (
+      <Svg className={className}>
+        <rect x="4" y="4" width="7" height="16" rx="1.2" />
+        <rect x="13" y="4" width="7" height="10" rx="1.2" />
+        <path d="M6 8h3M6 12h3M15 8h3" />
+      </Svg>
+    );
+  }
+  if (id === "lesson-plans") {
+    return (
+      <Svg className={className}>
+        <path d="M5 5.5h6.5A2.5 2.5 0 0 1 14 8v11.5H7.5A2.5 2.5 0 0 1 5 17V5.5Z" />
+        <path d="M14 8h4.5V19.5H14" />
+        <path d="M7.5 9h4M7.5 12.5h4" />
+      </Svg>
+    );
+  }
   return (
     <Svg className={className}>
       <rect x="4" y="4" width="7" height="7" rx="1.2" />

@@ -25,3 +25,4 @@ export * from "./otp";
 export * from "./policy-briefings";
 export * from "./sla-bot";
 export * from "./app-settings";
+export * from "./access-events";

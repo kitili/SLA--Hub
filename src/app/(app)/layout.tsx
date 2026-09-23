@@ -9,7 +9,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   const user = await getCurrentUser();
   if (!user) redirect("/login");
   return (
-    <HubShell user={{ fullName: user.fullName ?? "", email: user.email }} departments={resolveDepartments()}>
+    <HubShell user={{ fullName: user.fullName ?? "", email: user.email, isAdmin: user.isAdmin }} departments={resolveDepartments()}>
       {children}
     </HubShell>
   );

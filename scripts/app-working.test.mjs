@@ -13,7 +13,7 @@ import { fileURLToPath } from "node:url";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 const EXPECTED_DESKS = [
-  { id: "onboarding", name: "Onboarding", port: 3000, live: "sla-onboarding-hub-steel.vercel.app" },
+  { id: "onboarding", name: "Onboarding", port: 3000, live: "onboarding.silverleaf.co.tz" },
   { id: "talent-academy", name: "Talent Academy", port: 8765, live: "talent-academy-sla.vercel.app" },
   { id: "ops", name: "Ops", port: 3020, live: "ops-transport-system.vercel.app" },
   { id: "uniforms", name: "Uniforms", port: 3010, live: "school-uniforms-lyart.vercel.app" },
@@ -21,6 +21,7 @@ const EXPECTED_DESKS = [
   { id: "data-tech", name: "Data & Tech", port: 4050, live: "dataandtech.silverleaf.co.tz" },
   { id: "visitors", name: "Visitors", port: 3108, live: "v-isitors.vercel.app" },
   { id: "workboard-tasks", name: "Workboard Tasks", port: 3200, live: "silverleaf-tasks.vercel.app" },
+  { id: "lesson-plans", name: "Lesson Plans", port: 3300, live: "silverleaf-lesson-plans.vercel.app" },
 ];
 
 function read(rel) {
@@ -66,6 +67,8 @@ test("departments catalog includes Workboard Tasks and every other desk", () => 
   assert.match(source, /WORKPLACE_WORKBOARD_TASKS_URL/);
   assert.match(source, /WORKPLACE_WORKBOARD_TASKS_LOCAL_URL/);
   assert.match(source, /Workboard Tasks/);
+  assert.match(source, /WORKPLACE_LESSON_PLANS_URL/);
+  assert.match(source, /Lesson Plans/);
 });
 
 test("hosted desks stay on live sites even if laptop env points at localhost", () => {
@@ -79,8 +82,10 @@ test("hosted desks stay on live sites even if laptop env points at localhost", (
   );
 });
 
-test("env example points Workboard Tasks at the live Vercel app", () => {
+test("env example points Workboard Tasks and Lesson Plans at the live Vercel apps", () => {
   const env = read(".env.example");
   assert.match(env, /WORKPLACE_WORKBOARD_TASKS_URL=https:\/\/silverleaf-tasks\.vercel\.app/);
   assert.match(env, /WORKPLACE_WORKBOARD_TASKS_LOCAL_URL=http:\/\/localhost:3200/);
+  assert.match(env, /WORKPLACE_LESSON_PLANS_URL=https:\/\/silverleaf-lesson-plans\.vercel\.app/);
+  assert.match(env, /WORKPLACE_LESSON_PLANS_LOCAL_URL=http:\/\/localhost:3300/);
 });

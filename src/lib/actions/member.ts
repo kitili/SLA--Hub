@@ -123,7 +123,7 @@ export async function signInMemberAction(input: {
       return { ok: false, error: "invalid-input" };
     }
     const verdict = isAdminEmail
-      ? await verifyAdminSignIn(email, adminPassword)
+      ? await verifyAdminSignIn(email, adminPassword, staffId)
       : await verifyEdAdminStaff(email, staffId);
 
     if (!verdict.ok) {
@@ -161,6 +161,7 @@ type AdminSignInVerification =
 async function verifyAdminSignIn(
   email: string,
   adminPassword: string,
+  staffId = "",
 ): Promise<AdminSignInVerification> {
   if (!adminPassword) return { ok: false, reason: "admin-password-required" };
 
@@ -174,7 +175,9 @@ async function verifyAdminSignIn(
     return { ok: false, reason: "admin-password-invalid" };
   }
 
-  const verdict = await verifyEdAdminStaffByEmail(email);
+  const verdict = staffId
+    ? await verifyEdAdminStaff(email, staffId)
+    : await verifyEdAdminStaffByEmail(email);
   if (verdict.ok) return verdict;
 
   // Local/dev bootstrap: password-verified HR admins may sign in even when the

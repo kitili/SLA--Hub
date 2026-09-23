@@ -18,11 +18,16 @@
       "slaBot": "SLA-bot",
       "backToHub": "Rudi kwenye kituo",
       "systemGroup": "Mfumo",
+      "activity": "Nani aliingia",
       "settings": "Mipangilio",
       "hiringPositions": "Nafasi za kazi",
       "hiringImport": "Ingiza kutoka sheet"
     },
     "settings": "Mipangilio",
+    "activity": {
+      "heading": "Nani aliingia kazini",
+      "description": "Ona nani alijiandikisha na sehemu gani aliyofungua."
+    },
     "common": {
       "save": "Hifadhi",
       "cancel": "Ghairi",

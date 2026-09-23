@@ -18,11 +18,16 @@
       "slaBot": "SLA-bot",
       "backToHub": "Back to hub",
       "systemGroup": "System",
+      "activity": "Who entered",
       "settings": "Settings",
       "hiringPositions": "Job positions",
       "hiringImport": "Import from sheet"
     },
     "settings": "Settings",
+    "activity": {
+      "heading": "Who entered the workplace",
+      "description": "See who signed in and which desk they opened."
+    },
     "common": {
       "save": "Save",
       "cancel": "Cancel",

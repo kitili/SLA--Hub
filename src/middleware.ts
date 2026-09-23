@@ -38,6 +38,7 @@ function isHubPath(pathname: string) {
   return (
     pathname === "/" ||
     pathname.startsWith("/hub") ||
+    pathname.startsWith("/activity") ||
     pathname.startsWith("/departments") ||
     pathname.startsWith("/login")
   );

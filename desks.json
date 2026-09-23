@@ -9,7 +9,7 @@
       "port": 3000,
       "cwd": ".",
       "inHub": true,
-      "liveUrl": "https://sla-onboarding-hub-steel.vercel.app",
+      "liveUrl": "https://onboarding.silverleaf.co.tz",
       "fallback": "/home/kiki/silverleaf-onboarding-hub"
     },
     {
@@ -95,6 +95,18 @@
       "cwd": ".",
       "dev": "npx next dev --port 3200",
       "liveUrl": "https://silverleaf-tasks.vercel.app"
+    },
+    {
+      "id": "lesson-plans",
+      "name": "Lesson Plans",
+      "path": "desks/lesson-plans",
+      "repo": "https://github.com/kitili/silverleaf-lesson-plans.git",
+      "branch": "main",
+      "port": 3300,
+      "cwd": ".",
+      "dev": "npx next dev --port 3300",
+      "liveUrl": "https://silverleaf-lesson-plans.vercel.app",
+      "fallback": "/home/kiki/Downloads/silverleaf-lesson-plans-main"
     }
   ]
 }

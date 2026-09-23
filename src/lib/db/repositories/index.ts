@@ -17,3 +17,4 @@ export * as sectionDeclarationsRepo from "./section-declarations";
 export * as policySignaturesRepo from "./policy-signatures";
 export * as policyBriefingsRepo from "./policy-briefings";
 export * as slaBotRepo from "./sla-bot";
+export * as accessRepo from "./access";

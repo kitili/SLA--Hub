@@ -6,7 +6,8 @@ export type DepartmentId =
   | "marketing"
   | "data-tech"
   | "visitors"
-  | "workboard-tasks";
+  | "workboard-tasks"
+  | "lesson-plans";
 
 export type DepartmentPhase = 1 | 2 | 3 | 4;
 
@@ -40,6 +41,7 @@ export const LIVE_ENV: Record<DepartmentId, string> = {
   "data-tech": "WORKPLACE_DATA_TECH_URL",
   visitors: "WORKPLACE_VISITORS_URL",
   "workboard-tasks": "WORKPLACE_WORKBOARD_TASKS_URL",
+  "lesson-plans": "WORKPLACE_LESSON_PLANS_URL",
 };
 
 const LOCAL_ENV: Record<DepartmentId, string> = {
@@ -51,6 +53,7 @@ const LOCAL_ENV: Record<DepartmentId, string> = {
   "data-tech": "WORKPLACE_DATA_TECH_LOCAL_URL",
   visitors: "WORKPLACE_VISITORS_LOCAL_URL",
   "workboard-tasks": "WORKPLACE_WORKBOARD_TASKS_LOCAL_URL",
+  "lesson-plans": "WORKPLACE_LESSON_PLANS_LOCAL_URL",
 };
 
 function envUrl(key: string, fallback: string) {
@@ -78,9 +81,9 @@ export const departments: Department[] = [
     summary:
       "Staff workplace, policies, hiring, SLA-bot, and campus onboarding — the same desk people already use to join Silverleaf.",
     phase: 1,
-    phaseNote: "Always opens the live Onboarding site.",
-    href: "https://sla-onboarding-hub-steel.vercel.app",
-    liveUrl: "https://sla-onboarding-hub-steel.vercel.app",
+    phaseNote: "Always opens the live WhatsApp onboarding site.",
+    href: "https://onboarding.silverleaf.co.tz",
+    liveUrl: "https://onboarding.silverleaf.co.tz",
     localUrl: "http://localhost:3000",
     localPort: 3000,
     desks: ["Staff onboarding", "Policies & sign-off", "Hiring board", "SLA-bot"],
@@ -124,6 +127,24 @@ export const departments: Department[] = [
     repo: "https://github.com/kitili/SLA-Talent-Academy.git",
     branch: "main",
     deskPath: "desks/talent-academy",
+  },
+  {
+    id: "lesson-plans",
+    name: "Lesson Plans",
+    kicker: "Curriculum",
+    summary:
+      "Search, view, and manage Silverleaf lesson plans — the live dashboard teachers use for grades, subjects, schemes, and AI studio.",
+    phase: 1,
+    phaseNote: "Always opens the live Lesson Plans dashboard.",
+    href: "https://silverleaf-lesson-plans.vercel.app",
+    liveUrl: "https://silverleaf-lesson-plans.vercel.app",
+    localUrl: "http://localhost:3300",
+    localPort: 3300,
+    desks: ["Dashboard", "Search", "Plans", "Schemes", "AI Studio"],
+    accent: "gold",
+    repo: "https://github.com/kitili/silverleaf-lesson-plans.git",
+    branch: "main",
+    deskPath: "desks/lesson-plans",
   },
   {
     id: "ops",
@@ -221,8 +242,8 @@ export function getDepartment(slug: string): Department | undefined {
   return departments.find((department) => department.id === slug);
 }
 
-export function isInHubApp(department: Department) {
-  return department.id === "onboarding";
+export function isInHubApp(_department: Department) {
+  return false;
 }
 
 /** One click from the hub: hosted live site, or local only if not hosted yet. */
@@ -278,26 +299,10 @@ export function getLocalUrl(department: Department): string {
 }
 
 export function isDepartmentPath(pathname: string, department: Department) {
-  if (department.id === "onboarding") {
-    return (
-      pathname === "/en" ||
-      pathname.startsWith("/en/") ||
-      pathname === "/sw" ||
-      pathname.startsWith("/sw/")
-    );
-  }
   return pathname === department.href || pathname.startsWith(`${department.href}/`);
 }
 
 export function lastDeskFromPath(pathname: string): string | null {
-  if (
-    pathname === "/en" ||
-    pathname.startsWith("/en/") ||
-    pathname === "/sw" ||
-    pathname.startsWith("/sw/")
-  ) {
-    return "/en";
-  }
   if (pathname.startsWith("/departments/")) return pathname;
   return null;
 }
@@ -318,7 +323,7 @@ export const hubPhases = [
   {
     id: 3,
     title: "Aligned desks",
-    body: "Ops, Uniforms, Marketing, Data & Tech, Talent Academy, Visitors, and Workboard Tasks live in desks/ and pull from origin every day.",
+    body: "Ops, Uniforms, Marketing, Data & Tech, Talent Academy, Visitors, Workboard Tasks, and Lesson Plans live in desks/ and pull from origin every day.",
     current: true,
   },
   {

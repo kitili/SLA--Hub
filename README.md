@@ -1,6 +1,6 @@
 # Silverleaf Hub
 
-One workplace for Silverleaf Academy departments: **Onboarding**, **Talent Academy**, **Ops**, **Uniforms**, **Marketing**, **Data & Tech**, **Visitors**, and **Workboard Tasks**.
+One workplace for Silverleaf Academy departments: **Onboarding**, **Talent Academy**, **Lesson Plans**, **Ops**, **Uniforms**, **Marketing**, **Data & Tech**, **Visitors**, and **Workboard Tasks**.
 
 Sign in here once. Hosted desks always open their live sites. Laptop env cannot retarget a hosted desk.
 
@@ -25,8 +25,9 @@ npm run desks:sync
 | Department | In this workspace | Live site | Local |
 |---|---|---|---|
 | Hub | this app | — | http://localhost:3100 |
-| Onboarding | in-app `/en`, source at `desks/onboarding` | https://sla-onboarding-hub-steel.vercel.app | http://localhost:3000 |
+| Onboarding | `desks/onboarding` | https://onboarding.silverleaf.co.tz | http://localhost:3000 |
 | Talent Academy | `desks/talent-academy` | https://talent-academy-sla.vercel.app | http://localhost:8765 |
+| Lesson Plans | `desks/lesson-plans` | https://silverleaf-lesson-plans.vercel.app | http://localhost:3300 |
 | Ops | `desks/ops` | https://ops-transport-system.vercel.app | http://localhost:3020 |
 | Uniforms | `desks/uniforms` | https://school-uniforms-lyart.vercel.app | http://localhost:3010 |
 | Marketing | `desks/marketing/web` | https://sla-marketing-web.vercel.app | http://localhost:3180 |
@@ -74,4 +75,4 @@ Work in each desk the usual way (`cd desks/ops`, branch, PR, push). Do not merge
 
 OTP is the same pattern as the Onboarding Hub: work email → 6-digit code → httpOnly cookie on this device (8 hours). Many people can be signed in at once; each browser has its own cookie.
 
-Ops, Uniforms, Marketing, Data & Tech, Talent Academy, Visitors, and Workboard Tasks still have their own logins until every app shares `*.silverleaf.co.tz` and one parent-domain session.
+Ops, Uniforms, Marketing, Data & Tech, Talent Academy, Visitors, Workboard Tasks, and Lesson Plans still have their own logins until every app shares `*.silverleaf.co.tz` and one parent-domain session.

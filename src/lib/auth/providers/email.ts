@@ -13,7 +13,7 @@ import "server-only";
 import { cookies } from "next/headers";
 
 import type { CurrentUser } from "@/lib/contracts";
-import { staffRepo } from "@/lib/db/repositories";
+import { accessRepo, staffRepo } from "@/lib/db/repositories";
 import { isHrAdminEmail } from "@/lib/env";
 import { normalizeStaffEmail } from "@/lib/email";
 import type { AuthProvider } from "../provider";
@@ -114,6 +114,20 @@ export const emailProvider: AuthProvider = {
     });
 
     await writeSession({ staffId: staffRow.id, isAdmin: staffRow.isAdmin });
+
+    try {
+      await accessRepo.recordAccessEvent({
+        staffId: staffRow.id,
+        email: staffRow.email,
+        fullName: staffRow.fullName,
+        action: "signed_in",
+        path: "/login",
+      });
+    } catch (error) {
+      if (process.env.NODE_ENV === "development") {
+        console.warn("[auth/email] Could not record sign-in.", error);
+      }
+    }
 
     const roles: string[] = staffRow.isAdmin ? ["admin"] : [];
 

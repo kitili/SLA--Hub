@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Start Ops, Uniforms, Marketing, Data & Tech, Talent Academy, and Visitors on their unique local ports.
+# Start Ops, Uniforms, Marketing, Data & Tech, Talent Academy, Visitors, and Workboard Tasks on their unique local ports.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"

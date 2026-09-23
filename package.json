@@ -2,7 +2,7 @@
   "name": "silverleaf-hub",
   "version": "0.1.0",
   "private": true,
-  "description": "Silverleaf Academy workplace hub — one app for Onboarding, Talent Academy, Ops, Uniforms, Marketing, Data & Tech, and Visitors",
+  "description": "Silverleaf Academy workplace hub — one app for Onboarding, Talent Academy, Lesson Plans, Ops, Uniforms, Marketing, Data & Tech, Visitors, and Workboard Tasks",
   "scripts": {
     "dev": "next dev --port 3100",
     "build": "next build",
@@ -19,6 +19,8 @@
     "desks:sync:daily": "bash scripts/install-daily-sync.sh",
     "visitors:sync": "python3 scripts/sync-visitor-data.py",
     "visitors:sync:watch": "python3 scripts/sync-visitor-data.py --watch",
+    "test": "node --test scripts/app-working.test.mjs",
+    "smoke": "node scripts/smoke-hub.mjs",
     "marketing:export-live": "python3 scripts/export-marketing-live.py"
   },
   "dependencies": {

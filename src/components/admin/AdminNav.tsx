@@ -65,6 +65,7 @@ export default function AdminNav() {
     {
       label: t("systemGroup"),
       links: [
+        { href: "/admin/activity", label: t("activity"), exact: false },
         { href: "/admin/settings", label: t("settings"), exact: false },
       ],
     },

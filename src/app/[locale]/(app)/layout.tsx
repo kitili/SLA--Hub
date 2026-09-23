@@ -18,7 +18,7 @@ export default async function AppLayout({
   if (!user) redirect("/login");
 
   return (
-    <HubShell user={{ fullName: user.fullName ?? "", email: user.email }} departments={resolveDepartments()}>
+    <HubShell user={{ fullName: user.fullName ?? "", email: user.email, isAdmin: user.isAdmin }} departments={resolveDepartments()}>
       <IdleLogout />
       <SlaBotWidget />
       <OnboardingBar isAdmin={user.isAdmin} />
