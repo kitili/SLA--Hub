@@ -8,6 +8,8 @@ import { accessActionLabel, formatAccessWhen } from "@/lib/access-copy";
 import { ArrowIcon, DepartmentIcon, ExternalIcon, SearchIcon } from "@/components/icons";
 import styles from "./hub.module.css";
 
+const PAGE_SIZE = 6;
+
 function matchesLastDesk(department: Department, lastHref: string | null) {
   if (!lastHref) return false;
   return (
@@ -36,6 +38,7 @@ export default function HubHome({
   }>;
 }) {
   const [query, setQuery] = useState("");
+  const [page, setPage] = useState(1);
   const [today, setToday] = useState("");
   const [lastHref, setLastHref] = useState<string | null>(null);
 
@@ -62,6 +65,15 @@ export default function HubHome({
       return haystack.includes(needle);
     });
   }, [departments, query]);
+
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const currentPage = Math.min(page, pageCount);
+  const visible = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
+  function goToPage(next: number) {
+    setPage(next);
+    document.getElementById("desks")?.scrollIntoView({ block: "start" });
+  }
 
   return (
     <div className={styles.page}>
@@ -109,7 +121,10 @@ export default function HubHome({
           <input
             type="search"
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => {
+              setQuery(event.target.value);
+              setPage(1);
+            }}
             placeholder="Find a desk…"
             autoComplete="off"
           />
@@ -119,8 +134,8 @@ export default function HubHome({
       {filtered.length === 0 ? (
         <p className={styles.empty}>No desk matches “{query}”.</p>
       ) : (
-        <div className={styles.grid}>
-          {filtered.map((department) => (
+        <div id="desks" className={styles.grid}>
+          {visible.map((department) => (
             <article key={department.id} className={styles.card} data-accent={department.accent}>
               <DeskLink
                 department={department}
@@ -149,6 +164,35 @@ export default function HubHome({
           ))}
         </div>
       )}
+
+      {pageCount > 1 ? (
+        <nav className={styles.pager} aria-label="Desk pages">
+          <button type="button" disabled={currentPage === 1} onClick={() => goToPage(currentPage - 1)}>
+            Previous
+          </button>
+          {Array.from({ length: pageCount }, (_, index) => {
+            const number = index + 1;
+            return (
+              <button
+                key={number}
+                type="button"
+                data-active={number === currentPage}
+                aria-current={number === currentPage ? "page" : undefined}
+                onClick={() => goToPage(number)}
+              >
+                {number}
+              </button>
+            );
+          })}
+          <button
+            type="button"
+            disabled={currentPage === pageCount}
+            onClick={() => goToPage(currentPage + 1)}
+          >
+            Next
+          </button>
+        </nav>
+      ) : null}
 
       {isAdmin && recentAccess.length > 0 ? (
         <section className={styles.activity}>
