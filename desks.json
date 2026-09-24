@@ -107,6 +107,17 @@
       "dev": "npx next dev --port 3300",
       "liveUrl": "https://silverleaf-lesson-plans.vercel.app",
       "fallback": "/home/kiki/Downloads/silverleaf-lesson-plans-main"
+    },
+    {
+      "id": "mel-dashboard",
+      "name": "MEL Dashboard",
+      "path": "desks/mel-dashboard",
+      "repo": "https://github.com/kitili/silverleaf-mel-dashboard.git",
+      "branch": "main",
+      "port": 3400,
+      "cwd": ".",
+      "skipSync": true,
+      "liveUrl": "https://silverleafmeldashboard-production.up.railway.app/#overview"
     }
   ]
 }

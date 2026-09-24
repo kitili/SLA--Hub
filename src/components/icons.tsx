@@ -153,6 +153,16 @@ export function DepartmentIcon({
       </Svg>
     );
   }
+  if (id === "mel-dashboard") {
+    return (
+      <Svg className={className}>
+        <path d="M4 19h16" />
+        <rect x="5.5" y="11" width="3" height="6" rx="0.6" />
+        <rect x="10.5" y="7" width="3" height="10" rx="0.6" />
+        <rect x="15.5" y="9.5" width="3" height="7.5" rx="0.6" />
+      </Svg>
+    );
+  }
   return (
     <Svg className={className}>
       <rect x="4" y="4" width="7" height="7" rx="1.2" />

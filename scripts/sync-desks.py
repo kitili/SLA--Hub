@@ -168,6 +168,20 @@ def main() -> int:
         before = current_sha(dest) if dest.exists() else None
         action = "status"
 
+        if desk.get("skipSync"):
+            print(f"  {desk['id']:12}  hosted        live-only     :{desk['port']}")
+            lock[desk["id"]] = {
+                "repo": desk.get("repo", ""),
+                "branch": desk.get("branch", "main"),
+                "sha": None,
+                "path": desk.get("path", ""),
+                "port": desk["port"],
+                "liveUrl": desk["liveUrl"],
+                "status": "hosted",
+                "syncedAt": datetime.now(timezone.utc).isoformat(),
+            }
+            continue
+
         if not args.status:
             if not dest.exists():
                 action, error = clone_desk(desk, dest)

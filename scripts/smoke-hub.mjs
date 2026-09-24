@@ -7,6 +7,8 @@
 const BASE = process.env.SMOKE_BASE || "http://127.0.0.1:3100";
 const WORKBOARD_LIVE = process.env.SMOKE_WORKBOARD_URL || "https://silverleaf-tasks.vercel.app";
 const LESSON_PLANS_LIVE = process.env.SMOKE_LESSON_PLANS_URL || "https://silverleaf-lesson-plans.vercel.app";
+const MEL_LIVE =
+  process.env.SMOKE_MEL_URL || "https://silverleafmeldashboard-production.up.railway.app";
 
 const DESKS = [
   { id: "onboarding", name: "Onboarding", location: /^https:\/\/onboarding\.silverleaf\.co\.tz/ },
@@ -18,6 +20,11 @@ const DESKS = [
   { id: "visitors", name: "Visitors", location: /^https:\/\/v-isitors\.vercel\.app/ },
   { id: "workboard-tasks", name: "Workboard Tasks", location: /^https:\/\/silverleaf-tasks\.vercel\.app/ },
   { id: "lesson-plans", name: "Lesson Plans", location: /^https:\/\/silverleaf-lesson-plans\.vercel\.app/ },
+  {
+    id: "mel-dashboard",
+    name: "MEL Dashboard",
+    location: /^https:\/\/silverleafmeldashboard-production\.up\.railway\.app/,
+  },
 ];
 
 function assert(condition, message) {
@@ -61,8 +68,7 @@ async function main() {
   const login = await req("/login");
   assert(login.status === 200, `/login expected 200, got ${login.status}`);
   assert(/sign in|work email|Silverleaf/i.test(login.text), "/login missing sign-in copy");
-  assert(/Staff ID|ed-admin/i.test(login.text), "/login missing Staff ID field");
-  assert(/password/i.test(login.text), "/login missing password field");
+  assert(/Send code|6-digit code|one-time code/i.test(login.text), "/login missing email code sign-in");
   checks.push("login page");
 
   const gated = await req("/hub");
@@ -141,6 +147,11 @@ async function main() {
     "live Lesson Plans missing dashboard",
   );
   checks.push("live lesson plans");
+
+  const mel = await req(MEL_LIVE);
+  assert([200, 307, 308].includes(mel.status), `live MEL expected 200/307, got ${mel.status}`);
+  assert(/MEL|monitoring|evaluation|learning|Silverleaf/i.test(mel.text), "live MEL missing dashboard");
+  checks.push("live mel dashboard");
 
   console.log(`smoke ok  ${BASE}`);
   for (const name of checks) console.log(`  pass  ${name}`);

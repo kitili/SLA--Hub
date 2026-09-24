@@ -7,7 +7,8 @@ export type DepartmentId =
   | "data-tech"
   | "visitors"
   | "workboard-tasks"
-  | "lesson-plans";
+  | "lesson-plans"
+  | "mel-dashboard";
 
 export type DepartmentPhase = 1 | 2 | 3 | 4;
 
@@ -42,6 +43,7 @@ export const LIVE_ENV: Record<DepartmentId, string> = {
   visitors: "WORKPLACE_VISITORS_URL",
   "workboard-tasks": "WORKPLACE_WORKBOARD_TASKS_URL",
   "lesson-plans": "WORKPLACE_LESSON_PLANS_URL",
+  "mel-dashboard": "WORKPLACE_MEL_DASHBOARD_URL",
 };
 
 const LOCAL_ENV: Record<DepartmentId, string> = {
@@ -54,6 +56,7 @@ const LOCAL_ENV: Record<DepartmentId, string> = {
   visitors: "WORKPLACE_VISITORS_LOCAL_URL",
   "workboard-tasks": "WORKPLACE_WORKBOARD_TASKS_LOCAL_URL",
   "lesson-plans": "WORKPLACE_LESSON_PLANS_LOCAL_URL",
+  "mel-dashboard": "WORKPLACE_MEL_DASHBOARD_LOCAL_URL",
 };
 
 function envUrl(key: string, fallback: string) {
@@ -145,6 +148,24 @@ export const departments: Department[] = [
     repo: "https://github.com/kitili/silverleaf-lesson-plans.git",
     branch: "main",
     deskPath: "desks/lesson-plans",
+  },
+  {
+    id: "mel-dashboard",
+    name: "MEL Dashboard",
+    kicker: "Impact",
+    summary:
+      "Monitoring, evaluation, and learning — the live Silverleaf MEL overview for core schools, ECE, teacher institute, and campus outcomes.",
+    phase: 1,
+    phaseNote: "Always opens the live MEL dashboard.",
+    href: "https://silverleafmeldashboard-production.up.railway.app/#overview",
+    liveUrl: "https://silverleafmeldashboard-production.up.railway.app/#overview",
+    localUrl: "http://localhost:3400",
+    localPort: 3400,
+    desks: ["Overview", "Core Schools", "Early Childhood", "Teacher Institute", "Dataset Map"],
+    accent: "navy",
+    repo: "https://github.com/kitili/silverleaf-mel-dashboard.git",
+    branch: "main",
+    deskPath: "desks/mel-dashboard",
   },
   {
     id: "ops",
@@ -323,7 +344,7 @@ export const hubPhases = [
   {
     id: 3,
     title: "Aligned desks",
-    body: "Ops, Uniforms, Marketing, Data & Tech, Talent Academy, Visitors, Workboard Tasks, and Lesson Plans live in desks/ and pull from origin every day.",
+    body: "Ops, Uniforms, Marketing, Data & Tech, Talent Academy, Visitors, Workboard Tasks, Lesson Plans, and MEL Dashboard live in desks/ and pull from origin every day.",
     current: true,
   },
   {

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Start Ops, Uniforms, Marketing, Data & Tech, Talent Academy, Visitors, and Workboard Tasks on their unique local ports.
+# Start synced desks on their unique local ports. Hosted-only desks (MEL) are skipped.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"

@@ -90,6 +90,16 @@
       "liveUrl": "https://silverleaf-lesson-plans.vercel.app",
       "status": "copied",
       "syncedAt": "2026-09-23T08:47:00.000000+00:00"
+    },
+    "mel-dashboard": {
+      "repo": "https://github.com/kitili/silverleaf-mel-dashboard.git",
+      "branch": "main",
+      "sha": null,
+      "path": "desks/mel-dashboard",
+      "port": 3400,
+      "liveUrl": "https://silverleafmeldashboard-production.up.railway.app/#overview",
+      "status": "hosted",
+      "syncedAt": "2026-09-24T07:35:00.000000+00:00"
     }
   }
 }
