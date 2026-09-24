@@ -5,7 +5,7 @@ import Link from "next/link";
 import { hubEntryHref, isExternalUrl, type Department } from "@/lib/departments";
 import { LAST_DESK_KEY } from "@/lib/last-desk";
 import { accessActionLabel, formatAccessWhen } from "@/lib/access-copy";
-import { ArrowIcon, DepartmentIcon, SearchIcon } from "@/components/icons";
+import { ArrowIcon, DepartmentIcon, ExternalIcon, SearchIcon } from "@/components/icons";
 import styles from "./hub.module.css";
 
 function matchesLastDesk(department: Department, lastHref: string | null) {
@@ -126,11 +126,16 @@ export default function HubHome({
                 <span className={styles.cardKicker}>{department.kicker}</span>
                 <h2>{department.name}</h2>
                 <p>{department.summary}</p>
+                <ul className={styles.cardDesks}>
+                  {department.desks.slice(0, 4).map((desk) => (
+                    <li key={desk}>{desk}</li>
+                  ))}
+                </ul>
                 {department.hosted === false ? (
                   <span className={styles.cardLocal}>Local only · not hosted yet</span>
                 ) : null}
                 <span className={styles.cardOpen}>
-                  Open <ArrowIcon />
+                  Open {isExternalUrl(hubEntryHref(department)) ? <ExternalIcon /> : <ArrowIcon />}
                 </span>
               </DeskLink>
             </article>

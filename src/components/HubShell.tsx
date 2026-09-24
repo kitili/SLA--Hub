@@ -14,7 +14,7 @@ import {
 import { LAST_DESK_KEY } from "@/lib/last-desk";
 import { signOutAction } from "@/lib/actions/auth";
 import BrandLogo from "@/components/BrandLogo";
-import { CloseIcon, DepartmentIcon, MenuIcon } from "@/components/icons";
+import { ActivityIcon, CloseIcon, DepartmentIcon, MenuIcon } from "@/components/icons";
 import styles from "./HubShell.module.css";
 
 function initials(name: string, email: string) {
@@ -70,7 +70,7 @@ export default function HubShell({
       </Link>
       {user.isAdmin ? (
         <Link href="/activity" data-active={pathname === "/activity" || pathname.startsWith("/activity/")}>
-          <DepartmentIcon id="home" />
+          <ActivityIcon />
           Who entered
         </Link>
       ) : null}

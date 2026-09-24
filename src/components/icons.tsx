@@ -20,6 +20,17 @@ function Svg({ className, children }: IconProps & { children: ReactNode }) {
   );
 }
 
+export function ActivityIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M4 19V9" />
+      <path d="M10 19V5" />
+      <path d="M16 19v-7" />
+      <path d="M22 19V8" />
+    </Svg>
+  );
+}
+
 export function HomeIcon(props: IconProps) {
   return (
     <Svg {...props}>

@@ -113,7 +113,7 @@ export default function EmailOtpForm({ deliveryConfigured = true }: { deliveryCo
         <p className={styles.tagline}>The Future Starts Here</p>
         <h2>One workplace for every Silverleaf desk</h2>
         <p>
-          Sign in with your own @silverleaf.co.tz work email. We send a code to you only — Maureen, Paul, and everyone else each have their own account.
+          Sign in with your own @silverleaf.co.tz work email. Each person gets their own account and a one-time code.
         </p>
         <div className={styles.points}>
           <span>
@@ -196,7 +196,7 @@ export default function EmailOtpForm({ deliveryConfigured = true }: { deliveryCo
         ) : step === "email" ? (
           <>
             <h1>Sign in to Silverleaf Hub</h1>
-            <p className={styles.sub}>Anyone with a @silverleaf.co.tz email can sign in. Use your own address, not a colleague&apos;s. We send a 6-digit code.</p>
+            <p className={styles.sub}>Use your own @silverleaf.co.tz address. We send a 6-digit code to you only.</p>
             <form onSubmit={handleRequestCode} className={styles.form}>
               <label>
                 Work email
