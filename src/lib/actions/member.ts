@@ -207,6 +207,21 @@ async function verifyAdminSignIn(
  * client) guarantees the navigation reflects the now-absent session.
  */
 export async function signOutMemberAction(): Promise<void> {
+  const user = await getCurrentUser();
+  if (user) {
+    try {
+      const { recordAccessEvent } = await import("@/lib/db/repositories/access");
+      await recordAccessEvent({
+        staffId: user.id,
+        email: user.email,
+        fullName: user.fullName ?? "",
+        action: "signed_out",
+        path: "/login",
+      });
+    } catch {
+      // Still sign out even if the log write fails.
+    }
+  }
   await signOut();
   redirect("/login");
 }

@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { listAccessEvents, countRecentSignIns } from "@/lib/db/repositories/access";
+import { parseAccessQuery } from "@/lib/access-query";
+import { buildAccessSessions, summarizeAccessPeople } from "@/lib/access-summary";
+import {
+  countRecentSignIns,
+  listAccessPeople,
+  listAccessWindow,
+  queryAccessEvents,
+} from "@/lib/db/repositories/access";
 import ActivityLog from "@/components/ActivityLog";
 import styles from "@/components/admin/admin.module.css";
 
@@ -10,12 +17,33 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default async function AdminActivityPage() {
+function toRows(rows: Awaited<ReturnType<typeof listAccessWindow>>) {
+  return rows.map((event) => ({
+    id: event.id,
+    staffId: event.staffId,
+    name: event.fullName,
+    email: event.email,
+    action: event.action,
+    part: event.departmentName,
+    path: event.path,
+    at: event.createdAt.toISOString(),
+  }));
+}
+
+export default async function AdminActivityPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const t = await getTranslations("admin.activity");
-  const [events, signInsToday] = await Promise.all([
-    listAccessEvents(120),
+  const query = parseAccessQuery(await searchParams);
+  const [page, windowRows, signInsToday, personOptions] = await Promise.all([
+    queryAccessEvents(query),
+    listAccessWindow(query),
     countRecentSignIns(24),
+    listAccessPeople(),
   ]);
+  const windowEvents = toRows(windowRows);
 
   return (
     <>
@@ -25,16 +53,13 @@ export default async function AdminActivityPage() {
       </div>
       <ActivityLog
         embedded
+        query={query}
         signInsToday={signInsToday}
-        events={events.map((event) => ({
-          id: event.id,
-          name: event.fullName,
-          email: event.email,
-          action: event.action,
-          part: event.departmentName,
-          path: event.path,
-          at: event.createdAt.toISOString(),
-        }))}
+        eventTotal={page.total}
+        personOptions={personOptions}
+        people={summarizeAccessPeople(windowEvents)}
+        sessions={buildAccessSessions(windowEvents)}
+        events={toRows(page.rows)}
       />
     </>
   );

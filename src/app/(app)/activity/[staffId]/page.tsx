@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth";
 import { parseAccessQuery } from "@/lib/access-query";
 import { buildAccessSessions, summarizeAccessPeople } from "@/lib/access-summary";
@@ -12,7 +12,7 @@ import {
 import ActivityLog from "@/components/ActivityLog";
 
 export const metadata: Metadata = {
-  title: "Who used the workplace",
+  title: "Staff workplace record",
 };
 
 export const dynamic = "force-dynamic";
@@ -30,15 +30,18 @@ function toRows(rows: Awaited<ReturnType<typeof listAccessWindow>>) {
   }));
 }
 
-export default async function ActivityPage({
+export default async function ActivityPersonPage({
+  params,
   searchParams,
 }: {
+  params: Promise<{ staffId: string }>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const user = await getCurrentUser();
   if (!user?.isAdmin) redirect("/hub");
 
-  const query = parseAccessQuery(await searchParams);
+  const { staffId } = await params;
+  const query = { ...parseAccessQuery(await searchParams), staffId };
   const [page, windowRows, signInsToday, personOptions] = await Promise.all([
     queryAccessEvents(query),
     listAccessWindow(query),
@@ -46,6 +49,8 @@ export default async function ActivityPage({
     listAccessPeople(),
   ]);
   const windowEvents = toRows(windowRows);
+  const [person] = summarizeAccessPeople(windowEvents);
+  if (!person && page.total === 0) notFound();
 
   return (
     <ActivityLog
@@ -53,9 +58,21 @@ export default async function ActivityPage({
       signInsToday={signInsToday}
       eventTotal={page.total}
       personOptions={personOptions}
-      people={summarizeAccessPeople(windowEvents)}
+      people={person ? [person] : []}
       sessions={buildAccessSessions(windowEvents)}
       events={toRows(page.rows)}
+      person={person ?? {
+        staffId,
+        name: "Staff",
+        email: "",
+        lastSeenAt: query.to,
+        lastSignInAt: null,
+        lastDesk: null,
+        desks: [],
+        deskVisits: 0,
+        signIns: 0,
+        eventCount: 0,
+      }}
     />
   );
 }

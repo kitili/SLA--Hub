@@ -41,6 +41,8 @@ export const accessEvents = pgTable(
     index("idx_access_events_created_at").on(table.createdAt),
     index("idx_access_events_staff_created").on(table.staffId, table.createdAt),
     index("idx_access_events_action").on(table.action),
+    index("idx_access_events_department_created").on(table.departmentId, table.createdAt),
+    index("idx_access_events_email_created").on(table.email, table.createdAt),
   ],
 );
 

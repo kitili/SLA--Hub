@@ -10,6 +10,7 @@ import {
   isExternalUrl,
   type Department,
 } from "@/lib/departments";
+import { noteDeskOpen } from "@/lib/access-client";
 import { signOutAction } from "@/lib/actions/auth";
 import BrandLogo from "@/components/BrandLogo";
 import { ActivityIcon, CloseIcon, DepartmentIcon, MenuIcon } from "@/components/icons";
@@ -87,6 +88,7 @@ export default function HubShell({
               href={href}
               target="_blank"
               rel="noreferrer"
+              onClick={() => noteDeskOpen(department.id)}
             >
               {label}
             </a>
@@ -98,6 +100,7 @@ export default function HubShell({
             href={href}
             data-active={active}
             aria-current={active ? "page" : undefined}
+            onClick={() => noteDeskOpen(department.id)}
           >
             {label}
           </Link>

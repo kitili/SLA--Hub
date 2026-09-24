@@ -8,6 +8,13 @@ export default function Loading() {
         <div className={styles.skelCard} />
         <div className={styles.skelCard} />
         <div className={styles.skelCard} />
+        <div className={styles.skelCard} />
+        <div className={styles.skelCard} />
+        <div className={styles.skelCard} />
+        <div className={styles.skelCard} />
+        <div className={styles.skelCard} />
+        <div className={styles.skelCard} />
+        <div className={styles.skelCard} />
       </div>
     </div>
   );

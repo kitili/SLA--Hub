@@ -7,10 +7,16 @@ export function accessActionLabel(action: string): string {
     case "opened_hub":
       return "Opened hub";
     case "opened_desk":
-      return "Entered";
+      return "Opened dashboard";
     default:
       return action;
   }
+}
+
+export function accessEventTitle(action: string, part?: string | null): string {
+  if (action === "opened_desk" && part) return `Opened ${part}`;
+  if (action === "opened_hub") return "Opened hub home";
+  return accessActionLabel(action);
 }
 
 export function formatAccessWhen(iso: string): string {

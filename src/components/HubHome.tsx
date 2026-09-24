@@ -3,7 +3,8 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { hubEntryHref, isExternalUrl, type Department } from "@/lib/departments";
-import { accessActionLabel, formatAccessWhen } from "@/lib/access-copy";
+import { accessEventTitle, formatAccessWhen } from "@/lib/access-copy";
+import { noteDeskOpen } from "@/lib/access-client";
 import { ArrowIcon, DepartmentIcon, ExternalIcon, SearchIcon } from "@/components/icons";
 import styles from "./hub.module.css";
 
@@ -172,8 +173,7 @@ export default function HubHome({
               <li key={event.id}>
                 <strong>{event.name || event.email}</strong>
                 <span>
-                  {accessActionLabel(event.action)}
-                  {event.part ? ` · ${event.part}` : ""}
+                  {accessEventTitle(event.action, event.part)}
                 </span>
                 <em>{formatAccessWhen(event.at)}</em>
               </li>
@@ -195,15 +195,18 @@ function DeskLink({
   children: ReactNode;
 }) {
   const href = hubEntryHref(department);
+  function handleOpen() {
+    noteDeskOpen(department.id);
+  }
   if (isExternalUrl(href)) {
     return (
-      <a className={className} href={href} target="_blank" rel="noreferrer">
+      <a className={className} href={href} target="_blank" rel="noreferrer" onClick={handleOpen}>
         {children}
       </a>
     );
   }
   return (
-    <Link className={className} href={href}>
+    <Link className={className} href={href} onClick={handleOpen}>
       {children}
     </Link>
   );

@@ -1,5 +1,13 @@
 .page {
-  max-width: 960px;
+  max-width: none;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
 }
 
 .embed {
@@ -30,11 +38,119 @@
   color: var(--ink-muted);
 }
 
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.7rem;
+  margin: 0 0 1.2rem;
+  padding: 0.9rem 1rem;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.filters select,
+.filters input {
+  min-width: 10rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  background: white;
+  color: var(--ink);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.filters button {
+  background: var(--brand-navy);
+  color: white;
+  border: 0;
+  border-radius: 10px;
+  padding: 0.62rem 0.95rem;
+  font-weight: 800;
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: 0.9rem;
+}
+
+.pager a,
+.pager span,
+.pager em {
+  font-weight: 800;
+  font-size: 0.88rem;
+}
+
+.pager a {
+  color: var(--electric-blue);
+}
+
+.pager span {
+  color: var(--ink-faint);
+}
+
+.pager em {
+  font-style: normal;
+  color: var(--navy);
+}
+
 .stats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.75rem;
   margin: 1.1rem 0 1.3rem;
+}
+
+.section {
+  margin: 1.4rem 0;
+}
+
+.sectionHead {
+  margin-bottom: 0.7rem;
+}
+
+.sectionHead h2 {
+  margin: 0 0 0.2rem;
+  font-size: 1.15rem;
+}
+
+.sectionHead p {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+}
+
+.chips li {
+  background: var(--gold-15);
+  border: 1px solid var(--gold);
+  color: var(--navy);
+  border-radius: 999px;
+  padding: 0.28rem 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
 .stats div {
@@ -95,6 +211,16 @@
   margin-top: 0.15rem;
 }
 
+.table td a {
+  color: var(--electric-blue);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.table td a:hover {
+  text-decoration: underline;
+}
+
 .back {
   margin-top: 1.2rem;
 }
@@ -102,6 +228,12 @@
 .back a {
   color: var(--electric-blue);
   font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 700px) {

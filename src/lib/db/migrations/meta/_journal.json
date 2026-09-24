@@ -148,6 +148,13 @@
       "when": 1786300000009,
       "tag": "0020_access_events",
       "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "7",
+      "when": 1786300000010,
+      "tag": "0021_access_events_filters",
+      "breakpoints": true
     }
   ]
 }
