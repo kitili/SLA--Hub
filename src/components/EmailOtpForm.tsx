@@ -3,26 +3,17 @@
 import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { requestOtpAction, verifyOtpAction } from "@/lib/actions/otp";
-import { signInMemberAction } from "@/lib/actions/member";
 import { claimUniqueUsernameAction, setNameAction } from "@/lib/actions/auth";
 import BrandLogo from "@/components/BrandLogo";
 import styles from "./EmailOtpForm.module.css";
 
 type Step = "email" | "code" | "name" | "username";
 
-export default function EmailOtpForm({
-  deliveryConfigured = true,
-  adminEmails = [],
-}: {
-  deliveryConfigured?: boolean;
-  adminEmails?: string[];
-}) {
+export default function EmailOtpForm({ deliveryConfigured = true }: { deliveryConfigured?: boolean }) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [step, setStep] = useState<Step>("email");
   const [email, setEmail] = useState("");
-  const [staffId, setStaffId] = useState("");
-  const [password, setPassword] = useState("");
   const [code, setCode] = useState("");
   const [fullName, setFullName] = useState("");
   const [username, setUsername] = useState("");
@@ -52,54 +43,6 @@ export default function EmailOtpForm({
   function handleRequestCode(event: React.FormEvent) {
     event.preventDefault();
     requestCode();
-  }
-
-  const isAdminEmail = adminEmails.includes(email.trim().toLowerCase());
-
-  function handleDirectorySignIn(event: React.FormEvent) {
-    event.preventDefault();
-    setError("");
-    startTransition(async () => {
-      const result = await signInMemberAction({
-        email,
-        staffId,
-        adminPassword: password,
-      });
-      if (result.ok) {
-        router.push("/hub");
-        router.refresh();
-        return;
-      }
-      if (result.error === "admin-password-required") {
-        setError("HR sign-in needs your password. Enter it below, or email yourself a code.");
-        return;
-      }
-      if (result.error === "admin-password-invalid") {
-        setError("That password is not correct.");
-        return;
-      }
-      if (result.error === "not-registered") {
-        setError("That work email and Staff ID do not match an active ed-admin account.");
-        return;
-      }
-      if (result.error === "inactive") {
-        setError("That ed-admin account is not active. Contact HR.");
-        return;
-      }
-      if (result.error === "directory-unavailable") {
-        setError("Could not reach the staff directory. Try a sign-in code, or try again shortly.");
-        return;
-      }
-      if (result.error === "invalid-input") {
-        setError(
-          isAdminEmail
-            ? "Enter your work email and password, or your Staff ID."
-            : "Enter your work email and ed-admin Staff ID.",
-        );
-        return;
-      }
-      setError("Could not sign you in. Try again or use a sign-in code.");
-    });
   }
 
   function verifyCode(value = code) {
@@ -170,23 +113,23 @@ export default function EmailOtpForm({
         <p className={styles.tagline}>The Future Starts Here</p>
         <h2>One workplace for every Silverleaf desk</h2>
         <p>
-          Sign in the same way as Onboarding: your work email, your ed-admin Staff ID, and — if you have one — your password. You can email yourself a code instead.
+          Sign in with your own @silverleaf.co.tz work email. We send a code to you only — Maureen, Paul, and everyone else each have their own account.
         </p>
         <div className={styles.points}>
           <span>
-            <i className={styles.dot} /> Work email + Staff ID, like the other desks
-          </span>
-          <span>
-            <i className={styles.dot} /> Password for HR, or a one-time code for anyone
+            <i className={styles.dot} /> One-time code — no password
           </span>
           <span>
             <i className={styles.dot} /> One person, one work email, one account
+          </span>
+          <span>
+            <i className={styles.dot} /> Click a desk to open that system
           </span>
         </div>
       </div>
       <div className={styles.card}>
         <BrandLogo variant="logomark" width={72} height={72} className={styles.logo} priority />
-        {step === "code" || step === "name" || step === "username" ? (
+        {deliveryConfigured ? (
           <div className={styles.steps} aria-hidden="true">
             <span className={styles.step} data-on={stepIndex >= 0} />
             <span className={styles.step} data-on={stepIndex >= 1} />
@@ -195,7 +138,12 @@ export default function EmailOtpForm({
           </div>
         ) : null}
 
-        {step === "username" ? (
+        {!deliveryConfigured ? (
+          <>
+            <h1>Sign-in is not available</h1>
+            <p className={styles.sub}>Email delivery is not configured yet. Ask IT to set SMTP.</p>
+          </>
+        ) : step === "username" ? (
           <>
             <h1>Pick your own work email</h1>
             <p className={styles.sub}>
@@ -248,10 +196,8 @@ export default function EmailOtpForm({
         ) : step === "email" ? (
           <>
             <h1>Sign in to Silverleaf Hub</h1>
-            <p className={styles.sub}>
-              Use your work email and ed-admin Staff ID. HR can add their password. Or email yourself a code instead.
-            </p>
-            <form onSubmit={handleDirectorySignIn} className={styles.form}>
+            <p className={styles.sub}>Anyone with a @silverleaf.co.tz email can sign in. Use your own address, not a colleague&apos;s. We send a 6-digit code.</p>
+            <form onSubmit={handleRequestCode} className={styles.form}>
               <label>
                 Work email
                 <input
@@ -263,47 +209,15 @@ export default function EmailOtpForm({
                   autoFocus
                   disabled={pending}
                   autoComplete="email"
-                />
-              </label>
-              <label>
-                Staff ID (your ed-admin ID)
-                <input
-                  type="text"
-                  inputMode="numeric"
-                  value={staffId}
-                  onChange={(event) => setStaffId(event.target.value)}
-                  placeholder="401402"
-                  disabled={pending}
-                  autoComplete="username"
-                />
-              </label>
-              <label>
-                Password
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                  placeholder={isAdminEmail ? "HR password" : "Optional — or use a code"}
-                  disabled={pending}
-                  autoComplete="current-password"
+                  enterKeyHint="send"
                 />
               </label>
               {error ? <p className={styles.error}>{error}</p> : null}
               <button type="submit" className={styles.submit} disabled={pending}>
-                {pending ? "Signing in…" : "Continue"}
+                {pending ? "Sending…" : "Send code"}
               </button>
             </form>
-            <div className={styles.actions}>
-              <button
-                type="button"
-                className={styles.link}
-                onClick={requestCode}
-                disabled={pending || !deliveryConfigured}
-              >
-                {deliveryConfigured ? "Email me a sign-in code instead" : "Email codes are not configured yet"}
-              </button>
-            </div>
-            <p className={styles.note}>Each desk may still ask you to sign in once. Use your own account, not a colleague&apos;s.</p>
+            <p className={styles.note}>Each desk may still ask you to sign in once. One shared Silverleaf sign-in comes next.</p>
           </>
         ) : (
           <>
