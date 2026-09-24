@@ -3,21 +3,11 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { hubEntryHref, isExternalUrl, type Department } from "@/lib/departments";
-import { LAST_DESK_KEY } from "@/lib/last-desk";
 import { accessActionLabel, formatAccessWhen } from "@/lib/access-copy";
 import { ArrowIcon, DepartmentIcon, ExternalIcon, SearchIcon } from "@/components/icons";
 import styles from "./hub.module.css";
 
 const PAGE_SIZE = 6;
-
-function matchesLastDesk(department: Department, lastHref: string | null) {
-  if (!lastHref) return false;
-  return (
-    department.href === lastHref ||
-    department.liveUrl === lastHref ||
-    lastHref.startsWith(`${department.href}/`)
-  );
-}
 
 export default function HubHome({
   firstName,
@@ -40,7 +30,6 @@ export default function HubHome({
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
   const [today, setToday] = useState("");
-  const [lastHref, setLastHref] = useState<string | null>(null);
 
   useEffect(() => {
     setToday(
@@ -50,10 +39,7 @@ export default function HubHome({
         month: "long",
       }).format(new Date()),
     );
-    setLastHref(window.localStorage.getItem(LAST_DESK_KEY));
   }, []);
-
-  const lastDesk = departments.find((department) => matchesLastDesk(department, lastHref));
 
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase();
@@ -94,21 +80,6 @@ export default function HubHome({
         </div>
       </section>
 
-      {lastDesk ? (
-        <DeskLink
-          department={lastDesk}
-          className={styles.continue}
-          onOpen={() => window.localStorage.setItem(LAST_DESK_KEY, hubEntryHref(lastDesk))}
-        >
-          <DepartmentIcon id={lastDesk.id} className={styles.continueIcon} />
-          <div>
-            <strong>Continue</strong>
-            <span>{lastDesk.name}</span>
-          </div>
-          <ArrowIcon className={styles.continueArrow} />
-        </DeskLink>
-      ) : null}
-
       <div className={styles.toolbar}>
         <p className={styles.count}>
           {filtered.length === departments.length
@@ -137,11 +108,7 @@ export default function HubHome({
         <div id="desks" className={styles.grid}>
           {visible.map((department) => (
             <article key={department.id} className={styles.card} data-accent={department.accent}>
-              <DeskLink
-                department={department}
-                className={styles.cardMain}
-                onOpen={() => window.localStorage.setItem(LAST_DESK_KEY, hubEntryHref(department))}
-              >
+              <DeskLink department={department} className={styles.cardMain}>
                 <span className={styles.cardIcon}>
                   <DepartmentIcon id={department.id} />
                 </span>
@@ -221,24 +188,22 @@ export default function HubHome({
 function DeskLink({
   department,
   className,
-  onOpen,
   children,
 }: {
   department: Department;
   className: string;
-  onOpen: () => void;
   children: ReactNode;
 }) {
   const href = hubEntryHref(department);
   if (isExternalUrl(href)) {
     return (
-      <a className={className} href={href} target="_blank" rel="noreferrer" onClick={onOpen}>
+      <a className={className} href={href} target="_blank" rel="noreferrer">
         {children}
       </a>
     );
   }
   return (
-    <Link className={className} href={href} onClick={onOpen}>
+    <Link className={className} href={href}>
       {children}
     </Link>
   );

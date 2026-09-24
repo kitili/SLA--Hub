@@ -8,10 +8,8 @@ import {
   hubEntryHref,
   isDepartmentPath,
   isExternalUrl,
-  lastDeskFromPath,
   type Department,
 } from "@/lib/departments";
-import { LAST_DESK_KEY } from "@/lib/last-desk";
 import { signOutAction } from "@/lib/actions/auth";
 import BrandLogo from "@/components/BrandLogo";
 import { ActivityIcon, CloseIcon, DepartmentIcon, MenuIcon } from "@/components/icons";
@@ -39,8 +37,6 @@ export default function HubShell({
 
   useEffect(() => {
     setMenuOpen(false);
-    const desk = lastDeskFromPath(pathname);
-    if (desk) window.localStorage.setItem(LAST_DESK_KEY, desk);
   }, [pathname]);
 
   useEffect(() => {
@@ -91,7 +87,6 @@ export default function HubShell({
               href={href}
               target="_blank"
               rel="noreferrer"
-              onClick={() => window.localStorage.setItem(LAST_DESK_KEY, href)}
             >
               {label}
             </a>
@@ -103,7 +98,6 @@ export default function HubShell({
             href={href}
             data-active={active}
             aria-current={active ? "page" : undefined}
-            onClick={() => window.localStorage.setItem(LAST_DESK_KEY, href)}
           >
             {label}
           </Link>

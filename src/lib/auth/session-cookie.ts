@@ -9,16 +9,16 @@
  * Cookie name:   `__Host-sla_session` (or `__sla_session` over local http)
  * Algorithm:     HMAC-SHA256 (Web Crypto)
  *
- * Lifetime is a 15-minute sliding idle window — the same default as the
- * client idle-logout warning. Activity (page navigations via middleware, or
- * the `touchSessionAction` heartbeat) issues a fresh `exp`. Closing the
- * browser and returning after 15 minutes requires signing in again.
+ * Lifetime is a 30-minute sliding idle window — the same default as the
+ * client screen-time warning. Activity (page navigations via middleware, or
+ * the `touchSessionAction` heartbeat) issues a fresh `exp`. Leaving the
+ * screen idle for 30 minutes requires signing in again.
  */
 
 import type { NextRequest, NextResponse } from "next/server";
 
-/** Idle window before the signed session is rejected. Matches IdleLogout. */
-export const SESSION_TTL_MS = 8 * 60 * 60 * 1000;
+/** Idle window before the signed session cookie is rejected. Matches IdleLogout. */
+export const SESSION_TTL_MS = 30 * 60 * 1000;
 
 /** Rewrite the cookie at most once a minute to keep the idle window sliding. */
 export const SESSION_SLIDE_AFTER_MS = 60 * 1000;
@@ -30,7 +30,7 @@ export interface SessionPayload {
   /**
    * Admin flag copied from the staff row at sign-in so RLS GUCs can be set
    * before the first DB round-trip. Re-checked against the DB in
-   * `getCurrentUser()`; stale for at most the 15-minute idle window.
+   * `getCurrentUser()`; stale for at most the 30-minute idle window.
    */
   isAdmin?: boolean;
   /** Issued-at (epoch ms). */

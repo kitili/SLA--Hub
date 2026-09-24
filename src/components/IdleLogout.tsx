@@ -30,10 +30,10 @@ import styles from "./IdleLogout.module.css";
 
 /**
  * Idle window before sign-out, and how long before that the warning shows.
- * Both default to 15 min / 1 min but can be shortened via public env vars
- * (used by the e2e suite to exercise the flow quickly).
+ * Screen time defaults to 30 minutes, with a 1 minute warning. Tests can
+ * shorten both via public env vars.
  */
-const IDLE_MS = Number(process.env.NEXT_PUBLIC_IDLE_TIMEOUT_MS) || 8 * 60 * 60 * 1000;
+const IDLE_MS = Number(process.env.NEXT_PUBLIC_IDLE_TIMEOUT_MS) || 30 * 60 * 1000;
 const WARN_MS = Number(process.env.NEXT_PUBLIC_IDLE_WARN_MS) || 60 * 1000;
 /** Shared key so activity in any tab resets the idle clock everywhere. */
 const STORAGE_KEY = "sla:lastActivity";

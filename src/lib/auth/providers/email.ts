@@ -5,7 +5,7 @@
  * swap it for `inbound-trust` later without touching any call site.
  *
  * Cookie encoding lives in `session-cookie.ts` so Edge middleware can slide
- * or expire the same payload. Lifetime is a 15-minute idle window.
+ * or expire the same payload. Lifetime is a 30-minute idle window.
  */
 
 import "server-only";
