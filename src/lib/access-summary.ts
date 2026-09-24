@@ -92,11 +92,15 @@ export function buildAccessSessions(events: AccessEventLike[]): AccessSession[] 
         current = begin();
         continue;
       }
-      if (!current) current = begin();
-      if (event.action === "opened_desk" && event.part && !current.desks.includes(event.part)) {
-        current.desks.push(event.part);
+      if (event.action === "opened_hub") {
+        continue;
       }
-      if (event.action === "signed_out") {
+      if (event.action === "opened_desk") {
+        if (!current) current = begin();
+        else if (event.part && !current.desks.includes(event.part)) current.desks.push(event.part);
+        continue;
+      }
+      if (event.action === "signed_out" && current) {
         current.outAt = event.at;
         sessions.push(current);
         current = undefined;

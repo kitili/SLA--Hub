@@ -11,6 +11,13 @@ import { departments } from "@/lib/departments";
 import type { AccessPersonOption } from "@/lib/db/repositories/access";
 import styles from "./ActivityLog.module.css";
 
+function initials(name: string, email: string) {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length >= 2) return `${parts[0][0]}${parts[1][0]}`.toUpperCase();
+  if (parts[0]) return parts[0].slice(0, 2).toUpperCase();
+  return email.slice(0, 2).toUpperCase();
+}
+
 export type ActivityRow = {
   id: string;
   staffId: string;
@@ -134,50 +141,37 @@ export default function ActivityLog({
       <section className={styles.section}>
         <div className={styles.sectionHead}>
           <h2>Time in and time out</h2>
-          <p>One row per visit. Dashboards are the desks they opened from the hub during that visit.</p>
+          <p>Each visit, with the desks they opened.</p>
         </div>
         {sessions.length === 0 ? (
           <p className={styles.empty}>No visits in this filter. Widen the dates or clear a person/desk.</p>
         ) : (
-          <div className={styles.tableWrap}>
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  {person ? null : <th>Who</th>}
-                  <th>Time in</th>
-                  <th>Time out</th>
-                  <th>Stay</th>
-                  <th>Dashboards touched</th>
-                  {person ? null : (
-                    <th>
-                      <span className={styles.srOnly}>Open record</span>
-                    </th>
-                  )}
-                </tr>
-              </thead>
-              <tbody>
-                {sessions.map((session) => (
-                  <tr key={session.id}>
-                    {person ? null : (
-                      <td>
-                        <strong>{session.name}</strong>
-                        <span>{session.email}</span>
-                      </td>
-                    )}
-                    <td>{formatAccessWhen(session.inAt)}</td>
-                    <td>{session.outAt ? formatAccessWhen(session.outAt) : "Still in"}</td>
-                    <td>{session.outAt ? formatStayLength(session.inAt, session.outAt) : "Open"}</td>
-                    <td>{session.desks.length ? session.desks.join(", ") : "Hub only"}</td>
-                    {person ? null : (
-                      <td>
-                        <Link href={accessPersonHref(session.staffId, query)}>View times</Link>
-                      </td>
-                    )}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <ul className={styles.visits}>
+            {sessions.map((session) => (
+              <li key={session.id} className={styles.visit}>
+                {person ? null : (
+                  <span className={styles.visitWho}>
+                    <i aria-hidden="true">{initials(session.name, session.email)}</i>
+                    <strong>{session.name}</strong>
+                    <em>{session.email}</em>
+                  </span>
+                )}
+                <span className={styles.visitTimes}>
+                  <strong>{formatAccessWhen(session.inAt)}</strong>
+                  <em>{session.outAt ? formatAccessWhen(session.outAt) : "Still in"}</em>
+                  <b>{session.outAt ? formatStayLength(session.inAt, session.outAt) : "Open"}</b>
+                </span>
+                <span className={styles.visitDesks}>
+                  {session.desks.length
+                    ? session.desks.map((desk) => <em key={desk}>{desk}</em>)
+                    : <em>Hub only</em>}
+                </span>
+                {person ? null : (
+                  <Link href={accessPersonHref(session.staffId, query)}>View</Link>
+                )}
+              </li>
+            ))}
+          </ul>
         )}
       </section>
 
