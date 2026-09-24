@@ -74,6 +74,7 @@ export default function HubShell({
           Who entered
         </Link>
       ) : null}
+      <p className={styles.sectionLabel}>Desks</p>
       {departments.map((department) => {
         const href = hubEntryHref(department);
         const active = isDepartmentPath(pathname, department);

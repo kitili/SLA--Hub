@@ -68,7 +68,9 @@ export default function HubHome({
       <section className={styles.hero}>
         <p className={styles.heroKicker}>Silverleaf workplace</p>
         <h1 className={styles.heroTitle}>{firstName ? `Karibu, ${firstName}` : "Karibu"}</h1>
-        <p className={styles.heroBody}>Choose a desk. One click opens that system.</p>
+        <p className={styles.heroBody}>
+          {departments.length} desks. One click opens the live system.
+        </p>
         <div className={styles.heroMeta}>
           <span>{today || "Tanzania"}</span>
           <span>Signed in on this device</span>
@@ -96,6 +98,11 @@ export default function HubHome({
       ) : null}
 
       <div className={styles.toolbar}>
+        <p className={styles.count}>
+          {filtered.length === departments.length
+            ? `${departments.length} desks`
+            : `${filtered.length} of ${departments.length}`}
+        </p>
         <label className={styles.search}>
           <SearchIcon className={styles.searchIcon} />
           <span className={styles.srOnly}>Find a desk</span>

@@ -113,6 +113,16 @@
   margin: 1.35rem 0 1rem;
 }
 
+.count {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--electric-blue);
+  white-space: nowrap;
+}
+
 .search {
   position: relative;
   flex: 1;
@@ -146,12 +156,6 @@
   box-shadow: var(--focus-ring);
 }
 
-.count {
-  font-size: 0.82rem;
-  color: var(--ink-faint);
-  white-space: nowrap;
-}
-
 .empty {
   background: var(--card);
   border: 1px dashed var(--card-border);
@@ -162,7 +166,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
 }
 
@@ -252,10 +256,15 @@
 .cardOpen {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  margin-top: 0.85rem;
-  color: var(--electric-blue);
-  font-size: 0.85rem;
+  gap: 0.35rem;
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 0.42rem 0.75rem;
+  border-radius: 999px;
+  background: var(--gold-15);
+  border: 1px solid var(--gold);
+  color: var(--navy-dark);
+  font-size: 0.82rem;
   font-weight: 800;
 }
 
