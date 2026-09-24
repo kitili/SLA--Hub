@@ -247,7 +247,7 @@ export const departments: Department[] = [
     branch: "main",
     deskPath: "desks/visitors",
   },
-];
+].sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
 
 export function getDepartment(slug: string): Department | undefined {
   return departments.find((department) => department.id === slug);
@@ -298,7 +298,9 @@ export function resolveDepartment(department: Department): Department {
 }
 
 export function resolveDepartments(): Department[] {
-  return departments.map(resolveDepartment);
+  return departments
+    .map(resolveDepartment)
+    .sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
 }
 
 export function getLiveUrl(department: Department): string {
