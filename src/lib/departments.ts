@@ -247,7 +247,9 @@ export const departments: Department[] = [
     branch: "main",
     deskPath: "desks/visitors",
   },
-].sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
+];
+
+departments.sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
 
 export function getDepartment(slug: string): Department | undefined {
   return departments.find((department) => department.id === slug);
