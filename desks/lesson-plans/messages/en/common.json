@@ -1,0 +1,25 @@
+{
+  "common": {
+    "loading": "Loading…",
+    "save": "Save",
+    "cancel": "Cancel",
+    "next": "Next",
+    "back": "Back",
+    "submit": "Submit",
+    "language": "Language",
+    "english": "English",
+    "swahili": "Swahili"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "search": "Search",
+    "admin": "Admin",
+    "signOut": "Sign out"
+  },
+  "adminGate": {
+    "title": "Admin access only",
+    "body": "This area is for administrators. Your account doesn't have admin access. If you think this is a mistake, please contact your line manager.",
+    "dismiss": "Got it",
+    "close": "Close"
+  }
+}

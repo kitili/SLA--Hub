@@ -1,0 +1,50 @@
+{
+  "name": "silverleaf-backend",
+  "version": "3.0.0",
+  "description": "Silverleaf Academy — Multi-Campus Management System API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "db:migrate": "psql \"$DATABASE_URL\" -f ../sql/001_migration.sql && psql \"$DATABASE_URL\" -f ../sql/002_lead_form_reminders.sql && psql \"$DATABASE_URL\" -f ../sql/003_admission_form_document.sql && psql \"$DATABASE_URL\" -f ../sql/004_enrolment_tracking.sql && psql \"$DATABASE_URL\" -f ../sql/005_fix_enrolled_stage_view.sql && psql \"$DATABASE_URL\" -f ../sql/006_interview_and_dead_lead.sql && psql \"$DATABASE_URL\" -f ../sql/007_agentic_readiness.sql && psql \"$DATABASE_URL\" -f ../sql/008_lead_contact_and_ops.sql && psql \"$DATABASE_URL\" -f ../sql/009_edadmin_owns_students.sql && psql \"$DATABASE_URL\" -f ../sql/010_agent_loop.sql && psql \"$DATABASE_URL\" -f ../sql/011_edadmin_directory.sql && psql \"$DATABASE_URL\" -f ../sql/012_ceo_role.sql && psql \"$DATABASE_URL\" -f ../sql/013_buffer_source.sql && psql \"$DATABASE_URL\" -f ../sql/014_user_feedback.sql && psql \"$DATABASE_URL\" -f ../sql/015_feedback_queries.sql",
+    "db:migrate-011": "node -e \"require('dotenv').config(); const fs=require('fs'); const db=require('./db'); db.query(fs.readFileSync('../sql/011_edadmin_directory.sql','utf8')).then(()=>{console.log('011 applied'); process.exit(0)}).catch(e=>{console.error(e.message); process.exit(1)})\"",
+    "db:migrate-012": "node -e \"require('dotenv').config(); const fs=require('fs'); const db=require('./db'); db.query(fs.readFileSync('../sql/012_ceo_role.sql','utf8')).then(()=>{console.log('012 applied'); process.exit(0)}).catch(e=>{console.error(e.message); process.exit(1)})\"",
+    "db:migrate-013": "node -e \"require('dotenv').config(); const fs=require('fs'); const db=require('./db'); db.query(fs.readFileSync('../sql/013_buffer_source.sql','utf8')).then(()=>{console.log('013 applied'); process.exit(0)}).catch(e=>{console.error(e.message); process.exit(1)})\"",
+    "db:migrate-014": "node -e \"require('dotenv').config(); const fs=require('fs'); const db=require('./db'); db.query(fs.readFileSync('../sql/014_user_feedback.sql','utf8')).then(()=>{console.log('014 applied'); process.exit(0)}).catch(e=>{console.error(e.message); process.exit(1)})\"",
+    "db:migrate-015": "node -e \"require('dotenv').config(); const fs=require('fs'); const db=require('./db'); db.query(fs.readFileSync('../sql/015_feedback_queries.sql','utf8')).then(()=>{console.log('015 applied'); process.exit(0)}).catch(e=>{console.error(e.message); process.exit(1)})\"",
+    "db:seed": "node seed.js",
+    "test:security": "node scripts/smoke-security.js",
+    "test:marketing": "node scripts/smoke-marketing.js",
+    "test:live": "node scripts/smoke-live.js",
+    "test:loop": "node scripts/smoke-loop.js",
+    "test:stack": "node scripts/smoke-stack.js",
+    "db:seed-marketing": "node scripts/seed-marketing-dashboard.js --fresh",
+    "db:seed-marketing-team": "node scripts/seed-marketing-team.js",
+    "db:import-leads-tracker": "node scripts/import-leads-tracker.js --fresh",
+    "db:sync-edadmin": "node scripts/probe-edadmin.js --sync"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.110.2",
+    "africastalking": "^0.5.0",
+    "axios": "^1.6.2",
+    "bcryptjs": "^3.0.3",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.7",
+    "pg": "^8.11.3",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,63 @@
+name: CI
+
+# Push runs only on main so PR commits trigger a single pipeline (the
+# pull_request event) instead of two identical ones.
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  build:
+    name: Typecheck, lint, build, and test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Unit tests
+        run: npm run test
+
+  e2e:
+    name: Playwright e2e (experimental, non-blocking)
+    runs-on: ubuntu-latest
+    # EXPERIMENTAL: this job does not block merges yet. Playwright's webServer
+    # runs `npm run dev` against seeded PGlite (see playwright.config.ts), so
+    # no production build is needed here. Remove continue-on-error once the
+    # suite has proven stable on CI.
+    continue-on-error: true
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run e2e tests
+        run: npm run e2e

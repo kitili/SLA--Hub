@@ -1,0 +1,1 @@
+ALTER TABLE "tool_allocations" ADD COLUMN "allocated_to_person_name" text;

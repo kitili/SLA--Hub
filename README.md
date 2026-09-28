@@ -14,13 +14,15 @@ npm run dev
 
 Open [http://localhost:3100](http://localhost:3100). Use an `@silverleaf.co.tz` or `@silverleaf.ac.tz` address. In development the OTP is printed in the terminal and on the sign-in screen.
 
-## Bring the other systems here
+## Department source in this repo
 
-Each live site has its own GitHub repo. This hub does **not** copy those apps into one Next.js tree (they use different frameworks, databases, and logins). It clones the current production branch into `desks/` so you can work on them from this workspace and keep them aligned with live.
+Copies of each system live under [`desks/`](desks/README.md) (`desks/ops`, `desks/marketing`, and the rest). Those folders are snapshots. The original repos and live sites stay as they are — this hub still opens the hosted URLs.
 
 ```bash
 npm run desks:sync
 ```
+
+`desks:sync` can refresh a local checkout. Do not push from `desks/` to an original department remote.
 
 | Department | In this workspace | Live site | Local |
 |---|---|---|---|
@@ -70,7 +72,7 @@ That installs a 06:00 crontab that runs `npm run desks:sync`. Run it now any tim
 
 **On GitHub:** `.github/workflows/sync-desks.yml` runs at 06:00 East Africa Time and commits the lockfile. Give the workflow a token that can read the private desk repos, or keep using the local cron.
 
-Work in each desk the usual way (`cd desks/ops`, branch, PR, push). Do not merge those apps into `src/` — pull them, do not paste them.
+Production changes still belong in each system’s own GitHub repo. The copies in `desks/` are for reading and combining in this workplace repository.
 
 ## Auth
 

@@ -1,0 +1,25 @@
+{
+  "slaBot": {
+    "kicker": "Onboarding helper",
+    "title": "SLA-bot",
+    "open": "Ask SLA-bot",
+    "close": "Close",
+    "welcome": "Ask about sections, policies, signatures, or what to do next. I use the live hub content and your progress. Feedback goes to HR; tech issues go to Mourine and IT.",
+    "placeholder": "Ask a question, or type feedback / a tech issue…",
+    "send": "Send",
+    "sending": "Sending…",
+    "error": "SLA-bot could not reply. Try again in a moment.",
+    "starters": {
+      "help": "What can you help with?",
+      "whatNext": "What should I do next in onboarding?",
+      "feedback": "Feedback: the policy section was clear but I want more examples.",
+      "tech": "Tech issue: I cannot open a policy PDF on my phone."
+    },
+    "starterLabels": {
+      "help": "Help",
+      "whatNext": "What’s next?",
+      "feedback": "Send feedback",
+      "tech": "Report tech issue"
+    }
+  }
+}

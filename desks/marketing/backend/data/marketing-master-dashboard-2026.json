@@ -1,0 +1,1006 @@
+{
+  "source_file": "Marketing Master Dashboard Ongoing- Last Updated Feb, 2026.xlsx",
+  "leads_register_source": "Leads Tracker_2026.xlsx",
+  "updated": "2026-02",
+  "cluster": {
+    "target_enrollment_2026": 1455,
+    "enrolled_admission_paid": 417,
+    "interested_leads": 884,
+    "passed_interview": 70,
+    "failed_interview": 29,
+    "registered_form_filled": 26,
+    "dead_leads": 327,
+    "total_leads": 954,
+    "conversion_rate": 0.3
+  },
+  "campus_funnel": {
+    "ACC": {
+      "name": "Arusha City Campus",
+      "target_enrollment": 370,
+      "enrolled_admission_paid": 112,
+      "interested": 258,
+      "passed_interview": 63,
+      "failed_interview": 0,
+      "registered": 0,
+      "dead_leads": 29,
+      "total_leads": 321,
+      "conversion_rate": 0.349
+    },
+    "USR": {
+      "name": "Usa River Campus",
+      "target_enrollment": 900,
+      "enrolled_admission_paid": 232,
+      "interested": 315,
+      "passed_interview": 7,
+      "failed_interview": 4,
+      "registered": 23,
+      "dead_leads": 154,
+      "total_leads": 322,
+      "conversion_rate": 0.72
+    },
+    "BOM": {
+      "name": "Boma",
+      "target_enrollment": 100,
+      "enrolled_admission_paid": 26,
+      "interested": 227,
+      "passed_interview": 0,
+      "failed_interview": 0,
+      "registered": 0,
+      "dead_leads": 44,
+      "total_leads": 227,
+      "conversion_rate": 0.115
+    },
+    "KJG": {
+      "name": "Kijenge",
+      "total_leads": 32,
+      "interested": 32,
+      "enrolled_admission_paid": 16,
+      "dead_leads": 0
+    },
+    "ILB": {
+      "name": "Ilboru",
+      "total_leads": 16,
+      "interested": 16,
+      "enrolled_admission_paid": 7,
+      "dead_leads": 0
+    }
+  },
+  "weekly_leads_by_month": {
+    "USR": {
+      "Jan": 245,
+      "Feb": 35,
+      "Mar": 5,
+      "Apr": 12
+    },
+    "KJG": {
+      "Jan": 23,
+      "Feb": 8,
+      "Mar": 0,
+      "Apr": 1
+    },
+    "ILB": {
+      "Jan": 12,
+      "Feb": 2,
+      "Mar": 1,
+      "Apr": 1
+    },
+    "ACC": {
+      "Jan": 39,
+      "Feb": 0,
+      "Mar": 0,
+      "Apr": 5
+    },
+    "BOM": {
+      "Jan": 0,
+      "Feb": 0,
+      "Mar": 0,
+      "Apr": 0
+    }
+  },
+  "social_following": [
+    {
+      "platform": "instagram",
+      "month": 1,
+      "year": 2026,
+      "followers": 3984,
+      "target_followers": 4000,
+      "date": "2026-01-31"
+    },
+    {
+      "platform": "instagram",
+      "month": 2,
+      "year": 2026,
+      "followers": 4116,
+      "target_followers": 4100,
+      "date": "2026-02-28"
+    },
+    {
+      "platform": "instagram",
+      "month": 3,
+      "year": 2026,
+      "followers": 4225,
+      "target_followers": 4200,
+      "date": "2026-03-31"
+    },
+    {
+      "platform": "instagram",
+      "month": 4,
+      "year": 2026,
+      "followers": 4259,
+      "target_followers": 4300,
+      "date": "2026-04-30"
+    },
+    {
+      "platform": "instagram",
+      "month": 5,
+      "year": 2026,
+      "followers": 4262,
+      "target_followers": 4400,
+      "date": "2026-05-31"
+    },
+    {
+      "platform": "facebook",
+      "month": 1,
+      "year": 2026,
+      "followers": 1810,
+      "target_followers": 1850,
+      "date": "2026-01-31"
+    },
+    {
+      "platform": "facebook",
+      "month": 2,
+      "year": 2026,
+      "followers": 1833,
+      "target_followers": 1900,
+      "date": "2026-02-28"
+    },
+    {
+      "platform": "facebook",
+      "month": 3,
+      "year": 2026,
+      "followers": 1849,
+      "target_followers": 1950,
+      "date": "2026-03-31"
+    },
+    {
+      "platform": "facebook",
+      "month": 4,
+      "year": 2026,
+      "followers": 1852,
+      "target_followers": 2000,
+      "date": "2026-04-30"
+    },
+    {
+      "platform": "facebook",
+      "month": 5,
+      "year": 2026,
+      "followers": 1854,
+      "target_followers": 2050,
+      "date": "2026-05-31"
+    },
+    {
+      "platform": "linkedin",
+      "month": 1,
+      "year": 2026,
+      "followers": 980,
+      "target_followers": 1080,
+      "date": "2026-01-31"
+    },
+    {
+      "platform": "linkedin",
+      "month": 2,
+      "year": 2026,
+      "followers": 1010,
+      "target_followers": 1180,
+      "date": "2026-02-28"
+    },
+    {
+      "platform": "linkedin",
+      "month": 3,
+      "year": 2026,
+      "followers": 1134,
+      "target_followers": 1280,
+      "date": "2026-03-31"
+    },
+    {
+      "platform": "linkedin",
+      "month": 4,
+      "year": 2026,
+      "followers": 1314,
+      "target_followers": 1380,
+      "date": "2026-04-30"
+    },
+    {
+      "platform": "linkedin",
+      "month": 5,
+      "year": 2026,
+      "followers": 1320,
+      "target_followers": 1480,
+      "date": "2026-05-31"
+    },
+    {
+      "platform": "tiktok",
+      "month": 5,
+      "year": 2026,
+      "followers": 0,
+      "target_followers": 500,
+      "date": "2026-05-15"
+    },
+    {
+      "platform": "youtube",
+      "month": 5,
+      "year": 2026,
+      "followers": 40,
+      "target_followers": 80,
+      "date": "2026-05-15"
+    }
+  ],
+  "social_output": [
+    {
+      "platform": "instagram",
+      "month": 1,
+      "posts_count": 40,
+      "stories_count": 35,
+      "ads_count": 1,
+      "date": "2026-01-31"
+    },
+    {
+      "platform": "instagram",
+      "month": 2,
+      "posts_count": 57,
+      "stories_count": 28,
+      "ads_count": 4,
+      "date": "2026-02-28"
+    },
+    {
+      "platform": "instagram",
+      "month": 3,
+      "posts_count": 67,
+      "stories_count": 26,
+      "ads_count": 4,
+      "date": "2026-03-31"
+    },
+    {
+      "platform": "instagram",
+      "month": 4,
+      "posts_count": 50,
+      "stories_count": 25,
+      "ads_count": 3,
+      "date": "2026-04-30"
+    },
+    {
+      "platform": "facebook",
+      "month": 1,
+      "posts_count": 40,
+      "stories_count": 35,
+      "ads_count": 1,
+      "date": "2026-01-31"
+    },
+    {
+      "platform": "facebook",
+      "month": 2,
+      "posts_count": 57,
+      "stories_count": 27,
+      "ads_count": 2,
+      "date": "2026-02-28"
+    },
+    {
+      "platform": "facebook",
+      "month": 3,
+      "posts_count": 67,
+      "stories_count": 26,
+      "ads_count": 1,
+      "date": "2026-03-31"
+    },
+    {
+      "platform": "facebook",
+      "month": 4,
+      "posts_count": 50,
+      "stories_count": 25,
+      "ads_count": 2,
+      "date": "2026-04-30"
+    }
+  ],
+  "campaigns": [
+    {
+      "name": "Radio 5 Arusha \u2014 2026",
+      "type": "radio",
+      "station_name": "Radio 5 Arusha",
+      "budget": 1200000,
+      "spent": 600000,
+      "status": "active",
+      "start_date": "2026-03-01",
+      "end_date": "2026-12-31",
+      "leads_generated": 45
+    },
+    {
+      "name": "Sunrise Radio \u2014 Q1 2026",
+      "type": "radio",
+      "station_name": "Sunrise Radio",
+      "budget": 900000,
+      "spent": 450000,
+      "status": "active",
+      "start_date": "2026-03-01",
+      "end_date": "2026-06-30",
+      "leads_generated": 28
+    },
+    {
+      "name": "Safina Radio \u2014 Q4 2026",
+      "type": "radio",
+      "station_name": "Safina Radio",
+      "budget": 550000,
+      "spent": 0,
+      "status": "draft",
+      "start_date": "2026-11-01",
+      "end_date": "2026-12-31",
+      "leads_generated": 0
+    },
+    {
+      "name": "Paid Ads \u2014 Instagram & Facebook 2026",
+      "type": "social_media",
+      "platform": "instagram",
+      "budget": 2817000,
+      "spent": 939000,
+      "status": "active",
+      "start_date": "2026-01-01",
+      "end_date": "2026-12-31",
+      "leads_generated": 120,
+      "conversions": 38
+    },
+    {
+      "name": "Brochures \u2014 Usa & Mbegu sites",
+      "type": "other",
+      "budget": 1050000,
+      "spent": 350000,
+      "status": "active",
+      "start_date": "2026-01-01",
+      "end_date": "2026-12-31",
+      "leads_generated": 15
+    }
+  ],
+  "enrollment_targets": {
+    "company_total_enrolled": 1195,
+    "company_occupancy_pct": 0.797,
+    "company_target_seats": 1500
+  },
+  "referral_leads": [
+    {
+      "parent_name": "Referral parent 1",
+      "child_name": "Child 1",
+      "interested_class": "KG2",
+      "campus_code": "ACC",
+      "source": "referral",
+      "source_detail": "Staff referral"
+    },
+    {
+      "parent_name": "Referral parent 1",
+      "child_name": "Child 2",
+      "interested_class": "G1",
+      "campus_code": "ACC",
+      "source": "referral",
+      "source_detail": "Staff referral"
+    },
+    {
+      "parent_name": "Referral parent 2",
+      "child_name": "Child 3",
+      "interested_class": "G1",
+      "campus_code": "ACC",
+      "source": "referral",
+      "source_detail": "Staff referral"
+    },
+    {
+      "parent_name": "Referral parent 2",
+      "child_name": "Child 4",
+      "interested_class": "KG1",
+      "campus_code": "USR",
+      "source": "referral",
+      "source_detail": "Staff referral"
+    },
+    {
+      "parent_name": "Referral parent 3",
+      "child_name": "Child 5",
+      "interested_class": "G1",
+      "campus_code": "ACC",
+      "source": "referral",
+      "source_detail": "Staff referral"
+    },
+    {
+      "parent_name": "Referral parent 4",
+      "child_name": "Child 6",
+      "interested_class": "G6",
+      "campus_code": "ACC",
+      "source": "referral",
+      "source_detail": "Staff referral"
+    },
+    {
+      "parent_name": "Referral parent 5",
+      "child_name": "Child 7",
+      "interested_class": "KG1",
+      "campus_code": "USR",
+      "source": "referral",
+      "source_detail": "Staff referral"
+    },
+    {
+      "parent_name": "Referral parent 6",
+      "child_name": "Child 8",
+      "interested_class": "Daycare",
+      "campus_code": "USR",
+      "source": "referral",
+      "source_detail": "Staff referral"
+    },
+    {
+      "parent_name": "Referral parent 7",
+      "child_name": "Child 9",
+      "interested_class": "KG1",
+      "campus_code": "USR",
+      "source": "referral",
+      "source_detail": "Staff referral"
+    },
+    {
+      "parent_name": "Referral parent 8",
+      "child_name": "Child 10",
+      "interested_class": "Daycare",
+      "campus_code": "USR",
+      "source": "referral",
+      "source_detail": "Staff referral"
+    },
+    {
+      "parent_name": "Referral parent 9",
+      "child_name": "Child 11",
+      "interested_class": "G1",
+      "campus_code": "USR",
+      "source": "referral",
+      "source_detail": "Staff referral"
+    },
+    {
+      "parent_name": "Referral parent 9",
+      "child_name": "Child 12",
+      "interested_class": "G1",
+      "campus_code": "USR",
+      "source": "referral",
+      "source_detail": "Staff referral"
+    }
+  ],
+  "formulas_file": "backend/data/marketing-sheet-formulas-2026.json",
+  "formulas_summary": {
+    "workbook_cells": 2337,
+    "native_formulas": 1196,
+    "google_import_cells": 1141,
+    "unique_patterns": 55,
+    "core_rules": [
+      {
+        "name": "occupancy_pct",
+        "formula": "actual_students / max_capacity",
+        "sheet": "Enrollment 26"
+      },
+      {
+        "name": "remaining_seats",
+        "formula": "max_capacity - actual_students",
+        "sheet": "Enrollment 26"
+      },
+      {
+        "name": "available_seats",
+        "formula": "target_enrollment - retained_students",
+        "sheet": "Leads Tracker 26"
+      },
+      {
+        "name": "live_enrollment",
+        "formula": "retained + new_enrolled - dropouts",
+        "sheet": "Leads Tracker 26"
+      },
+      {
+        "name": "campus_conversion",
+        "formula": "admission_paid / total_leads",
+        "sheet": "Leads Tracker 26"
+      },
+      {
+        "name": "monthly_conversion",
+        "formula": "enrolled_that_month / leads_that_month",
+        "sheet": "Weekly Snapshot"
+      },
+      {
+        "name": "kpi_progress",
+        "formula": "actual / target",
+        "sheet": "2. Top Sheet / 2026 Top sheet"
+      },
+      {
+        "name": "week_variance",
+        "formula": "current_week - previous_week",
+        "sheet": "2026 Weekly Snapshot."
+      },
+      {
+        "name": "company_enrollment",
+        "formula": "Enrollment 26!D77 + K55 + R55",
+        "sheet": "2. Top Sheet"
+      },
+      {
+        "name": "social_following_actual",
+        "formula": "instagram + facebook + linkedin",
+        "sheet": "SM Following 26"
+      },
+      {
+        "name": "social_following_vs_target",
+        "formula": "actual_total / target_total",
+        "sheet": "SM Following 26"
+      },
+      {
+        "name": "social_output_month",
+        "formula": "SUM(posts + stories) across platforms",
+        "sheet": "SM Output 26"
+      },
+      {
+        "name": "budget_line",
+        "formula": "SUM(monthly_qty) * unit_cost; remaining = budget - spent",
+        "sheet": "2026 budget"
+      },
+      {
+        "name": "staff_referral_pay",
+        "formula": "COUNTA(students) * 25000",
+        "sheet": "2026 Staff Referals"
+      },
+      {
+        "name": "sales_rep_pay",
+        "formula": "COUNTA(students) * 25000; tax = 5%; net = gross - tax",
+        "sheet": "Sales Rep Commission"
+      },
+      {
+        "name": "feeder_daycare_pay",
+        "formula": "agreed_amount * referral_count",
+        "sheet": "Feeder Daycare Commissions"
+      },
+      {
+        "name": "parent_referral_count",
+        "formula": "COUNTA(students referred)",
+        "sheet": "Parents Commission"
+      }
+    ]
+  },
+  "occupancy_by_grade": {
+    "source": "Enrollment 26 aggregated block",
+    "grades": [
+      {
+        "grade": "Daycare",
+        "actual": 58,
+        "capacity": 100,
+        "occupancy_pct": 0.58,
+        "remaining": 42
+      },
+      {
+        "grade": "KG1",
+        "actual": 77,
+        "capacity": 75,
+        "occupancy_pct": 1.027,
+        "remaining": -2
+      },
+      {
+        "grade": "KG2",
+        "actual": 79,
+        "capacity": 80,
+        "occupancy_pct": 0.988,
+        "remaining": 1
+      },
+      {
+        "grade": "G1",
+        "actual": 57,
+        "capacity": 60,
+        "occupancy_pct": 0.95,
+        "remaining": 3
+      },
+      {
+        "grade": "G2",
+        "actual": 86,
+        "capacity": 90,
+        "occupancy_pct": 0.956,
+        "remaining": 4
+      },
+      {
+        "grade": "G3",
+        "actual": 70,
+        "capacity": 90,
+        "occupancy_pct": 0.778,
+        "remaining": 20
+      },
+      {
+        "grade": "G4",
+        "actual": 34,
+        "capacity": 45,
+        "occupancy_pct": 0.756,
+        "remaining": 11
+      },
+      {
+        "grade": "G5",
+        "actual": 35,
+        "capacity": 45,
+        "occupancy_pct": 0.778,
+        "remaining": 10
+      },
+      {
+        "grade": "G6",
+        "actual": 25,
+        "capacity": 45,
+        "occupancy_pct": 0.556,
+        "remaining": 20
+      },
+      {
+        "grade": "G7",
+        "actual": 31,
+        "capacity": 45,
+        "occupancy_pct": 0.689,
+        "remaining": 14
+      }
+    ],
+    "totals": {
+      "actual": 552,
+      "capacity": 675,
+      "remaining": 123
+    }
+  },
+  "campus_occupancy": {
+    "USR": {
+      "boarding": {
+        "students": 155,
+        "capacity": 160,
+        "pct": 0.969
+      },
+      "transport": {
+        "students": 339,
+        "capacity": 420,
+        "pct": 0.807
+      },
+      "enrolled": 710,
+      "capacity": 810,
+      "pct": 0.877
+    },
+    "ILB": {
+      "enrolled": 36,
+      "capacity": 50,
+      "pct": 0.72
+    },
+    "KJG": {
+      "enrolled": 49,
+      "capacity": 75,
+      "pct": 0.653
+    },
+    "cluster_2025_style": {
+      "enrolled": 848,
+      "capacity": 935,
+      "pct": 0.907
+    }
+  },
+  "dropouts_ytd": {
+    "USR": 38,
+    "ACC": 9,
+    "KJG": 12,
+    "ILB": 8,
+    "BOM": 12,
+    "grand_total": 79,
+    "by_grade": {
+      "Daycare": {
+        "USR": 0,
+        "ACC": 0,
+        "KJG": 6,
+        "ILB": 3,
+        "BOM": 2
+      },
+      "KG1": {
+        "USR": 0,
+        "ACC": 1,
+        "KJG": 3,
+        "ILB": 2,
+        "BOM": 2
+      },
+      "KG2": {
+        "USR": 11,
+        "ACC": 1,
+        "KJG": 3,
+        "ILB": 3,
+        "BOM": 6
+      },
+      "G1": {
+        "USR": 7,
+        "ACC": 2,
+        "BOM": 1
+      },
+      "G2": {
+        "USR": 4,
+        "ACC": 3,
+        "BOM": 1
+      },
+      "G3": {
+        "USR": 6,
+        "ACC": 1
+      },
+      "G4": {
+        "USR": 7,
+        "ACC": 0
+      },
+      "G5": {
+        "USR": 0,
+        "ACC": 1
+      },
+      "G6": {
+        "USR": 3,
+        "ACC": 0
+      },
+      "G7": {
+        "USR": 0,
+        "ACC": 0
+      }
+    }
+  },
+  "retained_vs_new": {
+    "cluster": {
+      "retained_2025": 814,
+      "new_paid": 413,
+      "retained_plus_new": 1225,
+      "conservative_target": 1250
+    },
+    "ACC": {
+      "retained": 136,
+      "expected": 243,
+      "new_paid": 112
+    },
+    "USR": {
+      "retained": 606,
+      "expected": 835,
+      "new_paid": 232
+    },
+    "BOM": {
+      "retained": 25,
+      "expected": 51,
+      "new_paid": 26
+    },
+    "ILB": {
+      "retained": 24,
+      "expected": 42,
+      "new_paid": 18
+    },
+    "KJG": {
+      "retained": 29,
+      "expected": 54,
+      "new_paid": 25
+    }
+  },
+  "weekly_enrollment_by_month": {
+    "USR": {
+      "Jan": 134,
+      "Feb": 32,
+      "Mar": 4,
+      "Apr": 10
+    },
+    "KJG": {
+      "Jan": 16,
+      "Feb": 0,
+      "Mar": 0,
+      "Apr": 1
+    },
+    "ILB": {
+      "Jan": 7,
+      "Feb": 1,
+      "Mar": 0,
+      "Apr": 1
+    },
+    "ACC": {
+      "Jan": 11,
+      "Feb": 0,
+      "Mar": 0,
+      "Apr": 5
+    }
+  },
+  "weekly_ops_11_15_may_2026": {
+    "week_of": "2026-05-11",
+    "enrollments": {
+      "current": 2,
+      "previous": 1,
+      "target": 120
+    },
+    "applications": {
+      "current": 2,
+      "previous": 4
+    },
+    "interviews": {
+      "current": 3,
+      "previous": 3
+    },
+    "offers": {
+      "current": 2,
+      "previous": 0
+    },
+    "conversion_app_to_enrol": {
+      "current": 1.0,
+      "previous": 0.5
+    },
+    "campus_headcount": {
+      "USR": 799,
+      "ACC": 233,
+      "KJG": 50,
+      "ILB": 38,
+      "BOM": 51
+    },
+    "leads_generated": {
+      "current": 935,
+      "previous": 929
+    },
+    "by_channel": {
+      "social_media": 2,
+      "referrals": 0,
+      "walk_ins": 12,
+      "events": 0
+    },
+    "instagram": {
+      "followers": 4381,
+      "prev_followers": 4265,
+      "reach": 27600,
+      "engagement_rate": 0.1267
+    },
+    "facebook": {
+      "engagements": 936,
+      "reactions": 202,
+      "dm_inquiries": 19
+    },
+    "linkedin": {
+      "impressions": 5000,
+      "engagement": 500
+    },
+    "tiktok": {
+      "views": 428,
+      "engagement": 36
+    },
+    "youtube": {
+      "views": 3200,
+      "watch_hours": 214,
+      "subscribers": 40
+    },
+    "partnerships": {
+      "new": 0,
+      "active": 12,
+      "leads": 7,
+      "enrollments": 0,
+      "meetings": 1
+    }
+  },
+  "top_sheet_kpis": {
+    "enrollment": {
+      "target": 935,
+      "actual": 795,
+      "progress": 0.85
+    },
+    "new_parent_leads": {
+      "target": 575,
+      "actual": 381,
+      "progress": 0.663
+    },
+    "satisfaction": {
+      "target": 9.0,
+      "actual": 7.68
+    },
+    "partnerships_per_month": {
+      "target": 10,
+      "actual": null
+    },
+    "social_following_note": "Top Sheet actual was 0 in the cached pull; SM Following 26 has live monthly counts."
+  },
+  "commission_rules": {
+    "staff_referral_tzs": 25000,
+    "sales_rep_tzs": 25000,
+    "sales_tax_pct": 0.05,
+    "feeder_daycare": "agreed_amount * count (examples: Delice 15000, Toddlers 10000)",
+    "parent_referral": "count only \u2014 amount entitled often blank in the sheet"
+  },
+  "social_weekly_april_2026": {
+    "instagram_posts": [
+      17,
+      19,
+      16,
+      14
+    ],
+    "instagram_ads": [
+      2,
+      0,
+      2,
+      0
+    ],
+    "facebook_posts": [
+      17,
+      19,
+      16,
+      14
+    ],
+    "facebook_ads": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "tiktok_posts": [
+      1,
+      1,
+      2,
+      0
+    ],
+    "linkedin_posts": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "missing_from_app": [
+    "Grade-level occupancy and remaining seats (negative = over capacity)",
+    "Retained vs new enrolled vs available seats (target \u2212 retained)",
+    "Dropouts by campus and grade (79 YTD)",
+    "Boarding vs transport occupancy at Usa River",
+    "Weekly lead + enrollment conversion by campus/month",
+    "Week-over-week ops snapshot (offers, CPL, DMs, partnerships)",
+    "Satisfaction score (target 9, last actual 7.68)",
+    "Partnerships KPI (10 new / month)",
+    "TikTok and YouTube metrics",
+    "Commission engines (staff / sales / feeder / parent)",
+    "Paid ads spend by month and card",
+    "Collateral inventory",
+    "Message House content pillars",
+    "Budget remaining vs spent by line",
+    "Per-lead Dead vs Interested \u2014 sheet is a COUNT only; tagging was manual in campus Google Sheets"
+  ],
+  "lead_vitality": {
+    "sheet_truth": "Dead Lead and Interested are imported COUNTS from https://docs.google.com/spreadsheets/d/18cfhK2Cuy_pwMIlkBiinbHb2yt1QfoGrVQkM-_2ndBc \u2014 no per-lead formula exists in this workbook.",
+    "auto_dead_if": [
+      "No movement 90+ days and still interested",
+      "45+ days, 2+ follow-ups, no tour and no form",
+      "Application reminder sequence finished 21+ days ago with no form",
+      "Two tour no-shows and 30+ days quiet"
+    ],
+    "potential_if": [
+      "Sibling or referral",
+      "Interview passed or form filled unpaid",
+      "Tour or interview booked",
+      "Created in last 7 days from walk-in / WhatsApp / form / phone",
+      "Phone + WhatsApp + email all present"
+    ]
+  },
+  "lead_fields": {
+    "must_have_to_convert": [
+      "parent_name",
+      "parent_phone",
+      "campus_id",
+      "child_name",
+      "interested_class",
+      "source"
+    ],
+    "on_form_already": [
+      "parent_email",
+      "whatsapp_number",
+      "child_age",
+      "boarding_day",
+      "campaign_id",
+      "follow_up_date",
+      "notes"
+    ],
+    "in_database_not_on_form": [
+      "parent_phone2",
+      "occupation",
+      "residence",
+      "region",
+      "child_gender",
+      "num_children",
+      "how_heard",
+      "source_detail",
+      "feeder_school_id",
+      "referrer_id",
+      "assigned_to"
+    ],
+    "add_to_reduce_manual_work": [
+      "last_contacted_at + last_contact_channel",
+      "contact_attempts + outcome (replied / no_answer / invalid / callback)",
+      "dead_reason (distinct from decline_reason)",
+      "intended_term / academic year",
+      "utm / ad creative / DM conversation id",
+      "vitality is now computed \u2014 do not add a manual hot/cold dropdown"
+    ],
+    "owned_by_ed_admin": [
+      "Enrolled students and parents (GET /api/general/v1/Students + Parents)",
+      "Sibling / returning-family is a phone match against Ed Admin \u2014 do not copy the student list into this app",
+      "After enrolment store edadmin_student_id / edadmin_ref only"
+    ]
+  }
+}

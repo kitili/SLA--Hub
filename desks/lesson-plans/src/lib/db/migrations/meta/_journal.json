@@ -1,0 +1,48 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1782290172388,
+      "tag": "0000_daily_banshee",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1782379428097,
+      "tag": "0001_stormy_lady_bullseye",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1782460165951,
+      "tag": "0002_polite_zeigeist",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1783352458605,
+      "tag": "0003_drop_workflow_run_id",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1783361471534,
+      "tag": "0004_log_fks_drop_dup_indexes",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1784279411553,
+      "tag": "0005_app_settings",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "lpFeedback": {
+    "form": {
+      "rate": "Rate this lesson plan",
+      "update": "Update your rating",
+      "starsGroupLabel": "Star rating, 1 to 5",
+      "starAriaLabel": "{count, plural, one {# star} other {# stars}} — {label}",
+      "ratingPoor": "Poor",
+      "ratingFair": "Fair",
+      "ratingGood": "Good",
+      "ratingGreat": "Great",
+      "ratingExcellent": "Excellent",
+      "comment": "Comment",
+      "optional": "(optional)",
+      "commentPlaceholder": "What worked well? What could be improved?",
+      "submit": "Submit feedback",
+      "updateSubmit": "Update feedback",
+      "saving": "Saving…",
+      "errorRange": "Please pick a rating from 1 to 5 stars.",
+      "errorUnauthenticated": "Please sign in to leave feedback.",
+      "errorGeneric": "Something went wrong. Please try again."
+    },
+    "hour": {
+      "pill": "Feedback Hour · 3–5pm",
+      "titleNamed": "It’s Feedback Hour, {name}!",
+      "title": "It’s Feedback Hour!",
+      "subtitle": "Rate the lesson plans you used recently to help your colleagues and earn bonus points. Every rating counts.",
+      "emptyTitle": "All caught up — great work!",
+      "emptyText": "You’ve rated every plan you used recently. Come back after your next lesson to keep your streak going.",
+      "emptyLink": "Browse lesson plans",
+      "pendingTitle": "Recently used — waiting for your rating",
+      "rateCta": "Rate ★"
+    },
+    "points": {
+      "pts": "{points} pts",
+      "streak": "{days, plural, one {#-day streak} other {#-day streak}}",
+      "ariaWithStreak": "{points} pts, {days, plural, one {#-day feedback streak} other {#-day feedback streak}}",
+      "ariaPointsOnly": "{points} pts"
+    },
+    "toast": {
+      "thanks": "Thanks for your feedback!",
+      "updated": "Your rating has been updated.",
+      "points": "+{points} pts",
+      "dismiss": "Dismiss"
+    }
+  }
+}

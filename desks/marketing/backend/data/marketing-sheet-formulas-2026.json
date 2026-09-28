@@ -1,0 +1,876 @@
+{
+  "source_file": "Marketing Master Dashboard Ongoing- Last Updated Feb, 2026.xlsx",
+  "workbook_stats": {
+    "sheets": 29,
+    "formula_cells": 2337,
+    "google_import_cells": 1141,
+    "native_formula_cells": 1196
+  },
+  "sheets": [
+    "1. Summary",
+    "Weekly Snapshot",
+    "2. Top Sheet",
+    "2026 Weekly Snapshot.",
+    "2026 Top sheet",
+    "3. Mtg Notes",
+    "Enrollment 26",
+    "Leads Tracker 26",
+    "3. Enrollment",
+    "SM Following 26",
+    "SM Output 26",
+    "6. Q3 &4 budget",
+    "2026 budget",
+    "6. Social Media Output 2024",
+    "7. Satisfaction",
+    "Social Media Calendar",
+    "Communications",
+    "Message House",
+    "Department Functional Chart",
+    "Marketing Big Questions",
+    "2024 goals action points",
+    "Paid ads",
+    "Collaterals",
+    "Weekly Calendar",
+    "Department Budgets",
+    "2026 Staff Referals",
+    "Sales Rep Commission",
+    "Feeder Daycare Commissions",
+    "Parents Commission"
+  ],
+  "google_imports": [
+    {
+      "workbook_sheet": "2. Top Sheet",
+      "cell": "C15",
+      "source_spreadsheet": "https://docs.google.com/spreadsheets/d/1jnp-GvYApYrTU34xwp9ESK_ixXRFxGPREE3IgjgSrrE",
+      "source_range": "4.1 Enrollment 25'!H61:L73"
+    },
+    {
+      "workbook_sheet": "2026 Top sheet",
+      "cell": "C18",
+      "source_spreadsheet": "https://docs.google.com/spreadsheets/d/1f_86uL1RNSh73qCaOZmYQdxoH8lsL4ZuW5dnfCRU1ak",
+      "source_range": "Company Wide Topsheet!B2:F14"
+    },
+    {
+      "workbook_sheet": "Enrollment 26",
+      "cell": "A51",
+      "source_spreadsheet": "https://docs.google.com/spreadsheets/d/1RulKVLOaL7j6B0EsuiuDepmMpr0dw5B7WOEcHuDvz2I",
+      "source_range": null
+    },
+    {
+      "workbook_sheet": "Enrollment 26",
+      "cell": "H61",
+      "source_spreadsheet": "https://docs.google.com/spreadsheets/d/1RulKVLOaL7j6B0EsuiuDepmMpr0dw5B7WOEcHuDvz2I",
+      "source_range": "Summary!A30:D42"
+    },
+    {
+      "workbook_sheet": "Leads Tracker 26",
+      "cell": "A1",
+      "source_spreadsheet": "https://docs.google.com/spreadsheets/d/18cfhK2Cuy_pwMIlkBiinbHb2yt1QfoGrVQkM-_2ndBc",
+      "source_range": "2026 Summary!A1:AQ133"
+    },
+    {
+      "workbook_sheet": "3. Enrollment",
+      "cell": "A3",
+      "source_spreadsheet": "https://docs.google.com/spreadsheets/d/1II8VJRlq8QWdxD0PuggnIr_jwWaMvg2MntbfjBhoLos",
+      "source_range": "Marketing!A2:L6"
+    },
+    {
+      "workbook_sheet": "3. Enrollment",
+      "cell": "A42",
+      "source_spreadsheet": "https://docs.google.com/spreadsheets/d/1II8VJRlq8QWdxD0PuggnIr_jwWaMvg2MntbfjBhoLos",
+      "source_range": "Summary!J2:O27"
+    },
+    {
+      "workbook_sheet": "7. Satisfaction",
+      "cell": "A1",
+      "source_spreadsheet": "https://docs.google.com/spreadsheets/d/1Nh71xiAGv0B-S5Xype_XcaT4EDS-sarl3-JvBc3Lnlc",
+      "source_range": "Summary 2025!B27:O41"
+    },
+    {
+      "workbook_sheet": "Department Budgets",
+      "cell": "A1",
+      "source_spreadsheet": "https://docs.google.com/spreadsheets/d/1LpExRF9TB_62J8Ng-v4tBQuYbd5ELLSeLb65-qB1Ulg",
+      "source_range": "1 a.Department Budgets!A1:AO32"
+    }
+  ],
+  "formula_patterns": [
+    {
+      "pattern": "=CELL-CELL",
+      "count": 123,
+      "sheets": [
+        "2. Top Sheet",
+        "2026 Weekly Snapshot.",
+        "2026 budget",
+        "3. Enrollment",
+        "6. Q3 &4 budget",
+        "Enrollment 26",
+        "Feeder Daycare Commissions",
+        "Sales Rep Commission"
+      ],
+      "example": {
+        "sheet": "2. Top Sheet",
+        "cell": "G35",
+        "formula": "=F35-E35"
+      },
+      "meaning": "variance or remaining (actual \u2212 previous / capacity \u2212 occupied)"
+    },
+    {
+      "pattern": "=SUM(RANGE)",
+      "count": 118,
+      "sheets": [
+        "2. Top Sheet",
+        "2026 Staff Referals",
+        "3. Enrollment",
+        "6. Social Media Output 2024",
+        "Communications",
+        "Enrollment 26",
+        "Feeder Daycare Commissions",
+        "Parents Commission",
+        "SM Output 26",
+        "Sales Rep Commission",
+        "Weekly Snapshot"
+      ],
+      "example": {
+        "sheet": "Weekly Snapshot",
+        "cell": "D16",
+        "formula": "=SUM(D4:D15)"
+      },
+      "meaning": "sum of a range or named cells"
+    },
+    {
+      "pattern": "=CELL",
+      "count": 114,
+      "sheets": [
+        "2. Top Sheet",
+        "2026 Top sheet",
+        "3. Enrollment",
+        "6. Social Media Output 2024",
+        "Enrollment 26",
+        "SM Output 26"
+      ],
+      "example": {
+        "sheet": "2. Top Sheet",
+        "cell": "R3",
+        "formula": "=C10"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=CELL/CELL",
+      "count": 98,
+      "sheets": [
+        "2. Top Sheet",
+        "2026 Top sheet",
+        "2026 budget",
+        "3. Enrollment",
+        "6. Q3 &4 budget",
+        "Enrollment 26",
+        "SM Following 26",
+        "Weekly Snapshot"
+      ],
+      "example": {
+        "sheet": "Weekly Snapshot",
+        "cell": "E35",
+        "formula": "=D35/D4"
+      },
+      "meaning": "ratio (actual \u00f7 target or occupancy)"
+    },
+    {
+      "pattern": "=suM(RANGE)",
+      "count": 97,
+      "sheets": [
+        "6. Social Media Output 2024",
+        "SM Output 26"
+      ],
+      "example": {
+        "sheet": "SM Output 26",
+        "cell": "B6",
+        "formula": "=suM(B4:B5)"
+      },
+      "meaning": "sum of a range or named cells"
+    },
+    {
+      "pattern": "=SUM(CELL,CELL,CELL)",
+      "count": 82,
+      "sheets": [
+        "6. Social Media Output 2024",
+        "Enrollment 26",
+        "SM Output 26",
+        "Weekly Snapshot"
+      ],
+      "example": {
+        "sheet": "Weekly Snapshot",
+        "cell": "H70",
+        "formula": "=SUM(H54,H61,H65)"
+      },
+      "meaning": "sum of a range or named cells"
+    },
+    {
+      "pattern": "=sum(RANGE)",
+      "count": 71,
+      "sheets": [
+        "2. Top Sheet",
+        "2026 budget",
+        "3. Enrollment",
+        "6. Q3 &4 budget",
+        "Enrollment 26",
+        "Paid ads"
+      ],
+      "example": {
+        "sheet": "2. Top Sheet",
+        "cell": "B56",
+        "formula": "=sum(C51:C53)"
+      },
+      "meaning": "sum of a range or named cells"
+    },
+    {
+      "pattern": "=SUM(CELL)",
+      "count": 71,
+      "sheets": [
+        "6. Social Media Output 2024",
+        "SM Output 26"
+      ],
+      "example": {
+        "sheet": "SM Output 26",
+        "cell": "B8",
+        "formula": "=SUM(B7)"
+      },
+      "meaning": "sum of a range or named cells"
+    },
+    {
+      "pattern": "=SUM(CELL,CELL)",
+      "count": 57,
+      "sheets": [
+        "2. Top Sheet",
+        "6. Social Media Output 2024",
+        "SM Output 26"
+      ],
+      "example": {
+        "sheet": "2. Top Sheet",
+        "cell": "R4",
+        "formula": "=SUM(D82,F82)"
+      },
+      "meaning": "sum of a range or named cells"
+    },
+    {
+      "pattern": "=sum(CELL,CELL,CELL)",
+      "count": 45,
+      "sheets": [
+        "Enrollment 26",
+        "SM Following 26"
+      ],
+      "example": {
+        "sheet": "Enrollment 26",
+        "cell": "B34",
+        "formula": "=sum(B13,B20,B27)"
+      },
+      "meaning": "sum of a range or named cells"
+    },
+    {
+      "pattern": "=sum(CELL,CELL,CELL,CELL,CELL)",
+      "count": 38,
+      "sheets": [
+        "2026 budget",
+        "6. Q3 &4 budget",
+        "SM Output 26"
+      ],
+      "example": {
+        "sheet": "SM Output 26",
+        "cell": "B71",
+        "formula": "=sum(B6,B21,B35,B46,B62)"
+      },
+      "meaning": "sum of a range or named cells"
+    },
+    {
+      "pattern": "=CELL*25000",
+      "count": 36,
+      "sheets": [
+        "2026 Staff Referals",
+        "Feeder Daycare Commissions",
+        "Sales Rep Commission"
+      ],
+      "example": {
+        "sheet": "2026 Staff Referals",
+        "cell": "J2",
+        "formula": "=E2*25000"
+      },
+      "meaning": "commission = referral count \u00d7 TZS 25,000"
+    },
+    {
+      "pattern": "=CELL*CELL",
+      "count": 25,
+      "sheets": [
+        "2026 budget",
+        "6. Q3 &4 budget",
+        "Feeder Daycare Commissions"
+      ],
+      "example": {
+        "sheet": "6. Q3 &4 budget",
+        "cell": "L3",
+        "formula": "=J3*K3"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=CELL+100",
+      "count": 23,
+      "sheets": [
+        "SM Following 26"
+      ],
+      "example": {
+        "sheet": "SM Following 26",
+        "cell": "C5",
+        "formula": "=B5+100"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=CELL+((CELL+CELL)*CELL)",
+      "count": 17,
+      "sheets": [
+        "Department Budgets"
+      ],
+      "example": {
+        "sheet": "Department Budgets",
+        "cell": "BA7",
+        "formula": "=AW7+((AX7+AY7)*AZ7)"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=SHEET!CELL",
+      "count": 15,
+      "sheets": [
+        "2. Top Sheet",
+        "2026 Top sheet"
+      ],
+      "example": {
+        "sheet": "2. Top Sheet",
+        "cell": "Q5",
+        "formula": "='SM Following 26'!K12"
+      },
+      "meaning": "cross-sheet KPI pull"
+    },
+    {
+      "pattern": "=2*31",
+      "count": 14,
+      "sheets": [
+        "6. Social Media Output 2024"
+      ],
+      "example": {
+        "sheet": "6. Social Media Output 2024",
+        "cell": "B11",
+        "formula": "=2*31"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=1*31",
+      "count": 14,
+      "sheets": [
+        "6. Social Media Output 2024"
+      ],
+      "example": {
+        "sheet": "6. Social Media Output 2024",
+        "cell": "B12",
+        "formula": "=1*31"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=COUNTA(RANGE)",
+      "count": 14,
+      "sheets": [
+        "2026 Staff Referals",
+        "Feeder Daycare Commissions",
+        "Parents Commission",
+        "Sales Rep Commission"
+      ],
+      "example": {
+        "sheet": "2026 Staff Referals",
+        "cell": "E2",
+        "formula": "=COUNTA(F2:F5)"
+      },
+      "meaning": "count of non-empty student/referral names"
+    },
+    {
+      "pattern": "=sum(CELL,CELL,CELL,CELL,CELL,)",
+      "count": 12,
+      "sheets": [
+        "SM Output 26"
+      ],
+      "example": {
+        "sheet": "SM Output 26",
+        "cell": "B72",
+        "formula": "=sum(B13,B27,B37,B49,B65,)"
+      },
+      "meaning": "sum of a range or named cells"
+    },
+    {
+      "pattern": "=CELL+50",
+      "count": 11,
+      "sheets": [
+        "SM Following 26"
+      ],
+      "example": {
+        "sheet": "SM Following 26",
+        "cell": "C7",
+        "formula": "=B7+50"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=IF(ISBLANK(CELL),\"\",CELL-CELL)",
+      "count": 10,
+      "sheets": [
+        "3. Enrollment"
+      ],
+      "example": {
+        "sheet": "3. Enrollment",
+        "cell": "I18",
+        "formula": "=IF(ISBLANK(I17),\"\",I17-H17)"
+      },
+      "meaning": "variance or remaining (actual \u2212 previous / capacity \u2212 occupied)"
+    },
+    {
+      "pattern": "=2*30",
+      "count": 8,
+      "sheets": [
+        "6. Social Media Output 2024"
+      ],
+      "example": {
+        "sheet": "6. Social Media Output 2024",
+        "cell": "E11",
+        "formula": "=2*30"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=1*30",
+      "count": 8,
+      "sheets": [
+        "6. Social Media Output 2024"
+      ],
+      "example": {
+        "sheet": "6. Social Media Output 2024",
+        "cell": "E12",
+        "formula": "=1*30"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=sum(CELL)",
+      "count": 6,
+      "sheets": [
+        "2026 budget",
+        "3. Enrollment",
+        "6. Q3 &4 budget",
+        "Enrollment 26"
+      ],
+      "example": {
+        "sheet": "Enrollment 26",
+        "cell": "H4",
+        "formula": "=sum(C70)"
+      },
+      "meaning": "sum of a range or named cells"
+    },
+    {
+      "pattern": "=CELL-CELL+CELL",
+      "count": 6,
+      "sheets": [
+        "3. Enrollment"
+      ],
+      "example": {
+        "sheet": "3. Enrollment",
+        "cell": "C13",
+        "formula": "=C12-B12+C14"
+      },
+      "meaning": "variance or remaining (actual \u2212 previous / capacity \u2212 occupied)"
+    },
+    {
+      "pattern": "=IF(ISBLANK(CELL),\"\",CELL-CELL+CELL)",
+      "count": 5,
+      "sheets": [
+        "3. Enrollment"
+      ],
+      "example": {
+        "sheet": "3. Enrollment",
+        "cell": "I13",
+        "formula": "=IF(ISBLANK(I12),\"\",I12-H12+I14)"
+      },
+      "meaning": "variance or remaining (actual \u2212 previous / capacity \u2212 occupied)"
+    },
+    {
+      "pattern": "=SUM(CELL,CELL,CELL,CELL,CELL)",
+      "count": 4,
+      "sheets": [
+        "Weekly Snapshot"
+      ],
+      "example": {
+        "sheet": "Weekly Snapshot",
+        "cell": "X35",
+        "formula": "=SUM(D35,H35,L35,P35,T35)"
+      },
+      "meaning": "sum of a range or named cells"
+    },
+    {
+      "pattern": "=CELL+CELL+CELL+CELL",
+      "count": 4,
+      "sheets": [
+        "Weekly Snapshot"
+      ],
+      "example": {
+        "sheet": "Weekly Snapshot",
+        "cell": "E69",
+        "formula": "=E53+E57+E61+E64"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=SUM(CELL,CELL,CELL,CELL)",
+      "count": 4,
+      "sheets": [
+        "Communications",
+        "Weekly Snapshot"
+      ],
+      "example": {
+        "sheet": "Weekly Snapshot",
+        "cell": "H69",
+        "formula": "=SUM(H53,H57,H61,H64)"
+      },
+      "meaning": "sum of a range or named cells"
+    },
+    {
+      "pattern": "=(CELL/CELL)",
+      "count": 4,
+      "sheets": [
+        "2. Top Sheet",
+        "2026 Top sheet"
+      ],
+      "example": {
+        "sheet": "2. Top Sheet",
+        "cell": "S7",
+        "formula": "=(R7/Q7)"
+      },
+      "meaning": "ratio (actual \u00f7 target or occupancy)"
+    },
+    {
+      "pattern": "=CELL+1",
+      "count": 4,
+      "sheets": [
+        "3. Mtg Notes"
+      ],
+      "example": {
+        "sheet": "3. Mtg Notes",
+        "cell": "A45",
+        "formula": "=A44+1"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=(CELL+CELL)*CELL",
+      "count": 4,
+      "sheets": [
+        "Department Budgets"
+      ],
+      "example": {
+        "sheet": "Department Budgets",
+        "cell": "BA25",
+        "formula": "=(AW25+AY25)*AZ25"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=COUNTA(CELL)",
+      "count": 4,
+      "sheets": [
+        "Feeder Daycare Commissions",
+        "Parents Commission",
+        "Sales Rep Commission"
+      ],
+      "example": {
+        "sheet": "Sales Rep Commission",
+        "cell": "D15",
+        "formula": "=COUNTA(E15)"
+      },
+      "meaning": "count of non-empty student/referral names"
+    },
+    {
+      "pattern": "=CELL+CELL+CELL",
+      "count": 3,
+      "sheets": [
+        "2. Top Sheet",
+        "SM Following 26"
+      ],
+      "example": {
+        "sheet": "2. Top Sheet",
+        "cell": "C10",
+        "formula": "=E11+E32+E42"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=SHEET!CELL+SHEET!CELL+SHEET!CELL",
+      "count": 2,
+      "sheets": [
+        "2. Top Sheet",
+        "2026 Top sheet"
+      ],
+      "example": {
+        "sheet": "2. Top Sheet",
+        "cell": "Q3",
+        "formula": "='Enrollment 26'!D77+'Enrollment 26'!K55+'Enrollment 26'!R55"
+      },
+      "meaning": "cross-sheet KPI pull"
+    },
+    {
+      "pattern": "=TEXT(TODAY(), \"MMMM\")",
+      "count": 2,
+      "sheets": [
+        "2. Top Sheet",
+        "2026 Top sheet"
+      ],
+      "example": {
+        "sheet": "2. Top Sheet",
+        "cell": "B6",
+        "formula": "=TEXT(TODAY(), \"MMMM\")\n"
+      },
+      "meaning": "current month label"
+    },
+    {
+      "pattern": "=RANGE+CELL",
+      "count": 2,
+      "sheets": [
+        "Enrollment 26"
+      ],
+      "example": {
+        "sheet": "Enrollment 26",
+        "cell": "C15",
+        "formula": "=B15:B16+C16"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=CELL+3",
+      "count": 2,
+      "sheets": [
+        "SM Following 26"
+      ],
+      "example": {
+        "sheet": "SM Following 26",
+        "cell": "F4",
+        "formula": "=E4+3"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=2*29",
+      "count": 2,
+      "sheets": [
+        "6. Social Media Output 2024"
+      ],
+      "example": {
+        "sheet": "6. Social Media Output 2024",
+        "cell": "C11",
+        "formula": "=2*29"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=1*29",
+      "count": 2,
+      "sheets": [
+        "6. Social Media Output 2024"
+      ],
+      "example": {
+        "sheet": "6. Social Media Output 2024",
+        "cell": "C12",
+        "formula": "=1*29"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=5%*CELL",
+      "count": 2,
+      "sheets": [
+        "Feeder Daycare Commissions",
+        "Sales Rep Commission"
+      ],
+      "example": {
+        "sheet": "Sales Rep Commission",
+        "cell": "I17",
+        "formula": "=5%*I16"
+      },
+      "meaning": "5% tax on commission"
+    },
+    {
+      "pattern": "=CELL/22",
+      "count": 1,
+      "sheets": [
+        "2. Top Sheet"
+      ],
+      "example": {
+        "sheet": "2. Top Sheet",
+        "cell": "Q31",
+        "formula": "=P31/22"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=average(RANGE)",
+      "count": 1,
+      "sheets": [
+        "2. Top Sheet"
+      ],
+      "example": {
+        "sheet": "2. Top Sheet",
+        "cell": "Q32",
+        "formula": "=average(Q29:Q31)"
+      },
+      "meaning": "average of ratios"
+    },
+    {
+      "pattern": "=965+75+100",
+      "count": 1,
+      "sheets": [
+        "Enrollment 26"
+      ],
+      "example": {
+        "sheet": "Enrollment 26",
+        "cell": "Q15",
+        "formula": "=965+75+100"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=13+11",
+      "count": 1,
+      "sheets": [
+        "Enrollment 26"
+      ],
+      "example": {
+        "sheet": "Enrollment 26",
+        "cell": "J53",
+        "formula": "=13+11"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=(CELL/955)",
+      "count": 1,
+      "sheets": [
+        "Enrollment 26"
+      ],
+      "example": {
+        "sheet": "Enrollment 26",
+        "cell": "H77",
+        "formula": "=(J73/955)"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=CELL+109",
+      "count": 1,
+      "sheets": [
+        "SM Following 26"
+      ],
+      "example": {
+        "sheet": "SM Following 26",
+        "cell": "D4",
+        "formula": "=C4+109"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=CELL+34",
+      "count": 1,
+      "sheets": [
+        "SM Following 26"
+      ],
+      "example": {
+        "sheet": "SM Following 26",
+        "cell": "E4",
+        "formula": "=D4+34"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=CELL+16",
+      "count": 1,
+      "sheets": [
+        "SM Following 26"
+      ],
+      "example": {
+        "sheet": "SM Following 26",
+        "cell": "D6",
+        "formula": "=C6+16"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=CELL+2",
+      "count": 1,
+      "sheets": [
+        "SM Following 26"
+      ],
+      "example": {
+        "sheet": "SM Following 26",
+        "cell": "F6",
+        "formula": "=E6+2"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=CELL+30",
+      "count": 1,
+      "sheets": [
+        "SM Following 26"
+      ],
+      "example": {
+        "sheet": "SM Following 26",
+        "cell": "C8",
+        "formula": "=B8+30"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=CELL+124",
+      "count": 1,
+      "sheets": [
+        "SM Following 26"
+      ],
+      "example": {
+        "sheet": "SM Following 26",
+        "cell": "D8",
+        "formula": "=C8+124"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=CELL+180",
+      "count": 1,
+      "sheets": [
+        "SM Following 26"
+      ],
+      "example": {
+        "sheet": "SM Following 26",
+        "cell": "E8",
+        "formula": "=D8+180"
+      },
+      "meaning": "spreadsheet calculation"
+    },
+    {
+      "pattern": "=CELL+6",
+      "count": 1,
+      "sheets": [
+        "SM Following 26"
+      ],
+      "example": {
+        "sheet": "SM Following 26",
+        "cell": "F8",
+        "formula": "=E8+6"
+      },
+      "meaning": "spreadsheet calculation"
+    }
+  ]
+}

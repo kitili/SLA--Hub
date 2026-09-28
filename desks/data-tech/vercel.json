@@ -1,0 +1,7 @@
+{
+  "framework": "nextjs",
+  "crons": [
+    { "path": "/api/cron/weekly-systems-report", "schedule": "0 4 * * 4" },
+    { "path": "/api/cron/daily-reminders", "schedule": "31 6 * * *" }
+  ]
+}

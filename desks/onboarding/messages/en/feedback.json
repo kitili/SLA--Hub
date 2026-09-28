@@ -1,0 +1,26 @@
+{
+  "feedback": {
+    "pageTitle": "Feedback session",
+    "pageSubtitle": "A short reflection on your onboarding experience so far. Your answers help HR improve the journey for the next new staff member.",
+    "introTitle": "Take a few minutes to reflect",
+    "introBody": "There are no right or wrong answers. Share as much or as little as you like — honest impressions are the most useful.",
+    "expectationsLabel": "Is the onboarding what you expected?",
+    "expectationsHint": "For example: was it clearer or more document-heavy than you imagined?",
+    "unclearLabel": "What feels unclear?",
+    "unclearHint": "Topics, steps, policies, or tools you would like more explanation about.",
+    "improvementsLabel": "What would make the course better?",
+    "improvementsHint": "Ideas for the next person starting at Silverleaf.",
+    "submitButton": "Share feedback",
+    "submitting": "Saving…",
+    "backToDashboard": "Back to dashboard",
+    "alreadySubmittedTitle": "Thank you for your feedback",
+    "alreadySubmittedBody": "Your reflection has been saved. You can update your answers any time if your thoughts change.",
+    "submittedOn": "Last updated {date}",
+    "editButton": "Update my answers",
+    "completionTitle": "Feedback saved",
+    "completionBody": "Thank you — your reflection helps us keep improving the onboarding experience.",
+    "completionSubmittedOn": "Saved on {date}",
+    "errorEmpty": "Please answer at least one question before submitting.",
+    "errorGeneric": "Something went wrong. Please try again."
+  }
+}

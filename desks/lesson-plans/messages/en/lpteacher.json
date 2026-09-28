@@ -1,0 +1,63 @@
+{
+  "lpHome": {
+    "eyebrow": "Lesson plans",
+    "greetingNamed": "Welcome back, {name}",
+    "greeting": "Welcome back",
+    "subtitle": "Find a lesson plan to teach, or pick up where you left off.",
+    "searchHeading": "Search lesson plans",
+    "searchPlaceholder": "Try “Grade 7 fractions” or “photosynthesis”",
+    "searchAriaLabel": "Search lesson plans",
+    "searchSubmit": "Search",
+    "browseAll": "Browse all lesson plans",
+    "upcomingHeading": "Your next lessons",
+    "upcomingEmpty": "No lessons to suggest yet. Search for a lesson plan to get started — the ones you open will shape what shows up here."
+  },
+  "lpSearch": {
+    "title": "Lesson plans",
+    "subtitle": "Search and filter the lesson-plan catalogue.",
+    "placeholder": "Search lesson plans…",
+    "ariaLabel": "Search lesson plans",
+    "submit": "Search",
+    "clearSearch": "Clear search",
+    "clearAll": "Clear all",
+    "sort": "Sort",
+    "sortAriaLabel": "Sort order",
+    "relevance": "Relevance",
+    "browseOrder": "Browse order",
+    "relevanceEnabledHint": "Most relevant first",
+    "relevanceDisabledHint": "Type a search to sort by relevance",
+    "resultsAriaLabel": "Search results",
+    "facets": {
+      "subject": "Subject",
+      "grade": "Grade",
+      "term": "Term"
+    },
+    "termLabel": "Term {value}"
+  },
+  "lpResults": {
+    "count": "{count, plural, =0 {No plans} one {# plan} other {# plans}}",
+    "emptyTitle": "No plans match",
+    "emptyHint": "Try fewer filters or a shorter search."
+  },
+  "lpPlan": {
+    "objectives": "Objectives",
+    "body": "Lesson plan",
+    "feedbackHeading": "How was this lesson plan?",
+    "meta": {
+      "grade": "Grade {value}",
+      "term": "Term {value}",
+      "week": "Week {value}",
+      "lesson": "Lesson {value}",
+      "weekShort": "Wk {value}",
+      "lessonShort": "L{value}",
+      "minutes": "{value} min"
+    },
+    "printLabel": "Print / Save as PDF",
+    "preparingPdf": "Preparing PDF…",
+    "printFailed": "Could not prepare the PDF. Please try again, or use your browser's print function.",
+    "versionLabel": "Lesson plan version",
+    "versionBranded": "Lesson plan",
+    "versionGovernment": "Government version",
+    "downloadGovernment": "Download government version"
+  }
+}

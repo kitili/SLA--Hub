@@ -1,0 +1,40 @@
+{
+  "name": "silverleaf-visitor-log",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Silverleaf Academy visitor log — front desk, dashboard, and QR self check-in",
+  "scripts": {
+    "dev": "next dev --port 3108 --hostname 0.0.0.0",
+    "build": "next build",
+    "start": "next start --port 3108 --hostname 0.0.0.0",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "smoke": "node scripts/smoke.mjs",
+    "seed": "node scripts/seed.mjs",
+    "tunnel": "node scripts/tunnel.mjs",
+    "dev:public": "node scripts/dev-public.mjs"
+  },
+  "dependencies": {
+    "@fontsource/bai-jamjuree": "^5.3.0",
+    "@fontsource/montserrat": "^5.3.0",
+    "better-sqlite3": "^11.10.0",
+    "next": "15.5.19",
+    "qrcode": "^1.5.4",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^20.19.0",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "15.5.19",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

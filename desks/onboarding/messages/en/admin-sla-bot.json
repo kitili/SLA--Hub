@@ -1,0 +1,25 @@
+{
+  "adminSlaBot": {
+    "kicker": "HR admin helper",
+    "title": "HR-bot",
+    "open": "Ask HR-bot",
+    "close": "Close",
+    "welcome": "Ask how to run the HR portal: members, sections, quizzes, hiring, or SLA-bot alerts. I use the admin guide plus a live snapshot. Learner SLA-bot cannot see this chat.",
+    "placeholder": "Ask about members, hiring, or how to use the admin pages…",
+    "send": "Send",
+    "sending": "Sending…",
+    "error": "HR-bot could not reply. Try again in a moment.",
+    "starters": {
+      "help": "What can you help with?",
+      "members": "Who is at risk or incomplete in onboarding?",
+      "hiring": "How many candidates are in each hiring stage?",
+      "alerts": "How do I handle SLA-bot alerts?"
+    },
+    "starterLabels": {
+      "help": "Help",
+      "members": "Members",
+      "hiring": "Hiring",
+      "alerts": "Alerts"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "common": {
+    "loading": "Inapakia…",
+    "save": "Hifadhi",
+    "cancel": "Ghairi",
+    "next": "Endelea",
+    "back": "Rudi",
+    "submit": "Wasilisha",
+    "language": "Lugha",
+    "english": "Kiingereza",
+    "swahili": "Kiswahili"
+  },
+  "nav": {
+    "dashboard": "Dashibodi",
+    "search": "Tafuta",
+    "admin": "Msimamizi",
+    "signOut": "Toka"
+  },
+  "adminGate": {
+    "title": "Eneo la wasimamizi pekee",
+    "body": "Eneo hili ni la wasimamizi. Akaunti yako haina ufikiaji wa msimamizi. Ikiwa unadhani hili ni kosa, tafadhali wasiliana na meneja wako.",
+    "dismiss": "Sawa, nimeelewa",
+    "close": "Funga"
+  }
+}

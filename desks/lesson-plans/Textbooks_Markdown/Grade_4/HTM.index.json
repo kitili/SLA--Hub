@@ -1,0 +1,230 @@
+{
+  "confidence": "high",
+  "offset": 4,
+  "total_pages": 166,
+  "source": "toc",
+  "page_map": [
+    {
+      "scan": 5,
+      "printed": 1
+    },
+    {
+      "scan": 7,
+      "printed": 3
+    },
+    {
+      "scan": 9,
+      "printed": 5
+    },
+    {
+      "scan": 11,
+      "printed": 7
+    },
+    {
+      "scan": 21,
+      "printed": 17
+    },
+    {
+      "scan": 23,
+      "printed": 15
+    },
+    {
+      "scan": 31,
+      "printed": 27
+    },
+    {
+      "scan": 37,
+      "printed": 33
+    },
+    {
+      "scan": 40,
+      "printed": 36
+    },
+    {
+      "scan": 41,
+      "printed": 37
+    },
+    {
+      "scan": 48,
+      "printed": 44
+    },
+    {
+      "scan": 49,
+      "printed": 45
+    },
+    {
+      "scan": 55,
+      "printed": 51
+    },
+    {
+      "scan": 56,
+      "printed": 52
+    },
+    {
+      "scan": 57,
+      "printed": 53
+    },
+    {
+      "scan": 80,
+      "printed": 76
+    },
+    {
+      "scan": 115,
+      "printed": 111
+    },
+    {
+      "scan": 119,
+      "printed": 115
+    },
+    {
+      "scan": 133,
+      "printed": 44
+    }
+  ],
+  "chapters": [
+    {
+      "n": 1,
+      "marker": "Sura ya Kwanza",
+      "title": "Sura ya Kwanza",
+      "printed_start": 1,
+      "printed_end": 17,
+      "scan_start": 5,
+      "scan_end": 21
+    },
+    {
+      "n": 2,
+      "marker": "Wajibu na haki za mtoto katika jamii na Taifa",
+      "title": "Wajibu na haki za mtoto katika jamii na Taifa",
+      "printed_start": 18,
+      "printed_end": 21,
+      "scan_start": 22,
+      "scan_end": 25
+    },
+    {
+      "n": 3,
+      "marker": "Sura ya Pili",
+      "title": "Sura ya Pili",
+      "printed_start": 22,
+      "printed_end": 23,
+      "scan_start": 26,
+      "scan_end": 27
+    },
+    {
+      "n": 4,
+      "marker": "Maendeleo ya jamii kabla ya ukoloni",
+      "title": "Maendeleo ya jamii kabla ya ukoloni",
+      "printed_start": 24,
+      "printed_end": 41,
+      "scan_start": 28,
+      "scan_end": 45
+    },
+    {
+      "n": 5,
+      "marker": "Sura ya Tatu",
+      "title": "Sura ya Tatu",
+      "printed_start": 42,
+      "printed_end": 47,
+      "scan_start": 46,
+      "scan_end": 51
+    },
+    {
+      "n": 6,
+      "marker": "Sayansi na teknolojia za asili kabla ya ukoloni",
+      "title": "Sayansi na teknolojia za asili kabla ya ukoloni",
+      "printed_start": 48,
+      "printed_end": 79,
+      "scan_start": 52,
+      "scan_end": 83
+    },
+    {
+      "n": 7,
+      "marker": "Sura ya Nne",
+      "title": "Sura ya Nne",
+      "printed_start": 80,
+      "printed_end": 97,
+      "scan_start": 84,
+      "scan_end": 101
+    },
+    {
+      "n": 8,
+      "marker": "Shughuli za uchumi kabla ya ukoloni",
+      "title": "Shughuli za uchumi kabla ya ukoloni",
+      "printed_start": 98,
+      "printed_end": 99,
+      "scan_start": 102,
+      "scan_end": 103
+    },
+    {
+      "n": 9,
+      "marker": "Sura ya Tano",
+      "title": "Sura ya Tano",
+      "printed_start": 100,
+      "printed_end": 101,
+      "scan_start": 104,
+      "scan_end": 105
+    },
+    {
+      "n": 10,
+      "marker": "Ushirikiano na uhusiano wa kijamii na kiuchumi",
+      "title": "Ushirikiano na uhusiano wa kijamii na kiuchumi",
+      "printed_start": 102,
+      "printed_end": 114,
+      "scan_start": 106,
+      "scan_end": 118
+    },
+    {
+      "n": 11,
+      "marker": "Sura ya Sita",
+      "title": "Sura ya Sita",
+      "printed_start": 115,
+      "printed_end": 135,
+      "scan_start": 119,
+      "scan_end": 139
+    },
+    {
+      "n": 12,
+      "marker": "Mamlaka za jadi kabla ya ukoloni",
+      "title": "Mamlaka za jadi kabla ya ukoloni",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 13,
+      "marker": "Sura ya Saba",
+      "title": "Sura ya Saba",
+      "printed_start": 136,
+      "printed_end": 137,
+      "scan_start": 140,
+      "scan_end": 141
+    },
+    {
+      "n": 14,
+      "marker": "Mamlaka za jadi katika ukuzaji na utunzaji wa maadili",
+      "title": "Mamlaka za jadi katika ukuzaji na utunzaji wa maadili",
+      "printed_start": 138,
+      "printed_end": 149,
+      "scan_start": 142,
+      "scan_end": 153
+    },
+    {
+      "n": 15,
+      "marker": "Sura ya Nane",
+      "title": "Sura ya Nane",
+      "printed_start": 150,
+      "printed_end": 162,
+      "scan_start": 154,
+      "scan_end": 166
+    },
+    {
+      "n": 16,
+      "marker": "Alama za Taifa na utambulisho wa Taifa",
+      "title": "Alama za Taifa na utambulisho wa Taifa",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    }
+  ]
+}

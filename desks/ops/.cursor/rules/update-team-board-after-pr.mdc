@@ -1,0 +1,29 @@
+---
+description: Update Week 1–3 team boards after every PR open or merge
+alwaysApply: true
+---
+
+# Update team boards after PRs
+
+Whenever you **create, merge, or finish a pull request** (or the user says a PR landed), update the matching week board in the same change set when possible:
+
+- [`WEEK1_TEAM_BOARD.md`](WEEK1_TEAM_BOARD.md) — Days 1–6
+- [`WEEK2_TEAM_BOARD.md`](WEEK2_TEAM_BOARD.md) — Days 7–12
+- [`WEEK3_TEAM_BOARD.md`](WEEK3_TEAM_BOARD.md) — Days 13–15
+
+Also keep the status table in [`README.md`](README.md) aligned when a whole week’s Kai/Amos scope is submitted.
+
+## What to do
+
+1. Map the PR to the matching Day / person / Work row on the right week board.
+2. Set that row’s **Status** to `✅ Done` only if the code for that task is actually in the branch being merged (verify paths; don’t trust commit messages alone).
+3. Refresh the day’s **Status** blurb and the bottom **Checklist** so they match the table.
+4. Leave unfinished teammates as `⬜` — never mark the whole day done if only one person shipped.
+5. Include the board update in the PR commit when the PR is yours; if the PR already merged without it, commit the board update on the active branch next.
+
+## Do not
+
+- Mark tasks done from plans or docs alone.
+- Clear other people’s open tasks.
+- Skip the board update because “it’s just a small PR.”
+- Update only Week 1 when the work clearly belongs to Week 2 or 3.

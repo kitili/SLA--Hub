@@ -1,0 +1,77 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.*
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+*.log
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env files (never commit real secrets)
+.env
+.env*.local
+env.local
+.env*
+!.env.example
+!.env.production.example
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# vercel
+.vercel
+
+# legacy monorepo build artifacts (preserved for reference-port)
+legacy/**/node_modules/
+legacy/client/dist/
+/client/
+
+# project
+documents.backup/
+documents/**/*.mp4
+documents/**/*.MP4
+documents/**/*.mov
+documents/**/*.MOV
+documents/**/*.webm
+documents/**/*.avi
+documents/hiring-uploads/
+.superpowers/
+
+# data layer (F2): embedded PGlite dev database + local file storage
+.pglite/
+.pglite.backup-*/
+.storage/
+.tmp/
+
+# e2e: seeded staff ids captured by global-setup (forged-session fixtures)
+e2e/.non-admin-session.json
+e2e/.admin-session.json
+/test-results/
+/playwright-report/
+/blob-report/
+
+# Claude Code agent worktrees/state
+.claude/
+
+# python
+scripts/__pycache__/
+__pycache__/
+*.pyc
+service-account.json
+
+# Apps Script copies with real webhook secrets (generated locally)
+google-apps-script/*.local.gs

@@ -1,0 +1,209 @@
+{
+  "confidence": "low",
+  "offset": 29,
+  "total_pages": 122,
+  "source": "toc",
+  "page_map": [
+    {
+      "scan": 20,
+      "printed": 7
+    },
+    {
+      "scan": 25,
+      "printed": 10
+    },
+    {
+      "scan": 32,
+      "printed": 14
+    },
+    {
+      "scan": 35,
+      "printed": 16
+    },
+    {
+      "scan": 43,
+      "printed": 22
+    },
+    {
+      "scan": 46,
+      "printed": 24
+    },
+    {
+      "scan": 52,
+      "printed": 28
+    },
+    {
+      "scan": 58,
+      "printed": 32
+    },
+    {
+      "scan": 62,
+      "printed": 35
+    },
+    {
+      "scan": 64,
+      "printed": 36
+    },
+    {
+      "scan": 67,
+      "printed": 38
+    },
+    {
+      "scan": 68,
+      "printed": 39
+    },
+    {
+      "scan": 71,
+      "printed": 41
+    },
+    {
+      "scan": 73,
+      "printed": 42
+    },
+    {
+      "scan": 81,
+      "printed": 47
+    },
+    {
+      "scan": 87,
+      "printed": 50
+    },
+    {
+      "scan": 88,
+      "printed": 51
+    },
+    {
+      "scan": 94,
+      "printed": 54
+    },
+    {
+      "scan": 98,
+      "printed": 57
+    },
+    {
+      "scan": 101,
+      "printed": 59
+    },
+    {
+      "scan": 110,
+      "printed": 65
+    },
+    {
+      "scan": 115,
+      "printed": 68
+    },
+    {
+      "scan": 119,
+      "printed": 71
+    },
+    {
+      "scan": 121,
+      "printed": 72
+    },
+    {
+      "scan": 122,
+      "printed": 73
+    }
+  ],
+  "chapters": [
+    {
+      "n": 1,
+      "marker": "Kwanza",
+      "title": "Kwanza",
+      "printed_start": 9,
+      "printed_end": 11,
+      "scan_start": 38,
+      "scan_end": 40
+    },
+    {
+      "n": 2,
+      "marker": ".",
+      "title": ".",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 3,
+      "marker": "Sura ya Pili",
+      "title": "Tanzania",
+      "printed_start": 12,
+      "printed_end": 70,
+      "scan_start": 41,
+      "scan_end": 99
+    },
+    {
+      "n": 4,
+      "marker": "Sura ya Tatu",
+      "title": "mtoto",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 5,
+      "marker": "Sura ya Nne",
+      "title": "ya kuthamini maadili",
+      "printed_start": 71,
+      "printed_end": 71,
+      "scan_start": 100,
+      "scan_end": 100
+    },
+    {
+      "n": 6,
+      "marker": "Tano",
+      "title": "Tano",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 7,
+      "marker": "jamii",
+      "title": "jamii",
+      "printed_start": 59,
+      "printed_end": 73,
+      "scan_start": 101,
+      "scan_end": 122
+    },
+    {
+      "n": 8,
+      "marker": "Sura ya Sita",
+      "title": "jamii za Watanzania",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 9,
+      "marker": "Sura ya Saba",
+      "title": "sasa",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 10,
+      "marker": "Sura ya Nane",
+      "title": ".",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 11,
+      "marker": "Sura ya Tisa",
+      "title": ".",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    }
+  ]
+}

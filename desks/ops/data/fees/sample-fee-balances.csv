@@ -1,0 +1,9 @@
+# Sample fee balances for /api/cron/sync-fees (Day 5 stub)
+# Prefer qr_code so the same file works with Majundo demo OR Silverleaf seed.
+qr_code,balance,currency
+MAJUNDO-002,55000,TZS
+MAJUNDO-004,80000,TZS
+MAJUNDO-005,100000,TZS
+SLV-AM-0002,25000,TZS
+SLV-AM-0004,100000,TZS
+SLV-USR-0001,55000,TZS

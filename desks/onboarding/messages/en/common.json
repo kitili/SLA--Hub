@@ -1,0 +1,55 @@
+{
+  "common": {
+    "appName": "Silverleaf Onboarding Hub",
+    "loading": "Loading…",
+    "save": "Save",
+    "cancel": "Cancel",
+    "next": "Next",
+    "back": "Back",
+    "submit": "Submit",
+    "language": "Language",
+    "english": "English",
+    "swahili": "Swahili"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "section": "Section",
+    "documentViewer": "Document Viewer",
+    "admin": "Admin",
+    "signOut": "Sign out",
+    "menu": "Menu",
+    "closeMenu": "Close menu",
+    "theme": "Color theme",
+    "themeLight": "Light",
+    "themeDark": "Dark"
+  },
+  "adminGate": {
+    "title": "Admin access only",
+    "body": "This area is for administrators. Your account doesn't have admin access. If you think this is a mistake, please contact your line manager.",
+    "dismiss": "Got it",
+    "close": "Close"
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "register": "Register",
+    "fullName": "Full name",
+    "email": "Email",
+    "adminPin": "Admin PIN",
+    "enterPin": "Enter PIN",
+    "invalidPin": "Incorrect PIN. Please try again."
+  },
+  "idle": {
+    "title": "Still there?",
+    "message": "You'll be signed out for inactivity in {seconds} seconds.",
+    "stay": "Stay signed in"
+  },
+  "quiz": {
+    "title": "Checkpoint Quiz",
+    "question": "Question",
+    "of": "of",
+    "correct": "Correct!",
+    "incorrect": "Not quite — try again.",
+    "passed": "You passed this checkpoint.",
+    "retry": "Retry"
+  }
+}

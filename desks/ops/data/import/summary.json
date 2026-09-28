@@ -1,0 +1,55 @@
+{
+  "source_sheet": "2026 Transport Master sheet",
+  "sheet_id": "1BDkvHWhJnJXS9vx1c2reyXkab494ZF7bji8z76Ck-mw",
+  "schools_dashboard": {
+    "total_students": 621,
+    "total_bus_capacity": 696,
+    "by_campus": {
+      "Usariver Campus": 419,
+      "Arusha Modern Campus": 119,
+      "Kijenge Campus": 37,
+      "Ilboru Campus": 23,
+      "Boma Campus": 23
+    }
+  },
+  "parsed": {
+    "schools": 5,
+    "buses": 20,
+    "students": 604,
+    "students_by_campus": {
+      "Arusha Modern": 118,
+      "Boma": 19,
+      "Ilboru": 23,
+      "Kijenge": 35,
+      "Usariver": 409
+    },
+    "buses_by_campus": {
+      "Usariver": 11,
+      "Arusha Modern": 4,
+      "Kijenge": 2,
+      "Ilboru": 2,
+      "Boma": 1
+    },
+    "students_with_phone": 174,
+    "students_with_fee": 579,
+    "qr_sheet_names": 594,
+    "students_matched_qr_sheet": 532
+  },
+  "sheet_tabs": {
+    "1481461008": "Dashboard",
+    "2024890881": "Transport Users (master roster + buses)",
+    "90679730": "QR Code (names in CSV; QR images not exported)",
+    "356330456": "Transport scan log",
+    "1756657284": "AttendanceA",
+    "1795930256": "AttendanceB",
+    "699362141": "Bus Incidence",
+    "600620859": "Bus Arrival Time",
+    "590546887": "Transport P/L"
+  },
+  "notes": [
+    "QR tab stores QR as embedded images; CSV export has names only.",
+    "Assigned qr_code values as SLV-{campus}-{seq} until image QR payloads are extracted.",
+    "Bus plate_number is TBA unless BUS NO looks like a Tanzania plate (T ###); re-seed when real plates sourced.",
+    "Kijenge/Ilboru backup capacities 6/4 in sheet corrected to Hiace 30 / Coaster 40 (were student counts)."
+  ]
+}

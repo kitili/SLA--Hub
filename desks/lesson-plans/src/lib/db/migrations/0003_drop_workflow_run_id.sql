@@ -1,0 +1,1 @@
+ALTER TABLE "ai_generations" DROP COLUMN "workflow_run_id";

@@ -1,0 +1,5 @@
+Person,Day 1 Kickoff,Day 2 Schema,Day 3 QR Demo,Day 4 Boarding,Day 5 Fees GPS,Day 6 Messaging,Done count,Open count,% Done
+Kai,Done — Next.js + Supabase + auth,Done — SQL schema v1,Done — QR resolve API,Done — POST /api/boarding,Done — Fee on boarding + sync-fees,Done — Parent SMS/WhatsApp + logs,6,0,100%
+Amos,Done — Matron shell + geolocation,Done — Student list + QR display,Done — Camera scanner,Open — Scan flow success UI,Open — GPS + fee on success,Open — Parent notified status,3,3,50%
+Jfree,Done — Buses stub + seed,Done — Trip stub morning/evening,Done — Bus detail capacity,Open — Occupancy counter,Open — trip_locations endpoint,Open — Today roster per bus,3,3,50%
+Irene,Done — Admin dashboard KPIs,Done — Seed fees + phones,Done — Permissions matrix,Open — Boarding history table,Open — Fee policy toggle,Open — Messages sent panel,3,3,50%

@@ -1,0 +1,162 @@
+/* FeedbackTable.module.css — feedback review, mobile-first. */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Headline average ─────────────────────────────────────────────────── */
+.headline {
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+  padding: 1.125rem 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.headlineValue {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--electric-blue);
+  font-variant-numeric: tabular-nums;
+}
+
+.headlineLabel {
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+
+/* ── Sections ─────────────────────────────────────────────────────────── */
+.section {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem 1.125rem 1.125rem;
+}
+
+.sectionTitle {
+  font-size: 1.0625rem;
+  margin-bottom: 0.75rem;
+}
+
+.empty {
+  color: var(--ink-faint);
+  font-size: 0.9375rem;
+}
+
+/* ── Lowest-rated ranked list ─────────────────────────────────────────── */
+.rankedList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rankedItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.625rem 0;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.rankedItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.rankedMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ── Comments ─────────────────────────────────────────────────────────── */
+.comments {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.comment {
+  padding: 0.75rem 0.875rem;
+  background: var(--app-bg);
+  border-radius: var(--radius-sm);
+}
+
+.commentHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.375rem;
+}
+
+.commentDate {
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+}
+
+.commentBody {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  /* Comments are free text — keep long words from blowing out the layout. */
+  overflow-wrap: anywhere;
+}
+
+.commentFoot {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  font-size: 0.8125rem;
+}
+
+.author {
+  color: var(--ink-faint);
+}
+
+/* ── Shared bits ──────────────────────────────────────────────────────── */
+.planLink {
+  font-weight: 600;
+  color: var(--electric-blue);
+}
+
+.stars {
+  color: var(--gold);
+  font-size: 0.9375rem;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.ratingNum {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  font-size: 0.875rem;
+}
+
+.count {
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+}
+
+@media (min-width: 600px) {
+  .rankedItem {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

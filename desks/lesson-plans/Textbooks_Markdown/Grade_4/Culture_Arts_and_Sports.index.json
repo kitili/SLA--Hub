@@ -1,0 +1,365 @@
+{
+  "confidence": "high",
+  "offset": 7,
+  "total_pages": 82,
+  "source": "toc",
+  "page_map": [
+    {
+      "scan": 8,
+      "printed": 1
+    },
+    {
+      "scan": 9,
+      "printed": 2
+    },
+    {
+      "scan": 10,
+      "printed": 3
+    },
+    {
+      "scan": 12,
+      "printed": 5
+    },
+    {
+      "scan": 13,
+      "printed": 6
+    },
+    {
+      "scan": 14,
+      "printed": 7
+    },
+    {
+      "scan": 15,
+      "printed": 8
+    },
+    {
+      "scan": 16,
+      "printed": 9
+    },
+    {
+      "scan": 17,
+      "printed": 10
+    },
+    {
+      "scan": 18,
+      "printed": 11
+    },
+    {
+      "scan": 19,
+      "printed": 12
+    },
+    {
+      "scan": 20,
+      "printed": 13
+    },
+    {
+      "scan": 21,
+      "printed": 14
+    },
+    {
+      "scan": 22,
+      "printed": 15
+    },
+    {
+      "scan": 23,
+      "printed": 16
+    },
+    {
+      "scan": 24,
+      "printed": 17
+    },
+    {
+      "scan": 25,
+      "printed": 18
+    },
+    {
+      "scan": 26,
+      "printed": 19
+    },
+    {
+      "scan": 27,
+      "printed": 20
+    },
+    {
+      "scan": 28,
+      "printed": 21
+    },
+    {
+      "scan": 29,
+      "printed": 22
+    },
+    {
+      "scan": 30,
+      "printed": 23
+    },
+    {
+      "scan": 31,
+      "printed": 24
+    },
+    {
+      "scan": 32,
+      "printed": 25
+    },
+    {
+      "scan": 33,
+      "printed": 26
+    },
+    {
+      "scan": 34,
+      "printed": 27
+    },
+    {
+      "scan": 35,
+      "printed": 28
+    },
+    {
+      "scan": 36,
+      "printed": 29
+    },
+    {
+      "scan": 37,
+      "printed": 30
+    },
+    {
+      "scan": 38,
+      "printed": 31
+    },
+    {
+      "scan": 39,
+      "printed": 32
+    },
+    {
+      "scan": 40,
+      "printed": 33
+    },
+    {
+      "scan": 41,
+      "printed": 34
+    },
+    {
+      "scan": 42,
+      "printed": 35
+    },
+    {
+      "scan": 43,
+      "printed": 36
+    },
+    {
+      "scan": 44,
+      "printed": 37
+    },
+    {
+      "scan": 45,
+      "printed": 38
+    },
+    {
+      "scan": 46,
+      "printed": 39
+    },
+    {
+      "scan": 47,
+      "printed": 40
+    },
+    {
+      "scan": 48,
+      "printed": 41
+    },
+    {
+      "scan": 49,
+      "printed": 42
+    },
+    {
+      "scan": 50,
+      "printed": 43
+    },
+    {
+      "scan": 51,
+      "printed": 44
+    },
+    {
+      "scan": 52,
+      "printed": 45
+    },
+    {
+      "scan": 53,
+      "printed": 46
+    },
+    {
+      "scan": 54,
+      "printed": 47
+    },
+    {
+      "scan": 55,
+      "printed": 48
+    },
+    {
+      "scan": 56,
+      "printed": 49
+    },
+    {
+      "scan": 57,
+      "printed": 50
+    },
+    {
+      "scan": 58,
+      "printed": 51
+    },
+    {
+      "scan": 59,
+      "printed": 52
+    },
+    {
+      "scan": 60,
+      "printed": 53
+    },
+    {
+      "scan": 61,
+      "printed": 54
+    },
+    {
+      "scan": 62,
+      "printed": 55
+    },
+    {
+      "scan": 63,
+      "printed": 56
+    },
+    {
+      "scan": 64,
+      "printed": 57
+    },
+    {
+      "scan": 65,
+      "printed": 58
+    },
+    {
+      "scan": 66,
+      "printed": 59
+    },
+    {
+      "scan": 67,
+      "printed": 60
+    },
+    {
+      "scan": 68,
+      "printed": 61
+    },
+    {
+      "scan": 69,
+      "printed": 62
+    },
+    {
+      "scan": 70,
+      "printed": 63
+    },
+    {
+      "scan": 71,
+      "printed": 64
+    },
+    {
+      "scan": 72,
+      "printed": 65
+    },
+    {
+      "scan": 73,
+      "printed": 66
+    },
+    {
+      "scan": 74,
+      "printed": 67
+    },
+    {
+      "scan": 75,
+      "printed": 68
+    },
+    {
+      "scan": 76,
+      "printed": 69
+    },
+    {
+      "scan": 77,
+      "printed": 70
+    },
+    {
+      "scan": 78,
+      "printed": 71
+    },
+    {
+      "scan": 79,
+      "printed": 72
+    },
+    {
+      "scan": 80,
+      "printed": 73
+    },
+    {
+      "scan": 81,
+      "printed": 74
+    }
+  ],
+  "chapters": [
+    {
+      "n": 1,
+      "marker": "Chapter One",
+      "title": "Acting",
+      "printed_start": 1,
+      "printed_end": 11,
+      "scan_start": 8,
+      "scan_end": 18
+    },
+    {
+      "n": 2,
+      "marker": "Chapter Two",
+      "title": "Singing",
+      "printed_start": 12,
+      "printed_end": 19,
+      "scan_start": 19,
+      "scan_end": 26
+    },
+    {
+      "n": 3,
+      "marker": "Chapter Three",
+      "title": "Drawing",
+      "printed_start": 20,
+      "printed_end": 29,
+      "scan_start": 27,
+      "scan_end": 36
+    },
+    {
+      "n": 4,
+      "marker": "Chapter Four",
+      "title": "Clay modelling",
+      "printed_start": 30,
+      "printed_end": 38,
+      "scan_start": 37,
+      "scan_end": 45
+    },
+    {
+      "n": 5,
+      "marker": "Chapter Five",
+      "title": "Physical exercises",
+      "printed_start": 39,
+      "printed_end": 47,
+      "scan_start": 46,
+      "scan_end": 54
+    },
+    {
+      "n": 6,
+      "marker": "Chapter Six",
+      "title": "Traditional and modern games",
+      "printed_start": 48,
+      "printed_end": 59,
+      "scan_start": 55,
+      "scan_end": 66
+    },
+    {
+      "n": 7,
+      "marker": "Chapter Seven",
+      "title": "competitions",
+      "printed_start": 60,
+      "printed_end": 75,
+      "scan_start": 67,
+      "scan_end": 82
+    }
+  ]
+}

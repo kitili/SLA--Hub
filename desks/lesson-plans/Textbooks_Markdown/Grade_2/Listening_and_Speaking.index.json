@@ -1,0 +1,640 @@
+{
+  "confidence": "high",
+  "offset": 7,
+  "total_pages": 98,
+  "source": "toc",
+  "page_map": [
+    {
+      "scan": 8,
+      "printed": 1
+    },
+    {
+      "scan": 9,
+      "printed": 2
+    },
+    {
+      "scan": 10,
+      "printed": 3
+    },
+    {
+      "scan": 11,
+      "printed": 4
+    },
+    {
+      "scan": 12,
+      "printed": 5
+    },
+    {
+      "scan": 13,
+      "printed": 6
+    },
+    {
+      "scan": 14,
+      "printed": 7
+    },
+    {
+      "scan": 15,
+      "printed": 8
+    },
+    {
+      "scan": 16,
+      "printed": 9
+    },
+    {
+      "scan": 17,
+      "printed": 10
+    },
+    {
+      "scan": 18,
+      "printed": 11
+    },
+    {
+      "scan": 19,
+      "printed": 12
+    },
+    {
+      "scan": 20,
+      "printed": 13
+    },
+    {
+      "scan": 21,
+      "printed": 14
+    },
+    {
+      "scan": 22,
+      "printed": 15
+    },
+    {
+      "scan": 23,
+      "printed": 16
+    },
+    {
+      "scan": 24,
+      "printed": 17
+    },
+    {
+      "scan": 25,
+      "printed": 18
+    },
+    {
+      "scan": 26,
+      "printed": 19
+    },
+    {
+      "scan": 27,
+      "printed": 20
+    },
+    {
+      "scan": 28,
+      "printed": 21
+    },
+    {
+      "scan": 29,
+      "printed": 22
+    },
+    {
+      "scan": 30,
+      "printed": 23
+    },
+    {
+      "scan": 31,
+      "printed": 24
+    },
+    {
+      "scan": 32,
+      "printed": 25
+    },
+    {
+      "scan": 33,
+      "printed": 26
+    },
+    {
+      "scan": 34,
+      "printed": 27
+    },
+    {
+      "scan": 35,
+      "printed": 28
+    },
+    {
+      "scan": 36,
+      "printed": 29
+    },
+    {
+      "scan": 37,
+      "printed": 30
+    },
+    {
+      "scan": 38,
+      "printed": 31
+    },
+    {
+      "scan": 39,
+      "printed": 32
+    },
+    {
+      "scan": 40,
+      "printed": 33
+    },
+    {
+      "scan": 41,
+      "printed": 34
+    },
+    {
+      "scan": 42,
+      "printed": 35
+    },
+    {
+      "scan": 43,
+      "printed": 36
+    },
+    {
+      "scan": 44,
+      "printed": 37
+    },
+    {
+      "scan": 45,
+      "printed": 38
+    },
+    {
+      "scan": 46,
+      "printed": 39
+    },
+    {
+      "scan": 47,
+      "printed": 40
+    },
+    {
+      "scan": 48,
+      "printed": 41
+    },
+    {
+      "scan": 49,
+      "printed": 42
+    },
+    {
+      "scan": 50,
+      "printed": 43
+    },
+    {
+      "scan": 51,
+      "printed": 44
+    },
+    {
+      "scan": 52,
+      "printed": 45
+    },
+    {
+      "scan": 53,
+      "printed": 46
+    },
+    {
+      "scan": 54,
+      "printed": 47
+    },
+    {
+      "scan": 55,
+      "printed": 48
+    },
+    {
+      "scan": 56,
+      "printed": 49
+    },
+    {
+      "scan": 57,
+      "printed": 50
+    },
+    {
+      "scan": 58,
+      "printed": 51
+    },
+    {
+      "scan": 59,
+      "printed": 52
+    },
+    {
+      "scan": 60,
+      "printed": 53
+    },
+    {
+      "scan": 61,
+      "printed": 54
+    },
+    {
+      "scan": 62,
+      "printed": 55
+    },
+    {
+      "scan": 63,
+      "printed": 56
+    },
+    {
+      "scan": 64,
+      "printed": 57
+    },
+    {
+      "scan": 65,
+      "printed": 58
+    },
+    {
+      "scan": 66,
+      "printed": 59
+    },
+    {
+      "scan": 67,
+      "printed": 60
+    },
+    {
+      "scan": 68,
+      "printed": 61
+    },
+    {
+      "scan": 69,
+      "printed": 62
+    },
+    {
+      "scan": 70,
+      "printed": 63
+    },
+    {
+      "scan": 71,
+      "printed": 64
+    },
+    {
+      "scan": 72,
+      "printed": 65
+    },
+    {
+      "scan": 73,
+      "printed": 66
+    },
+    {
+      "scan": 74,
+      "printed": 67
+    },
+    {
+      "scan": 75,
+      "printed": 68
+    },
+    {
+      "scan": 76,
+      "printed": 69
+    },
+    {
+      "scan": 77,
+      "printed": 70
+    },
+    {
+      "scan": 78,
+      "printed": 71
+    },
+    {
+      "scan": 79,
+      "printed": 72
+    },
+    {
+      "scan": 80,
+      "printed": 73
+    },
+    {
+      "scan": 81,
+      "printed": 74
+    },
+    {
+      "scan": 82,
+      "printed": 75
+    },
+    {
+      "scan": 83,
+      "printed": 76
+    },
+    {
+      "scan": 84,
+      "printed": 77
+    },
+    {
+      "scan": 85,
+      "printed": 78
+    },
+    {
+      "scan": 86,
+      "printed": 79
+    },
+    {
+      "scan": 87,
+      "printed": 80
+    },
+    {
+      "scan": 88,
+      "printed": 81
+    },
+    {
+      "scan": 89,
+      "printed": 82
+    },
+    {
+      "scan": 90,
+      "printed": 83
+    },
+    {
+      "scan": 91,
+      "printed": 84
+    },
+    {
+      "scan": 92,
+      "printed": 85
+    },
+    {
+      "scan": 93,
+      "printed": 87
+    },
+    {
+      "scan": 94,
+      "printed": 88
+    },
+    {
+      "scan": 95,
+      "printed": 89
+    },
+    {
+      "scan": 96,
+      "printed": 90
+    },
+    {
+      "scan": 97,
+      "printed": 86
+    }
+  ],
+  "chapters": [
+    {
+      "n": 1,
+      "marker": "Unit One",
+      "title": "Unit One: Listening and speaking",
+      "printed_start": 1,
+      "printed_end": 1,
+      "scan_start": 8,
+      "scan_end": 8
+    },
+    {
+      "n": 2,
+      "marker": "I use singular and plural forms.",
+      "title": "I use singular and plural forms.",
+      "printed_start": 2,
+      "printed_end": 18,
+      "scan_start": 9,
+      "scan_end": 25
+    },
+    {
+      "n": 3,
+      "marker": "I express the days of the week",
+      "title": "I express the days of the week",
+      "printed_start": 19,
+      "printed_end": 23,
+      "scan_start": 26,
+      "scan_end": 30
+    },
+    {
+      "n": 4,
+      "marker": "I express the months of the year.",
+      "title": "I express the months of the year.",
+      "printed_start": 24,
+      "printed_end": 27,
+      "scan_start": 31,
+      "scan_end": 34
+    },
+    {
+      "n": 5,
+      "marker": "I listen and respond appropriately.",
+      "title": "I listen and respond appropriately.",
+      "printed_start": 28,
+      "printed_end": 29,
+      "scan_start": 35,
+      "scan_end": 36
+    },
+    {
+      "n": 6,
+      "marker": "I participate in simple conversations.",
+      "title": "I participate in simple conversations.",
+      "printed_start": 30,
+      "printed_end": 31,
+      "scan_start": 37,
+      "scan_end": 38
+    },
+    {
+      "n": 7,
+      "marker": "I talk about daily activities.",
+      "title": "I talk about daily activities.",
+      "printed_start": 32,
+      "printed_end": 33,
+      "scan_start": 39,
+      "scan_end": 40
+    },
+    {
+      "n": 8,
+      "marker": "I make polite requests.",
+      "title": "I make polite requests.",
+      "printed_start": 34,
+      "printed_end": 36,
+      "scan_start": 41,
+      "scan_end": 43
+    },
+    {
+      "n": 9,
+      "marker": "I tell stories.",
+      "title": "I tell stories.",
+      "printed_start": 37,
+      "printed_end": 38,
+      "scan_start": 44,
+      "scan_end": 45
+    },
+    {
+      "n": 10,
+      "marker": "I narrate events and incidents",
+      "title": "I narrate events and incidents",
+      "printed_start": 39,
+      "printed_end": 43,
+      "scan_start": 46,
+      "scan_end": 50
+    },
+    {
+      "n": 11,
+      "marker": "Unit Two",
+      "title": "Unit Two: Letter sounds",
+      "printed_start": 44,
+      "printed_end": 46,
+      "scan_start": 51,
+      "scan_end": 53
+    },
+    {
+      "n": 12,
+      "marker": "I use different sounds to form new words",
+      "title": "I use different sounds to form new words",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 13,
+      "marker": "I delete sounds at the beginning of words.",
+      "title": "I delete sounds at the beginning of words.",
+      "printed_start": 47,
+      "printed_end": 47,
+      "scan_start": 54,
+      "scan_end": 54
+    },
+    {
+      "n": 14,
+      "marker": "I delete sounds at the end of words",
+      "title": "I delete sounds at the end of words",
+      "printed_start": 48,
+      "printed_end": 50,
+      "scan_start": 55,
+      "scan_end": 57
+    },
+    {
+      "n": 15,
+      "marker": "I add sounds at the beginning of words.",
+      "title": "I add sounds at the beginning of words.",
+      "printed_start": 51,
+      "printed_end": 52,
+      "scan_start": 58,
+      "scan_end": 59
+    },
+    {
+      "n": 16,
+      "marker": "I add sounds at the end of words",
+      "title": "I add sounds at the end of words",
+      "printed_start": 53,
+      "printed_end": 53,
+      "scan_start": 60,
+      "scan_end": 60
+    },
+    {
+      "n": 17,
+      "marker": "I replace initial sounds to form new words.",
+      "title": "I replace initial sounds to form new words.",
+      "printed_start": 54,
+      "printed_end": 56,
+      "scan_start": 61,
+      "scan_end": 63
+    },
+    {
+      "n": 18,
+      "marker": "I replace middle sounds to form new words.",
+      "title": "I replace middle sounds to form new words.",
+      "printed_start": 57,
+      "printed_end": 59,
+      "scan_start": 64,
+      "scan_end": 66
+    },
+    {
+      "n": 19,
+      "marker": "I replace final sounds to form new words.",
+      "title": "I replace final sounds to form new words.",
+      "printed_start": 60,
+      "printed_end": 61,
+      "scan_start": 67,
+      "scan_end": 68
+    },
+    {
+      "n": 20,
+      "marker": "I pronounce words with long vowel sounds.",
+      "title": "I pronounce words with long vowel sounds.",
+      "printed_start": 62,
+      "printed_end": 65,
+      "scan_start": 69,
+      "scan_end": 72
+    },
+    {
+      "n": 21,
+      "marker": "Unit Three",
+      "title": "Unit Three: Letter-sound relationships",
+      "printed_start": 66,
+      "printed_end": 67,
+      "scan_start": 73,
+      "scan_end": 74
+    },
+    {
+      "n": 22,
+      "marker": "I read words with groups of consonants",
+      "title": "I read words with groups of consonants",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 23,
+      "marker": "I identify similar and different sounds in words",
+      "title": "I identify similar and different sounds in words",
+      "printed_start": 68,
+      "printed_end": 69,
+      "scan_start": 75,
+      "scan_end": 76
+    },
+    {
+      "n": 24,
+      "marker": "I read words with familiar suffixes.",
+      "title": "I read words with familiar suffixes.",
+      "printed_start": 70,
+      "printed_end": 73,
+      "scan_start": 77,
+      "scan_end": 80
+    },
+    {
+      "n": 25,
+      "marker": "I read long words.",
+      "title": "I read long words.",
+      "printed_start": 74,
+      "printed_end": 76,
+      "scan_start": 81,
+      "scan_end": 83
+    },
+    {
+      "n": 26,
+      "marker": "Unit Four",
+      "title": "Unit Four: Reading fluently",
+      "printed_start": 77,
+      "printed_end": 79,
+      "scan_start": 84,
+      "scan_end": 86
+    },
+    {
+      "n": 27,
+      "marker": "and speed.",
+      "title": "and speed.",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 28,
+      "marker": "marks.",
+      "title": "marks.",
+      "printed_start": 80,
+      "printed_end": 82,
+      "scan_start": 87,
+      "scan_end": 89
+    },
+    {
+      "n": 29,
+      "marker": "Unit Five",
+      "title": "Unit Five: Reading for comprehension",
+      "printed_start": 83,
+      "printed_end": 91,
+      "scan_start": 90,
+      "scan_end": 98
+    },
+    {
+      "n": 30,
+      "marker": "I read and understand stories and poems",
+      "title": "I read and understand stories and poems",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    }
+  ]
+}

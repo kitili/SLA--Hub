@@ -1,0 +1,161 @@
+.checkpoint-quiz {
+  margin-top: 1.25rem;
+  padding: 1.25rem;
+  background: #f8f9fc;
+  border: 2px solid var(--light-blue);
+  border-radius: var(--radius);
+}
+
+.checkpoint-quiz.passed {
+  border-color: #1e7e34;
+  background: #f0faf3;
+}
+
+.checkpoint-quiz.failed {
+  border-color: #e74c3c;
+}
+
+.checkpoint-header {
+  margin-bottom: 1rem;
+}
+
+.checkpoint-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.checkpoint-header h4 {
+  font-size: 1rem;
+  color: var(--navy);
+  margin: 0.25rem 0;
+}
+
+.checkpoint-hint {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.checkpoint-fail-banner,
+.checkpoint-pass-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.checkpoint-fail-banner {
+  background: #fdecea;
+  color: #c0392b;
+  border: 1px solid #f5c6cb;
+}
+
+.checkpoint-fail-banner p {
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+  opacity: 0.9;
+}
+
+.checkpoint-pass-banner {
+  background: #e6f4ea;
+  color: #1e7e34;
+  border: 1px solid #b7dfc5;
+  align-items: center;
+}
+
+.questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.question-text {
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.65rem;
+  font-size: 0.95rem;
+}
+
+.q-num {
+  color: var(--light-blue);
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.option-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: left;
+  padding: 0.7rem 1rem;
+  background: var(--white);
+  border: 2px solid var(--gray);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  color: var(--black);
+  transition: border-color 0.15s, background 0.15s;
+  cursor: pointer;
+}
+
+.option-btn:hover:not(:disabled) {
+  border-color: var(--light-blue);
+  background: #f0f7fd;
+}
+
+.option-btn.selected {
+  border-color: var(--navy);
+  background: #eef3fa;
+}
+
+.option-btn.correct {
+  border-color: #1e7e34;
+  background: #e6f4ea;
+}
+
+.option-btn.wrong {
+  border-color: #e74c3c;
+  background: #fdecea;
+}
+
+.option-btn:disabled {
+  cursor: default;
+}
+
+.opt-icon {
+  flex-shrink: 0;
+}
+
+.checkpoint-actions {
+  margin-top: 1.25rem;
+}
+
+.btn-submit-checkpoint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.15s;
+}
+
+.btn-submit-checkpoint:hover:not(:disabled) {
+  background: var(--navy-light, #003a8c);
+}
+
+.btn-submit-checkpoint:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

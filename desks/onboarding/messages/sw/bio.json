@@ -1,0 +1,207 @@
+{
+  "bio": {
+    "pageTitle": "Taarifa Binafsi za Mfanyakazi",
+    "pageSubtitle": "Tafadhali kamilisha wasifu wako wa kujiunga. Sehemu zenye alama ya * zinahitajika.",
+    "loadingError": "Hatukuweza kupakua wasifu wako. Tafadhali jaribu tena.",
+    "privacy": {
+      "title": "Taarifa ya faragha",
+      "intro": "Fomu hii inakusanya taarifa binafsi ili kuanzisha ajira yako katika Silverleaf Academy.",
+      "collected": "Tunachokusanya: utambulisho wako na anwani, namba za vitambulisho vya serikali, taarifa za benki, sifa za elimu, historia ya ajira, ndugu na watu wa dharura, na tamko. Baadhi ya maswali kuhusu afya au historia ya jinai ni ya hiari.",
+      "purpose": "Kwa nini tunakusanya: ni kwa ajili ya kusimamia ajira yako na kujiunga tu (mishahara, ufuatiliaji wa sheria, na mawasiliano ya dharura).",
+      "access": "Nani anaweza kuona: wewe, na wasimamizi walioidhinishwa wa Rasilimali Watu wa Silverleaf. Haitashirikishwa zaidi bila msingi wa kisheria.",
+      "security": "Jinsi inavyohifadhiwa: kwa usalama, ukiwa na ufikiaji uliopunguzwa kwa wale wanaohitaji kwa madhumuni yaliyotajwa hapo juu.",
+      "retention": "Unaweza kupitia na kusasisha taarifa hii wakati wowote kwa kurudi kwenye ukurasa huu."
+    },
+    "consent": {
+      "heading": "Idhini",
+      "label": "Ninakubali Silverleaf kuchakata taarifa hii kwa madhumuni ya ajira na kujiunga.",
+      "required": "Lazima utoe idhini kabla ya kuwasilisha.",
+      "recordedNote": "Idhini yako inahifadhiwa pamoja na tarehe na rejeleo la toleo."
+    },
+    "sensitive": {
+      "note": "Swali hili linahusu data ya aina maalum na ni la hiari. Unaweza kuliacha wazi.",
+      "healthNote": "Taarifa za afya ni nyeti na za hiari. Shiriki tu kile unachojisikia huru kutoa.",
+      "criminalNote": "Hili linahusu taarifa za historia ya jinai na ni la hiari."
+    },
+    "sections": {
+      "personal": "Taarifa binafsi",
+      "contact": "Taarifa za mawasiliano",
+      "identification": "Vitambulisho",
+      "employment": "Taarifa za ajira",
+      "banking": "Taarifa za benki",
+      "family": "Familia",
+      "spouse": "Mwenza",
+      "children": "Watoto",
+      "familyContacts": "Mawasiliano ya familia (wazazi na ndugu)",
+      "emergencyContacts": "Mawasiliano ya dharura",
+      "relativesEmployed": "Ndugu walioajiriwa Silverleaf",
+      "qualifications": "Sifa na elimu",
+      "employmentHistory": "Historia ya ajira",
+      "references": "Wadhamini",
+      "declaration": "Tamko"
+    },
+    "fields": {
+      "surname": "Jina la familia",
+      "firstName": "Jina la kwanza",
+      "middleName": "Jina la kati",
+      "otherNames": "Majina mengine",
+      "maidenName": "Jina la useja",
+      "gender": "Jinsia",
+      "maritalStatus": "Hali ya ndoa",
+      "dateOfBirth": "Tarehe ya kuzaliwa",
+      "placeOfBirth": "Mahali pa kuzaliwa",
+      "nationality": "Utaifa",
+      "hasDisabilities": "Je, una ulemavu wowote?",
+      "disabilitiesDetails": "Kama ndiyo, tafadhali eleza",
+      "homePhone": "Simu ya nyumbani",
+      "mobilePhone": "Simu ya mkononi",
+      "email": "Anwani ya barua pepe",
+      "residentialAddress": "Anwani ya makazi",
+      "identificationNo": "Namba ya kitambulisho cha taifa (NIDA)",
+      "idPlaceOfIssue": "Mahali kilipotolewa (Kitambulisho)",
+      "idExpiryDate": "Tarehe ya kuisha (Kitambulisho)",
+      "drivingPermitNo": "Namba ya leseni ya udereva",
+      "drivingPlaceOfIssue": "Mahali ilipotolewa (Leseni)",
+      "drivingExpiryDate": "Tarehe ya kuisha (Leseni)",
+      "nssfNo": "Namba ya NSSF",
+      "tinNo": "Namba ya TIN",
+      "nhifNo": "Namba ya NHIF",
+      "position": "Cheo",
+      "workStation": "Kituo cha kazi",
+      "bankName": "Jina la benki",
+      "accountName": "Jina la akaunti",
+      "accountNumber": "Namba ya akaunti",
+      "mobileMoneyNumber": "Namba ya pesa za simu",
+      "arrestRecord": "Je, umewahi kukamatwa, kuzuiliwa, au kufukuzwa nchi?",
+      "arrestDetails": "Kama ndiyo, tafadhali toa maelezo",
+      "misconductRecord": "Je, umewahi kufukuzwa kazi au kulazimishwa kujiuzulu kwa utovu wa nidhamu?",
+      "misconductDetails": "Kama ndiyo, tafadhali toa maelezo",
+      "certificationName": "Jina kama linavyotumika rasmi",
+      "certificationDate": "Tarehe",
+      "spouseFullName": "Jina kamili la mwenza",
+      "spousePhone": "Simu ya mwenza",
+      "spouseOccupation": "Kazi ya mwenza",
+      "spouseEmployer": "Mwajiri wa mwenza",
+      "childFullNames": "Jina kamili la mtoto",
+      "childGender": "Jinsia",
+      "childSchoolEmployer": "Shule / mwajiri",
+      "childContactNumber": "Namba ya mawasiliano",
+      "relationship": "Uhusiano",
+      "fullName": "Jina kamili",
+      "phone": "Simu",
+      "address": "Anwani",
+      "occupation": "Kazi",
+      "priority": "Kipaumbele",
+      "level": "Ngazi",
+      "qualification": "Sifa",
+      "institution": "Taasisi",
+      "yearObtained": "Mwaka uliopata",
+      "employer": "Mwajiri",
+      "dateFrom": "Tarehe kuanzia",
+      "dateTo": "Tarehe hadi",
+      "leavingReason": "Sababu ya kuondoka",
+      "referenceName": "Jina kamili",
+      "referenceRelationship": "Uhusiano",
+      "referencePhone": "Simu",
+      "referenceEmail": "Barua pepe",
+      "referenceOrganization": "Taasisi"
+    },
+    "help": {
+      "spouse": "Inaonyeshwa kwa wanachama waliooa/kuolewa. Acha wazi kama haihusiki.",
+      "references": "Toa hadi wadhamini watatu ambao hawana uhusiano nawe wa damu au ndoa.",
+      "relativesEmployed": "Taja ndugu yeyote anayefanya kazi Silverleaf (mgongano wa maslahi)."
+    },
+    "options": {
+      "gender": {
+        "MALE": "Mwanaume",
+        "FEMALE": "Mwanamke"
+      },
+      "childGender": {
+        "MALE": "Mwanaume",
+        "FEMALE": "Mwanamke",
+        "Other": "Nyingine"
+      },
+      "maritalStatus": {
+        "Single": "Sijaoa/Sijaolewa",
+        "Married": "Nimeoa/Nimeolewa",
+        "Divorced": "Talaka",
+        "Widowed": "Mjane/Mgane",
+        "Separated": "Tumetengana"
+      },
+      "yesNo": {
+        "yes": "Ndiyo",
+        "no": "Hapana",
+        "unspecified": "Sipendi kusema"
+      },
+      "familyRelationship": {
+        "Father": "Baba",
+        "Mother": "Mama",
+        "Brother": "Kaka",
+        "Sister": "Dada",
+        "Guardian": "Mlezi"
+      },
+      "priority": {
+        "Primary": "Kuu",
+        "Secondary": "Ya pili"
+      },
+      "level": {
+        "Certificate": "Cheti",
+        "Diploma": "Diploma",
+        "Degree": "Shahada",
+        "Masters": "Shahada ya uzamili",
+        "PhD": "Shahada ya uzamivu"
+      },
+      "select": "Chagua…"
+    },
+    "buttons": {
+      "addChild": "Ongeza mtoto",
+      "addFamilyContact": "Ongeza mawasiliano ya familia",
+      "addEmergencyContact": "Ongeza mawasiliano ya dharura",
+      "addRelative": "Ongeza ndugu",
+      "addQualification": "Ongeza sifa",
+      "addEmployment": "Ongeza ajira",
+      "remove": "Ondoa",
+      "submit": "Hifadhi wasifu",
+      "submitting": "Inahifadhi…",
+      "edit": "Hariri wasifu"
+    },
+    "referenceLabel": "Mdhamini {n}",
+    "documents": {
+      "title": "Vyeti na nyaraka za ziada",
+      "help": "Pakia nakala au picha za vyeti vyako (PDF au picha). Vinahifadhiwa kwa faragha na vinaonekana kwako na kwa HR ya Silverleaf pekee.",
+      "addLabel": "Ongeza cheti",
+      "accept": "Vinavyokubaliwa: PDF, PNG, JPG, GIF, WEBP, DOCX, XLSX, PPTX. Kisichozidi MB 25 kwa faili.",
+      "working": "Inapakia…",
+      "remove": "Ondoa",
+      "saveFirst": "Hifadhi taarifa zako mara moja (hapo juu) ili uanze kuambatisha vyeti.",
+      "errors": {
+        "noFile": "Chagua faili la kupakia.",
+        "tooLarge": "Faili hilo ni kubwa kuliko MB 25.",
+        "unsupportedType": "Aina hiyo ya faili hairuhusiwi. Tumia PDF, picha, au nyaraka ya Office.",
+        "profileRequired": "Tafadhali hifadhi wasifu wako mara moja kabla ya kupakia vyeti.",
+        "failed": "Upakiaji umeshindikana. Tafadhali jaribu tena."
+      }
+    },
+    "status": {
+      "savedTitle": "Wasifu umehifadhiwa",
+      "savedBody": "Taarifa zako binafsi zimehifadhiwa kwa usalama. Unaweza kuzihariri wakati wowote.",
+      "savedOn": "Ulihifadhiwa mwisho tarehe {date}."
+    },
+    "errors": {
+      "fixFields": "Tafadhali rekebisha sehemu zilizoangaziwa na ujaribu tena.",
+      "unauthenticated": "Kipindi chako kimeisha. Tafadhali ingia tena.",
+      "generic": "Hitilafu imetokea wakati wa kuhifadhi. Tafadhali jaribu tena.",
+      "surnameRequired": "Jina la familia linahitajika.",
+      "firstNameRequired": "Jina la kwanza linahitajika.",
+      "genderRequired": "Tafadhali chagua jinsia.",
+      "maritalStatusRequired": "Tafadhali chagua hali ya ndoa.",
+      "mobilePhoneRequired": "Simu ya mkononi inahitajika.",
+      "residentialAddressRequired": "Anwani ya makazi inahitajika.",
+      "identificationNoRequired": "Namba ya kitambulisho cha taifa inahitajika.",
+      "positionRequired": "Cheo kinahitajika.",
+      "consentRequired": "Lazima utoe idhini kabla ya kuwasilisha.",
+      "invalidDate": "Tafadhali weka tarehe sahihi.",
+      "invalidYear": "Tafadhali weka mwaka sahihi wa tarakimu 4."
+    }
+  }
+}

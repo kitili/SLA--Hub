@@ -1,0 +1,692 @@
+/**
+ * lessonPlanDocument.module.css — Silverleaf-branded lesson-plan document.
+ *
+ * A faithful CSS-Modules port of `cssBody()` from the Antoine renderer
+ * (silverleaf-lesson-plans-antoine/visual_design/src/silverleaf-lessonplan.js —
+ * an external provenance repo, not part of this codebase),
+ * plus the 7 brand @font-face declarations from build-shared.js's FONTS list.
+ *
+ * Differences from the source string (all required by CSS Modules / Next):
+ *   - Class selectors are bare `.name` so CSS Modules can localise them; the
+ *     few structural element selectors (`h1/h2/h3`, `p`, `ul/li`) are scoped
+ *     under `.page` so they don't leak into the rest of the app.
+ *   - The two raster patterns are referenced from `/public` as
+ *     `url(/brand/silverleaf-wm.png)` and `url(/brand/future-strip.png)`.
+ *   - Fonts load from `/brand/fonts/*.ttf`; the Montserrat / Georgia families
+ *     are renamed `MontserratBrand` / `GeorgiaBrand` to avoid clashing with any
+ *     system fonts, matching the original `GeorgiaBrand` stack convention.
+ *   - The default sizing (`--s:17px`) equals the original FILL.large.
+ *
+ * @page, break-after:page and print-color-adjust:exact are preserved so the
+ * document still paginates into a 3-page A4 booklet on Print / Save-as-PDF.
+ */
+
+@font-face {
+  font-family: "MontserratBrand";
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url(/brand/fonts/montserrat-300.ttf) format("truetype");
+}
+@font-face {
+  font-family: "MontserratBrand";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url(/brand/fonts/montserrat-400.ttf) format("truetype");
+}
+@font-face {
+  font-family: "MontserratBrand";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url(/brand/fonts/montserrat-700.ttf) format("truetype");
+}
+@font-face {
+  font-family: "GeorgiaBrand";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url(/brand/fonts/georgia-400.ttf) format("truetype");
+}
+@font-face {
+  font-family: "GeorgiaBrand";
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url(/brand/fonts/georgia-400i.ttf) format("truetype");
+}
+@font-face {
+  font-family: "GeorgiaBrand";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url(/brand/fonts/georgia-700.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Noteworthy";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url(/brand/fonts/noteworthy-700.ttf) format("truetype");
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+/* The document root carries the palette + default sizing (FILL.large). */
+.doc {
+  --e: #002368;
+  --l: #80bfec;
+  --l30: #d9ecf9;
+  --silver: #818283;
+  --s15: #ececec;
+  --gold: #ffc952;
+  --gold15: #fff7e5;
+  --ink: #1a2233;
+  --s: 17px;
+  background: #aeb6bf;
+  color: var(--ink);
+  font-family: "MontserratBrand", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  /* The A4 page below is a fixed 210mm wide; query OUR width (not the
+     viewport) so the squished single-column layout kicks in whenever we're
+     embedded in a narrower reading column, e.g. the ~712px teacher card. */
+  container-type: inline-size;
+}
+
+.doc * {
+  box-sizing: border-box;
+}
+
+/* ---- page shell ---- */
+.page {
+  position: relative;
+  width: 210mm;
+  max-width: 100%;
+  min-height: 296mm;
+  overflow: hidden;
+  background: #fff;
+  margin: 9mm auto;
+  box-shadow: 0 6px 26px rgba(20, 30, 70, 0.32);
+  break-after: page;
+  page-break-after: always;
+  font-size: var(--s);
+  line-height: 1.5;
+}
+.page:last-child {
+  break-after: auto;
+  page-break-after: auto;
+}
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url(/brand/silverleaf-wm.png) center/cover no-repeat;
+  opacity: 0.13;
+  pointer-events: none;
+}
+
+.page h1,
+.page h2,
+.page h3 {
+  font-family: "MontserratBrand", Helvetica, sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+.page p {
+  margin: 0.45em 0;
+  font-size: 1em;
+}
+.page ul {
+  margin: 0.4em 0;
+  padding-left: 1.15em;
+}
+.page li {
+  margin: 0.28em 0;
+  font-size: 1em;
+}
+.page b,
+.page strong {
+  font-weight: 700;
+}
+
+.pad {
+  padding: 9mm 12mm 16mm;
+  position: relative;
+  z-index: 1;
+}
+
+.fstrip {
+  height: 26px;
+  background: url(/brand/future-strip.png) no-repeat center;
+  background-size: 100% auto;
+  position: relative;
+  z-index: 2;
+}
+.pagenum {
+  position: absolute;
+  bottom: 5mm;
+  right: 10mm;
+  z-index: 6;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--e);
+}
+.brandbadge {
+  position: absolute;
+  top: 50%;
+  right: 9mm;
+  transform: translateY(-50%);
+  z-index: 7;
+  line-height: 0;
+}
+.brandbadge img {
+  display: block;
+  width: auto;
+  height: 32px;
+}
+.brandbadge.tag img {
+  height: 46px;
+}
+
+/* ---- cover header (page 1) ---- */
+.cover {
+  display: flex;
+  min-height: 104px;
+  position: relative;
+  z-index: 2;
+}
+.cover .cd {
+  background: var(--l);
+  color: var(--e);
+  padding: 12px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-width: 150px;
+}
+.cover .cd .ll {
+  font-family: "MontserratBrand", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.cover .cd b {
+  font-family: "Noteworthy", cursive;
+  font-size: 42px;
+  line-height: 0.95;
+}
+.cover .cr {
+  background: var(--e);
+  color: #fff;
+  flex: 1;
+  padding: 14px 52mm 14px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+.crtop {
+  font-family: "GeorgiaBrand", Georgia, serif;
+  font-size: 1em;
+  letter-spacing: 0.01em;
+}
+.cover .cr h1 {
+  font-size: 1.7em;
+  line-height: 1.12;
+}
+.comp {
+  font-size: 0.82em;
+  color: var(--l);
+}
+
+/* ---- content page header (pages 2-3) ---- */
+.phead {
+  background: var(--e);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 15px 52mm 15px 12mm;
+  position: relative;
+  z-index: 2;
+  min-height: 88px;
+}
+.phead h1 {
+  font-size: 1.5em;
+  flex: 1;
+}
+.phead .accent {
+  color: var(--gold);
+}
+.phead .sub {
+  display: block;
+  font-family: "GeorgiaBrand", serif;
+  font-weight: 400;
+  font-size: 0.6em;
+  color: var(--l);
+  margin-top: 3px;
+}
+
+/* ---- boxes / banners ---- */
+.box {
+  border-radius: 16px;
+  padding: 13px 18px;
+  margin: 0 0 11px;
+  position: relative;
+}
+.box.mint {
+  background: var(--l30);
+}
+.box.gray {
+  background: var(--s15);
+}
+.box h2 {
+  font-size: 1.12em;
+  margin: 0 0 6px;
+  color: var(--e);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.box .sub {
+  font-size: 0.8em;
+  color: var(--silver);
+  font-weight: 400;
+  font-family: "GeorgiaBrand", serif;
+  font-style: italic;
+}
+.tag {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.78em;
+  letter-spacing: 0.05em;
+}
+.pill {
+  display: inline-block;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.72em;
+  padding: 3px 11px;
+  background: var(--l);
+  color: var(--e);
+  letter-spacing: 0.03em;
+}
+.pill.deep {
+  background: var(--e);
+  color: #fff;
+  border: 2px solid var(--gold);
+}
+.pill.surface {
+  background: var(--l);
+  color: var(--e);
+}
+
+/* success criteria — the destination, gold-accented at the very top */
+.sc {
+  background: var(--e);
+  color: #fff;
+  border-radius: 18px;
+  padding: 16px 20px;
+  margin: 0 0 12px;
+}
+.sc h2 {
+  color: var(--gold);
+  font-size: 1.16em;
+  margin: 0 0 8px;
+}
+.sc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sc li {
+  position: relative;
+  padding-left: 26px;
+  margin: 0.5em 0;
+  font-size: 1em;
+}
+.sc li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 900;
+}
+
+/* knows / shows two-up */
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 0 0 11px;
+}
+.two .box {
+  margin: 0;
+}
+
+/* misconceptions */
+.misc ul {
+  padding: 0;
+  margin: 0.2em 0;
+}
+.misc li {
+  list-style: none;
+  margin: 0.5em 0;
+  padding-left: 22px;
+  position: relative;
+}
+.misc li::before {
+  content: "⚠";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+.misc .mt {
+  font-weight: 700;
+  color: var(--e);
+}
+.misc .md {
+  font-family: "GeorgiaBrand", serif;
+  font-style: italic;
+  color: var(--ink);
+}
+
+/* teaching sequence stages */
+.stage {
+  border: 2px solid var(--l30);
+  border-radius: 16px;
+  padding: 0 0 14px;
+  margin: 0 0 12px;
+  overflow: hidden;
+  background: #fff;
+  break-inside: avoid;
+}
+.stage .sh {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--l30);
+  padding: 10px 16px;
+}
+.stage.deep .sh {
+  background: #e9eef9;
+}
+.stage .sn {
+  font-family: "Noteworthy", cursive;
+  font-size: 26px;
+  color: var(--e);
+  line-height: 1;
+}
+.stage .sh h3 {
+  flex: 1;
+  color: var(--e);
+  font-size: 1.08em;
+}
+.stage .body {
+  padding: 10px 16px 0;
+}
+.stage .txt {
+  font-size: 0.98em;
+  margin: 0.2em 0 0.6em;
+}
+.frame {
+  background: var(--gold15);
+  border-left: 4px solid var(--gold);
+  border-radius: 6px;
+  padding: 7px 12px;
+  margin: 0.4em 0;
+  font-family: "GeorgiaBrand", serif;
+  font-style: italic;
+  font-size: 0.95em;
+}
+.frame b {
+  font-style: normal;
+  font-family: "MontserratBrand", sans-serif;
+  color: var(--e);
+}
+.cp {
+  background: var(--e);
+  color: #fff;
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin: 0.5em 0 0;
+  font-size: 0.95em;
+}
+.cp .cpl {
+  display: block;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 0.82em;
+  letter-spacing: 0.04em;
+  margin-bottom: 3px;
+}
+
+/* differentiation tiers */
+.tiers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 11px;
+}
+.tier {
+  border-radius: 14px;
+  padding: 11px 15px;
+  background: var(--l30);
+}
+.tier.challenge {
+  background: var(--gold15);
+  border: 1px solid var(--gold);
+}
+.tier.digital {
+  background: var(--s15);
+}
+.tier h3 {
+  font-size: 0.96em;
+  color: var(--e);
+  margin: 0 0 4px;
+}
+.tier h3 .tp {
+  font-size: 0.78em;
+  font-weight: 700;
+  color: var(--silver);
+}
+
+/* exit ticket + close */
+.exit {
+  background: var(--gold);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 0 0 11px;
+}
+.exit .et {
+  font-weight: 700;
+  color: var(--e);
+  font-size: 0.82em;
+  letter-spacing: 0.05em;
+}
+.exit h2 {
+  color: var(--e);
+  font-size: 1.16em;
+  margin: 4px 0 8px;
+}
+.exit p {
+  color: var(--e);
+  margin: 0;
+}
+.understand {
+  background: var(--l);
+  color: var(--e);
+  border-radius: 14px;
+  padding: 12px 18px;
+  margin: 0 0 11px;
+  font-size: 1.02em;
+}
+.understand.spaced {
+  margin-top: 12px;
+}
+.understand b {
+  font-weight: 700;
+}
+.method {
+  background: var(--e);
+  color: #fff;
+  border-radius: 14px;
+  padding: 12px 18px;
+  margin: 0 0 11px;
+}
+.method h3 {
+  color: var(--gold);
+  font-size: 0.92em;
+  margin: 0 0 4px;
+  letter-spacing: 0.03em;
+}
+
+.notesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.gaps {
+  border: 1px dashed var(--silver);
+  border-radius: 12px;
+  padding: 10px 16px;
+  margin: 11px 0 0;
+  background: #fff;
+}
+.gaps h3 {
+  font-size: 0.88em;
+  color: var(--silver);
+  margin: 0 0 4px;
+  letter-spacing: 0.03em;
+}
+.gaps li {
+  font-size: 0.9em;
+  color: var(--silver);
+}
+
+.footerStrip {
+  background: var(--l);
+  color: var(--e);
+  font-weight: 700;
+  font-size: 0.82em;
+  text-align: center;
+  padding: 9px 14px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+}
+
+@media print {
+  .doc {
+    background: #fff;
+  }
+  .page {
+    margin: 0;
+    box-shadow: none;
+    min-height: 296mm;
+  }
+}
+@container (max-width: 820px) {
+  .page {
+    width: 100%;
+    min-height: 0;
+    margin: 0 0 7mm;
+    font-size: calc(var(--s) + 1px);
+  }
+  .page:last-child {
+    margin-bottom: 0;
+  }
+  .pad {
+    padding: 7mm;
+  }
+  .two,
+  .tiers,
+  .notesGrid {
+    grid-template-columns: 1fr;
+  }
+  /* The brand badge is absolutely positioned over the two headers, which clear
+     it with a 52mm right padding. That figure assumes the 210mm page: on a
+     phone-width page it is half the width, leaving the title a few pixels and
+     pushing the header off-screen (the page clips it, so the text is simply
+     lost). Shrink the badge and reserve only what it now occupies. */
+  .brandbadge {
+    right: 6mm;
+  }
+  .brandbadge img {
+    height: 20px;
+  }
+  .brandbadge.tag img {
+    height: 26px;
+  }
+  .cover .cr,
+  .phead {
+    padding-right: 30mm;
+  }
+  .phead {
+    padding-left: 7mm;
+  }
+  /* A 150mm-wide lesson-number block leaves the title nothing to wrap into. */
+  .cover .cd {
+    min-width: 0;
+    padding: 10px 14px;
+  }
+}
+
+/* ---- Print / Save-as-PDF button (screen only) ---- */
+.printBar {
+  width: 210mm;
+  max-width: 100%;
+  margin: 9mm auto 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.printButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--electric-blue);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.printButton:hover {
+  border-color: var(--electric-blue);
+}
+.printButton:focus-visible {
+  outline: 2px solid var(--electric-blue);
+  outline-offset: 2px;
+}
+.printError {
+  align-self: center;
+  margin-right: auto;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #b03a2e;
+}
+@media print {
+  .printBar {
+    display: none;
+  }
+}
+@media screen and (max-width: 820px) {
+  .printBar {
+    width: 100%;
+    padding: 0 7mm;
+  }
+}

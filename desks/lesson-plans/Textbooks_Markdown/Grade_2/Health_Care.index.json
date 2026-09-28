@@ -1,0 +1,165 @@
+{
+  "confidence": "high",
+  "offset": 7,
+  "total_pages": 40,
+  "source": "toc",
+  "page_map": [
+    {
+      "scan": 8,
+      "printed": 1
+    },
+    {
+      "scan": 9,
+      "printed": 2
+    },
+    {
+      "scan": 10,
+      "printed": 3
+    },
+    {
+      "scan": 11,
+      "printed": 4
+    },
+    {
+      "scan": 12,
+      "printed": 5
+    },
+    {
+      "scan": 13,
+      "printed": 6
+    },
+    {
+      "scan": 14,
+      "printed": 7
+    },
+    {
+      "scan": 15,
+      "printed": 8
+    },
+    {
+      "scan": 16,
+      "printed": 9
+    },
+    {
+      "scan": 17,
+      "printed": 10
+    },
+    {
+      "scan": 18,
+      "printed": 11
+    },
+    {
+      "scan": 19,
+      "printed": 12
+    },
+    {
+      "scan": 20,
+      "printed": 13
+    },
+    {
+      "scan": 21,
+      "printed": 14
+    },
+    {
+      "scan": 22,
+      "printed": 15
+    },
+    {
+      "scan": 23,
+      "printed": 16
+    },
+    {
+      "scan": 24,
+      "printed": 17
+    },
+    {
+      "scan": 25,
+      "printed": 18
+    },
+    {
+      "scan": 26,
+      "printed": 20
+    },
+    {
+      "scan": 27,
+      "printed": 21
+    },
+    {
+      "scan": 28,
+      "printed": 22
+    },
+    {
+      "scan": 29,
+      "printed": 23
+    },
+    {
+      "scan": 30,
+      "printed": 24
+    },
+    {
+      "scan": 31,
+      "printed": 25
+    },
+    {
+      "scan": 32,
+      "printed": 26
+    },
+    {
+      "scan": 33,
+      "printed": 27
+    },
+    {
+      "scan": 34,
+      "printed": 28
+    },
+    {
+      "scan": 35,
+      "printed": 29
+    },
+    {
+      "scan": 36,
+      "printed": 30
+    },
+    {
+      "scan": 37,
+      "printed": 31
+    },
+    {
+      "scan": 38,
+      "printed": 32
+    },
+    {
+      "scan": 39,
+      "printed": 33
+    }
+  ],
+  "chapters": [
+    {
+      "n": 1,
+      "marker": "Chapter One",
+      "title": "Chapter One",
+      "printed_start": 1,
+      "printed_end": 9,
+      "scan_start": 8,
+      "scan_end": 16
+    },
+    {
+      "n": 2,
+      "marker": "Chapter Two",
+      "title": "Chapter Two",
+      "printed_start": 10,
+      "printed_end": 19,
+      "scan_start": 17,
+      "scan_end": 25
+    },
+    {
+      "n": 3,
+      "marker": "Chapter Three",
+      "title": "Chapter Three",
+      "printed_start": 20,
+      "printed_end": 33,
+      "scan_start": 26,
+      "scan_end": 40
+    }
+  ]
+}

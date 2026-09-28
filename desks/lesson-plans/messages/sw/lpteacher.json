@@ -1,0 +1,63 @@
+{
+  "lpHome": {
+    "eyebrow": "Mipango ya somo",
+    "greetingNamed": "Karibu tena, {name}",
+    "greeting": "Karibu tena",
+    "subtitle": "Tafuta mpango wa somo wa kufundisha, au endelea pale ulipoishia.",
+    "searchHeading": "Tafuta mipango ya somo",
+    "searchPlaceholder": "Jaribu “Darasa la 7 sehemu” au “usanisinuru”",
+    "searchAriaLabel": "Tafuta mipango ya somo",
+    "searchSubmit": "Tafuta",
+    "browseAll": "Vinjari mipango yote ya somo",
+    "upcomingHeading": "Masomo yako yanayofuata",
+    "upcomingEmpty": "Bado hakuna masomo ya kupendekeza. Tafuta mpango wa somo ili kuanza — yale utakayofungua yataunda yanayoonekana hapa."
+  },
+  "lpSearch": {
+    "title": "Mipango ya somo",
+    "subtitle": "Tafuta na uchuje katalogi ya mipango ya somo.",
+    "placeholder": "Tafuta mipango ya somo…",
+    "ariaLabel": "Tafuta mipango ya somo",
+    "submit": "Tafuta",
+    "clearSearch": "Futa utafutaji",
+    "clearAll": "Futa vyote",
+    "sort": "Panga",
+    "sortAriaLabel": "Mpangilio",
+    "relevance": "Uhusiano",
+    "browseOrder": "Mpangilio wa kuvinjari",
+    "relevanceEnabledHint": "Yenye uhusiano zaidi kwanza",
+    "relevanceDisabledHint": "Andika utafutaji ili kupanga kwa uhusiano",
+    "resultsAriaLabel": "Matokeo ya utafutaji",
+    "facets": {
+      "subject": "Somo",
+      "grade": "Darasa",
+      "term": "Muhula"
+    },
+    "termLabel": "Muhula {value}"
+  },
+  "lpResults": {
+    "count": "{count, plural, =0 {Hakuna mipango} one {mpango #} other {mipango #}}",
+    "emptyTitle": "Hakuna mipango inayolingana",
+    "emptyHint": "Jaribu vichujio vichache au utafutaji mfupi."
+  },
+  "lpPlan": {
+    "objectives": "Malengo",
+    "body": "Mpango wa somo",
+    "feedbackHeading": "Mpango huu wa somo ulikuwaje?",
+    "meta": {
+      "grade": "Darasa la {value}",
+      "term": "Muhula {value}",
+      "week": "Wiki {value}",
+      "lesson": "Somo {value}",
+      "weekShort": "Wk {value}",
+      "lessonShort": "S{value}",
+      "minutes": "dakika {value}"
+    },
+    "printLabel": "Chapisha / Hifadhi kama PDF",
+    "preparingPdf": "Inaandaa PDF…",
+    "printFailed": "Imeshindwa kuandaa PDF. Tafadhali jaribu tena, au tumia kipengele cha kuchapisha cha kivinjari chako.",
+    "versionLabel": "Toleo la andalio la somo",
+    "versionBranded": "Andalio la somo",
+    "versionGovernment": "Toleo la serikali",
+    "downloadGovernment": "Pakua toleo la serikali"
+  }
+}

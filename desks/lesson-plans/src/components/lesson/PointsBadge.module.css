@@ -1,0 +1,36 @@
+/* PointsBadge.module.css — compact points + streak pill. */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: var(--gold-15);
+  border: 1px solid var(--gold);
+  color: var(--electric-blue);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.star {
+  color: var(--gold);
+  font-size: 0.9rem;
+  /* Nudge the glyph onto the text baseline. */
+  transform: translateY(0.5px);
+}
+
+.points {
+  font-variant-numeric: tabular-nums;
+}
+
+.dot {
+  color: var(--ink-faint);
+}
+
+.streak {
+  font-weight: 600;
+  color: var(--ink-muted);
+}

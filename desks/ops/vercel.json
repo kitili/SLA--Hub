@@ -1,0 +1,16 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/sync-fees",
+      "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/cron/driver-compliance",
+      "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/cron/farm-alerts",
+      "schedule": "0 6 * * *"
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "admin": {
+    "title": "Admin",
+    "subtitle": "Content management & member monitoring",
+    "nav": {
+      "members": "Members",
+      "sections": "Sections",
+      "quizzes": "Quizzes",
+      "materials": "Materials",
+      "backToHub": "Back to hub"
+    },
+    "common": {
+      "save": "Save",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "create": "Create",
+      "add": "Add",
+      "remove": "Remove",
+      "replace": "Replace",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "published": "Published",
+      "hidden": "Hidden",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "saving": "Saving…",
+      "uploading": "Uploading…",
+      "none": "None",
+      "yes": "Yes",
+      "no": "No",
+      "confirmDelete": "Are you sure? This cannot be undone.",
+      "translationPending": "Translation pending",
+      "englishLabel": "English (EN)",
+      "swahiliLabel": "Swahili (SW)",
+      "optional": "optional",
+      "required": "required"
+    },
+    "members": {
+      "heading": "Member monitoring",
+      "description": "Track onboarding progress and spot members who are falling behind.",
+      "stats": {
+        "registered": "Members registered",
+        "completed": "Fully completed",
+        "checkpoints": "Checkpoints total",
+        "atRisk": "At risk"
+      },
+      "table": {
+        "name": "Name",
+        "email": "Email",
+        "completion": "Completion",
+        "lastLogin": "Last login",
+        "startDate": "Start date",
+        "status": "Status",
+        "risk": "Risk",
+        "bio": "Bio"
+      },
+      "status": {
+        "complete": "Complete",
+        "inProgress": "In progress",
+        "notStarted": "Not started"
+      },
+      "risk": {
+        "green": "On track",
+        "orange": "Slipping",
+        "red": "Off track"
+      },
+      "filter": {
+        "atRiskOnly": "Show at-risk only",
+        "all": "Show all"
+      },
+      "never": "Never",
+      "empty": "No members yet.",
+      "sortHint": "Click a column header to sort.",
+      "downloadBio": "Download bio as PDF",
+      "noBio": "—"
+    },
+    "sections": {
+      "heading": "Sections",
+      "description": "Author the onboarding content tree. Reorder, hide drafts, translate.",
+      "new": "New section",
+      "create": "Create section",
+      "edit": "Edit section",
+      "fields": {
+        "id": "Section ID (slug)",
+        "idHint": "Lowercase, hyphenated, e.g. \"health-safety\". Cannot be changed later.",
+        "icon": "Icon",
+        "iconHint": "An emoji or short token shown in the section header.",
+        "titleEn": "Title (English)",
+        "titleSw": "Title (Swahili)",
+        "descriptionEn": "Description (English)",
+        "descriptionSw": "Description (Swahili)"
+      },
+      "list": {
+        "order": "Order",
+        "title": "Title",
+        "items": "Items",
+        "quiz": "Quiz",
+        "status": "Status",
+        "actions": "Actions",
+        "itemCount": "{count, plural, =0 {No items} one {# item} other {# items}}",
+        "hasQuiz": "Quiz set",
+        "noQuiz": "No quiz",
+        "manageQuiz": "Manage quiz",
+        "manageItems": "Items & materials"
+      },
+      "empty": "No sections yet. Create the first one.",
+      "created": "Section created.",
+      "updated": "Section updated.",
+      "errors": {
+        "idTaken": "A section with that ID already exists.",
+        "notFound": "Section not found."
+      }
+    },
+    "quizzes": {
+      "heading": "Checkpoint quiz",
+      "description": "Author the questions for this section's checkpoint. Mark the correct option for each question.",
+      "forSection": "Checkpoint for: {section}",
+      "passRule": "Pass rule",
+      "passThreshold": "Correct answers required to pass",
+      "passThresholdHint": "Default is all questions correct (100%).",
+      "questionCount": "{count, plural, =0 {No questions} one {# question} other {# questions}}",
+      "addQuestion": "Add question",
+      "editQuestion": "Edit question",
+      "question": "Question",
+      "questionTextEn": "Question (English)",
+      "questionTextSw": "Question (Swahili)",
+      "options": "Answer options",
+      "optionTextEn": "Option (English)",
+      "optionTextSw": "Option (Swahili)",
+      "addOption": "Add option",
+      "removeOption": "Remove option",
+      "markCorrect": "Correct answer",
+      "correct": "Correct",
+      "noQuizYet": "No quiz exists for this section yet. Add a question to create one.",
+      "empty": "No questions yet.",
+      "saved": "Quiz saved.",
+      "questionAdded": "Question added.",
+      "questionUpdated": "Question updated.",
+      "questionDeleted": "Question deleted.",
+      "errors": {
+        "needOneCorrect": "Each question needs at least one correct option.",
+        "needTwoOptions": "Each question needs at least two options.",
+        "notFound": "Quiz or question not found."
+      }
+    },
+    "materials": {
+      "heading": "Materials",
+      "description": "Upload files and attach them to a section item. Tag the language.",
+      "upload": "Upload material",
+      "uploadHeading": "Upload a file",
+      "fields": {
+        "file": "File",
+        "sectionItem": "Attach to item",
+        "language": "Language"
+      },
+      "languageOptions": {
+        "en": "English",
+        "sw": "Swahili",
+        "none": "Untagged"
+      },
+      "list": {
+        "filename": "File",
+        "item": "Attached item",
+        "language": "Language",
+        "size": "Size",
+        "uploaded": "Uploaded",
+        "actions": "Actions"
+      },
+      "noItems": "Create a section with items before uploading materials.",
+      "empty": "No materials uploaded yet.",
+      "uploaded": "Material uploaded.",
+      "replaced": "Material replaced.",
+      "deleted": "Material deleted.",
+      "errors": {
+        "noFile": "Choose a file to upload.",
+        "noItem": "Choose an item to attach the file to.",
+        "tooLarge": "File is too large.",
+        "notFound": "Material not found."
+      }
+    },
+    "errors": {
+      "forbidden": "You do not have permission to view this page.",
+      "generic": "Something went wrong. Please try again.",
+      "validation": "Please correct the highlighted fields."
+    }
+  }
+}

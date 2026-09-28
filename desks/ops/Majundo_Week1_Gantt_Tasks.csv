@@ -1,0 +1,25 @@
+Person,Day,Day title,Work,Duty,Status,Demo gate
+Kai,1,Kickoff & skeleton,Create Next.js app / Supabase / .env.example / auth roles (admin matron),Captain,Done,
+Amos,1,Kickoff & skeleton,Matron layout shell (mobile-first) + geolocation permission,Integrator,Done,
+Jfree,1,Kickoff & skeleton,Buses table UI stub + seed 2–3 buses,QA Hawk,Done,
+Irene,1,Kickoff & skeleton,Admin dashboard shell + empty KPI card placeholders,Docs Scout,Done,
+Kai,2,Schema & students,SQL schema v1: students parents qr_codes buses trips boarding_events fee_balances,Integrator,Done,
+Amos,2,Schema & students,Student list page (read-only) + QR display component,QA Hawk,Done,
+Jfree,2,Schema & students,Trip stub: create morning / evening trip for a bus,Docs Scout,Done,
+Irene,2,Schema & students,Seed fee balances + parent phone numbers for ~20 demo students,Captain,Done,
+Kai,3,QR + Sprint 1 demo,API: resolve QR → student; generate QR tokens,QA Hawk,Done,Sprint 1 demo
+Amos,3,QR + Sprint 1 demo,Camera QR scanner page wired to Kai API (GPS can be mocked),Docs Scout,Done,Sprint 1 demo
+Jfree,3,QR + Sprint 1 demo,Bus detail page showing capacity,Captain,Done,Sprint 1 demo
+Irene,3,QR + Sprint 1 demo,Roles/permissions matrix written + enforced on admin routes,Integrator,Done,Sprint 1 demo
+Kai,4,Boarding events,POST /api/boarding — time-in/out reject duplicate scans,Docs Scout,Done,
+Amos,4,Boarding events,Scan flow: start trip → scan → success UI with student name,Captain,Open,
+Jfree,4,Boarding events,Occupancy counter API + UI on trip page,Integrator,Open,
+Irene,4,Boarding events,Boarding history table for admin,QA Hawk,Open,
+Kai,5,Fees + GPS mid-check,Fee lookup on boarding response; cron stub sync-fees (CSV → Supabase),Captain,Done,Week 1 mid-check demo
+Amos,5,Fees + GPS mid-check,Capture GPS on app open + each scan; show fee balance on success screen,Integrator,Open,Week 1 mid-check demo
+Jfree,5,Fees + GPS mid-check,trip_locations write endpoint (for later live map),QA Hawk,Open,Week 1 mid-check demo
+Irene,5,Fees + GPS mid-check,"Fee policy UI: threshold / prompt on Mondays toggle",Docs Scout,Open,Week 1 mid-check demo
+Kai,6,Parent messaging,Integrate Africa's Talking or stub; message_logs; wire boarding,Captain,Done,Week 1 demo
+Amos,6,Parent messaging,Matron sees Parent notified ✓ / failed,Integrator,Open,Week 1 demo
+Jfree,6,Parent messaging,Today's roster per bus (who is on),QA Hawk,Open,Week 1 demo
+Irene,6,Parent messaging,Admin Messages sent today panel,Docs Scout,Open,Week 1 demo

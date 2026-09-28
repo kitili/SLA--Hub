@@ -1,0 +1,41 @@
+# Textbook OCR outputs (Gemini 3.5 Flash)
+
+Each file is page-delimited Markdown (`--- PAGE n ---`) with printed-page folios (`<!--folio:N-->`). See each `Subject.index.json` for chapters, titles and scan/printed page ranges.
+
+- `Grade_1/Arithmetic.md` — 63 pages
+- `Grade_1/Culture_Arts_and_Sports.md` — 106 pages
+- `Grade_1/Health_Care.md` — 74 pages
+- `Grade_1/Kusoma.md` — 130 pages
+- `Grade_1/Listening_and_Speaking.md` — 90 pages
+- `Grade_1/Reading.md` — 57 pages
+- `Grade_1/Writing.md` — 121 pages
+- `Grade_2/Arithmetic.md` — 146 pages
+- `Grade_2/Culture_Arts_and_Sports.md` — 73 pages
+- `Grade_2/Health_Care.md` — 40 pages
+- `Grade_2/Kusoma.md` — 90 pages
+- `Grade_2/Listening_and_Speaking.md` — 98 pages
+- `Grade_2/Reading.md` — 138 pages
+- `Grade_2/Writing.md` — 50 pages
+- `Grade_3/Culture_Arts_and_Sports.md` — 81 pages
+- `Grade_3/English.md` — 74 pages
+- `Grade_3/Geography.md` — 89 pages
+- `Grade_3/Geography_2.md` — 80 pages
+- `Grade_3/HTM.md` — 154 pages
+- `Grade_3/HTM_2.md` — 122 pages
+- `Grade_3/Kiswahili.md` — 98 pages
+- `Grade_3/Mathematics.md` — 190 pages
+- `Grade_3/Science.md` — 106 pages
+- `Grade_4/Culture_Arts_and_Sports.md` — 82 pages
+- `Grade_4/English.md` — 96 pages
+- `Grade_4/Geography.md` — 98 pages
+- `Grade_4/HTM.md` — 166 pages
+- `Grade_4/Kiswahili.md` — 138 pages
+- `Grade_4/Mathematics.md` — 186 pages
+- `Grade_4/Science.md` — 162 pages
+- `Grade_5/Culture_Arts_and_Sports.md` — 113 pages
+- `Grade_5/English.md` — 120 pages
+- `Grade_5/Geography.md` — 93 pages
+- `Grade_5/HTM.md` — 129 pages
+- `Grade_5/Kiswahili.md` — 153 pages
+- `Grade_5/Mathematics.md` — 145 pages
+- `Grade_5/Science.md` — 89 pages

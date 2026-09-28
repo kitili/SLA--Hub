@@ -1,0 +1,207 @@
+.document-viewer-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #525659;
+}
+
+.viewer-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  background: var(--electric-blue);
+  color: var(--white);
+  flex-wrap: wrap;
+}
+
+.viewer-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.15s;
+}
+
+.viewer-back:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.viewer-title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.viewer-title-wrap h1 {
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.viewer-filename {
+  font-size: 0.75rem;
+  color: var(--light-blue);
+  opacity: 0.9;
+}
+
+.viewer-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--gold);
+  color: var(--electric-blue);
+  padding: 0.3rem 0.65rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.viewer-done-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  background: var(--gold);
+  color: var(--navy);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transition: filter 0.15s;
+}
+
+.viewer-done-btn:hover {
+  filter: brightness(0.95);
+}
+
+.viewer-done-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  background: #e6f4ea;
+  color: #1e7e34;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.viewer-notice {
+  padding: 0.6rem 1.25rem;
+  background: var(--gold-15);
+  border-bottom: 1px solid var(--gold);
+  font-size: 0.8rem;
+  color: var(--electric-blue);
+  font-weight: 500;
+}
+
+.viewer-frame-wrap {
+  flex: 1;
+  background: #525659;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.viewer-iframe {
+  width: 100%;
+  flex: 1;
+  min-height: 75vh;
+  border: none;
+  background: var(--white);
+}
+
+.viewer-video {
+  width: 100%;
+  max-height: 80vh;
+  margin: auto;
+  display: block;
+  background: var(--black);
+}
+
+.viewer-image-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  flex: 1;
+  background: var(--gray);
+}
+
+.viewer-image {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-sm);
+  user-select: none;
+}
+
+.viewer-docx-wrap {
+  flex: 1;
+  background: var(--gray);
+  overflow: auto;
+  padding: 1.5rem;
+}
+
+.viewer-docx {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--white);
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-sm);
+  min-height: 400px;
+}
+
+.viewer-docx .docx-wrapper {
+  padding: 2rem;
+}
+
+.viewer-loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--silver);
+}
+
+.viewer-pptx-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.viewer-pptx-local-hint {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  max-width: 400px;
+}
+
+.viewer-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 4rem 2rem;
+  color: var(--white);
+  text-align: center;
+  flex: 1;
+}
+
+.viewer-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+@media (max-width: 900px) {
+  .viewer-title-wrap h1 {
+    font-size: 0.9rem;
+  }
+}

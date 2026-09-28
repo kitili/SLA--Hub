@@ -1,0 +1,15 @@
+-- DEPRECATED — do not run this file.
+--
+-- An early matron draft used a conflicting shape (routes without school_id,
+-- inline route_stops.name/sequence, parents table, etc.).
+--
+-- Canonical schema order for Majundo Ops:
+--   1. supabase/schema_auth.sql
+--   2. supabase/schema_v1.sql
+--   3. supabase/schema_week2.sql
+--   4. supabase/schema_incidents.sql
+--   5. supabase/schema_maintenance.sql
+--   6. supabase/schema_day45.sql + schema_day6.sql (boarding fees + messaging)
+--   7. supabase/seed_routes.sql / seed_silverleaf.sql as needed
+--
+-- See WEEK2_TEAM_BOARD.md for run notes.

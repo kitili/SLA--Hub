@@ -1,0 +1,33 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3180 --hostname 127.0.0.1 --webpack",
+    "build": "next build",
+    "start": "next start --port 3180 --hostname 127.0.0.1",
+    "lint": "next lint",
+    "test:smoke": "node ../backend/scripts/smoke-stack.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.109.0",
+    "axios": "^1.19.0",
+    "date-fns": "^4.4.0",
+    "docx": "^9.7.1",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.8",
+    "lucide-react": "^1.30.0",
+    "next": "^16.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.6.0",
+    "recharts": "^3.10.1",
+    "xlsx": "^0.18.5",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.4"
+  }
+}

@@ -1,0 +1,19 @@
+# Require Kai (@kitili) as code owner on PRs into protected branches.
+# Enable in GitHub: Settings → Branches → Branch protection rule for `main`:
+#   ✓ Require a pull request before merging
+#   ✓ Require review from Code Owners
+#   ✓ (recommended) Restrict who can push to matching branches
+#   ✓ (recommended) Do not allow bypassing the above settings
+
+# Default: Kai reviews anything that ships.
+*       @kitili
+
+# Explicit ownership for ops domain work (same reviewer; keeps intent clear).
+/src/app/(ops)/                 @kitili
+/src/app/(driver)/              @kitili
+/src/components/driver/         @kitili
+/public/ticketing/              @kitili
+/public/driver/                 @kitili
+/supabase/                      @kitili
+/src/app/api/                   @kitili
+/docs/DEPLOY.md                 @kitili

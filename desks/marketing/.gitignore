@@ -1,0 +1,39 @@
+# Environment
+.env
+.env.local
+.env.production
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Build output
+dist/
+build/
+
+# Uploads (user content — never commit)
+backend/uploads/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vercel/
+.vscode/
+.idea/
+*.swp
+
+# Docker volumes (local)
+devops/data/
+
+# Database backups (store remotely, not in repo)
+devops/backups/
+
+# Parent-level lead extracts (phones and names — generate locally)
+backend/data/leads-tracker-2026.json
+backend/data/leads-tracker-2026.xlsx

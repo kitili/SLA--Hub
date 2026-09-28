@@ -1,0 +1,61 @@
+{
+  "goal": "Marketing admissions live with Ed Admin as SIS and an approve-before-send agent loop",
+  "phases": [
+    {
+      "id": "P1",
+      "name": "Live gate",
+      "sprint": "Sprint 1",
+      "owner": "engineering",
+      "outcomes": [
+        "Public /api/health/live reports blockers without leaking secrets",
+        "Staff /marketing/readiness lists phases and connection status",
+        "Placeholder API keys count as missing"
+      ]
+    },
+    {
+      "id": "P2",
+      "name": "Recommend loop",
+      "sprint": "Sprint 1",
+      "owner": "engineering",
+      "outcomes": [
+        "Queue of leads by vitality + next action",
+        "Propose draft WhatsApp / SMS / email / form link / mark dead",
+        "Approve or reject with an audit row — send only after approve"
+      ]
+    },
+    {
+      "id": "P3",
+      "name": "SIS reads",
+      "sprint": "Sprint 2",
+      "owner": "engineering",
+      "outcomes": [
+        "Sibling check via Parents (already shipped)",
+        "Occupancy counts from StudentClasses — no names stored",
+        "Graceful skip when the General API key is absent"
+      ]
+    },
+    {
+      "id": "P4",
+      "name": "Smoke + loop engineering",
+      "sprint": "Sprint 2",
+      "owner": "engineering",
+      "outcomes": [
+        "npm run test:live covers login, leads, contacts, webhooks, agent approve, readiness",
+        "Webhook 401 without secret; 200 with secret",
+        "Approve without SMTP/AT records skipped, not sent"
+      ]
+    },
+    {
+      "id": "P5",
+      "name": "Human cutover",
+      "sprint": "Sprint 3",
+      "owner": "ops",
+      "outcomes": [
+        "Paste a real EDADMIN_API_KEY",
+        "Give Ed Admin WEBHOOK_SECRET and prove one application-submitted",
+        "SMTP + Africa's Talking for real messages",
+        "CRON_SECRET + FRONTEND_URL in production"
+      ]
+    }
+  ]
+}

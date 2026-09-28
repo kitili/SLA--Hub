@@ -1,0 +1,524 @@
+/* AI Studio batch — mobile-first. Base styles target ~375px; larger screens
+   layer on via min-width queries. References design tokens from globals.css and
+   mirrors Studio.module.css for a consistent feel. */
+
+.studio {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.headerRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.backLink {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--electric-blue);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.subtitle {
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.keyNotice {
+  background: var(--gold-15);
+  border: 1px solid var(--gold);
+  color: var(--ink);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.9rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.keyNotice code {
+  background: rgba(0, 35, 104, 0.08);
+  padding: 0.05rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+/* Single column on phones; two columns once there's room. */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.panelTitle {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--electric-blue);
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--ink-faint);
+}
+
+.input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 2px solid var(--gray);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: var(--white);
+  /* Comfortable touch target on phones. */
+  min-height: 44px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--light-blue);
+  box-shadow: var(--focus-ring);
+}
+
+.estimate {
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.25rem;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  flex: 1 1 auto;
+  min-height: 44px;
+  padding: 0.7rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.primaryBtn {
+  background: var(--electric-blue);
+  color: var(--white);
+}
+
+.primaryBtn:hover:not(:disabled) {
+  background: var(--navy-light);
+}
+
+.secondaryBtn {
+  background: var(--white);
+  color: var(--electric-blue);
+  border: 2px solid var(--electric-blue);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.secondaryBtn:hover:not(:disabled) {
+  background: var(--light-blue-30);
+}
+
+.primaryBtn:disabled,
+.secondaryBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.placeholder {
+  color: var(--ink-faint);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.error {
+  color: #c0392b;
+  background: #fdecea;
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+}
+
+/* ── Scheme picker + lesson checklist ───────────────────── */
+.select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 2px solid var(--gray);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: var(--white);
+  min-height: 44px;
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--light-blue);
+  box-shadow: var(--focus-ring);
+}
+
+.muted {
+  color: var(--ink-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.hint {
+  font-weight: 400;
+  color: var(--ink-faint);
+  font-size: 0.85rem;
+}
+
+.selectBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.linkBtn {
+  color: var(--electric-blue);
+  font-weight: 600;
+  font-size: 0.85rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.linkBtn:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+.linkBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.checkList {
+  max-height: 340px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+}
+
+.checkRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.checkRow:last-child {
+  border-bottom: none;
+}
+
+.checkRow input {
+  margin-top: 0.2rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: 0 0 auto;
+}
+
+.checkText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.checkCoord {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--electric-blue);
+  font-variant-numeric: tabular-nums;
+}
+
+.checkSnippet {
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  overflow-wrap: anywhere;
+}
+
+.advanced {
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.75rem;
+}
+
+.advancedHead {
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.advancedBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+.summary {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.issuesNote {
+  font-size: 0.78rem;
+  color: #9a6a00;
+}
+
+/* ── Progress block ─────────────────────────────────────── */
+.progressBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.statusPill {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.tonePending {
+  background: rgba(0, 35, 104, 0.08);
+  color: var(--ink-muted);
+}
+
+.toneRunning {
+  background: var(--gold-15);
+  color: var(--ink);
+  border-color: var(--gold);
+}
+
+.toneOk {
+  background: var(--success-15);
+  color: var(--success);
+}
+
+.toneWarn {
+  background: var(--gold-15);
+  color: var(--ink);
+  border-color: var(--gold);
+}
+
+.toneError {
+  background: #fdecea;
+  color: #c0392b;
+}
+
+.count {
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 0.6rem;
+  background: var(--track);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--electric-blue);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.errorDetail {
+  font-size: 0.82rem;
+  color: #c0392b;
+  background: #fdecea;
+  padding: 0.5rem 0.7rem;
+  border-radius: var(--radius-sm);
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+.planList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.planItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+}
+
+.planLink {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  min-height: 1.5rem;
+  color: var(--electric-blue);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.planLink:hover .planTitle {
+  text-decoration: underline;
+}
+
+.planCoord {
+  flex: 0 0 auto;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--electric-blue);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.planTitle {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.planMeta {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+
+.doneRow {
+  display: flex;
+  gap: 0.65rem;
+  margin-top: 0.25rem;
+}
+
+/* Streaming indicator — a soft pulsing gold dot next to "Progress". */
+.streamingDot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: pulse 1.1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .streamingDot {
+    animation: none;
+    opacity: 0.8;
+  }
+  .progressFill {
+    transition: none;
+  }
+}
+
+/* ── Tablet / desktop (> 900px): two side-by-side panels ── */
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  /* Buttons size to content rather than stretching full width. */
+  .primaryBtn,
+  .secondaryBtn {
+    flex: 0 0 auto;
+  }
+}

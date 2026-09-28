@@ -1,0 +1,26 @@
+{
+  "feedback": {
+    "pageTitle": "Kipindi cha maoni",
+    "pageSubtitle": "Tafakari fupi kuhusu uzoefu wako wa onboarding hadi sasa. Majibu yako husaidia HR kuboresha safari kwa mfanyakazi mpya anayefuata.",
+    "introTitle": "Chukua dakika chache kutafakari",
+    "introBody": "Hakuna majibu sahihi au makosa. Shiriki kadri unavyotaka — maoni ya kweli ndiyo yanayosaidia zaidi.",
+    "expectationsLabel": "Je, onboarding iko kama ulivyotarajia?",
+    "expectationsHint": "Kwa mfano: je, ilikuwa wazi zaidi au yenye nyaraka nyingi kuliko ulivyofikiria?",
+    "unclearLabel": "Ni nini hakiko wazi?",
+    "unclearHint": "Mada, hatua, sera, au zana ungependa maelezo zaidi kuzihusu.",
+    "improvementsLabel": "Nini kingeifanya kozi iwe bora?",
+    "improvementsHint": "Mawazo kwa mtu anayeanza kazi Silverleaf baadaye.",
+    "submitButton": "Tuma maoni",
+    "submitting": "Inahifadhi…",
+    "backToDashboard": "Rudi kwenye dashibodi",
+    "alreadySubmittedTitle": "Asante kwa maoni yako",
+    "alreadySubmittedBody": "Tafakari yako imehifadhiwa. Unaweza kusasisha majibu yako wakati wowote mawazo yako yanapobadilika.",
+    "submittedOn": "Ilisasishwa mwisho {date}",
+    "editButton": "Sasisha majibu yangu",
+    "completionTitle": "Maoni yamehifadhiwa",
+    "completionBody": "Asante — tafakari yako inatusaidia kuboresha uzoefu wa onboarding.",
+    "completionSubmittedOn": "Imehifadhiwa {date}",
+    "errorEmpty": "Tafadhali jibu angalau swali moja kabla ya kutuma.",
+    "errorGeneric": "Kuna tatizo limetokea. Tafadhali jaribu tena."
+  }
+}

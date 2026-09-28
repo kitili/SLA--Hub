@@ -1,0 +1,73 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.*
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+*.log
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env files
+.env
+.env*.local
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# vercel
+.vercel
+
+# legacy monorepo build artifacts (preserved for reference-port)
+legacy/**/node_modules/
+legacy/client/dist/
+/client/
+
+# project
+documents/
+.superpowers/
+
+# Antoine reference repo (proprietary brand assets/fonts; read-only port source)
+silverleaf-lesson-plans-antoine/
+
+# data layer (F2): embedded PGlite dev database + local file storage
+.pglite/
+.storage/
+
+# e2e: seeded staff ids captured by global-setup (forged-session fixtures)
+e2e/.non-admin-session.json
+e2e/.admin-session.json
+
+# Claude Code agent worktrees/state
+.claude/
+
+# env files: ignore all variants EXCEPT the committed templates
+.env*
+!.env.example
+!.env.production.example
+
+# Playwright E2E artifacts (local verification only)
+.playwright-mcp/
+/[0-9][0-9]-*.png
+
+# Playwright test artifacts
+test-results/
+
+# Workflow DevKit local state (Local World, created by dev-server workflow runs)
+.workflow-data/
+
+# ad-hoc SOW upload fixtures (local testing only — public/ ships to production)
+/public/tmp-sow-test/

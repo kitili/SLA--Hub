@@ -1,0 +1,137 @@
+/* PromptPartsEditor — prompt parts on the Settings tab. Tokens from globals.css. */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--electric-blue);
+}
+
+.cardKey {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  background: rgba(0, 35, 104, 0.06);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  margin-top: 0.2rem;
+  display: inline-block;
+}
+
+.updatedAt {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+.textarea {
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.75rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--app-bg);
+  width: 100%;
+  resize: vertical;
+  font-family: 'Menlo', 'Consolas', 'Monaco', monospace;
+}
+
+.textarea:focus {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-color: var(--electric-blue);
+  background: var(--card);
+}
+
+.textarea:disabled {
+  opacity: 0.7;
+}
+
+.cardActions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btnPrimary {
+  background: var(--electric-blue);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btnPrimary:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.btnPrimary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btnSecondary {
+  background: transparent;
+  color: var(--electric-blue);
+  border: 1px solid var(--electric-blue);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btnSecondary:hover:not(:disabled) {
+  background: var(--light-blue-30);
+}
+
+.btnSecondary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* State */
+.empty {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+.error {
+  color: #b91c1c;
+  font-size: 0.875rem;
+}
+
+.success {
+  color: var(--success);
+  font-size: 0.875rem;
+}

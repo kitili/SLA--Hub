@@ -1,0 +1,160 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1786758985473,
+      "tag": "0000_ambitious_mentor",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1786758999750,
+      "tag": "0001_ticket-search-and-sequence",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1786802113639,
+      "tag": "0002_device-management-fields",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1786810890664,
+      "tag": "0003_allocate-to-location",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1786813303006,
+      "tag": "0004_ticket-email-optional",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1786814957166,
+      "tag": "0005_allocate-to-person-name",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1786816093740,
+      "tag": "0006_ticket-notify-recipients",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1787000267224,
+      "tag": "0007_systems-and-tasks",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1787210675003,
+      "tag": "0008_user-modules",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1787210693842,
+      "tag": "0009_backfill-user-modules",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1788203491708,
+      "tag": "0010_login-otp-codes",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1788203842536,
+      "tag": "0011_systems-lead-state-timeline",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1788287890892,
+      "tag": "0012_subscriptions",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1788299032337,
+      "tag": "0013_tools-enhancements",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "7",
+      "when": 1788378000000,
+      "tag": "0014_clickup",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "7",
+      "when": 1788380000000,
+      "tag": "0015_task-workspace",
+      "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "7",
+      "when": 1788381000000,
+      "tag": "0016_ticket-workspace",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "7",
+      "when": 1788382000000,
+      "tag": "0017_ticket-ops",
+      "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1788383000000,
+      "tag": "0018_phases-sprints",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "7",
+      "when": 1788384000000,
+      "tag": "0019_sprint-ops",
+      "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "7",
+      "when": 1789390000000,
+      "tag": "0020_one-to-fives",
+      "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "7",
+      "when": 1789395000000,
+      "tag": "0021_department-desks",
+      "breakpoints": true
+    }
+  ]
+}

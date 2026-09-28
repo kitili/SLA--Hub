@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silverleaf Visitor Log</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Firebase (Firestore) — used for shared, real-time storage. See README.md for setup. -->
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<style>
+  :root {
+    --ink: #1b2a24;
+    --ink-soft: #3f5a4f;
+    --paper: #f2f0e6;
+    --paper-raised: #ffffff;
+    --line: #d8d4c4;
+    --pine: #274c3f;
+    --pine-deep: #16332a;
+    --ochre: #c98a2c;
+    --ochre-soft: #e9c48a;
+    --danger: #a4402a;
+    --radius-card: 4px;
+    --radius-pill: 999px;
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --ink: #eceae1;
+      --ink-soft: #b7c7bf;
+      --paper: #142019;
+      --paper-raised: #1b2a22;
+      --line: #2c3b32;
+      --pine: #7fae98;
+      --pine-deep: #a9cabb;
+      --ochre: #e0aa54;
+      --ochre-soft: #7a5a2c;
+      --danger: #d97a5f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #eceae1;
+    --ink-soft: #b7c7bf;
+    --paper: #142019;
+    --paper-raised: #1b2a22;
+    --line: #2c3b32;
+    --pine: #7fae98;
+    --pine-deep: #a9cabb;
+    --ochre: #e0aa54;
+    --ochre-soft: #7a5a2c;
+    --danger: #d97a5f;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 28px 20px 60px;
+  }
+
+  header.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+    border-bottom: 2px solid var(--pine);
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+  }
+  header.top h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(28px, 4vw, 40px);
+    margin: 0 0 4px;
+    color: var(--pine-deep);
+    letter-spacing: -0.01em;
+  }
+  header.top .tag {
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    max-width: 46ch;
+  }
+
+  .campus-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .campus-pill {
+    border: 1px solid var(--line);
+    background: var(--paper-raised);
+    color: var(--ink-soft);
+    padding: 7px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 13.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color .15s ease, color .15s ease, background .15s ease;
+  }
+  .campus-pill:hover { border-color: var(--pine); color: var(--pine-deep); }
+  .campus-pill.active {
+    background: var(--pine);
+    border-color: var(--pine);
+    color: #fdfcf6;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 380px) 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+  }
+
+  .signin-card { padding: 22px; }
+  .signin-card h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 19px;
+    margin: 0 0 4px;
+    color: var(--pine-deep);
+  }
+  .signin-card .sub {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+  }
+
+  label {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin: 14px 0 5px;
+  }
+  label:first-of-type { margin-top: 0; }
+  input[type="text"], input[type="tel"], select {
+    width: 100%;
+    padding: 10px 11px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14.5px;
+  }
+  input:focus, select:focus, button:focus-visible {
+    outline: 2px solid var(--ochre);
+    outline-offset: 1px;
+  }
+
+  .photo-zone {
+    margin-top: 14px;
+    border: 1px dashed var(--line);
+    border-radius: 3px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .photo-thumb {
+    width: 56px; height: 56px;
+    border-radius: 3px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .photo-zone button {
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 12.5px;
+    padding: 6px 10px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+  }
+  .photo-zone button:hover { border-color: var(--pine); color: var(--pine-deep); }
+  .photo-zone .hint { font-size: 12px; color: var(--ink-soft); }
+  video.cam { width: 100%; border-radius: 3px; margin-top: 10px; display: none; }
+  canvas { display: none; }
+
+  .submit-btn {
+    width: 100%;
+    margin-top: 18px;
+    padding: 12px;
+    border: none;
+    border-radius: 3px;
+    background: var(--pine);
+    color: #fdfcf6;
+    font-size: 14.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s ease;
+  }
+  .submit-btn:hover { background: var(--pine-deep); }
+  .submit-btn:disabled { opacity: .5; cursor: default; }
+
+  .form-msg {
+    font-size: 12.5px;
+    margin-top: 10px;
+    color: var(--pine-deep);
+    min-height: 16px;
+  }
+  .form-msg.err { color: var(--danger); }
+
+  .board-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 18px 22px 0;
+  }
+  .board-head h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 19px;
+    margin: 0;
+    color: var(--pine-deep);
+  }
+  .board-head .count {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .visitor-list {
+    padding: 14px 12px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .visitor-row {
+    display: grid;
+    grid-template-columns: 40px 1fr auto auto;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 10px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+  }
+  .visitor-row:hover { background: var(--paper); border-color: var(--line); }
+  .avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--ochre-soft);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    color: var(--pine-deep);
+    font-size: 15px;
+  }
+  .visitor-info .name { font-weight: 600; font-size: 14.5px; }
+  .visitor-info .meta { font-size: 12.5px; color: var(--ink-soft); margin-top: 2px; }
+  .visitor-time { font-size: 12.5px; color: var(--ink-soft); white-space: nowrap; }
+  .signout-btn {
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .signout-btn:hover { border-color: var(--danger); color: var(--danger); }
+
+  .empty {
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+
+  .footnote {
+    margin-top: 26px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+  }
+
+  .view-toggle {
+    display: flex;
+    gap: 6px;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    padding: 3px;
+  }
+  .view-toggle button {
+    border: none;
+    background: none;
+    padding: 7px 15px;
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .view-toggle button.active {
+    background: var(--pine);
+    color: #fdfcf6;
+  }
+
+  #dashboardView { display: none; }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .stat-card {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    padding: 16px 18px;
+  }
+  .stat-card .num {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--pine-deep);
+    line-height: 1;
+  }
+  .stat-card .label {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+
+  .dash-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .dash-controls select, .dash-controls input[type="date"] {
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--paper-raised);
+    color: var(--ink);
+    font-size: 13.5px;
+    font-family: 'Work Sans', sans-serif;
+  }
+  .export-btn {
+    margin-left: auto;
+    background: none;
+    border: 1px solid var(--pine);
+    color: var(--pine-deep);
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .export-btn:hover { background: var(--pine); color: #fdfcf6; }
+
+  .dash-table-wrap {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    overflow-x: auto;
+  }
+  table.dash-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    min-width: 640px;
+  }
+  table.dash-table th {
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  table.dash-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  table.dash-table tr:last-child td { border-bottom: none; }
+  .status-chip {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: var(--radius-pill);
+    font-size: 11.5px;
+    font-weight: 600;
+  }
+  .status-chip.on-site { background: var(--ochre-soft); color: var(--pine-deep); }
+  .status-chip.left { background: var(--paper); color: var(--ink-soft); border: 1px solid var(--line); }
+
+  .toast {
+    position: fixed;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%) translateY(12px);
+    background: var(--pine-deep);
+    color: #fdfcf6;
+    padding: 10px 18px;
+    border-radius: var(--radius-pill);
+    font-size: 13.5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Visitor Log</h1>
+      <div class="tag">A working sign-in prototype for Silverleaf Academy campuses — test the flow, then we'll fold in what the desk teams need.</div>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:flex-end; gap:10px;">
+      <div class="view-toggle" id="viewToggle">
+        <button data-view="frontdesk" class="active">Front desk</button>
+        <button data-view="dashboard">Dashboard</button>
+      </div>
+      <div class="campus-row" id="campusRow"></div>
+    </div>
+  </header>
+
+  <div id="dashboardView">
+    <div class="stat-row" id="statRow"></div>
+    <div class="dash-controls">
+      <select id="dashCampus">
+        <option value="">All campuses</option>
+      </select>
+      <input type="date" id="dashDate">
+      <button class="export-btn" id="exportBtn">Export CSV</button>
+    </div>
+    <div class="dash-table-wrap">
+      <table class="dash-table">
+        <thead>
+          <tr>
+            <th>Visitor</th>
+            <th>Campus</th>
+            <th>Purpose</th>
+            <th>Host</th>
+            <th>Signed in</th>
+            <th>Signed out</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="dashTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid" id="frontdeskView">
+    <div class="card signin-card">
+      <h2>Sign in a visitor</h2>
+      <p class="sub" id="campusLabel">Usa River campus</p>
+
+      <label for="fName">Full name</label>
+      <input type="text" id="fName" placeholder="e.g. Amina Joseph">
+
+      <label for="fPhone">Phone number</label>
+      <input type="tel" id="fPhone" placeholder="e.g. 0754 000 000">
+
+      <label for="fPurpose">Purpose of visit</label>
+      <select id="fPurpose">
+        <option value="">Select a reason</option>
+        <option>Parent meeting</option>
+        <option>Prospective family tour</option>
+        <option>Delivery / vendor</option>
+        <option>Maintenance / contractor</option>
+        <option>Interview</option>
+        <option>Other</option>
+      </select>
+
+      <label for="fHost">Person / office visiting</label>
+      <input type="text" id="fHost" placeholder="e.g. Erick Anthony, Front Office">
+
+      <div class="photo-zone">
+        <img class="photo-thumb" id="photoThumb" alt="">
+        <div style="flex:1">
+          <button type="button" id="photoBtn">Take photo</button>
+          <div class="hint" id="photoHint">Optional — for front-desk verification</div>
+        </div>
+      </div>
+      <video class="cam" id="camPreview" autoplay playsinline muted></video>
+      <canvas id="camCanvas"></canvas>
+
+      <button class="submit-btn" id="submitBtn">Sign in</button>
+      <div class="form-msg" id="formMsg"></div>
+    </div>
+
+    <div class="card">
+      <div class="board-head">
+        <h2>On site now</h2>
+        <span class="count" id="onSiteCount">0 visitors</span>
+      </div>
+      <div class="visitor-list" id="visitorList">
+        <div class="empty">No one signed in yet at this campus today.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footnote">
+    Prototype MVP — data is stored per campus and visible to anyone with this link. Not yet wired to the SIS.
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// FIREBASE CONFIG — replace with your own project's config.
+// Get this from: Firebase Console → Project settings → General
+// → "Your apps" → SDK setup and configuration.
+// Free "Spark" plan is enough for this app.
+// ============================================================
+const FIREBASE_CONFIG = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+const CAMPUSES = ["Usa River", "Arusha Town", "Kijenge", "Ilboru", "Boma"];
+let currentCampus = CAMPUSES[0];
+let db = null;
+let stream = null;
+let capturedPhoto = null;
+let unsubscribe = null;
+
+const $ = (id) => document.getElementById(id);
+
+function todayKey() {
+  const d = new Date();
+  return d.toISOString().slice(0, 10);
+}
+
+function initCampusRow() {
+  const row = $('campusRow');
+  row.innerHTML = '';
+  CAMPUSES.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'campus-pill' + (c === currentCampus ? ' active' : '');
+    btn.textContent = c;
+    btn.onclick = () => switchCampus(c);
+    row.appendChild(btn);
+  });
+}
+
+function switchCampus(c) {
+  currentCampus = c;
+  $('campusLabel').textContent = c + ' campus';
+  initCampusRow();
+  subscribeToVisitors();
+}
+
+function showToast(msg) {
+  const t = $('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function initials(name) {
+  return name.trim().split(/\s+/).slice(0, 2).map(w => w[0]?.toUpperCase() || '').join('');
+}
+
+function formatTime(iso) {
+  const d = new Date(iso);
+  return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
+async function startCamera() {
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } });
+    const video = $('camPreview');
+    video.srcObject = stream;
+    video.style.display = 'block';
+    $('photoBtn').textContent = 'Capture';
+    $('photoBtn').onclick = capturePhoto;
+  } catch (e) {
+    $('photoHint').textContent = 'Camera not available on this device';
+  }
+}
+
+function capturePhoto() {
+  const video = $('camPreview');
+  const canvas = $('camCanvas');
+  const size = 200;
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  const vw = video.videoWidth, vh = video.videoHeight;
+  const side = Math.min(vw, vh);
+  ctx.drawImage(video, (vw - side) / 2, (vh - side) / 2, side, side, 0, 0, size, size);
+  capturedPhoto = canvas.toDataURL('image/jpeg', 0.6);
+  $('photoThumb').src = capturedPhoto;
+  video.style.display = 'none';
+  if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
+  $('photoBtn').textContent = 'Retake';
+  $('photoBtn').onclick = startCamera;
+  $('photoHint').textContent = 'Photo captured';
+}
+
+function renderVisitors(rows) {
+  const list = $('visitorList');
+  const active = rows.filter(r => !r.signedOutAt).sort((a, b) => new Date(b.signedInAt) - new Date(a.signedInAt));
+  $('onSiteCount').textContent = active.length + (active.length === 1 ? ' visitor' : ' visitors');
+
+  if (active.length === 0) {
+    list.innerHTML = '<div class="empty">No one signed in yet at this campus today.</div>';
+    return;
+  }
+
+  list.innerHTML = '';
+  active.forEach(v => {
+    const row = document.createElement('div');
+    row.className = 'visitor-row';
+
+    const avatar = document.createElement('div');
+    avatar.className = 'avatar';
+    if (v.photo) {
+      const img = document.createElement('img');
+      img.src = v.photo;
+      img.style.cssText = 'width:100%;height:100%;border-radius:50%;object-fit:cover;';
+      avatar.appendChild(img);
+    } else {
+      avatar.textContent = initials(v.name);
+    }
+
+    const info = document.createElement('div');
+    info.className = 'visitor-info';
+    info.innerHTML = `<div class="name">${escapeHtml(v.name)}</div><div class="meta">${escapeHtml(v.purpose || '—')} · visiting ${escapeHtml(v.host || '—')}</div>`;
+
+    const time = document.createElement('div');
+    time.className = 'visitor-time';
+    time.textContent = 'In ' + formatTime(v.signedInAt);
+
+    const btn = document.createElement('button');
+    btn.className = 'signout-btn';
+    btn.textContent = 'Sign out';
+    btn.onclick = () => signOut(v.id);
+
+    row.append(avatar, info, time, btn);
+    list.appendChild(row);
+  });
+}
+
+function escapeHtml(s) {
+  const div = document.createElement('div');
+  div.textContent = s || '';
+  return div.innerHTML;
+}
+
+async function subscribeToVisitors() {
+  if (!db) return;
+  if (unsubscribe) { unsubscribe(); unsubscribe = null; }
+  try {
+    const q = db.collection('visits')
+      .where('campus', '==', currentCampus)
+      .where('date', '==', todayKey());
+    unsubscribe = q.onSnapshot((snap) => {
+      const rows = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      renderVisitors(rows);
+    });
+  } catch (e) {
+    console.error('subscribe failed', e);
+  }
+}
+
+async function signOut(id) {
+  if (!db) return;
+  try {
+    await db.doc(`visits/${id}`).update({ signedOutAt: new Date().toISOString() });
+    showToast('Signed out');
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+async function submitForm() {
+  const name = $('fName').value.trim();
+  const phone = $('fPhone').value.trim();
+  const purpose = $('fPurpose').value;
+  const host = $('fHost').value.trim();
+  const msg = $('formMsg');
+  msg.classList.remove('err');
+
+  if (!name || !host) {
+    msg.textContent = 'Name and host are required.';
+    msg.classList.add('err');
+    return;
+  }
+  if (!db) {
+    msg.textContent = 'Storage is not available in this view — try opening the published link.';
+    msg.classList.add('err');
+    return;
+  }
+
+  const submitBtn = $('submitBtn');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Signing in…';
+
+  const id = 'v' + Date.now() + Math.floor(Math.random() * 1000);
+
+  try {
+    await db.doc(`visits/${id}`).set({
+      name, phone, purpose, host,
+      photo: capturedPhoto || null,
+      campus: currentCampus,
+      date: todayKey(),
+      signedInAt: new Date().toISOString(),
+      signedOutAt: null
+    });
+    msg.textContent = `${name} signed in at ${currentCampus}.`;
+    resetForm();
+  } catch (e) {
+    console.error(e);
+    msg.textContent = 'Could not save — please try again.';
+    msg.classList.add('err');
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Sign in';
+  }
+}
+
+function resetForm() {
+  $('fName').value = '';
+  $('fPhone').value = '';
+  $('fPurpose').value = '';
+  $('fHost').value = '';
+  capturedPhoto = null;
+  $('photoThumb').src = '';
+  $('photoBtn').textContent = 'Take photo';
+  $('photoBtn').onclick = startCamera;
+  $('photoHint').textContent = 'Optional — for front-desk verification';
+  if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
+  $('camPreview').style.display = 'none';
+}
+
+// ---- Dashboard ----
+let dashUnsub = null;
+
+function initDashCampusSelect() {
+  const sel = $('dashCampus');
+  CAMPUSES.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c;
+    opt.textContent = c;
+    sel.appendChild(opt);
+  });
+}
+
+function switchView(view) {
+  const isDash = view === 'dashboard';
+  $('dashboardView').style.display = isDash ? 'block' : 'none';
+  $('frontdeskView').style.display = isDash ? 'none' : 'grid';
+  $('campusRow').style.display = isDash ? 'none' : 'flex';
+  document.querySelectorAll('#viewToggle button').forEach(b => {
+    b.classList.toggle('active', b.dataset.view === view);
+  });
+  if (isDash) subscribeDashboard();
+  else if (dashUnsub) { dashUnsub(); dashUnsub = null; }
+}
+
+function subscribeDashboard() {
+  if (!db) return;
+  if (dashUnsub) { dashUnsub(); dashUnsub = null; }
+  const campus = $('dashCampus').value;
+  const date = $('dashDate').value || todayKey();
+  try {
+    let q = db.collection('visits').where('date', '==', date);
+    if (campus) q = q.where('campus', '==', campus);
+    dashUnsub = q.onSnapshot((snap) => {
+      const rows = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      renderDashboard(rows, date);
+    });
+  } catch (e) {
+    console.error('dashboard subscribe failed', e);
+  }
+}
+
+function renderDashboard(rows, date) {
+  const total = rows.length;
+  const onSite = rows.filter(r => !r.signedOutAt).length;
+  const perCampus = {};
+  CAMPUSES.forEach(c => perCampus[c] = 0);
+  rows.forEach(r => { if (perCampus[r.campus] !== undefined) perCampus[r.campus]++; });
+  const busiest = Object.entries(perCampus).sort((a, b) => b[1] - a[1])[0];
+
+  const statRow = $('statRow');
+  statRow.innerHTML = '';
+  const stats = [
+    { num: total, label: `Total visits · ${date}` },
+    { num: onSite, label: 'Currently on site' },
+    { num: busiest && busiest[1] > 0 ? busiest[0] : '—', label: 'Busiest campus today' },
+  ];
+  stats.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'stat-card';
+    card.innerHTML = `<div class="num">${s.num}</div><div class="label">${s.label}</div>`;
+    statRow.appendChild(card);
+  });
+
+  const body = $('dashTableBody');
+  if (rows.length === 0) {
+    body.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--ink-soft); padding:30px;">No visits recorded for this date.</td></tr>';
+    return;
+  }
+  const sorted = [...rows].sort((a, b) => new Date(b.signedInAt) - new Date(a.signedInAt));
+  body.innerHTML = sorted.map(r => `
+    <tr>
+      <td>${escapeHtml(r.name)}${r.phone ? '<div style="color:var(--ink-soft);font-size:12px;">' + escapeHtml(r.phone) + '</div>' : ''}</td>
+      <td>${escapeHtml(r.campus)}</td>
+      <td>${escapeHtml(r.purpose || '—')}</td>
+      <td>${escapeHtml(r.host || '—')}</td>
+      <td>${formatTime(r.signedInAt)}</td>
+      <td>${r.signedOutAt ? formatTime(r.signedOutAt) : '—'}</td>
+      <td><span class="status-chip ${r.signedOutAt ? 'left' : 'on-site'}">${r.signedOutAt ? 'Left' : 'On site'}</span></td>
+    </tr>
+  `).join('');
+
+  window._dashRows = rows;
+}
+
+function rowsToCsv(rows) {
+  const headers = ['Name', 'Phone', 'Campus', 'Purpose', 'Host', 'Signed in', 'Signed out'];
+  const lines = [headers.join(',')];
+  rows.forEach(r => {
+    const line = [
+      r.name, r.phone || '', r.campus, r.purpose || '', r.host || '',
+      r.signedInAt || '', r.signedOutAt || ''
+    ].map(v => `"${String(v).replace(/"/g, '""')}"`).join(',');
+    lines.push(line);
+  });
+  return lines.join('\n');
+}
+
+function exportCsv() {
+  const rows = window._dashRows || [];
+  if (rows.length === 0) { showToast('Nothing to export for this date'); return; }
+  const csv = rowsToCsv(rows);
+  const date = $('dashDate').value || todayKey();
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `visitor-log-${date}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+async function init() {
+  initCampusRow();
+  initDashCampusSelect();
+  $('dashDate').value = todayKey();
+  $('photoBtn').onclick = startCamera;
+  $('submitBtn').onclick = submitForm;
+  $('exportBtn').onclick = exportCsv;
+  $('dashCampus').onchange = subscribeDashboard;
+  $('dashDate').onchange = subscribeDashboard;
+  document.querySelectorAll('#viewToggle button').forEach(b => {
+    b.onclick = () => switchView(b.dataset.view);
+  });
+
+  try {
+    if (FIREBASE_CONFIG.apiKey === "YOUR_API_KEY") {
+      throw new Error('Firebase config not set');
+    }
+    const app = firebase.initializeApp(FIREBASE_CONFIG);
+    db = firebase.firestore(app);
+  } catch (e) {
+    console.error('Firebase init failed', e);
+  }
+
+  if (!db) {
+    $('formMsg').textContent = 'Storage is not connected — add your Firebase config near the top of the <script> tag (see README.md).';
+    $('formMsg').classList.add('err');
+  }
+
+  subscribeToVisitors();
+}
+
+init();
+</script>
+</body>
+</html>

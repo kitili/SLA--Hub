@@ -1,0 +1,2 @@
+ALTER TABLE "tool_allocations" ADD COLUMN "allocated_to_location_id" uuid;--> statement-breakpoint
+ALTER TABLE "tool_allocations" ADD CONSTRAINT "tool_allocations_allocated_to_location_id_tool_locations_id_fk" FOREIGN KEY ("allocated_to_location_id") REFERENCES "public"."tool_locations"("id") ON DELETE set null ON UPDATE no action;

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Silverleaf Ops Ticket Desk</title>
+    <link rel="manifest" href="/ticketing/manifest.webmanifest" />
+    <meta name="theme-color" content="#002368" />
+    <link rel="icon" href="/ticketing/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/ticketing/css/styles.css?v=ops10" />
+  </head>
+  <body>
+    <!-- LOGIN -->
+    <div id="login-screen" class="login-wrap">
+      <div class="login-shell ui-rise">
+        <aside class="login-hero" aria-hidden="false">
+          <img
+            class="brand-mark"
+            src="/assets/branding/logomark-electric-blue.svg"
+            alt=""
+            width="56"
+            height="56"
+          />
+          <p class="brand-name">Silverleaf</p>
+          <h1>Ops Ticket Desk</h1>
+          <p class="subtitle">
+            One place for Transport, Facilities, Kitchen, Security, and Farms to reach Operations.
+          </p>
+          <ul class="login-points">
+            <li>Open a ticket in under a minute</li>
+            <li>Track status on My tickets</li>
+            <li>Managers act from a live inbox</li>
+          </ul>
+        </aside>
+
+        <div class="login-card ui-rise ui-rise-delay-1">
+          <p class="login-card-kicker">Sign in</p>
+          <div id="setup-error" class="setup-error hidden" role="alert"></div>
+          <form id="login-form">
+            <label for="login-role">I am</label>
+            <select id="login-role" required>
+              <option value="requester">Department staff (open ticket)</option>
+              <option value="manager">Operations Manager</option>
+            </select>
+
+            <div id="dept-wrap">
+              <label for="login-name">Your name</label>
+              <input id="login-name" type="text" placeholder="e.g. James K." autocomplete="name" required />
+              <p class="hint">
+                Use the same name each time so “My tickets” stays yours alone. Choose which department
+                should handle your ticket on the form after sign-in.
+              </p>
+            </div>
+
+            <div id="pin-wrap" class="hidden">
+              <label for="login-pin">Manager PIN</label>
+              <input id="login-pin" type="password" autocomplete="current-password" />
+              <p class="hint" id="pin-hint"></p>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- APP -->
+    <div id="app-screen" class="hidden">
+      <div id="connectivity-bar" class="connectivity-bar hidden" role="status"></div>
+      <div id="alert-banner" class="alert-banner hidden" role="status"></div>
+      <header class="app-header">
+        <div class="app-header-inner">
+          <div class="header-brand">
+            <img
+              class="header-logo"
+              src="/assets/branding/logomark-electric-blue.svg"
+              alt="Silverleaf"
+              width="32"
+              height="32"
+            />
+            <div class="header-copy">
+              <p class="header-eyebrow">Ops · Ticket Desk</p>
+              <p class="header-product" id="header-title">Ops System</p>
+              <p class="header-meta" id="header-meta"></p>
+              <span id="badge-new" class="badge-new hidden">0 new</span>
+              <span id="build-id" class="build-id hidden"></span>
+            </div>
+          </div>
+          <div class="header-actions">
+            <div class="alert-menu">
+              <button type="button" class="btn btn-outline btn-sm" id="btn-alerts" aria-expanded="false" aria-haspopup="true">
+                Alerts <span class="alert-dot hidden" id="alert-dot"></span>
+              </button>
+              <div id="alert-panel" class="alert-panel hidden" role="menu"></div>
+            </div>
+            <button type="button" class="btn btn-outline btn-sm hidden" id="btn-sync">Sync now</button>
+            <button type="button" class="btn btn-outline" id="btn-logout">Sign out</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <!-- REQUESTER -->
+        <section id="panel-requester" class="hidden">
+          <nav class="tabs" aria-label="Requester views">
+            <button type="button" class="tab-btn active" data-tab="submit">Open ticket</button>
+            <button type="button" class="tab-btn" data-tab="list">
+              My tickets <span class="tab-count" id="req-tab-count"></span>
+            </button>
+          </nav>
+
+          <div id="req-tab-submit" class="card panel-rise">
+            <div class="card-head">
+              <h2>Open a ticket with Operations</h2>
+              <p class="card-lede">Describe what you need — Operations will pick it up from the inbox.</p>
+            </div>
+            <form id="submit-form" class="form-grid">
+              <div class="field">
+                <label for="submit-department">Route to department</label>
+                <select id="submit-department" required></select>
+                <p class="hint">The ticket goes to that department&apos;s queue in Operations.</p>
+              </div>
+
+              <div class="field">
+                <label for="submit-name">Your name</label>
+                <input id="submit-name" type="text" required autocomplete="name" />
+              </div>
+
+              <div class="field">
+                <label for="submit-campus">Campus</label>
+                <select id="submit-campus">
+                  <option value="">Any / not sure</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="submit-category">Category</label>
+                <select id="submit-category"></select>
+              </div>
+
+              <div class="field field-span">
+                <label for="submit-title">Ticket title</label>
+                <input id="submit-title" type="text" required placeholder="Short title" />
+              </div>
+
+              <div class="field field-span">
+                <label for="submit-details">Details</label>
+                <textarea id="submit-details" required placeholder="Explain what you need and why…"></textarea>
+              </div>
+
+              <div class="field">
+                <label for="submit-priority">Priority</label>
+                <select id="submit-priority"></select>
+              </div>
+
+              <div class="field field-span hint-row">
+                <p class="hint">Tip: use <strong>Pending info</strong> when Operations needs more details before action.</p>
+              </div>
+
+              <div class="field field-span form-actions">
+                <button type="submit" class="btn btn-primary">Open ticket</button>
+              </div>
+            </form>
+          </div>
+
+          <div id="req-tab-list" class="card panel-rise hidden">
+            <div class="card-head">
+              <h2>My tickets</h2>
+              <p class="card-lede">Only tickets from this device &amp; name. Managers see the full inbox.</p>
+            </div>
+            <div class="list-toolbar">
+              <input
+                id="req-search"
+                type="search"
+                placeholder="Search my tickets…"
+                autocomplete="off"
+              />
+            </div>
+            <div id="requester-list"></div>
+          </div>
+
+          <div id="req-tab-detail" class="hidden panel-rise">
+            <div class="card" id="requester-detail"></div>
+          </div>
+        </section>
+
+        <!-- MANAGER -->
+        <section id="panel-manager" class="hidden">
+          <nav class="tabs" aria-label="Manager views">
+            <button type="button" class="tab-btn active" data-tab="inbox">
+              Inbox <span class="tab-count" id="mgr-tab-count"></span>
+            </button>
+            <button type="button" class="tab-btn" data-tab="export">Export data</button>
+            <button type="button" class="tab-btn" data-tab="settings">Settings</button>
+          </nav>
+
+          <div id="mgr-tab-inbox" class="panel-rise">
+            <div class="card">
+              <div class="card-head">
+                <h2>All tickets</h2>
+                <p class="card-lede">Search, filter, then open a ticket to act. Urgent items float to the top.</p>
+              </div>
+              <div id="mgr-stats" class="stats-strip" aria-live="polite"></div>
+              <div class="saved-views" id="saved-views"></div>
+              <div class="filters">
+                <div class="field field-grow">
+                  <label for="mgr-search">Search</label>
+                  <input
+                    id="mgr-search"
+                    type="search"
+                    placeholder="Title, name, TKT-…, campus…"
+                    autocomplete="off"
+                  />
+                </div>
+                <div class="field">
+                  <label for="mgr-filter-dept">Department</label>
+                  <select id="mgr-filter-dept"></select>
+                </div>
+                <div class="field">
+                  <label for="mgr-filter-status">Status</label>
+                  <select id="mgr-filter-status">
+                    <option value="">All</option>
+                    <option value="open">Open</option>
+                    <option value="in_progress">In progress</option>
+                    <option value="pending_info">Pending info</option>
+                    <option value="resolved">Resolved</option>
+                    <option value="closed">Closed</option>
+                    <option value="declined">Declined</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="checkbox-label">
+                    <input type="checkbox" id="mgr-filter-urgent" />
+                    Urgent / high only
+                  </label>
+                </div>
+                <div class="filter-actions">
+                  <button type="button" class="btn btn-primary" id="mgr-filter-apply">Filter</button>
+                  <button type="button" class="btn btn-secondary" id="mgr-filter-clear">Clear</button>
+                  <button type="button" class="btn btn-secondary" id="mgr-view-save">Save view</button>
+                </div>
+              </div>
+              <div id="manager-list"></div>
+            </div>
+          </div>
+
+          <div id="mgr-tab-detail" class="hidden panel-rise">
+            <div class="card" id="manager-detail"></div>
+          </div>
+
+          <div id="mgr-tab-export" class="card panel-rise hidden">
+            <div class="card-head">
+              <h2>Export to Google Sheets</h2>
+              <p class="card-lede">
+                By date opened (leave blank for all). Opens a new Google Sheet — click cell
+                <strong>A1</strong> and press <strong>Ctrl+V</strong> (or <strong>Cmd+V</strong> on Mac).
+              </p>
+            </div>
+            <div class="form-grid form-grid-narrow">
+              <div class="field">
+                <label for="export-from">From date</label>
+                <input id="export-from" type="date" />
+              </div>
+              <div class="field">
+                <label for="export-to">To date</label>
+                <input id="export-to" type="date" />
+              </div>
+              <div class="field field-span form-actions">
+                <button type="button" class="btn btn-primary" id="btn-export-sheets">Open Google Sheets</button>
+                <button type="button" class="btn btn-secondary" id="btn-export-csv">Download CSV</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="mgr-tab-settings" class="card panel-rise hidden">
+            <div class="card-head">
+              <h2>Settings</h2>
+              <p class="card-lede">PIN, Ops Auth, and campus lead phones for @notify.</p>
+            </div>
+
+            <h3 class="settings-sub">Manager PIN</h3>
+            <div class="form-grid form-grid-narrow">
+              <div class="field">
+                <label for="old-pin">Old PIN</label>
+                <input id="old-pin" type="password" autocomplete="current-password" />
+              </div>
+              <div class="field">
+                <label for="new-pin">New PIN</label>
+                <input id="new-pin" type="password" autocomplete="new-password" />
+              </div>
+              <div class="field field-span form-actions">
+                <button type="button" class="btn btn-primary" id="btn-change-pin">Change PIN</button>
+              </div>
+            </div>
+
+            <h3 class="settings-sub">Ops Auth (optional)</h3>
+            <p class="hint">Sign in with your Silverleaf Ops email for stronger privacy. PIN still works offline.</p>
+            <div class="form-grid form-grid-narrow" id="auth-form">
+              <div class="field">
+                <label for="auth-email">Email</label>
+                <input id="auth-email" type="email" placeholder="baraka@silverleaf.co.tz" autocomplete="username" />
+              </div>
+              <div class="field">
+                <label for="auth-password">Password</label>
+                <input id="auth-password" type="password" autocomplete="current-password" />
+              </div>
+              <div class="field field-span form-actions">
+                <button type="button" class="btn btn-primary" id="btn-auth-signin">Sign in with Ops</button>
+                <button type="button" class="btn btn-secondary" id="btn-auth-signout">Sign out Auth</button>
+              </div>
+            </div>
+            <p class="hint" id="auth-status"></p>
+
+            <h3 class="settings-sub">Campus leads</h3>
+            <p class="hint">Phones used when you tap “Notify campus lead” on a ticket.</p>
+            <div id="campus-leads-editor" class="campus-leads-editor"></div>
+            <div class="form-actions" style="margin-top:0.75rem">
+              <button type="button" class="btn btn-primary" id="btn-save-leads">Save campus leads</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/ticketing/js/env.js?v=ops10"></script>
+    <script>
+      if ("serviceWorker" in navigator && window.top === window.self) {
+        navigator.serviceWorker.register("/ticketing/sw.js").then(function (reg) {
+          reg.update();
+        }).catch(function () {});
+      }
+    </script>
+    <script type="module" src="/ticketing/js/app.js?v=ops10"></script>
+  </body>
+</html>

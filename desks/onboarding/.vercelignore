@@ -1,0 +1,15 @@
+# Local-only assets — onboarding PDFs/videos are seeded to Blob/DB, not served from disk in prod.
+documents/
+documents.backup/
+
+# Dev databases and local file storage
+.pglite/
+.pglite.backup-*/
+.storage/
+.tmp/
+
+# Generated / tooling
+.next/
+node_modules/
+test-results/
+scripts/policy-video-assets/

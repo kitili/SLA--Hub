@@ -1,0 +1,85 @@
+{
+  "info": {
+    "name": "Silverleaf Ed-admin General API",
+    "description": "GET-only endpoints for parent–student directory sync.\n\nImport into Postman, set collection variables `baseUrl` and `apiKey`, then run requests.\n\nUsed by Silverleaf Uniform Tracker parent portal (`src/lib/edadmin/`).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://silverleafacademy.ed-space.net"
+    },
+    {
+      "key": "apiKey",
+      "value": "YOUR_EDADMIN_GENERAL_API_KEY"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{apiKey}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "Parents",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/xml"
+          }
+        ],
+        "url": "{{baseUrl}}/api/general/v1/Parents",
+        "description": "All parent/guardian records. Join key: `<ID>` on parent ↔ `<ParentID>` on student."
+      }
+    },
+    {
+      "name": "Students",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/xml"
+          }
+        ],
+        "url": "{{baseUrl}}/api/general/v1/Students",
+        "description": "Student roster. Parent login uses `<AdmNo>` as registration number."
+      }
+    },
+    {
+      "name": "StudentClasses",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/xml"
+          }
+        ],
+        "url": "{{baseUrl}}/api/general/v1/StudentClasses",
+        "description": "Grade + class by StudentID — merged into student className during sync."
+      }
+    },
+    {
+      "name": "Staff (reference)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/xml"
+          }
+        ],
+        "url": "{{baseUrl}}/api/general/v1/staff",
+        "description": "Staff directory — not used by parent portal, useful to verify API key."
+      }
+    }
+  ]
+}

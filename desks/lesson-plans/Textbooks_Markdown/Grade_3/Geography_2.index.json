@@ -1,0 +1,123 @@
+{
+  "confidence": "low",
+  "offset": 7,
+  "total_pages": 80,
+  "source": "toc",
+  "page_map": [
+    {
+      "scan": 8,
+      "printed": 1
+    },
+    {
+      "scan": 9,
+      "printed": 2
+    },
+    {
+      "scan": 10,
+      "printed": 3
+    },
+    {
+      "scan": 11,
+      "printed": 4
+    },
+    {
+      "scan": 12,
+      "printed": 5
+    },
+    {
+      "scan": 13,
+      "printed": 6
+    },
+    {
+      "scan": 14,
+      "printed": 7
+    },
+    {
+      "scan": 15,
+      "printed": 8
+    }
+  ],
+  "chapters": [
+    {
+      "n": 1,
+      "marker": "Chapter One",
+      "title": "Chapter One",
+      "printed_start": 1,
+      "printed_end": 73,
+      "scan_start": 8,
+      "scan_end": 80
+    },
+    {
+      "n": 2,
+      "marker": "The concepts of Geography and the Environment",
+      "title": "The concepts of Geography and the Environment",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 3,
+      "marker": "Chapter Two",
+      "title": "Chapter Two",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 4,
+      "marker": "Earth's relief",
+      "title": "Earth's relief",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 5,
+      "marker": "Chapter Three",
+      "title": "Chapter Three",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 6,
+      "marker": "Environmental conservation",
+      "title": "Environmental conservation",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 7,
+      "marker": "Chapter Four",
+      "title": "Chapter Four",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 8,
+      "marker": "Environmental degradation",
+      "title": "Environmental degradation",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 9,
+      "marker": "Bibliography",
+      "title": "Bibliography",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    }
+  ]
+}

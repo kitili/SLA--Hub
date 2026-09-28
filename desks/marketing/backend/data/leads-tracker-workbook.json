@@ -1,0 +1,164 @@
+{
+  "source_file": "Leads Tracker_2026.xlsx",
+  "sheets": [
+    "Town Parents informed of new si",
+    "USARIVER",
+    "2025 Summary",
+    "2026 Summary",
+    "Board Version 2026 Summary",
+    "2026 Kijenge",
+    "Sheet18",
+    "KIJENGE",
+    "2026 Arusha Modern",
+    "2026 Usariver",
+    "ILBORU",
+    "2026 Kiserian",
+    "2026 Ilboru",
+    "2026 Boma",
+    "Staff Leads 2026",
+    "Sales Reps Leads",
+    "INTERVIEW LIST",
+    "Staffing",
+    "Usa River Leads",
+    "Mbegu Leads",
+    "BC Lead Calculation Sheet",
+    "PARENT CONCERNS",
+    "DAY CARE MENU",
+    "Whatsapp groups",
+    "Notes",
+    "Consolidated 2026 ",
+    "July enrollment"
+  ],
+  "in_app": {
+    "parent_register": "imported via parse-leads-tracker.py + import-leads-tracker.js",
+    "summary_targets": "backend/data/marketing-master-dashboard-2026.json + leads-tracker-2026-counts.json"
+  },
+  "summary_2026_raw": {
+    "cluster_target": 1455,
+    "cluster_retained_new": 1229,
+    "cluster_retained": 814,
+    "cluster_paid": 417,
+    "cluster_available": "#VALUE!",
+    "cluster_interested": 885,
+    "cluster_passed": 70,
+    "cluster_failed": 29,
+    "cluster_registered": 28,
+    "cluster_dead": 328,
+    "cluster_total": 955,
+    "cluster_conversion": 0.3,
+    "ilboru_target_was": "MAY"
+  },
+  "july_enrollment_usariver": [
+    {
+      "grade": "DAY CARE",
+      "interested": 3.0,
+      "interview": 0.0,
+      "passed": 0.0,
+      "failed": 0.0,
+      "form_filled": 2.0,
+      "enrolled": 8.0
+    },
+    {
+      "grade": "KG1",
+      "interested": 7.0,
+      "interview": 0.0,
+      "passed": 0.0,
+      "failed": 0.0,
+      "form_filled": 2.0,
+      "enrolled": 11.0
+    },
+    {
+      "grade": "KG2",
+      "interested": 4.0,
+      "interview": 2.0,
+      "passed": 1.0,
+      "failed": 0.0,
+      "form_filled": 3.0,
+      "enrolled": 5.0
+    },
+    {
+      "grade": "G1",
+      "interested": 3.0,
+      "interview": 0.0,
+      "passed": 0.0,
+      "failed": 0.0,
+      "form_filled": 1.0,
+      "enrolled": 5.0
+    },
+    {
+      "grade": "G2",
+      "interested": 1.0,
+      "interview": 4.0,
+      "passed": 2.0,
+      "failed": 1.0,
+      "form_filled": 0.0,
+      "enrolled": 1.0
+    },
+    {
+      "grade": "G3",
+      "interested": 2.0,
+      "interview": 3.0,
+      "passed": 1.0,
+      "failed": 1.0,
+      "form_filled": 1.0,
+      "enrolled": 1.0
+    },
+    {
+      "grade": "G4",
+      "interested": null,
+      "interview": null,
+      "passed": null,
+      "failed": null,
+      "form_filled": null,
+      "enrolled": null
+    },
+    {
+      "grade": "G5",
+      "interested": 1.0,
+      "interview": 6.0,
+      "passed": 3.0,
+      "failed": 1.0,
+      "form_filled": 1.0,
+      "enrolled": 4.0
+    },
+    {
+      "grade": "G6",
+      "interested": 3.0,
+      "interview": 4.0,
+      "passed": 2.0,
+      "failed": 1.0,
+      "form_filled": 2.0,
+      "enrolled": 2.0
+    },
+    {
+      "grade": "G7",
+      "interested": null,
+      "interview": null,
+      "passed": null,
+      "failed": null,
+      "form_filled": null,
+      "enrolled": null
+    },
+    {
+      "grade": "TOTAL",
+      "interested": 24,
+      "interview": 19,
+      "passed": 8.0,
+      "failed": 4,
+      "form_filled": 12,
+      "enrolled": 37
+    }
+  ],
+  "interview_list": {
+    "rows": 317,
+    "outcomes": {
+      "PASSED": 307,
+      "NOT PASSED": 10
+    }
+  },
+  "formula_fixes": [
+    "Available seats = target_enrollment - retained (was #VALUE! because Ilboru target was text MAY)",
+    "Conversion = admission_paid / total_leads (Kijenge source was >1 because totals disagreed)",
+    "Cluster target 1455 kept from 2026 Summary"
+  ]
+}

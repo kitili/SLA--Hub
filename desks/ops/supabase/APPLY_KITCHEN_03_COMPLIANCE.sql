@@ -1,0 +1,8 @@
+-- DEPRECATED as a single run — Postgres rejects new enum labels used in the
+-- same transaction (ERROR 55P04: unsafe use of new value "cook").
+--
+-- Run these TWO files in order instead:
+--   1. APPLY_KITCHEN_03A_ROLES.sql      (add cook / head_of_kitchens, commit)
+--   2. APPLY_KITCHEN_03B_COMPLIANCE.sql (tables, policies, seeds, reload)
+--
+-- Do not paste this file into the SQL editor.

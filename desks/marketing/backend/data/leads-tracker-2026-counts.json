@@ -1,0 +1,27 @@
+{
+  "source_file": "Leads Tracker_2026.xlsx",
+  "note": "Parent-level extract is generated locally (gitignored). Re-run: python3 scripts/parse-leads-tracker.py && npm run db:import-leads-tracker",
+  "parsed_deduped": 1044,
+  "sheet_summary_claimed": {
+    "total_leads": 955,
+    "enrolled_admission_paid": 417,
+    "dead_lead": 328,
+    "interested": 885
+  },
+  "register_stages": {
+    "interested_lead": 471,
+    "admission_paid": 345,
+    "dead_lead": 190,
+    "form_filled": 23,
+    "interview_booked": 15
+  },
+  "fixes": [
+    "Ilboru 2026 target was the text MAY and broke Available seats — restored to 55 from Board Version",
+    "Cluster Available seats #VALUE! — now target minus retained",
+    "Removed garbage cell zxcvbnm on 2026 Summary",
+    "Normalized TZ phones (255…, 9-digit, float serials, dual or/slash numbers)",
+    "Deduped parent+phone+child+campus across Consolidated and campus tabs",
+    "Dropped junk parent names (_, digits)",
+    "Sales Reps added; empty 2026 Kiserian skipped"
+  ]
+}

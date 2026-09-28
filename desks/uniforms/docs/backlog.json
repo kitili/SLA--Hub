@@ -1,0 +1,830 @@
+{
+  "meta": {
+    "version": 1,
+    "product": "silverleaf-uniforms",
+    "currentSprint": 8,
+    "totalTasks": 48,
+    "generated": "2026-08-26",
+    "team": [
+      "Mourine",
+      "Geoffrey",
+      "Irene"
+    ]
+  },
+  "phases": [
+    {
+      "id": 1,
+      "name": "Foundation",
+      "sprints": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Demand & issue",
+      "sprints": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Money & supply",
+      "sprints": [
+        5,
+        6
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Production & go-live",
+      "sprints": [
+        7,
+        8
+      ]
+    }
+  ],
+  "sprints": [
+    {
+      "id": 1,
+      "name": "Platform & map",
+      "phase": 1,
+      "tasks": [
+        "TASK-001",
+        "TASK-002",
+        "TASK-003",
+        "TASK-004",
+        "TASK-005",
+        "TASK-006"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Catalogue & stock",
+      "phase": 1,
+      "tasks": [
+        "TASK-007",
+        "TASK-008",
+        "TASK-009",
+        "TASK-010",
+        "TASK-011",
+        "TASK-012"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Parent order + FIFO",
+      "phase": 2,
+      "tasks": [
+        "TASK-013",
+        "TASK-014",
+        "TASK-015",
+        "TASK-016",
+        "TASK-017",
+        "TASK-018"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Distribution",
+      "phase": 2,
+      "tasks": [
+        "TASK-019",
+        "TASK-020",
+        "TASK-021",
+        "TASK-022",
+        "TASK-023",
+        "TASK-024"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Purchase orders",
+      "phase": 3,
+      "tasks": [
+        "TASK-025",
+        "TASK-026",
+        "TASK-027",
+        "TASK-028",
+        "TASK-029",
+        "TASK-030"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Budget & sizes",
+      "phase": 3,
+      "tasks": [
+        "TASK-031",
+        "TASK-032",
+        "TASK-033",
+        "TASK-034",
+        "TASK-035",
+        "TASK-036"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Sewing",
+      "phase": 4,
+      "tasks": [
+        "TASK-037",
+        "TASK-038",
+        "TASK-039",
+        "TASK-040",
+        "TASK-041",
+        "TASK-042"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Harden",
+      "phase": 4,
+      "tasks": [
+        "TASK-043",
+        "TASK-044",
+        "TASK-045",
+        "TASK-046",
+        "TASK-047",
+        "TASK-048"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "TASK-001",
+      "sprint": 1,
+      "owner": "A",
+      "title": "Prisma schema: campuses, warehouses, users, roles",
+      "srs": [
+        "M1-F02",
+        "M2-F01",
+        "M2-F02"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Campus, Location, User models exist",
+        "Five campus codes and MAIN + SHOP_USA locations in schema comments or seed-ready enums",
+        "prisma generate succeeds"
+      ]
+    },
+    {
+      "id": "TASK-002",
+      "sprint": 1,
+      "owner": "A",
+      "title": "Session auth + role nav matching the system map",
+      "srs": [
+        "M1-F01",
+        "M1-F03"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Login sets httpOnly cookie",
+        "Unknown role cannot open STORE routes",
+        "Logout clears session"
+      ]
+    },
+    {
+      "id": "TASK-003",
+      "sprint": 1,
+      "owner": "A",
+      "title": "Seed five campuses, two warehouses, named desks",
+      "srs": [
+        "M2-F01",
+        "M2-F03"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Imani, Loveness, finance, two admins, three HTs, one parent seeded",
+        "Password Silverleaf@2026 for all",
+        "npm run db:setup is idempotent enough to re-run after reset"
+      ]
+    },
+    {
+      "id": "TASK-004",
+      "sprint": 1,
+      "owner": "B",
+      "title": "Home desk that mirrors Tailoring \u2192 Inventory \u2192 Distribution \u2192 Campuses",
+      "srs": [
+        "M1-F02"
+      ],
+      "status": "done",
+      "acceptance": [
+        "STORE/TAILOR see the four-stage map",
+        "Counts or links to each stage",
+        "Matches docs/source/uniform-tracker-system-map.png stages"
+      ]
+    },
+    {
+      "id": "TASK-005",
+      "sprint": 1,
+      "owner": "B",
+      "title": "Finance and campus views as separate landings",
+      "srs": [
+        "M6-F04",
+        "M7-F01"
+      ],
+      "status": "done",
+      "acceptance": [
+        "FINANCE lands on costs/budget summary",
+        "ADMIN/HT land on their campus only",
+        "PARENT does not see staff nav"
+      ]
+    },
+    {
+      "id": "TASK-006",
+      "sprint": 1,
+      "owner": "C",
+      "title": "README + db:setup smoke",
+      "srs": [
+        "N3",
+        "N4"
+      ],
+      "status": "done",
+      "acceptance": [
+        "README lists demo accounts from SPRINTS.md",
+        "docs/ linked from README",
+        "db:setup documented"
+      ]
+    },
+    {
+      "id": "TASK-007",
+      "sprint": 2,
+      "owner": "A",
+      "title": "SKU + size catalogue from master sheet",
+      "srs": [
+        "M3-F01",
+        "M3-F02",
+        "M3-F03",
+        "M3-F04"
+      ],
+      "status": "done",
+      "acceptance": [
+        "School and boarding SKUs seeded with TZS sell/buy",
+        "Sizes include 18\u201338 and S/M where needed"
+      ]
+    },
+    {
+      "id": "TASK-008",
+      "sprint": 2,
+      "owner": "A",
+      "title": "StockBalance and StockMove ledger",
+      "srs": [
+        "M4-F01",
+        "M4-F02",
+        "M4-F04"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Qty unique on location+sku+size",
+        "Issue blocked when qty would go negative"
+      ]
+    },
+    {
+      "id": "TASK-009",
+      "sprint": 2,
+      "owner": "B",
+      "title": "Stock table UI: main, shop, campus filter",
+      "srs": [
+        "M4-F01",
+        "M4-F03"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Imani sees all locations",
+        "Loveness sees MAIN + SHOP_USA",
+        "HT/admin sees own campus store"
+      ]
+    },
+    {
+      "id": "TASK-010",
+      "sprint": 2,
+      "owner": "B",
+      "title": "Manual adjust + low-stock highlight",
+      "srs": [
+        "M4-F03"
+      ],
+      "status": "done",
+      "acceptance": [
+        "STORE can adjust with reason",
+        "Rows under reorder are flagged"
+      ]
+    },
+    {
+      "id": "TASK-011",
+      "sprint": 2,
+      "owner": "C",
+      "title": "Opening balances from 2026 size sheet (sample)",
+      "srs": [
+        "M4-F01"
+      ],
+      "status": "done",
+      "acceptance": [
+        "MAIN has sample on-hand by size for core SKUs"
+      ]
+    },
+    {
+      "id": "TASK-012",
+      "sprint": 2,
+      "owner": "C",
+      "title": "Stock movement history page",
+      "srs": [
+        "M4-F02",
+        "M1-F04"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Filter by location and reason",
+        "Shows ref and timestamp"
+      ]
+    },
+    {
+      "id": "TASK-013",
+      "sprint": 3,
+      "owner": "A",
+      "title": "Student model with registration number, class, gender, campus",
+      "srs": [
+        "M5-F02",
+        "M5-F06"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Lookup by registration number returns class and gender"
+      ]
+    },
+    {
+      "id": "TASK-014",
+      "sprint": 3,
+      "owner": "B",
+      "title": "Parent catalogue + create order (no pay yet)",
+      "srs": [
+        "M5-F01",
+        "M5-F03"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Parent can add lines and submit ORDERED",
+        "orderedAt set"
+      ]
+    },
+    {
+      "id": "TASK-015",
+      "sprint": 3,
+      "owner": "B",
+      "title": "FIFO queue visible to store and parent",
+      "srs": [
+        "M5-F04"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Queue sorted by orderedAt asc",
+        "Payment date does not change position"
+      ]
+    },
+    {
+      "id": "TASK-016",
+      "sprint": 3,
+      "owner": "C",
+      "title": "Payment confirmation step (order before pay)",
+      "srs": [
+        "M5-F05",
+        "M6-F01",
+        "M6-F02"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Cannot mark PAID without a payment row",
+        "Partial pay allowed"
+      ]
+    },
+    {
+      "id": "TASK-017",
+      "sprint": 3,
+      "owner": "C",
+      "title": "Staff coupon desk: date, class, gender, size, pay date, reg no",
+      "srs": [
+        "M5-F02"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Matches Nelly sheet columns",
+        "Can record walk-in order as staff"
+      ]
+    },
+    {
+      "id": "TASK-018",
+      "sprint": 3,
+      "owner": "A",
+      "title": "Hydrate student fields from registration number",
+      "srs": [
+        "M5-F06"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Entering a known SLA/\u2026 ID fills class and gender"
+      ]
+    },
+    {
+      "id": "TASK-019",
+      "sprint": 4,
+      "owner": "A",
+      "title": "CampusRequest model + role rules",
+      "srs": [
+        "M7-F01",
+        "M7-F02",
+        "M7-F03"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Usa/AM admin cannot request for Boma",
+        "HT cannot request for Usa River"
+      ]
+    },
+    {
+      "id": "TASK-020",
+      "sprint": 4,
+      "owner": "B",
+      "title": "Campus request form",
+      "srs": [
+        "M7-F03"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Lines SKU/size/qty",
+        "Shows on Imani queue"
+      ]
+    },
+    {
+      "id": "TASK-021",
+      "sprint": 4,
+      "owner": "B",
+      "title": "Imani distribution desk + delivery note",
+      "srs": [
+        "M8-F01",
+        "M8-F02",
+        "M8-F03"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Only STORE posts DN",
+        "MAIN qty down, campus qty up"
+      ]
+    },
+    {
+      "id": "TASK-022",
+      "sprint": 4,
+      "owner": "C",
+      "title": "Parent issue: Received all / Received few",
+      "srs": [
+        "M8-F04"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Partial lines set PARTIAL",
+        "Stock decreases at issuing location"
+      ]
+    },
+    {
+      "id": "TASK-023",
+      "sprint": 4,
+      "owner": "C",
+      "title": "Campus incoming DN list",
+      "srs": [
+        "M8-F02"
+      ],
+      "status": "done",
+      "acceptance": [
+        "HT/admin sees DNs to their campus only"
+      ]
+    },
+    {
+      "id": "TASK-024",
+      "sprint": 4,
+      "owner": "A",
+      "title": "Block distribution without stock",
+      "srs": [
+        "M4-F04"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Error message when MAIN lacks size qty"
+      ]
+    },
+    {
+      "id": "TASK-025",
+      "sprint": 5,
+      "owner": "A",
+      "title": "Supplier + PurchaseOrder schema",
+      "srs": [
+        "M9-F01",
+        "M9-F02"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Suppliers seed from master pricing names"
+      ]
+    },
+    {
+      "id": "TASK-026",
+      "sprint": 5,
+      "owner": "B",
+      "title": "Raise PO UI",
+      "srs": [
+        "M9-F02"
+      ],
+      "status": "done",
+      "acceptance": [
+        "STORE/FINANCE can create PO with size lines"
+      ]
+    },
+    {
+      "id": "TASK-027",
+      "sprint": 5,
+      "owner": "B",
+      "title": "Goods receipt into MAIN only",
+      "srs": [
+        "M9-F03"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Receive cannot target a campus store"
+      ]
+    },
+    {
+      "id": "TASK-028",
+      "sprint": 5,
+      "owner": "C",
+      "title": "Transfer MAIN \u2192 SHOP_USA",
+      "srs": [
+        "M9-F04"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Loveness or Imani can move qty to shop"
+      ]
+    },
+    {
+      "id": "TASK-029",
+      "sprint": 5,
+      "owner": "C",
+      "title": "Unit cost captured on receive",
+      "srs": [
+        "M6-F03"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Expense or cost on PO line visible to finance"
+      ]
+    },
+    {
+      "id": "TASK-030",
+      "sprint": 5,
+      "owner": "A",
+      "title": "PO status: DRAFT \u2192 SENT \u2192 PARTIAL \u2192 CLOSED",
+      "srs": [
+        "M9-F02"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Partial receive leaves PO open"
+      ]
+    },
+    {
+      "id": "TASK-031",
+      "sprint": 6,
+      "owner": "C",
+      "title": "Buy vs sell vs margin report",
+      "srs": [
+        "M6-F04"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Network totals and per-campus slice"
+      ]
+    },
+    {
+      "id": "TASK-032",
+      "sprint": 6,
+      "owner": "B",
+      "title": "Hottest sizes dashboard",
+      "srs": [
+        "M10-F01",
+        "M10-F02"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Rank SKU+size by issued qty"
+      ]
+    },
+    {
+      "id": "TASK-033",
+      "sprint": 6,
+      "owner": "A",
+      "title": "Demand plan: enrolment \u00d7 pack \u2212 on-hand",
+      "srs": [
+        "M10-F03"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Suggested buy qty per size"
+      ]
+    },
+    {
+      "id": "TASK-034",
+      "sprint": 6,
+      "owner": "C",
+      "title": "Budget vs committed PO vs received",
+      "srs": [
+        "M6-F05"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Finance sees remaining budget"
+      ]
+    },
+    {
+      "id": "TASK-035",
+      "sprint": 6,
+      "owner": "B",
+      "title": "Dead-size warning (no issues in 90 days with stock)",
+      "srs": [
+        "M10-F02"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Listed on size dashboard"
+      ]
+    },
+    {
+      "id": "TASK-036",
+      "sprint": 6,
+      "owner": "A",
+      "title": "Export size velocity CSV",
+      "srs": [
+        "M10-F01"
+      ],
+      "status": "done",
+      "acceptance": [
+        "CSV downloads for managers"
+      ]
+    },
+    {
+      "id": "TASK-037",
+      "sprint": 7,
+      "owner": "A",
+      "title": "SewingJob model",
+      "srs": [
+        "M11-F01"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Date, tailor, type, expected, actual"
+      ]
+    },
+    {
+      "id": "TASK-038",
+      "sprint": 7,
+      "owner": "B",
+      "title": "Daily sewing tracker UI (Loveness)",
+      "srs": [
+        "M11-F01"
+      ],
+      "status": "done",
+      "acceptance": [
+        "TAILOR can add a job"
+      ]
+    },
+    {
+      "id": "TASK-039",
+      "sprint": 7,
+      "owner": "B",
+      "title": "Complete job \u2192 stock in",
+      "srs": [
+        "M11-F02"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Actual qty increases MAIN or shop"
+      ]
+    },
+    {
+      "id": "TASK-040",
+      "sprint": 7,
+      "owner": "C",
+      "title": "Jora / materials expense on sewing batch",
+      "srs": [
+        "M11-F03"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Finance sees material cost"
+      ]
+    },
+    {
+      "id": "TASK-041",
+      "sprint": 7,
+      "owner": "C",
+      "title": "Labour expense (tailor costs)",
+      "srs": [
+        "M11-F03"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Labour line on sewing P&L"
+      ]
+    },
+    {
+      "id": "TASK-042",
+      "sprint": 7,
+      "owner": "A",
+      "title": "Sewing vs issued reconciliation",
+      "srs": [
+        "M11-F02"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Shows sewn minus issued for a period"
+      ]
+    },
+    {
+      "id": "TASK-043",
+      "sprint": 8,
+      "owner": "B",
+      "title": "Print coupon / parent order form",
+      "srs": [
+        "M12-F01"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Print-friendly page"
+      ]
+    },
+    {
+      "id": "TASK-044",
+      "sprint": 8,
+      "owner": "B",
+      "title": "Print delivery note",
+      "srs": [
+        "M12-F02"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Issuer, receiver, lines"
+      ]
+    },
+    {
+      "id": "TASK-045",
+      "sprint": 8,
+      "owner": "A",
+      "title": "Document Excel import snapshot process",
+      "srs": [
+        "N3"
+      ],
+      "status": "done",
+      "acceptance": [
+        "docs note how 2026 file maps to seed"
+      ]
+    },
+    {
+      "id": "TASK-046",
+      "sprint": 8,
+      "owner": "C",
+      "title": "Role smoke script for all desks",
+      "srs": [
+        "N1"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Script hits each role home without 403"
+      ]
+    },
+    {
+      "id": "TASK-047",
+      "sprint": 8,
+      "owner": "A",
+      "title": "Backup / Postgres note in ROADMAP",
+      "srs": [
+        "N1"
+      ],
+      "status": "done",
+      "acceptance": [
+        "Short production note in docs"
+      ]
+    },
+    {
+      "id": "TASK-048",
+      "sprint": 8,
+      "owner": "C",
+      "title": "CURRENT.md complete + handoff to Imani/Loveness",
+      "srs": [
+        "N4"
+      ],
+      "status": "done",
+      "acceptance": [
+        "All sprint 8 boxes ticked",
+        "Demo walkthrough in README"
+      ]
+    }
+  ]
+}

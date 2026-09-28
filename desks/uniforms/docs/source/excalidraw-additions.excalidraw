@@ -1,0 +1,81 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {
+      "id": "nmkQsMoqY7",
+      "type": "rectangle",
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "seed": 725624,
+      "version": 1,
+      "versionNonce": 740823,
+      "isDeleted": false,
+      "boundElements": [
+        {
+          "type": "text",
+          "id": "IuPABKAo6I"
+        }
+      ],
+      "updated": 1,
+      "link": null,
+      "locked": false,
+      "x": 40,
+      "y": 40,
+      "width": 700,
+      "height": 120,
+      "backgroundColor": "#ffe8cc",
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "id": "IuPABKAo6I",
+      "type": "text",
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "seed": 265967,
+      "version": 1,
+      "versionNonce": 432282,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1,
+      "link": null,
+      "locked": false,
+      "x": 48,
+      "y": 48,
+      "width": 684,
+      "height": 104,
+      "backgroundColor": "transparent",
+      "roundness": null,
+      "text": "This file merged into silverleaf-uniform-system.excalidraw\nOpen silverleaf-uniform-system.excalidraw on excalidraw.com \u2014 it is the single source diagram.\nThis additions file is kept for history only; do not paste separately.",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": "nmkQsMoqY7",
+      "originalText": "This file merged into silverleaf-uniform-system.excalidraw\nOpen silverleaf-uniform-system.excalidraw on excalidraw.com \u2014 it is the single source diagram.\nThis additions file is kept for history only; do not paste separately.",
+      "lineHeight": 1.25
+    }
+  ],
+  "appState": {
+    "gridSize": 20,
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}

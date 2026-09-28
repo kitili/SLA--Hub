@@ -1,0 +1,50 @@
+{
+  "name": "silverleaf-uniforms",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "20.x"
+  },
+  "description": "Silverleaf Academy — multi-campus uniform tracker (inventory, distribution, parent orders, POs, sewing, finance)",
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "prisma generate && next build",
+    "postinstall": "prisma generate",
+    "start": "next start",
+    "lint": "eslint",
+    "db:setup": "prisma generate && prisma db push && tsx prisma/seed.ts",
+    "db:seed": "tsx prisma/seed.ts",
+    "workbot": "node scripts/workbot.mjs status",
+    "workbot:next": "node scripts/workbot.mjs next",
+    "test": "tsx --test scripts/order-status.test.ts scripts/kpis.test.ts scripts/sheet-math.test.ts scripts/edadmin-parse.test.ts && tsx scripts/smoke-db.mjs",
+    "smoke": "node scripts/smoke-roles.mjs",
+    "edadmin:probe": "node scripts/probe-edadmin.mjs"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@fontsource/bai-jamjuree": "^5.3.0",
+    "@fontsource/montserrat": "^5.3.0",
+    "@prisma/client": "^6.19.3",
+    "bcryptjs": "^3.0.3",
+    "jose": "^6.2.10",
+    "next": "16.3.3",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.3",
+    "prisma": "^6.19.3",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.12",
+    "typescript": "^5"
+  }
+}

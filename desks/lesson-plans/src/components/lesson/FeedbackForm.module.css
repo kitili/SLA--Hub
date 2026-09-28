@@ -1,0 +1,194 @@
+/* FeedbackForm.module.css — mobile-first rating form.
+   Sits inside the white "How was this lesson plan?" card, so the fieldset
+   itself is chrome-free: the star rating is the hero block at the top. */
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-inline-size: 0;
+}
+
+.fieldset:disabled {
+  opacity: 0.7;
+}
+
+.legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* ── Rating hero ─────────────────────────────────────────────────────────
+   A soft gold-tinted panel that makes the rating the focal point. */
+.ratingHero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 1.4rem 1rem 1.25rem;
+  background: linear-gradient(180deg, var(--gold-15) 0%, var(--white) 100%);
+  border: 1px solid rgba(255, 201, 82, 0.45);
+  border-radius: var(--radius);
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+.star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Comfortable touch target. */
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0;
+  font-size: 2.4rem;
+  line-height: 1;
+  color: var(--silver);
+  background: transparent;
+  border-radius: var(--radius-sm);
+  transition: color 0.15s ease, transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.star:hover {
+  transform: scale(1.18) translateY(-2px);
+}
+
+.star:active {
+  transform: scale(1.05);
+}
+
+.starFilled {
+  color: var(--gold);
+  filter: drop-shadow(0 2px 5px rgba(255, 201, 82, 0.55));
+}
+
+.ratingLabel {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--electric-blue);
+  /* Reserve height so the panel doesn't jump when the word appears. */
+  min-height: 1.3em;
+  letter-spacing: 0.01em;
+}
+
+/* ── Comment ─────────────────────────────────────────────────────────────── */
+.commentLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--electric-blue);
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--ink-faint);
+}
+
+.comment {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  background: var(--white);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--ink);
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 5rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.comment::placeholder {
+  color: var(--ink-faint);
+}
+
+.comment:focus {
+  outline: none;
+  border-color: var(--light-blue);
+  box-shadow: 0 0 0 4px var(--light-blue-30);
+}
+
+.error {
+  color: #c0392b;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: #fdecea;
+  border: 1px solid rgba(192, 57, 43, 0.2);
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-sm);
+}
+
+.submit {
+  align-self: flex-start;
+  min-height: 48px;
+  padding: 0.75rem 1.6rem;
+  background: linear-gradient(180deg, var(--navy-light) 0%, var(--electric-blue) 100%);
+  color: var(--white);
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 14px rgba(0, 35, 104, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+  box-shadow: 0 6px 18px rgba(0, 35, 104, 0.3);
+}
+
+.submit:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(0, 35, 104, 0.25);
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* ── Phones (≤ 600px) ── */
+@media (max-width: 600px) {
+  .submit {
+    align-self: stretch;
+    width: 100%;
+  }
+}
+
+/* Respect reduced-motion preferences. */
+@media (prefers-reduced-motion: reduce) {
+  .star,
+  .submit {
+    transition: color 0.15s ease;
+  }
+
+  .star:hover,
+  .submit:hover:not(:disabled) {
+    transform: none;
+  }
+}

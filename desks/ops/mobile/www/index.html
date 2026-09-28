@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Silverleaf Matron</title>
+    <style>
+      :root {
+        --navy: #002368;
+        --gold: #ffc952;
+        --sky: #80bfec;
+      }
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        font-family: "Bai Jamjuree", Helvetica, Arial, sans-serif;
+        background: linear-gradient(160deg, #001a4d 0%, var(--navy) 55%, #003a8c 100%);
+        color: #fff;
+      }
+      main {
+        min-height: 100vh;
+        display: grid;
+        place-content: center;
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      h1 {
+        font-family: Montserrat, Helvetica, Arial, sans-serif;
+        font-size: 1.6rem;
+        margin: 0 0 0.5rem;
+      }
+      p {
+        opacity: 0.85;
+        line-height: 1.45;
+        max-width: 22rem;
+        margin: 0 auto 1.25rem;
+      }
+      a {
+        display: inline-flex;
+        min-height: 3rem;
+        align-items: center;
+        justify-content: center;
+        padding: 0 1.25rem;
+        border-radius: 0.85rem;
+        background: var(--gold);
+        color: var(--navy);
+        font-weight: 800;
+        text-decoration: none;
+      }
+    </style>
+    <script>
+      // When Capacitor server.url is set, this page is only a rare offline fallback.
+      (function () {
+        var target =
+          "https://ops-transport-system.vercel.app/matron";
+        if (navigator.onLine) {
+          location.replace(target);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <main>
+      <h1>Silverleaf Matron</h1>
+      <p>
+        You’re offline. Connect to mobile data, then open the live matron
+        app.
+      </p>
+      <a href="https://ops-transport-system.vercel.app/matron">Retry</a>
+    </main>
+  </body>
+</html>

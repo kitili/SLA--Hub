@@ -1,0 +1,569 @@
+/*
+ * Silverleaf Academy — global brand stylesheet
+ * Single source of truth for CSS custom properties (design tokens).
+ * Imported ONCE in src/app/layout.tsx (Next.js App Router rule).
+ * Components use CSS Modules that reference these vars.
+ *
+ * Source: Silverleaf Academy Brand Guidelines — March 2023
+ */
+
+/* ── Fonts via @fontsource (imported in [locale]/layout.tsx)
+   Mirrors https://www.silverleaf.co.tz/ theme:
+     headings → Montserrat (site uploads Montserrat Bold)
+     body     → Bai Jamjuree
+   (Site also uses licensed DIN Next for some UI chrome; not replicated.) ── */
+
+/* ── Responsive breakpoint convention ──────────────────────────────────────
+   Canonical breakpoints used across all CSS Modules. Prefer these over ad-hoc
+   pixel values so layouts stay consistent and predictable:
+
+     ≤ 600px   →  phone          (single column, stacked, full-width controls)
+     ≤ 900px   →  tablet / small (collapse sidebars, 2-col grids)
+     > 900px   →  desktop        (full multi-column layouts)
+
+   Use `max-width` queries to layer phone/tablet overrides on top of the
+   desktop-first base styles. NOTE: `html, body { overflow-x: hidden }` below
+   HIDES horizontal overflow — it does not fix it. Always size inner content to
+   fit the viewport (fluid widths / wrapping) rather than relying on that clip.  */
+
+:root {
+  /* ── Brand palette ───────────────────────────────────────────────────── */
+  --electric-blue:    #002368;   /* primary navy / "electric blue" */
+  --light-blue:       #80BFEC;
+  --silver:           #818283;   /* brand silver — DECORATIVE only (borders/dividers) */
+  --gold:             #FFC952;
+  --white:            #FFFFFF;
+  --black:            #000000;
+  --gray:             #ECECEC;
+  --electric-blue-50: #8091B3;   /* 50 % tint */
+  --light-blue-30:    #D9ECF9;   /* 30 % tint */
+  --gold-15:          #FFF7E5;   /* 15 % tint */
+
+  /* ── Semantic aliases ────────────────────────────────────────────────── */
+  --navy:       var(--electric-blue);
+  --navy-light: #003a8c;
+  --navy-dark:  #001a4d;
+
+  /* ── Accessible text tokens (WCAG AA on white/light surfaces) ──────────────
+     The brand `--silver` (#818283) is only ~4.0:1 on white and worse on the
+     grey page — too low for body/secondary text. These darker, brand-aligned
+     neutrals keep the "silver" character while passing AA. Use these for TEXT;
+     reserve `--silver` for decorative borders. */
+  --ink:        #14233B;   /* primary body text — deep navy-slate, ~13:1 on white */
+  --ink-muted:  #4F555F;   /* secondary text — accessible silver, ~7.4:1 on white */
+  --ink-faint:  #646A74;   /* tertiary/meta text — ~5.4:1 on white */
+  --success:    #167A37;   /* "passed" / on-track green, AA on white */
+  --success-15: #E3F3E8;   /* success tint for pills/cards */
+
+  /* ── Surfaces ────────────────────────────────────────────────────────── */
+  --app-bg:      #FFFFFF;
+  --card:        var(--white);
+  --card-border: rgba(0, 35, 104, 0.10);   /* hairline on white cards */
+  --track:       #D5DCE6;   /* progress-bar track — darker than bg so fill reads */
+
+  /* ── Elevation / shape ───────────────────────────────────────────────── */
+  --shadow:    0 2px 10px rgba(0, 35, 104, 0.10);
+  --shadow-lg: 0 10px 34px rgba(0, 35, 104, 0.16);
+  --radius:    12px;
+  --radius-sm: 8px;
+  --focus-ring: 0 0 0 3px rgba(255, 201, 82, 0.7);   /* gold focus halo */
+
+  /* True navy / white — never remapped. Use for overlays, primary buttons,
+     favicon-adjacent chrome, and anything that must stay brand-navy in dark. */
+  --brand-navy: #002368;
+  --on-brand:   #ffffff;
+
+  /* ── Typography ──────────────────────────────────────────────────────── */
+  --font-sans: "Bai Jamjuree", "Helvetica", Arial, sans-serif;
+  --font-display: "Montserrat", "Helvetica", Arial, sans-serif;
+  --font-serif: 'Georgia', 'Times New Roman', serif;
+}
+
+/* ── Dark theme ──────────────────────────────────────────────────────────── */
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --electric-blue:    #80BFEC;
+  --light-blue:       #4a9fd4;
+  --silver:           #6b7280;
+  --gold:             #FFC952;
+  --white:            #152238;
+  --black:            #f0f4fa;
+  --gray:             #1c2d47;
+  --electric-blue-50: #5a8ab8;
+  --light-blue-30:    rgba(128, 191, 236, 0.14);
+  --gold-15:          rgba(255, 201, 82, 0.12);
+
+  --navy:       #80BFEC;
+  --navy-light: #a8d4f2;
+  --navy-dark:  #5a9fd4;
+
+  --ink:        #e8edf5;
+  --ink-muted:  #b8c4d6;
+  --ink-faint:  #8fa0b8;
+  --success:    #4ade80;
+  --success-15: rgba(74, 222, 128, 0.14);
+
+  --app-bg:      #0b1526;
+  --card:        #152238;
+  --card-border: rgba(128, 191, 236, 0.18);
+  --track:       #243552;
+
+  --shadow:    0 2px 10px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 10px 34px rgba(0, 0, 0, 0.45);
+  --focus-ring: 0 0 0 3px rgba(255, 201, 82, 0.45);
+
+  --brand-navy: #002368;
+  --on-brand:   #ffffff;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: var(--navy);
+}
+
+[data-theme="dark"] a {
+  color: var(--navy-light);
+}
+
+[data-theme="dark"] .site-nav {
+  background: var(--card);
+  border-bottom-color: var(--card-border);
+}
+
+[data-theme="dark"] .site-nav__toggle,
+[data-theme="dark"] .site-nav__logout {
+  background: var(--gray);
+  border-color: var(--card-border);
+  color: var(--navy);
+}
+
+[data-theme="dark"] .site-nav__toggle:hover,
+[data-theme="dark"] .site-nav__logout:hover {
+  background: var(--light-blue-30);
+  border-color: var(--light-blue);
+}
+
+[data-theme="dark"] .site-nav__links select {
+  background: var(--gray);
+  border-color: var(--card-border);
+  color: var(--ink);
+}
+
+@media (max-width: 600px) {
+  [data-theme="dark"] .site-nav__links {
+    background: var(--card);
+    border-left-color: var(--card-border);
+  }
+
+  [data-theme="dark"] .site-nav[data-open] .site-nav__scrim {
+    background: rgba(0, 0, 0, 0.55);
+  }
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+  background: var(--gray);
+  color: var(--ink);
+  border-color: var(--card-border);
+}
+
+[data-theme="dark"] ::placeholder {
+  color: var(--ink-faint);
+}
+
+.brand-logo--dark {
+  display: none;
+}
+
+[data-theme="dark"] .brand-logo--light {
+  display: none;
+}
+
+[data-theme="dark"] .brand-logo--dark {
+  display: inline-block;
+}
+
+/* ── Reset / base ─────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--app-bg);
+  color: var(--ink);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--electric-blue);
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--electric-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* ── Visible keyboard focus for everything interactive ────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--electric-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--electric-blue);
+  outline-offset: 2px;
+  box-shadow: var(--focus-ring);
+}
+
+/* ── Scrollbar styling ───────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--light-blue);
+  border-radius: 4px;
+}
+
+/* ── Utility: loading placeholder (used while auth/data loads) ───────────── */
+
+.app-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: var(--electric-blue);
+  font-weight: 600;
+}
+
+/* ── Scaffold placeholder shell (used by placeholder route pages) ─────────── */
+
+.hub-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* ── Temporary site nav (F1.3 → replaced by <Layout> in F3) ───────────────── */
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--white, #fff);
+  border-bottom: 1px solid var(--light-blue, #e2e8f0);
+}
+
+.site-nav__brand {
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-nav__brand span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-nav__brand:hover {
+  text-decoration: none;
+}
+
+.site-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-left: auto;
+}
+
+/* ── Hamburger toggle + scrim — phone only (hidden on desktop) ────────────── */
+
+.site-nav__toggle {
+  display: none; /* revealed in the phone media query below */
+  margin-left: auto;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  color: var(--electric-blue);
+  cursor: pointer;
+}
+
+.site-nav__toggle:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Three bars that morph into an X when the drawer is open. */
+.site-nav__bars {
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 16px;
+}
+
+.site-nav__bars span {
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.25s ease, opacity 0.2s ease, top 0.25s ease;
+}
+
+.site-nav__bars span:nth-child(1) { top: 0; }
+.site-nav__bars span:nth-child(2) { top: 7px; }
+.site-nav__bars span:nth-child(3) { top: 14px; }
+
+.site-nav[data-open] .site-nav__bars span:nth-child(1) {
+  top: 7px;
+  transform: rotate(45deg);
+}
+.site-nav[data-open] .site-nav__bars span:nth-child(2) { opacity: 0; }
+.site-nav[data-open] .site-nav__bars span:nth-child(3) {
+  top: 7px;
+  transform: rotate(-45deg);
+}
+
+.site-nav__scrim {
+  display: none; /* only shown while the drawer is open on phones */
+  border: 0;
+  padding: 0;
+}
+
+/* Visible "Sign out" label next to the icon (drawer still stretches it). */
+.site-nav__logout-label {
+  display: inline;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* Top-right header logout control — labelled button after the links. */
+.site-nav__logout {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: auto;
+  height: 2.25rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  color: var(--electric-blue);
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.site-nav__logout:hover {
+  background: var(--light-blue-30);
+  border-color: var(--light-blue);
+}
+
+.site-nav__logout:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* Phone: the single-row nav (logo + Dashboard + Admin + locale + logout) runs
+   off the right edge below ~600px. Collapse the links behind a hamburger that
+   opens a right-side drawer instead of cramming them onto a second row. */
+@media (max-width: 600px) {
+  .site-nav {
+    padding: 0.625rem 1rem;
+  }
+
+  /* Shrink the brandmark a touch so the bar stays compact next to the toggle. */
+  .site-nav__brand img {
+    width: auto;
+    height: 40px;
+  }
+
+  .site-nav__toggle {
+    display: inline-flex;
+    /* Stay above the drawer so the morphed "X" is visible and tappable. */
+    position: relative;
+    z-index: 3;
+  }
+
+  /* Links become a slide-in drawer anchored under the header bar. */
+  .site-nav__links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    width: min(80vw, 300px);
+    margin-left: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    padding: 5rem 1rem 1.5rem;
+    background: var(--white);
+    border-left: 1px solid var(--card-border);
+    box-shadow: var(--shadow-lg);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.28s ease, visibility 0s linear 0.28s;
+  }
+
+  .site-nav[data-open] .site-nav__links {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.28s ease;
+  }
+
+  /* Each row: full-width, comfortable touch target. Targets the direct
+     children passed in from the layout (links, the admin button, the locale
+     label, the logout button). */
+  .site-nav__links > a,
+  .site-nav__links > button,
+  .site-nav__links > label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.85rem;
+    border-radius: var(--radius-sm);
+    color: var(--electric-blue);
+    font-size: 1rem;
+  }
+
+  .site-nav__links > a:hover,
+  .site-nav__links > button:hover {
+    background: var(--light-blue-30);
+    text-decoration: none;
+  }
+
+  /* Locale switcher: stack the "Language:" label over a full-width select. */
+  .site-nav__links > label {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.35rem;
+  }
+
+  /* Theme toggle: full-width segmented control in the drawer. */
+  .site-nav__links > [role="group"] {
+    width: 100%;
+  }
+
+  .site-nav__links select {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0 0.6rem;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    font-size: 1rem;
+  }
+
+  /* Logout row: reset the desktop icon-button sizing and show the text label. */
+  .site-nav__links > .site-nav__logout {
+    width: 100%;
+    height: auto;
+    justify-content: flex-start;
+  }
+
+  .site-nav__logout-label {
+    display: inline;
+  }
+
+  /* Dimming backdrop behind the drawer. */
+  .site-nav[data-open] .site-nav__scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 35, 59, 0.45);
+    cursor: pointer;
+  }
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────────────────
+   Honour the OS "reduce motion" setting: neutralise smooth-scroll and strip
+   transitions/animations for users who are sensitive to motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

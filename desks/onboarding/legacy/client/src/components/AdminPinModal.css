@@ -1,0 +1,71 @@
+.admin-pin-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 35, 104, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1.5rem;
+}
+
+.admin-pin-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  border-top: 4px solid var(--gold);
+  text-align: center;
+}
+
+.admin-pin-card h2 {
+  color: var(--electric-blue);
+  margin-bottom: 0.5rem;
+}
+
+.admin-pin-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1.25rem;
+}
+
+.admin-pin-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.admin-pin-card input {
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing: 0.3em;
+  padding: 0.75rem;
+  border: 2px solid var(--gray);
+  border-radius: var(--radius-sm);
+}
+
+.admin-pin-error {
+  color: #c0392b;
+  font-size: 0.85rem;
+}
+
+.admin-pin-submit {
+  padding: 0.75rem;
+  background: var(--electric-blue);
+  color: var(--white);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+}
+
+.admin-pin-skip {
+  background: none;
+  color: #888;
+  font-size: 0.85rem;
+  padding: 0.5rem;
+}
+
+.admin-pin-skip:hover {
+  color: var(--electric-blue);
+}

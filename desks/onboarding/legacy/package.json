@@ -1,0 +1,24 @@
+{
+  "name": "silverleaf-onboarding-hub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Silverleaf Academy Staff Onboarding Hub",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:migrate": "cd server && npm run db:migrate",
+    "go-live": "bash scripts/go-live.sh",
+    "start:prod": "SERVE_CLIENT=true NODE_ENV=production npm start",
+    "verify": "bash scripts/verify-deployment.sh",
+    "copy-docs": "bash scripts/copy-documents.sh",
+    "deploy:upload": "bash deploy/upload-to-server.sh"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

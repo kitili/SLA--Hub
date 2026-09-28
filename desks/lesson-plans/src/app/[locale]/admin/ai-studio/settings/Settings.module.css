@@ -1,0 +1,117 @@
+/* SettingsClient — AI Studio Settings. Design tokens from globals.css. */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Warning ───────────────────────────────────────────────────────────────
+   Same gold treatment as the studio's `.keyNotice` / `.validationBad`, which
+   is this app's established "read this before you act" banner. */
+.warning {
+  background: var(--gold-15);
+  border: 1px solid var(--gold);
+  color: var(--ink);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.warningTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #8a6d1f;
+  margin-bottom: 0.3rem;
+}
+
+/* ── Section ──────────────────────────────────────────────────────────────── */
+.section {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--electric-blue);
+}
+
+.label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.select {
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+.hint,
+.muted {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+
+/* ── Model meta chips ─────────────────────────────────────────────────────── */
+.modelMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.modelTag {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  background: rgba(0, 35, 104, 0.06);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+/* ── Actions ──────────────────────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  background: var(--electric-blue);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btnPrimary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.error {
+  font-size: 0.85rem;
+  color: #b91c1c;
+}
+
+.success {
+  font-size: 0.85rem;
+  color: var(--success);
+}

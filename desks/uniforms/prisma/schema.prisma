@@ -1,0 +1,553 @@
+// Silverleaf Uniform Tracker — complete data model.
+// See docs/GOING-FORWARD.md (stack, ERD, timeline).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// Campuses: USA, AM, KIJENGE, ILBORU, BOMA
+// requestBy: ADMIN (Usa + AM) or HEAD_TEACHER (Kijenge, Ilboru, Boma)
+model Campus {
+  id        String @id @default(cuid())
+  code      String @unique
+  name      String
+  requestBy String
+
+  students    Student[]
+  users       User[]
+  locations   Location[]
+  requests    CampusRequest[]
+  orders      ParentOrder[]
+  incomingDns Distribution[]    @relation("DistToCampus")
+  enrolment   CampusEnrolment[]
+  snapshots   YearEndSnapshot[]
+  forecasts   SizeForecast[]
+}
+
+// Locations: MAIN warehouse, SHOP_USA, plus one CAMPUS_* store per site
+model Location {
+  id       String  @id @default(cuid())
+  code     String  @unique
+  name     String
+  kind     String
+  campusId String?
+  campus   Campus? @relation(fields: [campusId], references: [id])
+
+  balances    StockBalance[]
+  moves       StockMove[]
+  issues      ParentIssue[]
+  outgoingDns Distribution[] @relation("DistFromLocation")
+}
+
+model Family {
+  id              String    @id @default(cuid())
+  edadminParentId String?   @unique
+  phone           String    @default("")
+  createdAt       DateTime  @default(now())
+  users           User[]
+  students        Student[]
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         String
+  campusId     String?
+  familyId     String?
+  phone        String   @default("")
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+
+  campus           Campus?           @relation(fields: [campusId], references: [id])
+  family           Family?           @relation(fields: [familyId], references: [id])
+  payments         Payment[]
+  resolvedPayments Payment[]         @relation("PaymentResolvedBy")
+  requests         CampusRequest[]   @relation("RequestedBy")
+  dns              Distribution[]    @relation("IssuedBy")
+  sewing           SewingJob[]
+  pos              PurchaseOrder[]   @relation("RaisedBy")
+  approvedPos      PurchaseOrder[]   @relation("PoApprovedBy")
+  placed           ParentOrder[]     @relation("PlacedBy")
+  matReqsRequested MaterialRequest[] @relation("MatReqRequestedBy")
+  matReqsPriced    MaterialRequest[] @relation("MatReqPricedBy")
+  matReqsResolved  MaterialRequest[] @relation("MatReqResolvedBy")
+  matReqsFulfilled MaterialRequest[] @relation("MatReqFulfilledBy")
+}
+
+model Sku {
+  id      String  @id @default(cuid())
+  code    String  @unique
+  name    String
+  colour  String
+  kind    String
+  gender  String  @default("UNISEX")
+  buyTzs  Int
+  sellTzs Int
+  reorder Int     @default(10)
+  active  Boolean @default(true)
+
+  sizes     SkuSize[]
+  lines     ParentOrderLine[]
+  reqLines  CampusRequestLine[]
+  poLines   PurchaseOrderLine[]
+  jobs      SewingJob[]
+  balances  StockBalance[]
+  moves     StockMove[]
+  distLines DistributionLine[]
+  issues    ParentIssue[]
+  snapshots YearEndSnapshot[]
+  forecasts SizeForecast[]
+  recipes   GarmentRecipe[]
+  fits      SizeFit[]
+}
+
+model SkuSize {
+  id    String @id @default(cuid())
+  skuId String
+  size  String
+  sku   Sku    @relation(fields: [skuId], references: [id], onDelete: Cascade)
+
+  @@unique([skuId, size])
+}
+
+model StockBalance {
+  id         String   @id @default(cuid())
+  locationId String
+  skuId      String
+  size       String
+  qty        Int      @default(0)
+  location   Location @relation(fields: [locationId], references: [id])
+  sku        Sku      @relation(fields: [skuId], references: [id])
+
+  @@unique([locationId, skuId, size])
+}
+
+model StockMove {
+  id         String   @id @default(cuid())
+  locationId String
+  skuId      String
+  size       String
+  qty        Int
+  reason     String
+  ref        String
+  note       String   @default("")
+  createdAt  DateTime @default(now())
+
+  location Location @relation(fields: [locationId], references: [id])
+  sku      Sku      @relation(fields: [skuId], references: [id])
+}
+
+model Student {
+  id        String        @id @default(cuid())
+  edadminId String?       @unique
+  regNo     String        @unique
+  name      String
+  className String
+  gender    String
+  campusId  String
+  familyId  String?
+  campus    Campus        @relation(fields: [campusId], references: [id])
+  family    Family?       @relation(fields: [familyId], references: [id])
+  orders    ParentOrder[]
+}
+
+model ParentOrder {
+  id          String    @id @default(cuid())
+  ref         String    @unique
+  campusId    String
+  studentId   String?
+  studentName String
+  className   String
+  gender      String
+  regNo       String    @default("")
+  kind        String
+  status      String
+  orderedAt   DateTime  @default(now())
+  paidAt      DateTime?
+  readyAt     DateTime?
+  notifiedAt  DateTime?
+  notes       String    @default("")
+  placedById  String?
+
+  campus   Campus            @relation(fields: [campusId], references: [id])
+  student  Student?          @relation(fields: [studentId], references: [id])
+  placedBy User?             @relation("PlacedBy", fields: [placedById], references: [id])
+  lines    ParentOrderLine[]
+  pays     Payment[]
+  issues   ParentIssue[]
+}
+
+model ParentOrderLine {
+  id      String @id @default(cuid())
+  orderId String
+  skuId   String
+  size    String
+  qty     Int
+  unitTzs Int
+  issued  Int    @default(0)
+
+  order ParentOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  sku   Sku         @relation(fields: [skuId], references: [id])
+}
+
+model Payment {
+  id            String    @id @default(cuid())
+  orderId       String
+  amountTzs     Int
+  channel       String
+  ref           String    @unique
+  receivedOn    DateTime  @default(now())
+  cashierId     String?
+  voidOfId      String?   @unique
+  // PENDING until Finance confirms the money actually reached her (cash in
+  // hand or bank showing it) — CONFIRMED or REJECTED after she acts on it.
+  // A payment Finance herself records is auto-CONFIRMED on entry; there's no
+  // one else to approve her own entry. Only CONFIRMED money counts toward an
+  // order's official paid total / status — see orderPaid() in order-status.ts.
+  confirmStatus String    @default("PENDING")
+  resolvedAt    DateTime?
+  resolvedById  String?
+
+  order      ParentOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  cashier    User?       @relation(fields: [cashierId], references: [id])
+  resolvedBy User?       @relation("PaymentResolvedBy", fields: [resolvedById], references: [id])
+  // Self-reference: a void is a normal Payment row with a negative amountTzs
+  // that points back at the payment it reverses. voidOfId is @unique so a
+  // given payment can only ever be voided once at the DB level, not just by
+  // convention in the action code. Void only applies to already-CONFIRMED
+  // payments — a still-PENDING one that turns out wrong gets REJECTED
+  // instead, since it never counted toward the balance in the first place.
+  voidOf     Payment?    @relation("PaymentVoid", fields: [voidOfId], references: [id])
+  voidedBy   Payment?    @relation("PaymentVoid")
+}
+
+model ParentIssue {
+  id         String   @id @default(cuid())
+  orderId    String
+  skuId      String
+  size       String
+  qty        Int
+  locationId String
+  createdAt  DateTime @default(now())
+
+  order    ParentOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  sku      Sku         @relation(fields: [skuId], references: [id])
+  location Location    @relation(fields: [locationId], references: [id])
+}
+
+model CampusRequest {
+  id          String   @id @default(cuid())
+  ref         String   @unique
+  campusId    String
+  requesterId String
+  status      String
+  neededBy    String   @default("")
+  note        String   @default("")
+  createdAt   DateTime @default(now())
+
+  campus    Campus              @relation(fields: [campusId], references: [id])
+  requester User                @relation("RequestedBy", fields: [requesterId], references: [id])
+  lines     CampusRequestLine[]
+  dns       Distribution[]
+}
+
+model CampusRequestLine {
+  id        String @id @default(cuid())
+  requestId String
+  skuId     String
+  size      String
+  qty       Int
+
+  request CampusRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  sku     Sku           @relation(fields: [skuId], references: [id])
+}
+
+model Distribution {
+  id         String   @id @default(cuid())
+  ref        String   @unique
+  requestId  String?
+  fromId     String
+  toCampusId String
+  issuerId   String
+  receiver   String   @default("")
+  createdAt  DateTime @default(now())
+
+  request  CampusRequest?     @relation(fields: [requestId], references: [id])
+  from     Location           @relation("DistFromLocation", fields: [fromId], references: [id])
+  toCampus Campus             @relation("DistToCampus", fields: [toCampusId], references: [id])
+  issuer   User               @relation("IssuedBy", fields: [issuerId], references: [id])
+  lines    DistributionLine[]
+}
+
+model DistributionLine {
+  id             String @id @default(cuid())
+  distributionId String
+  skuId          String
+  size           String
+  qty            Int
+
+  distribution Distribution @relation(fields: [distributionId], references: [id], onDelete: Cascade)
+  sku          Sku          @relation(fields: [skuId], references: [id])
+}
+
+model Supplier {
+  id      String          @id @default(cuid())
+  name    String
+  phone   String          @default("")
+  contact String          @default("")
+  city    String          @default("Arusha")
+  pos     PurchaseOrder[]
+}
+
+model PurchaseOrder {
+  id            String    @id @default(cuid())
+  ref           String    @unique
+  supplierId    String
+  raisedById    String
+  status        String
+  createdAt     DateTime  @default(now())
+  // Separate from `status` (DRAFT/SENT/PARTIAL/CLOSED/CANCELLED) on purpose —
+  // a PO can sit DRAFT while approval is pending, then only the DRAFT→SENT
+  // step (the moment money actually commits to a supplier) checks this.
+  // Mirrors Payment.confirmStatus's "propose now, gate the money-moving step"
+  // shape.
+  approveStatus String    @default("PENDING")
+  approvedAt    DateTime?
+  approvedById  String?
+
+  supplier   Supplier            @relation(fields: [supplierId], references: [id])
+  raisedBy   User                @relation("RaisedBy", fields: [raisedById], references: [id])
+  approvedBy User?               @relation("PoApprovedBy", fields: [approvedById], references: [id])
+  lines      PurchaseOrderLine[]
+  expenses   Expense[]
+}
+
+model PurchaseOrderLine {
+  id       String @id @default(cuid())
+  poId     String
+  skuId    String
+  size     String
+  qty      Int
+  unitTzs  Int
+  received Int    @default(0)
+
+  po  PurchaseOrder @relation(fields: [poId], references: [id], onDelete: Cascade)
+  sku Sku           @relation(fields: [skuId], references: [id])
+}
+
+model MaterialBatch {
+  id          String   @id @default(cuid())
+  kind        String
+  description String
+  qty         Int
+  remaining   Int      @default(0)
+  unit        String   @default("pcs")
+  unitCostTzs Int
+  sewingJobId String?
+  createdAt   DateTime @default(now())
+
+  sewingJob SewingJob? @relation(fields: [sewingJobId], references: [id])
+  expenses  Expense[]
+}
+
+// How much cloth a finished piece takes: SKU + size → material + qty
+model GarmentRecipe {
+  id           String @id @default(cuid())
+  skuId        String
+  size         String
+  materialKind String
+  materialName String
+  qtyPerPiece  Int
+  unit         String @default("cm")
+
+  sku Sku @relation(fields: [skuId], references: [id], onDelete: Cascade)
+
+  @@unique([skuId, size, materialKind, materialName])
+}
+
+// Which size fits which class / gender for a garment
+model SizeFit {
+  id        String @id @default(cuid())
+  className String
+  gender    String
+  skuId     String
+  size      String
+  note      String @default("")
+
+  sku Sku @relation(fields: [skuId], references: [id], onDelete: Cascade)
+
+  @@unique([className, gender, skuId])
+}
+
+model SewingJob {
+  id       String   @id @default(cuid())
+  tailorId String
+  skuId    String
+  size     String   @default("")
+  expected Int
+  actual   Int      @default(0)
+  status   String
+  sewnOn   DateTime @default(now())
+  note     String   @default("")
+  location String   @default("MAIN")
+
+  tailor      User              @relation(fields: [tailorId], references: [id])
+  sku         Sku               @relation(fields: [skuId], references: [id])
+  materials   MaterialBatch[]
+  expenses    Expense[]
+  matRequests MaterialRequest[]
+}
+
+model Expense {
+  id          String   @id @default(cuid())
+  kind        String
+  amountTzs   Int
+  note        String
+  spentOn     DateTime @default(now())
+  sewingJobId String?
+  materialId  String?
+  poId        String?
+  campusId    String?
+  payeeId     String?
+
+  sewingJob SewingJob?     @relation(fields: [sewingJobId], references: [id])
+  material  MaterialBatch? @relation(fields: [materialId], references: [id])
+  po        PurchaseOrder? @relation(fields: [poId], references: [id])
+  payee     Payee?         @relation(fields: [payeeId], references: [id])
+}
+
+// A real identity for casual/subcontracted tailors paid per piece (the
+// people the old spreadsheet tracked as free text — "Elisa(fundi)"/"elisa"/
+// "Elisa)Fundi" all meaning one person, with pay sometimes routed through a
+// completely different name's mobile money). They're not app Users: they
+// don't log in, they just need to be a consistent, structured payee record
+// instead of whatever got typed into a note field that day.
+// Loveness (Tailor) flags what a sewing job needs beyond what's already in
+// stock; Imani (Store) prices the material lines with a real supplier quote
+// and forwards; Finance approves or rejects the priced total; Imani then
+// buys and posts the real MaterialBatch/Expense rows, using the same
+// already-quoted figures — no separate "log what I actually paid" re-entry,
+// since the quote *is* the real figure by the time Finance sees it.
+model MaterialRequest {
+  id            String    @id @default(cuid())
+  ref           String    @unique
+  sewingJobId   String
+  requestedById String
+  status        String    @default("PENDING_STORE") // PENDING_STORE -> PENDING_FINANCE -> APPROVED|REJECTED -> FULFILLED
+  pricedById    String?
+  pricedAt      DateTime?
+  resolvedById  String?
+  resolvedAt    DateTime?
+  fulfilledById String?
+  fulfilledAt   DateTime?
+  note          String    @default("")
+  createdAt     DateTime  @default(now())
+
+  sewingJob   SewingJob             @relation(fields: [sewingJobId], references: [id])
+  requestedBy User                  @relation("MatReqRequestedBy", fields: [requestedById], references: [id])
+  pricedBy    User?                 @relation("MatReqPricedBy", fields: [pricedById], references: [id])
+  resolvedBy  User?                 @relation("MatReqResolvedBy", fields: [resolvedById], references: [id])
+  fulfilledBy User?                 @relation("MatReqFulfilledBy", fields: [fulfilledById], references: [id])
+  lines       MaterialRequestLine[]
+}
+
+model MaterialRequestLine {
+  id           String  @id @default(cuid())
+  requestId    String
+  kind         String // MATERIAL | LABOUR
+  materialKind String  @default("FABRIC") // JORA | FABRIC | SUPPLY — only meaningful when kind=MATERIAL
+  description  String
+  qty          Int
+  unit         String  @default("pcs")
+  // 0 until priced: Loveness fills real labour rates herself (she already
+  // knows what she pays her casual tailors); Imani fills real material
+  // prices after calling the supplier. Never an estimate by the time
+  // Finance sees it.
+  unitCostTzs  Int     @default(0)
+  payeeId      String?
+
+  request MaterialRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  payee   Payee?          @relation(fields: [payeeId], references: [id])
+}
+
+model Payee {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String   @default("")
+  payNote   String   @default("")
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  expenses        Expense[]
+  matRequestLines MaterialRequestLine[]
+}
+
+model Budget {
+  id           String @id @default(cuid())
+  name         String
+  year         Int    @unique
+  allocatedTzs Int
+}
+
+model CampusEnrolment {
+  id                String @id @default(cuid())
+  campusId          String
+  year              Int
+  className         String
+  expectedHeadcount Int
+  campus            Campus @relation(fields: [campusId], references: [id])
+
+  @@unique([campusId, year, className])
+}
+
+model YearEndSnapshot {
+  id         String  @id @default(cuid())
+  year       Int
+  campusId   String?
+  skuId      String
+  size       String
+  issuedQty  Int
+  stockLeft  Int
+  revenueTzs Int
+  costTzs    Int
+
+  campus Campus? @relation(fields: [campusId], references: [id])
+  sku    Sku     @relation(fields: [skuId], references: [id])
+
+  @@unique([year, campusId, skuId, size])
+}
+
+model SizeForecast {
+  id           String  @id @default(cuid())
+  year         Int
+  campusId     String?
+  skuId        String
+  size         String
+  suggestedBuy Int
+  method       String
+
+  campus Campus? @relation(fields: [campusId], references: [id])
+  sku    Sku     @relation(fields: [skuId], references: [id])
+
+  @@unique([year, campusId, skuId, size])
+}
+
+model AuditEvent {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  actorId   String?
+  actorName String
+  action    String
+  entity    String
+  entityId  String   @default("")
+  ref       String   @default("")
+  note      String   @default("")
+}

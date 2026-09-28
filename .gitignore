@@ -11,14 +11,24 @@ npm-debug.log*
 !.env.example
 *.tsbuildinfo
 .vercel
-data/
+/data/
 .claude/
 
 .onboarding-live/
 .pglite/
-documents/hiring-uploads/
+/documents/hiring-uploads/
 .desks-sync.log
 
-# Desk checkouts live on disk; only the lockfile is committed.
-/desks/*/
-!/desks/.gitkeep
+# Department source is committed under desks/. Never commit their install
+# artifacts, secrets, or nested git (those would look like submodules).
+/desks/**/node_modules/
+/desks/**/.next/
+/desks/**/.git/
+/desks/**/.pglite/
+/desks/**/.vercel/
+/desks/**/.env
+/desks/**/.env*.local
+/desks/**/dist/
+/desks/**/coverage/
+/desks/**/*.tsbuildinfo
+/desks/visitors/data/

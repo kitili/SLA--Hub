@@ -1,0 +1,323 @@
+/* SchemesClient — admin Schemes of Work. Design tokens from globals.css. */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.panelTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--electric-blue);
+}
+
+.subHeading {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+  margin-top: 0.25rem;
+}
+
+.meta {
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+}
+
+/* ── Curriculum (UbD) context panel ─────────────────────────────────────── */
+
+.curriculumPanel {
+  margin: 0.75rem 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  background: var(--light-blue-30);
+}
+
+.ubdProse {
+  font-size: 0.85rem;
+  color: var(--ink);
+  margin: 0.35rem 0;
+  line-height: 1.4;
+}
+
+.ubdGroup {
+  margin: 0.35rem 0;
+  font-size: 0.85rem;
+}
+
+.ubdGroup > summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--electric-blue);
+}
+
+.ubdList {
+  margin: 0.4rem 0 0.6rem;
+  padding-left: 1.1rem;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.ubdList > li {
+  margin: 0.2rem 0;
+}
+
+/* Table */
+.tableWrapper {
+  overflow-x: auto;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.table th,
+.table td {
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.table th {
+  background: var(--light-blue-30);
+  font-weight: 600;
+  color: var(--electric-blue);
+  white-space: nowrap;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr:hover td {
+  background: rgba(0, 35, 104, 0.03);
+}
+
+.cellClamp {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.emptyCell {
+  text-align: center;
+  color: var(--ink-muted);
+  padding: 1.5rem 0;
+}
+
+/* Form */
+.fieldLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+.input {
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.6rem;
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--card);
+  width: 100%;
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-color: var(--electric-blue);
+}
+
+.textarea {
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.6rem;
+  font-size: 0.875rem;
+  color: var(--ink);
+  background: var(--card);
+  width: 100%;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.textarea:focus {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-color: var(--electric-blue);
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--gold-15);
+  border-radius: var(--radius-sm);
+}
+
+.editRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.formActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Buttons */
+.btnPrimary {
+  background: var(--electric-blue);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btnPrimary:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.btnPrimary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btnSecondary {
+  background: transparent;
+  color: var(--electric-blue);
+  border: 1px solid var(--electric-blue);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btnSecondary:hover:not(:disabled) {
+  background: var(--light-blue-30);
+}
+
+.btnSecondary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btnSmall {
+  background: var(--light-blue-30);
+  color: var(--electric-blue);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 0.3rem 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btnSmall:hover:not(:disabled) {
+  background: var(--light-blue);
+  color: var(--white);
+}
+
+.btnSmall:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btnDanger {
+  background: transparent;
+  color: #b91c1c;
+  border: 1px solid #b91c1c;
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btnDanger:hover:not(:disabled) {
+  background: #fee2e2;
+}
+
+.btnDanger:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.backLink {
+  background: none;
+  border: none;
+  color: var(--electric-blue);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  align-self: flex-start;
+}
+
+.backLink:hover {
+  opacity: 0.75;
+}
+
+.dangerZone {
+  border-top: 1px solid var(--card-border);
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* State */
+.empty {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+.muted {
+  color: var(--ink-muted);
+  font-size: 0.875rem;
+}
+
+.error {
+  color: #b91c1c;
+  font-size: 0.875rem;
+}
+
+.success {
+  color: var(--success);
+  font-size: 0.875rem;
+}

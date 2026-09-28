@@ -1,0 +1,47 @@
+{
+  "lpFeedback": {
+    "form": {
+      "rate": "Kadiria andalio hili la somo",
+      "update": "Sasisha ukadiriaji wako",
+      "starsGroupLabel": "Ukadiriaji wa nyota, 1 hadi 5",
+      "starAriaLabel": "{count, plural, one {nyota #} other {nyota #}} — {label}",
+      "ratingPoor": "Hafifu",
+      "ratingFair": "Wastani",
+      "ratingGood": "Nzuri",
+      "ratingGreat": "Nzuri sana",
+      "ratingExcellent": "Bora kabisa",
+      "comment": "Maoni",
+      "optional": "(si lazima)",
+      "commentPlaceholder": "Nini kilifanya vizuri? Nini kingeboreshwa?",
+      "submit": "Wasilisha maoni",
+      "updateSubmit": "Sasisha maoni",
+      "saving": "Inahifadhi…",
+      "errorRange": "Tafadhali chagua ukadiriaji kati ya nyota 1 hadi 5.",
+      "errorUnauthenticated": "Tafadhali ingia ili kuacha maoni.",
+      "errorGeneric": "Hitilafu imetokea. Tafadhali jaribu tena."
+    },
+    "hour": {
+      "pill": "Saa ya Maoni · 3–5 jioni",
+      "titleNamed": "Ni Saa ya Maoni, {name}!",
+      "title": "Ni Saa ya Maoni!",
+      "subtitle": "Kadiria maandalio ya masomo uliyotumia hivi karibuni ili kuwasaidia wenzako na kupata pointi za ziada. Kila ukadiriaji ni muhimu.",
+      "emptyTitle": "Umemaliza yote — kazi nzuri!",
+      "emptyText": "Umekadiria kila andalio ulilotumia hivi karibuni. Rudi baada ya somo lako lijalo ili kuendeleza mfululizo wako.",
+      "emptyLink": "Vinjari maandalio ya masomo",
+      "pendingTitle": "Yaliyotumika hivi karibuni — yanasubiri ukadiriaji wako",
+      "rateCta": "Kadiria ★"
+    },
+    "points": {
+      "pts": "pointi {points}",
+      "streak": "{days, plural, one {mfululizo wa siku #} other {mfululizo wa siku #}}",
+      "ariaWithStreak": "pointi {points}, {days, plural, one {mfululizo wa maoni wa siku #} other {mfululizo wa maoni wa siku #}}",
+      "ariaPointsOnly": "pointi {points}"
+    },
+    "toast": {
+      "thanks": "Asante kwa maoni yako!",
+      "updated": "Ukadiriaji wako umesasishwa.",
+      "points": "+pointi {points}",
+      "dismiss": "Ondoa"
+    }
+  }
+}

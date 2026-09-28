@@ -1,0 +1,29 @@
+{
+  "policies": {
+    "declarationTitle": "Final policy declaration",
+    "declarationIntro": "You have digitally signed each policy above. Now confirm that you understand and agree to follow them as a whole.",
+    "declarationTextEN": "I confirm that I have read, understood, and agree to abide by all Silverleaf Academy staff policies and procedures presented in this section, including the Staff Handbook, HR policies, safeguarding requirements, and operational compliance standards. I understand that these policies govern my conduct and responsibilities as a member of the Silverleaf team, and that I am expected to follow them in my day-to-day work.",
+    "declarationTextSW": "Ninathibitisha kwamba nimesoma, nimeelewa, na ninakubali kuzingatia sera na taratibu zote za wafanyakazi za Silverleaf Academy zilizowasilishwa katika sehemu hii, ikiwemo Mwongozo wa Wafanyakazi, sera za HR, mahitaji ya ulinzi wa watoto, na viwango vya utii wa uendeshaji. Ninaelewa kwamba sera hizi zinatawala tabia na majukumu yangu kama mwanachama wa timu ya Silverleaf, na kwamba inatarajiwa nizizingatie katika kazi yangu ya kila siku.",
+    "checkboxLabel": "I have read and understood the declaration above, and I agree to adhere to all policies in this section.",
+    "submitButton": "I declare and agree",
+    "submitting": "Saving…",
+    "errorIncomplete": "Please digitally sign every policy above before making your final declaration.",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "itemSignature": {
+      "badge": "Digital signature",
+      "title": "Sign this policy",
+      "intro": "After watching the briefing and opening “{policy}”, type your full name to digitally sign that you have read and agree to follow it.",
+      "nameLabel": "Full name (digital signature)",
+      "namePlaceholder": "Type your full legal name",
+      "nameHint": "Your typed name is stored as your digital signature for this policy.",
+      "checkboxLabel": "I have read “{policy}” and agree to follow it in my work at Silverleaf.",
+      "ackText": "I confirm that I have read, understood, and agree to abide by “{policy}”.",
+      "submit": "Sign this policy",
+      "submitting": "Saving signature…",
+      "signedTitle": "Policy digitally signed",
+      "signedBy": "Signed by {name}",
+      "errorName": "Please type your full name to sign.",
+      "errorGeneric": "Could not save your signature. Please try again."
+    }
+  }
+}

@@ -1,0 +1,41 @@
+/** Year-end leftover from the 2026 size sheet pattern (STOCK / OVERALL). */
+
+export type OpeningRow = { location: "MAIN" | "SHOP_USA" | `CAMPUS_${string}`; sku: string; size: string; qty: number };
+
+export const OPENING_2026: OpeningRow[] = [
+  // MAIN — leftover after 2026 (hot 24/26 thinner, tails 18/36 sit)
+  { location: "MAIN", sku: "PT1", size: "18", qty: 14 },
+  { location: "MAIN", sku: "PT1", size: "20", qty: 9 },
+  { location: "MAIN", sku: "PT1", size: "22", qty: 6 },
+  { location: "MAIN", sku: "PT1", size: "24", qty: 8 },
+  { location: "MAIN", sku: "PT1", size: "26", qty: 7 },
+  { location: "MAIN", sku: "PT1", size: "28", qty: 11 },
+  { location: "MAIN", sku: "PT1", size: "30", qty: 5 },
+  { location: "MAIN", sku: "PT1", size: "36", qty: 16 },
+  { location: "MAIN", sku: "SS1", size: "22", qty: 10 },
+  { location: "MAIN", sku: "SS1", size: "24", qty: 12 },
+  { location: "MAIN", sku: "SS1", size: "26", qty: 8 },
+  { location: "MAIN", sku: "SS1", size: "28", qty: 15 },
+  { location: "MAIN", sku: "SS1", size: "30", qty: 4 },
+  { location: "MAIN", sku: "RT2", size: "22", qty: 18 },
+  { location: "MAIN", sku: "RT2", size: "24", qty: 20 },
+  { location: "MAIN", sku: "RT2", size: "26", qty: 14 },
+  { location: "MAIN", sku: "TS1", size: "24", qty: 3 },
+  { location: "MAIN", sku: "TS1", size: "26", qty: 4 },
+  { location: "MAIN", sku: "TS1", size: "28", qty: 9 },
+  { location: "MAIN", sku: "GS1", size: "22", qty: 7 },
+  { location: "MAIN", sku: "GS1", size: "24", qty: 5 },
+  { location: "MAIN", sku: "GS1", size: "26", qty: 6 },
+  { location: "MAIN", sku: "BT1", size: "22", qty: 4 },
+  { location: "MAIN", sku: "BT1", size: "24", qty: 3 },
+  { location: "MAIN", sku: "BT1", size: "26", qty: 8 },
+  { location: "MAIN", sku: "BT1", size: "28", qty: 12 },
+  { location: "SHOP_USA", sku: "PT1", size: "24", qty: 6 },
+  { location: "SHOP_USA", sku: "SS1", size: "24", qty: 3 },
+  { location: "CAMPUS_USA", sku: "PT1", size: "24", qty: 4 },
+  { location: "CAMPUS_USA", sku: "SS1", size: "24", qty: 2 },
+  { location: "CAMPUS_AM", sku: "PT1", size: "22", qty: 3 },
+  { location: "CAMPUS_KIJENGE", sku: "PT1", size: "26", qty: 3 },
+  { location: "CAMPUS_ILBORU", sku: "GS1", size: "28", qty: 2 },
+  { location: "CAMPUS_BOMA", sku: "BT1", size: "18", qty: 2 },
+];

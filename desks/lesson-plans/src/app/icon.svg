@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Silverleaf Lesson Plans">
+  <!--
+    Silverleaf app icon / favicon.
+    Next.js App Router auto-serves src/app/icon.svg as the site icon
+    (file convention `icon` supports .svg under app/**, since Next 13.3).
+    Electric-blue (#002368) leaf logomark on a soft white rounded tile so the
+    mark stays legible against dark browser tabs. Geometry adapted from
+    /public/assets/branding/logomark-electric-blue.svg (the brand leaf), scaled
+    and centred into a 64x64 viewBox.
+  -->
+  <rect width="64" height="64" rx="14" fill="#FFFFFF"/>
+  <g fill="#002368">
+    <!-- Left half of the leaf -->
+    <path d="M18 24.4 31 37.4V51.2c-3.2-.4-8.4-3.2-11-7.9-1.9-3.4-2.7-7.3-2.7-11.2V24.4Z"/>
+    <!-- Right half of the leaf (mirror) -->
+    <path d="M46 24.4 33 37.4V51.2c3.2-.4 8.4-3.2 11-7.9 1.9-3.4 2.7-7.3 2.7-11.2V24.4Z"/>
+    <!-- Upper-left blade -->
+    <path d="M31 12.8v16.2L18 16C19.6 14.7 23.9 13 31 12.8Z"/>
+    <!-- Upper-right blade -->
+    <path d="M46 16 33 29.1V12.8C39.9 13 44.4 14.7 46 16Z"/>
+    <!-- Inner left facet -->
+    <polygon points="31 30.9 31 41.2 20.3 30.5 20.3 20.2"/>
+    <!-- Inner right facet -->
+    <polygon points="43.7 20.2 43.7 30.5 33 41.2 33 30.9"/>
+  </g>
+</svg>

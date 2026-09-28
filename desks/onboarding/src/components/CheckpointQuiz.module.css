@@ -1,0 +1,195 @@
+/* CheckpointQuiz.module.css — ported from legacy/client/src/components/CheckpointQuiz.css */
+
+.checkpointQuiz {
+  margin-top: 1.25rem;
+  padding: 1.25rem;
+  background: #f8f9fc;
+  border: 2px solid var(--light-blue);
+  border-radius: var(--radius);
+}
+
+.checkpointQuiz.passed {
+  border-color: #1e7e34;
+  background: #f0faf3;
+}
+
+.checkpointQuiz.failed {
+  border-color: #e74c3c;
+}
+
+.checkpointHeader {
+  margin-bottom: 1rem;
+}
+
+.checkpointLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.checkpointHeader h4 {
+  font-size: 1rem;
+  color: var(--navy);
+  margin: 0.25rem 0;
+}
+
+.checkpointHint {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.checkpointFailBanner,
+.checkpointPassBanner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.checkpointFailBanner {
+  background: #fdecea;
+  color: #c0392b;
+  border: 1px solid #f5c6cb;
+}
+
+.checkpointFailBanner p {
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+  opacity: 0.9;
+}
+
+.checkpointPassBanner {
+  background: #e6f4ea;
+  color: #1e7e34;
+  border: 1px solid #b7dfc5;
+  align-items: center;
+}
+
+.questionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.questionBlock {
+  /* grouping element */
+}
+
+.questionText {
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.65rem;
+  font-size: 0.95rem;
+}
+
+.qNum {
+  color: var(--light-blue);
+}
+
+.optionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.optionBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: left;
+  padding: 0.7rem 1rem;
+  background: var(--white);
+  border: 2px solid var(--gray);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  color: var(--black);
+  transition: border-color 0.15s, background 0.15s;
+  cursor: pointer;
+  width: 100%;
+}
+
+.optionBtn:hover:not(:disabled) {
+  border-color: var(--light-blue);
+  background: #f0f7fd;
+}
+
+.optionBtnSelected {
+  border-color: var(--navy);
+  background: #eef3fa;
+}
+
+.optionBtnCorrect {
+  border-color: #1e7e34;
+  background: #e6f4ea;
+}
+
+.optionBtnWrong {
+  border-color: #e74c3c;
+  background: #fdecea;
+}
+
+.optionBtn:disabled {
+  cursor: default;
+}
+
+.optIcon {
+  flex-shrink: 0;
+}
+
+.checkpointActions {
+  margin-top: 1.25rem;
+}
+
+.btnSubmitCheckpoint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.15s;
+}
+
+.btnSubmitCheckpoint:hover:not(:disabled) {
+  background: var(--navy-light);
+}
+
+.btnSubmitCheckpoint:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Mobile overrides (phone ≤ 600px) ─────────────────────────────────── */
+@media (max-width: 600px) {
+  /* Option rows: full-width tap target, min 44px tall, text wraps */
+  .optionBtn {
+    min-height: 44px;
+    overflow-wrap: anywhere;
+  }
+
+  /* Question and option text: allow long words to break */
+  .questionText {
+    overflow-wrap: anywhere;
+  }
+
+  /* Submit / Retake button: full width on mobile */
+  .btnSubmitCheckpoint {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Banner text should wrap on narrow viewports */
+  .checkpointFailBanner,
+  .checkpointPassBanner {
+    overflow-wrap: anywhere;
+  }
+}

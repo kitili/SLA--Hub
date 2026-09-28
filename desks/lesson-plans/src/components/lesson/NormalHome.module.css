@@ -1,0 +1,139 @@
+/* NormalHome.module.css — teacher landing. Mobile-first (≈375px base). */
+
+.home {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Intro ─────────────────────────────────────────────────────────────── */
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.greeting {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--electric-blue);
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  max-width: 46ch;
+}
+
+/* ── Search card ───────────────────────────────────────────────────────── */
+.searchCard {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--gold);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.searchHeading {
+  font-size: 1.1rem;
+  color: var(--electric-blue);
+}
+
+.searchForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.searchInput {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.7rem 0.85rem;
+  border: 2px solid var(--gray);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--white);
+}
+
+.searchInput::placeholder {
+  color: var(--ink-faint);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--light-blue);
+  box-shadow: var(--focus-ring);
+}
+
+.searchSubmit {
+  min-height: 44px;
+  padding: 0.7rem 1rem;
+  background: var(--electric-blue);
+  color: var(--white);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 1rem;
+  transition: background 0.15s ease;
+}
+
+.searchSubmit:hover {
+  background: var(--navy-light);
+}
+
+.browseLink {
+  align-self: flex-start;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--electric-blue);
+}
+
+.browseLink:hover {
+  text-decoration: underline;
+}
+
+/* ── Tablet / desktop (≥ 600px) ────────────────────────────────────────── */
+@media (min-width: 600px) {
+  .home {
+    padding: 2rem 1.5rem 3rem;
+    gap: 2rem;
+  }
+
+  .greeting {
+    font-size: 2rem;
+  }
+
+  .searchCard {
+    padding: 1.5rem;
+  }
+
+  /* Inline the input + button on wider screens. */
+  .searchForm {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .searchInput {
+    flex: 1 1 auto;
+  }
+
+  .searchSubmit {
+    flex: 0 0 auto;
+    min-width: 8rem;
+  }
+}

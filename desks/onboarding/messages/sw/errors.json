@@ -1,0 +1,21 @@
+{
+  "errors": {
+    "unauthorized": {
+      "title": "Ufikiaji umezuiwa",
+      "body": "Huna ruhusa ya kufikia eneo hili. Ikiwa unafikiri hii ni kosa, tafadhali wasiliana na meneja wako wa mstari.",
+      "cta": "Rudi kwenye dashibodi",
+      "iconLabel": "Kufuli"
+    },
+    "notFound": {
+      "title": "Ukurasa haujapatikana",
+      "body": "Hatukuweza kupata ukurasa ulioutafuta. Huenda umehamishwa au kiungo si sahihi.",
+      "cta": "Rudi kwenye dashibodi"
+    },
+    "generic": {
+      "title": "Hitilafu fulani imetokea",
+      "body": "Hitilafu isiyotarajiwa imetokea. Tafadhali jaribu tena, au rudi kwenye dashibodi.",
+      "retry": "Jaribu tena",
+      "cta": "Rudi kwenye dashibodi"
+    }
+  }
+}

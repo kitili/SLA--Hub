@@ -1,0 +1,66 @@
+{
+  "name": "silverleaf-lesson-plans",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Silverleaf Academy Lesson Plans — Next.js (App Router)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:run": "node --conditions=react-server --experimental-strip-types --import ./src/lib/db/scripts/ts-resolve.mjs",
+    "db:migrate": "npm run db:run -- ./src/lib/db/scripts/migrate.ts",
+    "db:seed": "npm run db:run -- ./src/lib/db/scripts/seed.ts",
+    "db:reset": "npm run db:run -- ./src/lib/db/scripts/resetPglite.ts && npm run db:seed",
+    "db:import": "npm run db:run -- ./src/lib/db/scripts/import.ts",
+    "db:import-textbooks": "npm run db:run -- ./src/lib/db/scripts/importTextbooks.ts",
+    "db:studio": "drizzle-kit studio",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "e2e": "playwright test",
+    "vercel:sync-auth-env": "node scripts/sync-vercel-auth-env.mjs",
+    "vercel:sync-auth": "node scripts/sync-vercel-auth-env.mjs"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.3",
+    "@openrouter/ai-sdk-provider": "^2.9.1",
+    "@vercel/blob": "^2.4.1",
+    "@workflow/ai": "^4.1.2",
+    "ai": "^6.0.209",
+    "drizzle-orm": "^0.45.2",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.1",
+    "mammoth": "^1.12.0",
+    "next": "15.5.19",
+    "next-intl": "^4.13.0",
+    "papaparse": "^5.5.4",
+    "pdf-to-img": "^6.2.0",
+    "postgres": "^3.4.9",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "server-only": "^0.0.1",
+    "workflow": "^4.5.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@playwright/test": "^1.61.0",
+    "@types/node": "^20.19.0",
+    "@types/papaparse": "^5.5.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "drizzle-kit": "^0.31.10",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "15.5.19",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.9"
+  },
+  "overrides": {
+    "@swc/helpers": "0.5.23"
+  },
+  "engines": {
+    "node": ">=22.6"
+  }
+}

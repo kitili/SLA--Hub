@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+/*
+ * Silverleaf Academy — global brand stylesheet
+ * Aligned with Ops, Onboarding Hub, and Marketing.
+ * Source: Silverleaf Academy Brand Guidelines — March 2023
+ */
+
+:root {
+  --electric-blue: #002368;
+  --light-blue: #80bfec;
+  --silver: #818283;
+  --gold: #ffc952;
+  --white: #ffffff;
+  --black: #000000;
+  --gray: #ececec;
+  --electric-blue-50: #8091b3;
+  --light-blue-30: #d9ecf9;
+  --gold-15: #fff7e5;
+
+  --navy: var(--electric-blue);
+  --navy-light: #003a8c;
+  --navy-dark: #001a4d;
+
+  --ink: #14233b;
+  --ink-muted: #4f555f;
+  --ink-faint: #646a74;
+  --muted: var(--ink-muted);
+  --success: #167a37;
+  --success-15: #e3f3e8;
+  --danger: #b42318;
+  --danger-15: #fde8e8;
+
+  --app-bg: #f3f8fd;
+  --app-bg-glow: #d9ecf9;
+  --card: rgba(255, 255, 255, 0.92);
+  --card-border: rgba(0, 35, 104, 0.08);
+  --track: #d5dce6;
+
+  --shadow: 0 4px 18px rgba(0, 35, 104, 0.08);
+  --shadow-lg: 0 14px 40px rgba(0, 35, 104, 0.14);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --focus-ring: 0 0 0 3px rgba(255, 201, 82, 0.55);
+
+  --sl-font-sans: "Bai Jamjuree", Helvetica, Arial, sans-serif;
+  --sl-font-display: "Montserrat", Helvetica, Arial, sans-serif;
+}
+
+@theme inline {
+  --color-electric-blue: var(--electric-blue);
+  --color-light-blue: var(--light-blue);
+  --color-silver: var(--silver);
+  --color-gold: var(--gold);
+  --color-navy: var(--navy);
+  --color-navy-light: var(--navy-light);
+  --color-navy-dark: var(--navy-dark);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-success: var(--success);
+  --color-success-15: var(--success-15);
+  --color-danger: var(--danger);
+  --color-danger-15: var(--danger-15);
+  --color-app-bg: var(--app-bg);
+  --color-card: var(--card);
+  --color-card-border: var(--card-border);
+  --color-gray: var(--gray);
+  --color-light-blue-30: var(--light-blue-30);
+  --color-gold-15: var(--gold-15);
+  --font-sans: var(--sl-font-sans);
+  --font-display: var(--sl-font-display);
+  --radius-brand: var(--radius);
+  --radius-brand-sm: var(--radius-sm);
+  --shadow-brand: var(--shadow);
+  --shadow-brand-lg: var(--shadow-lg);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--sl-font-sans);
+  background:
+    radial-gradient(1200px 520px at 8% -10%, var(--app-bg-glow), transparent 55%),
+    radial-gradient(900px 480px at 100% 0%, rgba(255, 201, 82, 0.18), transparent 45%),
+    linear-gradient(180deg, #f7fbff 0%, var(--app-bg) 42%, #eef5fb 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--sl-font-display);
+  font-weight: 700;
+  color: inherit;
+  letter-spacing: -0.01em;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--electric-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--electric-blue);
+  outline-offset: 2px;
+  box-shadow: var(--focus-ring);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--light-blue);
+  border-radius: 4px;
+}
+
+@media print {
+  nav,
+  header,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

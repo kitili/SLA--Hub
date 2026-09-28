@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap');
+
+:root {
+  /* Official Silverleaf palette — Brand Guidelines 2023 */
+  --electric-blue: #002368;
+  --light-blue: #80BFEC;
+  --silver: #818283;
+  --gold: #FFC952;
+  --white: #FFFFFF;
+  --black: #000000;
+  --gray: #ECECEC;
+  --electric-blue-50: #8091B3;
+  --light-blue-30: #D9ECF9;
+  --gold-15: #FFF7E5;
+
+  /* Semantic aliases */
+  --navy: var(--electric-blue);
+  --navy-light: #003a8c;
+  --navy-dark: #001a4d;
+
+  --shadow: 0 2px 12px rgba(0, 35, 104, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 35, 104, 0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+
+  --font-sans: 'Montserrat', 'Helvetica', Arial, sans-serif;
+  --font-serif: 'Georgia', 'Times New Roman', serif;
+  --font: var(--font-sans);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--gray);
+  color: var(--black);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: var(--electric-blue);
+  font-weight: 600;
+}
+
+a {
+  color: var(--electric-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--gray);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--light-blue);
+  border-radius: 4px;
+}

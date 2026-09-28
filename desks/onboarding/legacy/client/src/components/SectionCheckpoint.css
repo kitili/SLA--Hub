@@ -1,0 +1,80 @@
+.section-checkpoint {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--navy);
+  background: linear-gradient(135deg, #f0f4fa 0%, var(--white) 100%);
+}
+
+.section-checkpoint.passed {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-color: #1e7e34;
+  background: #e6f4ea;
+  color: #1e7e34;
+  font-weight: 600;
+}
+
+.section-checkpoint.locked {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  border-color: #ccc;
+  background: var(--gray);
+  opacity: 0.85;
+}
+
+.section-checkpoint.locked strong {
+  display: block;
+  color: var(--navy);
+  margin-bottom: 0.25rem;
+}
+
+.section-checkpoint.locked p {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.section-checkpoint-intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: var(--navy);
+}
+
+.section-checkpoint-intro strong {
+  display: block;
+  font-size: 1.05rem;
+  margin-bottom: 0.25rem;
+}
+
+.section-checkpoint-intro p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.section-retry-note {
+  padding: 0.75rem 1rem;
+  background: #fff8e6;
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+
+.btn-start-section-quiz {
+  padding: 0.75rem 1.5rem;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.15s;
+}
+
+.btn-start-section-quiz:hover {
+  background: #003a8c;
+}

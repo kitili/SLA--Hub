@@ -1,0 +1,160 @@
+{
+  "lpAdmin": {
+    "nav": {
+      "ariaLabel": "Sehemu za usimamizi",
+      "openMenu": "Fungua menyu",
+      "collapseSidebar": "Kunja menyu ya pembeni",
+      "expandSidebar": "Panua menyu ya pembeni",
+      "dashboard": "Dashibodi",
+      "plans": "Mipango",
+      "feedback": "Maoni",
+      "aiStudio": "Studio ya AI",
+      "schemes": "Mihtasari ya Kazi",
+      "textbooks": "Vitabu vya Kiada",
+      "prompts": "Maagizo"
+    },
+    "dashboard": {
+      "heading": "Dashibodi",
+      "mostViewed": {
+        "heading": "Mipango iliyotazamwa zaidi",
+        "empty": "Bado hakuna matumizi yaliyorekodiwa."
+      },
+      "leastViewed": {
+        "heading": "Mipango iliyotazamwa kidogo",
+        "description": "Mipango iliyochapishwa inayopata umakini mdogo — inafaa kukuzwa au kupitiwa.",
+        "empty": "Bado hakuna mipango iliyochapishwa."
+      },
+      "noResults": {
+        "heading": "Utafutaji usio na matokeo",
+        "description": "Walichotafuta walimu na hawakukipata — mapengo ya maudhui yako.",
+        "empty": "Hakuna utafutaji usio na matokeo uliorekodiwa."
+      },
+      "lowestRated": {
+        "heading": "Mipango yenye ukadiriaji wa chini",
+        "empty": "Bado hakuna mipango iliyokadiriwa."
+      },
+      "recentComments": {
+        "heading": "Maoni ya hivi karibuni",
+        "empty": "Bado hakuna maoni.",
+        "viewAll": "Tazama maoni yote →"
+      },
+      "feedbackHour": {
+        "heading": "Ushiriki wa Saa ya Maoni",
+        "bonusesAwarded": "bonasi zilizotolewa",
+        "teachersTookPart": "walimu walioshiriki"
+      },
+      "teacherActivity": {
+        "heading": "Shughuli za walimu",
+        "description": "Nani anatumia mfumo, na mara ngapi.",
+        "active": "Hai",
+        "activeHint": "hai katika siku 14 zilizopita",
+        "dormant": "Watulivu",
+        "dormantHint": "hakuna shughuli kwa siku 14",
+        "mostActive": "Aliye hai zaidi",
+        "noActivityYet": "bado hakuna shughuli",
+        "actionsCount": "{count, plural, =0 {Vitendo 0} one {Kitendo #} other {Vitendo #}}",
+        "trendHeading": "Shughuli kwa muda",
+        "trendDescription": "Vitendo kwa siku katika siku 14 zilizopita.",
+        "trendAria": "Shughuli za kila siku katika siku {days} zilizopita",
+        "trendEmpty": "Hakuna shughuli katika kipindi hiki.",
+        "barTitle": "{date}: vitendo {events}, walimu {teachers}",
+        "rosterHeading": "Orodha ya walimu",
+        "empty": "Bado hakuna walimu.",
+        "never": "Kamwe",
+        "status": {
+          "active": "Hai",
+          "dormant": "Mtulivu"
+        },
+        "table": {
+          "teacher": "Mwalimu",
+          "campus": "Kampasi",
+          "planViews": "Mitazamo ya mipango",
+          "feedback": "Maoni",
+          "searches": "Utafutaji",
+          "total": "Jumla",
+          "lastActive": "Shughuli ya mwisho",
+          "status": "Hali"
+        }
+      },
+      "views": "{count, plural, =0 {Mitazamo 0} one {Mtazamo #} other {Mitazamo #}}",
+      "ratings": "{count, plural, =0 {Ukadiriaji 0} one {Ukadiriaji #} other {Ukadiriaji #}}"
+    },
+    "insights": {
+      "ariaLabel": "Takwimu za muhtasari",
+      "totalPlans": "Jumla ya mipango",
+      "published": "Iliyochapishwa",
+      "activeTeachers": "Walimu hai",
+      "averageRating": "Wastani wa ukadiriaji",
+      "last14Days": "siku 14 zilizopita",
+      "outOf5": "kati ya 5",
+      "noFeedbackYet": "bado hakuna maoni",
+      "draftCount": "{count, plural, =0 {Rasimu 0} one {Rasimu #} other {Rasimu #}}",
+      "publishedCount": "{count, plural, =0 {0 zilizochapishwa} one {# iliyochapishwa} other {# zilizochapishwa}}"
+    },
+    "feedback": {
+      "overallAverage": "wastani wa jumla wa ukadiriaji",
+      "overallAverageOutOf5": "wastani wa jumla wa ukadiriaji (kati ya 5)",
+      "lowestRatedHeading": "Mipango yenye ukadiriaji wa chini",
+      "lowestRatedEmpty": "Bado hakuna mipango iliyokadiriwa.",
+      "commentsHeading": "Maoni ya hivi karibuni",
+      "commentsEmpty": "Bado hakuna maoni.",
+      "ratingAria": "{rating} kati ya 5",
+      "ratings": "{count, plural, =0 {Ukadiriaji 0} one {Ukadiriaji #} other {Ukadiriaji #}}"
+    },
+    "plans": {
+      "heading": "Mipango",
+      "count": "{count, plural, =0 {Mipango 0} one {Mpango #} other {Mipango #}}",
+      "empty": "Bado hakuna mipango ya somo.",
+      "table": {
+        "plan": "Mpango",
+        "details": "Maelezo",
+        "status": "Hali",
+        "actions": "Vitendo",
+        "published": "Imechapishwa",
+        "draft": "Rasimu",
+        "publish": "Chapisha",
+        "unpublish": "Ondoa kuchapisha",
+        "edit": "Hariri",
+        "delete": "Futa",
+        "confirmDelete": "Futa \"{title}\"? Hili haliwezi kutenduliwa.",
+        "deleteConflict": "Imeshindwa kufuta mpango huu — huenda una historia ya matumizi au maoni. Ondoa kuchapisha badala yake.",
+        "genericError": "Hitilafu imetokea."
+      },
+      "filters": {
+        "searchLabel": "Tafuta mipango",
+        "searchPlaceholder": "Tafuta kwa kichwa, mada au slug…",
+        "gradeLabel": "Chuja kwa darasa",
+        "subjectLabel": "Chuja kwa somo",
+        "statusLabel": "Chuja kwa hali",
+        "allGrades": "Madarasa yote",
+        "allSubjects": "Masomo yote",
+        "allStatuses": "Hali zote",
+        "published": "Imechapishwa",
+        "draft": "Rasimu",
+        "clear": "Futa vichujio"
+      },
+      "emptyFiltered": "Hakuna mipango inayolingana na vichujio hivi.",
+      "showMore": {
+        "label": "Onyesha zaidi",
+        "loading": "Inapakia…",
+        "error": "Imeshindwa kupakia mipango zaidi. Jaribu tena."
+      },
+      "edit": {
+        "backToPlans": "← Rudi kwenye mipango",
+        "heading": "Hariri mpango",
+        "title": "Kichwa",
+        "topic": "Mada",
+        "objectives": "Malengo",
+        "objectivesHint": "Lengo moja kwa kila mstari.",
+        "duration": "Muda (dakika)",
+        "status": "Hali",
+        "statusPublished": "Imechapishwa",
+        "statusDraft": "Rasimu",
+        "content": "Maudhui (Markdown)",
+        "save": "Hifadhi mabadiliko",
+        "cancel": "Ghairi",
+        "contentLockedNote": "Mpango huu ulitengenezwa na AI Studio: walimu wanaona hati maalum inayotokana na maudhui yake yaliyopangwa, hivyo mabadiliko ya Markdown hapa hayataonekana. Sehemu hii ni ya kusoma tu."
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+f
+A) Master Sheet Contents: ,,,,
+Tab ,Name,Purpose,Formulas / Functions,Usage Guidance
+1.0,Summary,Serve as overview front page ,,
+2.0,Top Sheet ,KPI overview sheet for school Facilities department,Data pulls from the various tabs as listed below -- fully automated to roll over month to month and pull from the current month's data based on formulas.,
+3.0,Facilities R&M,Used to track repair tickets submitted by staff and completed by the HOD for Facilities.,"The tab has formulas at the far end that check the age of tickets, whether they are open or closed, and when they are opened and resolved.","Dates must be properly entered in the tickets for tracking to occur -- status must also be updated by OM frequently.
+
+There are restrictions in place on this tab that do not allow invalid date entries (Google will not accept them with commas, period or other punctuation marks)"
+4.0,Checklist,Used to check the various aspects of facilities performance against the SOPs and other functions laid out for Facilities.,"The tab has formulas that check the number of entries done per month -- this then pulls onto the topsheet for tracking.
+
+The % amount is calculated based on the number of points given against the total number possible -- these formulas should be reviewed any time rows are added or deleted from the overall checklist.
+
+Please also note that historical data will also change with any addition or removal of rows (as the formulas are all dynamic and deleting a row deletes its data from all past walkthroughs).","This must be entered weekly for the data to properly update on the topsheet.
+
+This has been reviewed once with Frank during in-person visit in June, but would be worth revising/reviewing quarterly to see what can/should be adjusted for better / continued alignment with the Facilities vision."
+5.0,Facilities SOPs,This is the SOPs as written for all Facilities department employees.,N/A - doesn't have formulas.,Update as needed -- these should be live plans! Review with any new hires in this department so they fully understand what is needed in their roles.
+6.0,Generator Checklist,Used to check the various aspects of the generator performance and maintenance against the SOPs and requirements for good maintenance.,"The tab has formulas that check the number of entries done per month -- this then pulls onto the topsheet for tracking.
+
+The % amount is calculated based on the number of points given against the total number possible -- these formulas should be reviewed any time rows are added or deleted from the overall checklist.
+
+Please also note that historical data will also change with any addition or removal of rows (as the formulas are all dynamic and deleting a row deletes its data from all past walkthroughs).","This must be entered weekly for the data to properly update on the topsheet.
+
+This has been reviewed once with Frank during in-person visit in June, but would be worth revising/reviewing quarterly to see what can/should be adjusted for better / continued alignment with the Facilities vision."
+7.0,Houses Accomodation,Tracks the usage of the different houses on campus,N/a - not live,Review in future for further updates.
+8.0,Facilities Plan 2025,Tracks the Planning for 2025 usage of facilities on campus,N/a - not live,Review in future for further updates.
+9.0,Calculation (Do Not Edit) -- Hidden,Back end calculation only -- not for consumption.,Pulls in data from the other tabs and runs calculations to produce monthly data -- should not be edited unless something major is changed with any checklists.,Revise formulas as needed when changes are made to systems.
+10.0,Notes / Work Plan,Historical notes from old changes to the Topsheet and tracker,N/a - not live,Review in future for further updates.
+,,,
+B) Key Department Links,,,,
+s/n,Item ,Purpose,Link 1,Where the Data Goes
+Facilities Folder,,Used to keep track of all documents and materials related to Facilities,Facilities,Used to power the various functions of the Facilities Team
+Facilities Tools / SOPs,Spreadsheet with all proposed and draft versions of tools to help improve facilities performance.,Underlying tools to help guide process improvement for Facilities. There are some items here not currently in use that we may wish to migrate into the Topsheet and data tracking for accountability.,Facilities Tools / SOPs,N/a - doesn't feed anywhere
+,,,,
+,,,,
+,,,,
+,,,,
+,,,
+C) Department Personale ,,,
+s/n,,,
+1.0,,Kusaduka,
+2.0,,Baraka Majundo,
+3.0,,Nelly Zablon ,
+4.0,,,
+,,,
+D) Department Rhythms ,,,
+s/n,Item ,,Who 
+1.0,Meeting Monthly ,,
+2.0,Meeting Monthly,,
+3.0,Quarterly report ,,
+4.0,Calendar ,,
+,,,
+E) Top Sheet Instructions and Guidance,,,
+s/n,Item ,,Who 
+1.0,Caidence,Topsheet full populated and shared on quarterly basis ,
+2.0,Parent and Student satisfaction section ,Pulled through to management level monthly topsheet ,
+3.0,,,
+4.0,,,
+,,,
+F) SLA Standard - Governance Domain - Chapters/Sections ,,,
+s/n,Item ,,Who 
+1.0,Academic ,,
+2.0,10 Sections,,
+3.0,Overview & Introduction,,
+4.0,Student Wellness,,
+5.0,Academic Attainment,,
+6.0,Co-curricular Enrichment,,
+7.0,English Mastery,,
+8.0,Technology Integration,,
+9.0,Student Assessment,,
+10.0,Staff Professional Development,,
+11.0,Parent & Community Engagement,,
+12.0,Boarding,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,

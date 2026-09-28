@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --background: #e7eef7;
+  --foreground: #07111f;
+
+  /* Silverleaf brand palette */
+  --color-navy: #002368;
+  --color-gray-light: #e4ebf4;
+  --color-white: #ffffff;
+  --color-blue-accent: #80bfec;
+  --color-gold-accent: #ffc952;
+  --color-black: #07111f;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-navy: var(--color-navy);
+  --color-gray-light: var(--color-gray-light);
+  --color-blue-accent: var(--color-blue-accent);
+  --color-gold-accent: var(--color-gold-accent);
+  --font-sans: var(--font-sans-tech);
+  --font-mono: var(--font-mono-tech);
+}
+
+body {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(1100px 480px at 8% -12%, rgba(128, 191, 236, 0.38), transparent 58%),
+    radial-gradient(820px 380px at 100% -8%, rgba(255, 201, 82, 0.18), transparent 52%),
+    linear-gradient(rgba(0, 35, 104, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 35, 104, 0.045) 1px, transparent 1px);
+  background-size: auto, auto, 28px 28px, 28px 28px;
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.03em;
+}
+
+::selection {
+  background: rgba(255, 201, 82, 0.45);
+  color: #002368;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 35, 104, 0.35) transparent;
+}

@@ -1,0 +1,530 @@
+================================================================================
+  SILVERLEAF ACADEMY — ONBOARDING & HIRING PORTAL
+  SYSTEM GUIDELINE
+  Version 1.0 | September 2026
+================================================================================
+
+This document explains how to use the Silverleaf Onboarding and Hiring Portal
+from beginning to end. It is written in three parts:
+
+  Part A — HR Guide
+  Part B — Admin Guide
+  Part C — IT Guide
+
+Read only the section(s) that apply to your role.
+
+================================================================================
+PART A — HR GUIDE
+================================================================================
+
+As HR, your job in this portal covers two main areas:
+  1. Monitoring staff through their onboarding journey
+  2. Managing job applicants through the hiring pipeline
+
+────────────────────────────────────────────────────────────────────────────────
+A1. LOGGING IN
+────────────────────────────────────────────────────────────────────────────────
+
+Go to the portal URL provided by IT and log in with your staff credentials.
+Once logged in, navigate to the Admin area from the top menu. You will land on
+the admin home page, which gives you two entry points:
+
+  - Onboarding Admin   → monitor staff progress, manage content
+  - Hiring Portal      → manage job applicants
+
+────────────────────────────────────────────────────────────────────────────────
+A2. MONITORING STAFF ONBOARDING
+────────────────────────────────────────────────────────────────────────────────
+
+Go to: Admin → Members
+
+This is your main monitoring dashboard.
+
+STAT CARDS AT THE TOP
+─────────────────────
+Four numbers are shown at the top of the page:
+
+  - Total Staff            Total registered members in the system
+  - Completed              Members who have finished all onboarding sections
+  - Checkpoints Passed     Combined quiz passes across all members
+  - At Risk                Members currently flagged as orange or red
+
+RISK BADGES EXPLAINED
+─────────────────────
+Each staff member has a risk badge next to their name:
+
+  GREEN   The member is progressing on schedule. No action needed.
+
+  ORANGE  The member is falling behind. They have either:
+          - Not logged in for 7 or more days, OR
+          - Fallen more than 10 percentage points behind the expected
+            pace (which is based on days since they started)
+          ACTION: Follow up with the member directly and encourage them
+          to continue.
+
+  RED     The member is seriously off track. They have either:
+          - Passed the 42-day deadline without completing onboarding, OR
+          - Fallen more than 25 percentage points behind the expected pace
+          ACTION: Immediate follow-up required. Contact the member and
+          their line manager if needed.
+
+Note: Risk is calculated based on quiz completions only, not document reads.
+A member cannot reduce their risk simply by clicking through materials without
+passing the checkpoint quizzes at the end of each section.
+
+FILTERING BY CAMPUS
+───────────────────
+Use the campus filter dropdown at the top of the members table to view
+only the staff from a specific campus (e.g. Usa River, Arusha).
+
+VIEWING A MEMBER'S FULL PROFILE
+────────────────────────────────
+Click on any member's name to open their detail page. You will see:
+
+  - Section-by-section progress (which items read, which checkpoints passed)
+  - Policy declarations they have signed (with date and name)
+  - Their Bio Data Form contents if they have submitted it:
+      Personal details, contact information, ID numbers (National ID,
+      NSSF, TIN, NHIF), employment details, bank account, spouse and
+      children, family contacts, emergency contacts, relatives employed
+      at Silverleaf, academic qualifications, employment history,
+      professional references, and legal declarations.
+  - Uploaded documents (CV, certificates) — you can view these in-browser
+  - A PDF download button to generate their complete bio data profile
+
+AUTOMATED DAILY EMAILS
+───────────────────────
+Every morning at 7:00 AM (EAT) the system automatically sends emails:
+
+  - Every orange and red member receives a personal reminder asking them
+    to log back in and continue their onboarding.
+  - Every member who has COMPLETED onboarding but has NOT yet submitted
+    the Bio Data Form receives a separate reminder to fill it in.
+  - You (the HR email address) receive a single daily summary email
+    listing all off-track members and all members missing a bio form,
+    with their current progress and risk level.
+
+You do not need to do anything to trigger these — they run automatically.
+If you are not receiving the daily summary email, contact IT to confirm
+that the correct HR email address is saved in Settings.
+
+────────────────────────────────────────────────────────────────────────────────
+A3. MANAGING THE HIRING PIPELINE
+────────────────────────────────────────────────────────────────────────────────
+
+Go to: Admin → Hiring
+
+THE PIPELINE BOARD
+──────────────────
+Candidates are organised in a Kanban board with stages from left to right:
+
+  New → Screening → Interview → Assessment → Offer → Hired / Rejected
+
+Each card shows the candidate's name and the role they applied for.
+Use the Advance button on a card to move the candidate to the next stage
+without having to open their full profile.
+
+Click on a candidate's name to open their full detail page, where you can:
+  - View all their submitted information (from the application form or
+    entered manually)
+  - See their LinkedIn profile and CV link
+  - Add internal notes
+  - Change their stage or mark them as hired/rejected
+
+ADDING CANDIDATES MANUALLY
+───────────────────────────
+If a candidate applied outside the Google Form (by email or in person):
+
+  1. From the Hiring board, click "Add Candidate Manually"
+  2. Fill in their name, email, role applied for, and any other details
+  3. Click Save — they appear in the New column
+
+────────────────────────────────────────────────────────────────────────────────
+A4. IMPORTING FROM THE GOOGLE FORM (SHEET IMPORT)
+────────────────────────────────────────────────────────────────────────────────
+
+Go to: Admin → Hiring → Import from Application Form
+
+This page lets you bring candidates from the Google Form responses into
+the hiring pipeline without re-entering their data.
+
+STEP 1 — CHECK THE OVERVIEW
+────────────────────────────
+At the top of the page is the "Application form overview" card. It shows:
+  - Total number of applications received in the sheet
+  - A bar chart of applications grouped by position
+
+Click on the card header to expand or collapse the chart.
+
+STEP 2 — SEARCH FOR CANDIDATES
+────────────────────────────────
+Two search modes are available:
+
+  By Position  Type a position name or keyword (e.g. "Mathematics" or
+               "Head of ECE"). The search is partial — you do not need
+               to type the full title. All matching applications will
+               appear in the results table below.
+
+  By Email     Type the candidate's exact email address to find a single
+               specific applicant.
+
+Click Search after entering your query.
+
+STEP 3 — REVIEW AND IMPORT
+────────────────────────────
+The results table shows matching candidates with their name, email,
+role applied for, location, and import status:
+
+  New         Not yet in the system — you can import this candidate
+  In system   Already imported — the row is greyed out and cannot be
+              selected again
+
+To import:
+  1. Tick the checkboxes next to the candidates you want to import
+     (or click "Select all" to select every new candidate at once)
+  2. Click "Import X into system"
+  3. A green confirmation banner will confirm how many were imported
+
+After import, the candidates appear in the Hiring board under "New".
+
+────────────────────────────────────────────────────────────────────────────────
+A5. PERFORMANCE TASKS (OPTIONAL ASSESSMENT STEP)
+────────────────────────────────────────────────────────────────────────────────
+
+Go to: Admin → Hiring → Performance Tasks
+
+This area lets you manage assignments that are sent to shortlisted
+candidates as part of the selection process. Details are managed
+from this page and linked to individual candidate profiles.
+
+================================================================================
+PART B — ADMIN GUIDE
+================================================================================
+
+As an admin, you manage the content that staff members work through
+during onboarding — sections, learning materials, and quizzes.
+
+────────────────────────────────────────────────────────────────────────────────
+B1. UNDERSTANDING THE STRUCTURE
+────────────────────────────────────────────────────────────────────────────────
+
+The onboarding portal is organised as follows:
+
+  Sections       The top-level chapters (e.g. Welcome, HR Policies,
+                 Child Protection). Staff see all sections from day one.
+
+  Items          The individual learning tasks within a section
+                 (e.g. a document to read, a video to watch, a policy
+                 to sign). Each item can have one or more materials.
+
+  Materials      The actual files — PDFs, videos, YouTube links — that
+                 are attached to an item. One item can have materials
+                 in multiple languages.
+
+  Checkpoints    A quiz at the end of each section. Staff must pass the
+                 quiz before the section is counted as complete.
+
+────────────────────────────────────────────────────────────────────────────────
+B2. MANAGING SECTIONS
+────────────────────────────────────────────────────────────────────────────────
+
+Go to: Admin → Sections
+
+THE SECTIONS LIST
+─────────────────
+You will see all sections in the order they appear to staff. Each row shows
+the icon, title (English and Swahili), number of items, whether a quiz exists,
+and whether the section is published.
+
+  - Published    Visible to staff
+  - Draft        Hidden from staff — use this while building new content
+
+Reorder sections by dragging rows or using the up/down controls.
+Toggle published/draft status directly from this list.
+
+CREATING A NEW SECTION
+───────────────────────
+  1. Click "New section" at the top of the page
+  2. Enter: icon (emoji), English title, Swahili title, English description,
+     Swahili description
+  3. Save — the section appears in the list as a draft
+  4. Set it to Published when content is ready
+
+EDITING A SECTION
+─────────────────
+Click on a section name to open its editor. From there you can:
+
+  - Update the title, description, or icon
+  - View and manage the section's items (listed in a table)
+  - Add new items using the "Add item" panel on the same page
+  - Access the quiz manager for that section via the link at the top
+
+────────────────────────────────────────────────────────────────────────────────
+B3. MANAGING ITEMS WITHIN A SECTION
+────────────────────────────────────────────────────────────────────────────────
+
+From the Section Editor (Admin → Sections → [Section Name]):
+
+ADDING AN ITEM
+──────────────
+  1. Click "Add item"
+  2. Enter the item title (English and Swahili) and select the item type:
+       - Document     A PDF or Office file to read
+       - Video        A video file or YouTube embed
+       - Declaration  A policy the member must sign before proceeding
+       - Key Points   An AI-generated summary page
+  3. Save the item — it now appears in the section's item list
+
+ATTACHING A MATERIAL TO AN ITEM
+─────────────────────────────────
+Each item needs at least one material (the actual file or link).
+
+  1. From the section editor, click the Update action on the item
+  2. If the material is a file (PDF, video): click Choose File, select
+     the file, optionally preview it, then click Upload
+  3. If the material is a YouTube video: click "Edit link", paste the
+     YouTube URL (any format — watch, short, or embed link all work),
+     then save
+
+────────────────────────────────────────────────────────────────────────────────
+B4. MANAGING ALL MATERIALS
+────────────────────────────────────────────────────────────────────────────────
+
+Go to: Admin → Materials
+
+This page gives you a full list of every file and YouTube link across
+all sections in one place. Useful for auditing what has been uploaded
+and replacing outdated files.
+
+Each row shows:
+  - Filename (or "YouTube: [video-id]" for YouTube materials)
+  - Which section item it belongs to
+  - Language
+  - File size
+  - Upload date
+
+UPDATING A DOCUMENT
+────────────────────
+  1. Click "Update" on the material row
+  2. A panel appears below the row:
+       a. Click "Choose File" and select the replacement file
+       b. Optionally click "Preview" to check the file before uploading
+       c. Click "Upload" to replace — the old file is removed automatically
+
+EDITING A YOUTUBE LINK
+───────────────────────
+  1. Click "Edit link" on a YouTube material row
+  2. Paste the new YouTube URL into the input field
+  3. Click Save
+
+DELETING A MATERIAL
+────────────────────
+Click the delete icon on a material row. You will be asked to confirm.
+Deleting a material does not delete the item — the item will simply
+have no file until a new one is uploaded.
+
+────────────────────────────────────────────────────────────────────────────────
+B5. MANAGING QUIZZES (CHECKPOINTS)
+────────────────────────────────────────────────────────────────────────────────
+
+Each section can have one checkpoint quiz that staff must pass to
+complete the section.
+
+Go to: Admin → Sections → [Section Name] → Manage Quiz
+
+From here you can:
+  - Add questions (multiple choice or short answer)
+  - Set the passing score threshold
+  - Edit or delete existing questions
+
+Staff see the quiz questions without the correct answers shown. Their
+answers are submitted and scored automatically. Results are recorded and
+shown in the member's progress profile.
+
+────────────────────────────────────────────────────────────────────────────────
+B6. MANAGING CAMPUSES
+────────────────────────────────────────────────────────────────────────────────
+
+Go to: Admin → Campuses
+
+Add or edit campus names here. Campus names are used to:
+  - Categorise staff members
+  - Filter the Members monitoring table
+  - Label members in HR report emails
+
+Add a campus by clicking "New campus" and entering the campus name.
+
+================================================================================
+PART C — IT GUIDE
+================================================================================
+
+As IT, your responsibilities cover system configuration, onboarding new
+staff into the portal, and troubleshooting access and content issues.
+
+────────────────────────────────────────────────────────────────────────────────
+C1. SYSTEM SETTINGS
+────────────────────────────────────────────────────────────────────────────────
+
+Go to: Admin → Settings
+
+CONFIGURING THE HR EMAIL ADDRESS
+─────────────────────────────────
+The daily summary email is sent to the address stored under "hr_email".
+
+  1. Locate the "HR Email" setting
+  2. Enter or update the email address
+  3. Save
+
+If this is left blank, the system defaults to jobs@silverleaf.co.tz.
+
+CONFIGURING TEAM INTRO VIDEOS
+──────────────────────────────
+The Welcome section shows video intro cards for key staff members
+(CEO, Head of School, HR Lead, and Department Leads). Each can have
+a YouTube embed link.
+
+  For single roles (CEO, Head of School, HR):
+    - Find the corresponding setting
+    - Paste the YouTube video URL
+    - Save
+
+  For Department Leads (multiple entries):
+    - Each entry has a label (e.g. "Head of Mathematics"), a YouTube URL,
+      and an active toggle
+    - Add, edit, or deactivate entries as staff change roles
+
+────────────────────────────────────────────────────────────────────────────────
+C2. REGISTERING A NEW STAFF MEMBER
+────────────────────────────────────────────────────────────────────────────────
+
+Staff members self-register using the link provided to them. Once they
+create an account, they appear in the Members list automatically.
+
+After registration:
+  1. Go to Admin → Members and find the new member
+  2. Assign them to the correct campus using the campus dropdown on
+     their profile page
+  3. If they need admin access, toggle the "Admin" switch on their profile
+
+────────────────────────────────────────────────────────────────────────────────
+C3. RESETTING THE ADMIN PASSWORD
+────────────────────────────────────────────────────────────────────────────────
+
+Go to: Admin → Members
+
+Scroll to the bottom of the page where the admin password form is located.
+Enter and confirm the new admin password, then save.
+
+This password is separate from individual staff login credentials. It is
+the master password used for admin-level authentication.
+
+────────────────────────────────────────────────────────────────────────────────
+C4. DAILY CRON — HOW IT WORKS
+────────────────────────────────────────────────────────────────────────────────
+
+The system automatically sends reminder emails every day at 7:00 AM (EAT).
+This is handled by Vercel Cron and does not require any manual action.
+
+The cron job is protected by a secret token (CRON_SECRET) set in the
+Vercel environment variables. Do not expose this token publicly.
+
+To verify the cron is running:
+  1. Log in to the Vercel dashboard
+  2. Go to the project → Settings → Cron Jobs
+  3. Confirm the offtrack-reminder job is active and shows a recent
+     last-run timestamp
+
+If the cron is not running, check:
+  - That CRON_SECRET is set in the Vercel environment variables
+  - That GOOGLE_SERVICE_ACCOUNT_JSON is set (required for Google Sheets)
+  - That the SMTP/email credentials (used by sendHiringEmail) are valid
+
+────────────────────────────────────────────────────────────────────────────────
+C5. ENVIRONMENT VARIABLES (REQUIRED)
+────────────────────────────────────────────────────────────────────────────────
+
+The following environment variables must be set in Vercel for the system
+to function correctly:
+
+  DATABASE_URL                   PostgreSQL connection string
+  NEXTAUTH_SECRET                Auth session secret
+  NEXTAUTH_URL                   Full URL of the deployed portal
+  CRON_SECRET                    Vercel cron protection token
+  GOOGLE_SERVICE_ACCOUNT_JSON    Service account credentials for Sheets
+  GOOGLE_SHEETS_HIRING_FORM_ID   The Google Sheet ID for hiring forms
+  GOOGLE_HR_EMAIL                Fallback HR email (if not set in Settings)
+  BLOB_READ_WRITE_TOKEN          Vercel Blob storage token (for file uploads)
+
+Contact the Vercel project owner if any of these are missing or need
+to be rotated.
+
+────────────────────────────────────────────────────────────────────────────────
+C6. DIAGNOSING GOOGLE SHEET ISSUES
+────────────────────────────────────────────────────────────────────────────────
+
+If HR reports that candidates from the Google Form are not appearing
+in search results, use the built-in diagnostic endpoint:
+
+  GET /api/admin/hiring/sheet-debug    (admin login required)
+
+This returns:
+  - The header row of the sheet (to verify column order)
+  - Total number of rows
+  - Unique values found in each column in the role-name area (columns
+    10–16), so you can identify column mapping issues
+  - A count of rows where email or name is blank (these are silently
+    skipped during import)
+
+The most common cause of missing candidates is inconsistent role name
+formatting in the sheet (e.g. two slightly different titles for the
+same position). This is a data entry issue in the Google Form or sheet,
+not a system bug.
+
+────────────────────────────────────────────────────────────────────────────────
+C7. CONTENT READINESS CHECK
+────────────────────────────────────────────────────────────────────────────────
+
+Go to: Admin → Members
+
+Below the stat cards, a content readiness panel shows:
+  - How many materials (files/YouTube links) are uploaded
+  - How many section items still have NO material attached
+  - How many YouTube embeds are registered
+
+Use this panel to confirm that all sections have content before a new
+intake of staff begins their onboarding.
+
+================================================================================
+QUICK REFERENCE — WHO DOES WHAT
+================================================================================
+
+  TASK                                          HR    ADMIN    IT
+  ─────────────────────────────────────────────────────────────────
+  Monitor staff progress and risk levels         ✓
+  View a member's bio data form                  ✓
+  Download a member's bio data PDF               ✓
+  Import candidates from Google Form             ✓
+  Manage the hiring pipeline (Kanban)            ✓
+  Create and edit onboarding sections                   ✓
+  Add / update learning items                           ✓
+  Upload or replace materials (files/YouTube)           ✓
+  Manage checkpoint quizzes                             ✓
+  Add campuses                                          ✓
+  Configure team intro videos                                    ✓
+  Set HR email address                                           ✓
+  Register new staff / assign campus                             ✓
+  Reset admin password                                           ✓
+  Manage Vercel environment variables                            ✓
+  Diagnose Google Sheet issues                                   ✓
+  Monitor Vercel Cron job health                                 ✓
+
+================================================================================
+SUPPORT
+================================================================================
+
+For technical issues, contact IT: it@silverleaf.co.tz
+For HR or onboarding queries, contact HR: jobs@silverleaf.co.tz
+
+================================================================================
+END OF GUIDELINE
+================================================================================

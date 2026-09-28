@@ -1,0 +1,160 @@
+{
+  "lpAdmin": {
+    "nav": {
+      "ariaLabel": "Admin sections",
+      "openMenu": "Open menu",
+      "collapseSidebar": "Collapse sidebar",
+      "expandSidebar": "Expand sidebar",
+      "dashboard": "Dashboard",
+      "plans": "Plans",
+      "feedback": "Feedback",
+      "aiStudio": "AI Studio",
+      "schemes": "Schemes of Work",
+      "textbooks": "Textbooks",
+      "prompts": "Prompts"
+    },
+    "dashboard": {
+      "heading": "Dashboard",
+      "mostViewed": {
+        "heading": "Most viewed plans",
+        "empty": "No usage recorded yet."
+      },
+      "leastViewed": {
+        "heading": "Least viewed plans",
+        "description": "Published plans getting the least attention — candidates for promotion or review.",
+        "empty": "No published plans yet."
+      },
+      "noResults": {
+        "heading": "Searches with no results",
+        "description": "What teachers looked for and didn't find — your content gaps.",
+        "empty": "No empty searches recorded."
+      },
+      "lowestRated": {
+        "heading": "Lowest-rated plans",
+        "empty": "No rated plans yet."
+      },
+      "recentComments": {
+        "heading": "Recent comments",
+        "empty": "No comments yet.",
+        "viewAll": "View all feedback →"
+      },
+      "feedbackHour": {
+        "heading": "Feedback Hour participation",
+        "bonusesAwarded": "bonuses awarded",
+        "teachersTookPart": "teachers took part"
+      },
+      "teacherActivity": {
+        "heading": "Teacher activity",
+        "description": "Who's using the system, and how often.",
+        "active": "Active",
+        "activeHint": "active in the last 14 days",
+        "dormant": "Dormant",
+        "dormantHint": "no activity in 14 days",
+        "mostActive": "Most active",
+        "noActivityYet": "no activity yet",
+        "actionsCount": "{count, plural, =0 {0 actions} one {# action} other {# actions}}",
+        "trendHeading": "Activity over time",
+        "trendDescription": "Actions per day over the last 14 days.",
+        "trendAria": "Daily activity over the last {days} days",
+        "trendEmpty": "No activity in this period.",
+        "barTitle": "{date}: {events} actions, {teachers} teachers",
+        "rosterHeading": "Teacher roster",
+        "empty": "No teachers yet.",
+        "never": "Never",
+        "status": {
+          "active": "Active",
+          "dormant": "Dormant"
+        },
+        "table": {
+          "teacher": "Teacher",
+          "campus": "Campus",
+          "planViews": "Plan views",
+          "feedback": "Feedback",
+          "searches": "Searches",
+          "total": "Total",
+          "lastActive": "Last active",
+          "status": "Status"
+        }
+      },
+      "views": "{count, plural, =0 {0 views} one {# view} other {# views}}",
+      "ratings": "{count, plural, =0 {0 ratings} one {# rating} other {# ratings}}"
+    },
+    "insights": {
+      "ariaLabel": "Overview statistics",
+      "totalPlans": "Total plans",
+      "published": "Published",
+      "activeTeachers": "Active teachers",
+      "averageRating": "Average rating",
+      "last14Days": "last 14 days",
+      "outOf5": "out of 5",
+      "noFeedbackYet": "no feedback yet",
+      "draftCount": "{count, plural, =0 {0 draft} one {# draft} other {# draft}}",
+      "publishedCount": "{count, plural, =0 {0 published} one {# published} other {# published}}"
+    },
+    "feedback": {
+      "overallAverage": "overall average rating",
+      "overallAverageOutOf5": "overall average rating (out of 5)",
+      "lowestRatedHeading": "Lowest-rated plans",
+      "lowestRatedEmpty": "No rated plans yet.",
+      "commentsHeading": "Recent comments",
+      "commentsEmpty": "No comments yet.",
+      "ratingAria": "{rating} out of 5",
+      "ratings": "{count, plural, =0 {0 ratings} one {# rating} other {# ratings}}"
+    },
+    "plans": {
+      "heading": "Plans",
+      "count": "{count, plural, =0 {0 plans} one {# plan} other {# plans}}",
+      "empty": "No lesson plans yet.",
+      "table": {
+        "plan": "Plan",
+        "details": "Details",
+        "status": "Status",
+        "actions": "Actions",
+        "published": "Published",
+        "draft": "Draft",
+        "publish": "Publish",
+        "unpublish": "Unpublish",
+        "edit": "Edit",
+        "delete": "Delete",
+        "confirmDelete": "Delete \"{title}\"? This cannot be undone.",
+        "deleteConflict": "Could not delete this plan — it may have usage or feedback history. Unpublish it instead.",
+        "genericError": "Something went wrong."
+      },
+      "filters": {
+        "searchLabel": "Search plans",
+        "searchPlaceholder": "Search by title, topic or slug…",
+        "gradeLabel": "Filter by grade",
+        "subjectLabel": "Filter by subject",
+        "statusLabel": "Filter by status",
+        "allGrades": "All grades",
+        "allSubjects": "All subjects",
+        "allStatuses": "All statuses",
+        "published": "Published",
+        "draft": "Draft",
+        "clear": "Clear filters"
+      },
+      "emptyFiltered": "No plans match these filters.",
+      "showMore": {
+        "label": "Show more",
+        "loading": "Loading…",
+        "error": "Could not load more plans. Try again."
+      },
+      "edit": {
+        "backToPlans": "← Back to plans",
+        "heading": "Edit plan",
+        "title": "Title",
+        "topic": "Topic",
+        "objectives": "Objectives",
+        "objectivesHint": "One objective per line.",
+        "duration": "Duration (minutes)",
+        "status": "Status",
+        "statusPublished": "Published",
+        "statusDraft": "Draft",
+        "content": "Content (Markdown)",
+        "save": "Save changes",
+        "cancel": "Cancel",
+        "contentLockedNote": "This plan was generated by AI Studio: teachers see the branded document rendered from its structured content, so edits to this Markdown would not be visible. The field is read-only."
+      }
+    }
+  }
+}

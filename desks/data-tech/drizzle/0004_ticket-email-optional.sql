@@ -1,0 +1,1 @@
+ALTER TABLE "tickets" ALTER COLUMN "submitter_email" DROP NOT NULL;

@@ -1,0 +1,13 @@
+title = "gitleaks"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Example env files, e2e fixtures, and generated lockfiles"
+paths = [
+  '''\.env\.example$''',
+  '''\.env\.production\.example$''',
+  '''e2e/auth-helpers\.ts$''',
+  '''package-lock\.json$''',
+]

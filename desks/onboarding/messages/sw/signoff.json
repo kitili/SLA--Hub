@@ -1,0 +1,25 @@
+{
+  "signoff": {
+    "pageTitle": "Sahihi ya Mwisho",
+    "notEligibleTitle": "Kamilisha Sehemu Zinazohitajika Kwanza",
+    "notEligibleBody": "Ili kuweka sahihi ya mafunzo yako ya awali, lazima upite vituo vya ukaguzi vya sehemu zinazohitajika (Welcome, Policies, na Digital Tools). Tafadhali rudi kwenye dashibodi na ukamilishe zozote zilizobaki.",
+    "progressNote": "Vituo {passed} kati ya {total} vinavyohitajika vimepita",
+    "backToDashboard": "Rudi kwenye dashibodi",
+    "alreadySignedTitle": "Mafunzo ya Awali Yamekamilika",
+    "alreadySignedBody": "Umeshaweka sahihi ya mafunzo yako ya awali. Asante!",
+    "signedOn": "Imesainiwa tarehe {date}",
+    "acknowledgementTitle": "Kukiri kwa Mafunzo ya Awali",
+    "acknowledgementTextEN": "I, the undersigned, confirm that I have read, understood, and agree to abide by all materials contained in the Silverleaf Academy Staff Onboarding Programme. I acknowledge that I have completed all required sections, including the relevant checkpoint assessments, and that I understand the responsibilities, policies, and standards expected of me as a member of the Silverleaf Academy team.",
+    "acknowledgementTextSW": "Mimi, aliyeweka sahihi hapa chini, nathibitisha kwamba nimesoma, nimeelewa, na ninakubali kuzingatia nyenzo zote zilizomo katika Mpango wa Mafunzo ya Awali ya Wafanyakazi wa Silverleaf Academy. Ninakiri kwamba nimekamilisha sehemu zote zinazohitajika, ikiwemo tathmini husika za ukaguzi, na kwamba ninaelewa majukumu, sera, na viwango vinavyotarajiwa kwangu kama mwanachama wa timu ya Silverleaf Academy.",
+    "checkboxLabel": "Nimesoma na kuelewa ukiri ulio hapo juu, na nakubali masharti yake.",
+    "submitButton": "Ninakubali",
+    "submitting": "Inahifadhi…",
+    "completionTitle": "Mafunzo ya Awali Yamekamilika!",
+    "completionBody": "Hongera — umefanikisha kukamilisha mpango wa mafunzo ya awali wa Silverleaf Academy. Ukiri wako umerekodiwa.",
+    "completionSignedOn": "Imesainiwa tarehe {date}",
+    "backToDashboardAfterSign": "Rudi kwenye dashibodi",
+    "errorNotEligible": "Lazima ukamilishe vituo vya sehemu zinazohitajika kabla ya kuweka sahihi.",
+    "errorNoContentVersion": "Hakuna toleo la maudhui ya mafunzo linalopatikana bado. Tafadhali wasiliana na msimamizi.",
+    "errorGeneric": "Hitilafu fulani imetokea. Tafadhali jaribu tena."
+  }
+}

@@ -1,0 +1,756 @@
+{
+  "confidence": "high",
+  "offset": 7,
+  "total_pages": 154,
+  "source": "toc",
+  "page_map": [
+    {
+      "scan": 8,
+      "printed": 1
+    },
+    {
+      "scan": 9,
+      "printed": 2
+    },
+    {
+      "scan": 10,
+      "printed": 3
+    },
+    {
+      "scan": 11,
+      "printed": 4
+    },
+    {
+      "scan": 12,
+      "printed": 5
+    },
+    {
+      "scan": 13,
+      "printed": 6
+    },
+    {
+      "scan": 14,
+      "printed": 7
+    },
+    {
+      "scan": 15,
+      "printed": 8
+    },
+    {
+      "scan": 16,
+      "printed": 9
+    },
+    {
+      "scan": 17,
+      "printed": 10
+    },
+    {
+      "scan": 18,
+      "printed": 11
+    },
+    {
+      "scan": 19,
+      "printed": 12
+    },
+    {
+      "scan": 20,
+      "printed": 13
+    },
+    {
+      "scan": 21,
+      "printed": 14
+    },
+    {
+      "scan": 22,
+      "printed": 15
+    },
+    {
+      "scan": 23,
+      "printed": 16
+    },
+    {
+      "scan": 24,
+      "printed": 17
+    },
+    {
+      "scan": 25,
+      "printed": 18
+    },
+    {
+      "scan": 26,
+      "printed": 19
+    },
+    {
+      "scan": 27,
+      "printed": 20
+    },
+    {
+      "scan": 28,
+      "printed": 21
+    },
+    {
+      "scan": 29,
+      "printed": 22
+    },
+    {
+      "scan": 30,
+      "printed": 23
+    },
+    {
+      "scan": 31,
+      "printed": 24
+    },
+    {
+      "scan": 32,
+      "printed": 25
+    },
+    {
+      "scan": 33,
+      "printed": 26
+    },
+    {
+      "scan": 34,
+      "printed": 27
+    },
+    {
+      "scan": 35,
+      "printed": 28
+    },
+    {
+      "scan": 36,
+      "printed": 29
+    },
+    {
+      "scan": 37,
+      "printed": 30
+    },
+    {
+      "scan": 38,
+      "printed": 31
+    },
+    {
+      "scan": 39,
+      "printed": 32
+    },
+    {
+      "scan": 40,
+      "printed": 33
+    },
+    {
+      "scan": 41,
+      "printed": 34
+    },
+    {
+      "scan": 42,
+      "printed": 35
+    },
+    {
+      "scan": 43,
+      "printed": 36
+    },
+    {
+      "scan": 44,
+      "printed": 37
+    },
+    {
+      "scan": 45,
+      "printed": 38
+    },
+    {
+      "scan": 46,
+      "printed": 39
+    },
+    {
+      "scan": 47,
+      "printed": 40
+    },
+    {
+      "scan": 48,
+      "printed": 41
+    },
+    {
+      "scan": 49,
+      "printed": 42
+    },
+    {
+      "scan": 50,
+      "printed": 43
+    },
+    {
+      "scan": 51,
+      "printed": 44
+    },
+    {
+      "scan": 52,
+      "printed": 45
+    },
+    {
+      "scan": 53,
+      "printed": 46
+    },
+    {
+      "scan": 54,
+      "printed": 47
+    },
+    {
+      "scan": 55,
+      "printed": 48
+    },
+    {
+      "scan": 56,
+      "printed": 49
+    },
+    {
+      "scan": 57,
+      "printed": 50
+    },
+    {
+      "scan": 58,
+      "printed": 51
+    },
+    {
+      "scan": 59,
+      "printed": 52
+    },
+    {
+      "scan": 60,
+      "printed": 53
+    },
+    {
+      "scan": 61,
+      "printed": 54
+    },
+    {
+      "scan": 62,
+      "printed": 55
+    },
+    {
+      "scan": 63,
+      "printed": 56
+    },
+    {
+      "scan": 64,
+      "printed": 57
+    },
+    {
+      "scan": 65,
+      "printed": 58
+    },
+    {
+      "scan": 66,
+      "printed": 59
+    },
+    {
+      "scan": 67,
+      "printed": 60
+    },
+    {
+      "scan": 68,
+      "printed": 61
+    },
+    {
+      "scan": 69,
+      "printed": 62
+    },
+    {
+      "scan": 70,
+      "printed": 63
+    },
+    {
+      "scan": 71,
+      "printed": 64
+    },
+    {
+      "scan": 72,
+      "printed": 65
+    },
+    {
+      "scan": 73,
+      "printed": 66
+    },
+    {
+      "scan": 74,
+      "printed": 67
+    },
+    {
+      "scan": 75,
+      "printed": 68
+    },
+    {
+      "scan": 76,
+      "printed": 69
+    },
+    {
+      "scan": 77,
+      "printed": 70
+    },
+    {
+      "scan": 78,
+      "printed": 71
+    },
+    {
+      "scan": 79,
+      "printed": 72
+    },
+    {
+      "scan": 80,
+      "printed": 73
+    },
+    {
+      "scan": 81,
+      "printed": 74
+    },
+    {
+      "scan": 82,
+      "printed": 75
+    },
+    {
+      "scan": 83,
+      "printed": 76
+    },
+    {
+      "scan": 84,
+      "printed": 77
+    },
+    {
+      "scan": 85,
+      "printed": 78
+    },
+    {
+      "scan": 86,
+      "printed": 79
+    },
+    {
+      "scan": 87,
+      "printed": 80
+    },
+    {
+      "scan": 88,
+      "printed": 81
+    },
+    {
+      "scan": 89,
+      "printed": 82
+    },
+    {
+      "scan": 90,
+      "printed": 83
+    },
+    {
+      "scan": 91,
+      "printed": 84
+    },
+    {
+      "scan": 92,
+      "printed": 85
+    },
+    {
+      "scan": 93,
+      "printed": 86
+    },
+    {
+      "scan": 94,
+      "printed": 87
+    },
+    {
+      "scan": 95,
+      "printed": 88
+    },
+    {
+      "scan": 96,
+      "printed": 89
+    },
+    {
+      "scan": 97,
+      "printed": 90
+    },
+    {
+      "scan": 98,
+      "printed": 91
+    },
+    {
+      "scan": 99,
+      "printed": 92
+    },
+    {
+      "scan": 100,
+      "printed": 93
+    },
+    {
+      "scan": 101,
+      "printed": 94
+    },
+    {
+      "scan": 102,
+      "printed": 95
+    },
+    {
+      "scan": 103,
+      "printed": 96
+    },
+    {
+      "scan": 104,
+      "printed": 97
+    },
+    {
+      "scan": 105,
+      "printed": 98
+    },
+    {
+      "scan": 106,
+      "printed": 99
+    },
+    {
+      "scan": 107,
+      "printed": 100
+    },
+    {
+      "scan": 108,
+      "printed": 101
+    },
+    {
+      "scan": 109,
+      "printed": 102
+    },
+    {
+      "scan": 110,
+      "printed": 103
+    },
+    {
+      "scan": 111,
+      "printed": 104
+    },
+    {
+      "scan": 112,
+      "printed": 105
+    },
+    {
+      "scan": 113,
+      "printed": 106
+    },
+    {
+      "scan": 114,
+      "printed": 107
+    },
+    {
+      "scan": 115,
+      "printed": 108
+    },
+    {
+      "scan": 116,
+      "printed": 109
+    },
+    {
+      "scan": 117,
+      "printed": 110
+    },
+    {
+      "scan": 118,
+      "printed": 111
+    },
+    {
+      "scan": 119,
+      "printed": 112
+    },
+    {
+      "scan": 120,
+      "printed": 113
+    },
+    {
+      "scan": 121,
+      "printed": 114
+    },
+    {
+      "scan": 122,
+      "printed": 115
+    },
+    {
+      "scan": 123,
+      "printed": 116
+    },
+    {
+      "scan": 124,
+      "printed": 117
+    },
+    {
+      "scan": 125,
+      "printed": 118
+    },
+    {
+      "scan": 126,
+      "printed": 119
+    },
+    {
+      "scan": 127,
+      "printed": 120
+    },
+    {
+      "scan": 128,
+      "printed": 121
+    },
+    {
+      "scan": 129,
+      "printed": 122
+    },
+    {
+      "scan": 130,
+      "printed": 123
+    },
+    {
+      "scan": 131,
+      "printed": 124
+    },
+    {
+      "scan": 132,
+      "printed": 125
+    },
+    {
+      "scan": 133,
+      "printed": 126
+    },
+    {
+      "scan": 134,
+      "printed": 127
+    },
+    {
+      "scan": 135,
+      "printed": 128
+    },
+    {
+      "scan": 136,
+      "printed": 129
+    },
+    {
+      "scan": 137,
+      "printed": 130
+    },
+    {
+      "scan": 138,
+      "printed": 131
+    },
+    {
+      "scan": 139,
+      "printed": 132
+    },
+    {
+      "scan": 140,
+      "printed": 133
+    },
+    {
+      "scan": 141,
+      "printed": 134
+    },
+    {
+      "scan": 142,
+      "printed": 135
+    },
+    {
+      "scan": 143,
+      "printed": 136
+    },
+    {
+      "scan": 144,
+      "printed": 137
+    },
+    {
+      "scan": 145,
+      "printed": 138
+    },
+    {
+      "scan": 146,
+      "printed": 139
+    },
+    {
+      "scan": 147,
+      "printed": 140
+    },
+    {
+      "scan": 148,
+      "printed": 141
+    },
+    {
+      "scan": 149,
+      "printed": 142
+    },
+    {
+      "scan": 150,
+      "printed": 143
+    },
+    {
+      "scan": 151,
+      "printed": 144
+    },
+    {
+      "scan": 152,
+      "printed": 145
+    },
+    {
+      "scan": 153,
+      "printed": 146
+    }
+  ],
+  "chapters": [
+    {
+      "n": 1,
+      "marker": "Sura ya Kwanza",
+      "title": "Sura ya Kwanza",
+      "printed_start": 1,
+      "printed_end": 1,
+      "scan_start": 8,
+      "scan_end": 8
+    },
+    {
+      "n": 2,
+      "marker": "Dhana ya Historia ya Tanzania na Maadili",
+      "title": "Dhana ya Historia ya Tanzania na Maadili",
+      "printed_start": 2,
+      "printed_end": 23,
+      "scan_start": 9,
+      "scan_end": 30
+    },
+    {
+      "n": 3,
+      "marker": "Sura ya Pili",
+      "title": "Sura ya Pili",
+      "printed_start": 24,
+      "printed_end": 41,
+      "scan_start": 31,
+      "scan_end": 48
+    },
+    {
+      "n": 4,
+      "marker": "Urithi wa Tanzania",
+      "title": "Urithi wa Tanzania",
+      "printed_start": 42,
+      "printed_end": 44,
+      "scan_start": 49,
+      "scan_end": 51
+    },
+    {
+      "n": 5,
+      "marker": "Sura ya Tatu",
+      "title": "Sura ya Tatu",
+      "printed_start": 45,
+      "printed_end": 58,
+      "scan_start": 52,
+      "scan_end": 65
+    },
+    {
+      "n": 6,
+      "marker": "Wajibu na haki za mtoto",
+      "title": "Wajibu na haki za mtoto",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 7,
+      "marker": "Sura ya Nne",
+      "title": "Sura ya Nne",
+      "printed_start": 59,
+      "printed_end": 65,
+      "scan_start": 66,
+      "scan_end": 72
+    },
+    {
+      "n": 8,
+      "marker": "Matendo ya kuthamini maadili",
+      "title": "Matendo ya kuthamini maadili",
+      "printed_start": 66,
+      "printed_end": 70,
+      "scan_start": 73,
+      "scan_end": 77
+    },
+    {
+      "n": 9,
+      "marker": "Sura ya Tano",
+      "title": "Sura ya Tano",
+      "printed_start": 71,
+      "printed_end": 72,
+      "scan_start": 78,
+      "scan_end": 79
+    },
+    {
+      "n": 10,
+      "marker": "Maarifa na ujuzi wa asili wa jamii",
+      "title": "Maarifa na ujuzi wa asili wa jamii",
+      "printed_start": 73,
+      "printed_end": 91,
+      "scan_start": 80,
+      "scan_end": 98
+    },
+    {
+      "n": 11,
+      "marker": "Sura ya Sita",
+      "title": "Sura ya Sita",
+      "printed_start": 92,
+      "printed_end": 97,
+      "scan_start": 99,
+      "scan_end": 104
+    },
+    {
+      "n": 12,
+      "marker": "Asili za jamii za Watanzania",
+      "title": "Asili za jamii za Watanzania",
+      "printed_start": 98,
+      "printed_end": 107,
+      "scan_start": 105,
+      "scan_end": 114
+    },
+    {
+      "n": 13,
+      "marker": "Sura ya Saba",
+      "title": "Sura ya Saba",
+      "printed_start": 108,
+      "printed_end": 117,
+      "scan_start": 115,
+      "scan_end": 124
+    },
+    {
+      "n": 14,
+      "marker": "Urithi na asili za jamii kwa maendeleo ya sasa",
+      "title": "Urithi na asili za jamii kwa maendeleo ya sasa",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 15,
+      "marker": "Sura ya Nane",
+      "title": "Sura ya Nane",
+      "printed_start": 118,
+      "printed_end": 132,
+      "scan_start": 125,
+      "scan_end": 139
+    },
+    {
+      "n": 16,
+      "marker": "Uhusiano na ushirikiano na jamii",
+      "title": "Uhusiano na ushirikiano na jamii",
+      "printed_start": null,
+      "printed_end": null,
+      "scan_start": null,
+      "scan_end": null
+    },
+    {
+      "n": 17,
+      "marker": "Sura ya Tisa",
+      "title": "Sura ya Tisa",
+      "printed_start": 133,
+      "printed_end": 134,
+      "scan_start": 140,
+      "scan_end": 141
+    },
+    {
+      "n": 18,
+      "marker": "Kukuza na kutunza maadili ya jamii",
+      "title": "Kukuza na kutunza maadili ya jamii",
+      "printed_start": 135,
+      "printed_end": 147,
+      "scan_start": 142,
+      "scan_end": 154
+    }
+  ]
+}

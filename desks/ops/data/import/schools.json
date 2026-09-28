@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Usariver Campus",
+    "slug": "usariver",
+    "students_transport": 419,
+    "bus_capacity": 480
+  },
+  {
+    "name": "Arusha Modern Campus",
+    "slug": "arusha-modern",
+    "students_transport": 119,
+    "bus_capacity": 130
+  },
+  {
+    "name": "Kijenge Campus",
+    "slug": "kijenge",
+    "students_transport": 37,
+    "bus_capacity": 36
+  },
+  {
+    "name": "Ilboru Campus",
+    "slug": "ilboru",
+    "students_transport": 23,
+    "bus_capacity": 20
+  },
+  {
+    "name": "Boma Campus",
+    "slug": "boma",
+    "students_transport": 23,
+    "bus_capacity": 30
+  }
+]
