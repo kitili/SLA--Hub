@@ -1,7 +1,7 @@
 # Lesson Plans
 
 - Folder: `desks/lesson-plans`
-- Live: https://silverleaf-lesson-plans.vercel.app
+- Live: https://silverleaf-lesson-plans-main.vercel.app
 - Original repo: https://github.com/kitili/silverleaf-lesson-plans.git (untouched)
 - Branch: `main`
 - Snapshot: copied from local fallback /home/kiki/Downloads/silverleaf-lesson-plans-main (8f7cfd0)

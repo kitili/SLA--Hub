@@ -85,7 +85,7 @@
       "sha": "3ded2fd6e337b89ea576fa060177cc9c768ad538",
       "path": "desks/lesson-plans",
       "port": 3300,
-      "liveUrl": "https://silverleaf-lesson-plans.vercel.app",
+      "liveUrl": "https://silverleaf-lesson-plans-main.vercel.app",
       "status": "copied",
       "syncedAt": "2026-09-26T03:00:13.900657+00:00"
     },

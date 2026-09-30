@@ -21,7 +21,7 @@ const EXPECTED_DESKS = [
   { id: "data-tech", name: "Data & Tech", port: 4050, live: "dataandtech.silverleaf.co.tz" },
   { id: "visitors", name: "Visitors", port: 3108, live: "v-isitors.vercel.app" },
   { id: "workboard-tasks", name: "Workboard Tasks", port: 3200, live: "silverleaf-tasks.vercel.app" },
-  { id: "lesson-plans", name: "Lesson Plans", port: 3300, live: "silverleaf-lesson-plans.vercel.app" },
+  { id: "lesson-plans", name: "Lesson Plans", port: 3300, live: "silverleaf-lesson-plans-main.vercel.app" },
   { id: "mel-dashboard", name: "MEL Dashboard", port: 3400, live: "silverleafmeldashboard-production.up.railway.app" },
 ];
 
@@ -89,7 +89,7 @@ test("env example points Workboard Tasks, Lesson Plans, and MEL at the live apps
   const env = read(".env.example");
   assert.match(env, /WORKPLACE_WORKBOARD_TASKS_URL=https:\/\/silverleaf-tasks\.vercel\.app/);
   assert.match(env, /WORKPLACE_WORKBOARD_TASKS_LOCAL_URL=http:\/\/localhost:3200/);
-  assert.match(env, /WORKPLACE_LESSON_PLANS_URL=https:\/\/silverleaf-lesson-plans\.vercel\.app/);
+  assert.match(env, /WORKPLACE_LESSON_PLANS_URL=https:\/\/silverleaf-lesson-plans-main\.vercel\.app/);
   assert.match(env, /WORKPLACE_LESSON_PLANS_LOCAL_URL=http:\/\/localhost:3300/);
   assert.match(
     env,

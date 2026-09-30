@@ -29,7 +29,7 @@ npm run desks:sync
 | Hub | this app | — | http://localhost:3100 |
 | Onboarding | `desks/onboarding` | https://onboarding.silverleaf.co.tz | http://localhost:3000 |
 | Talent Academy | `desks/talent-academy` | https://talent-academy-sla.vercel.app | http://localhost:8765 |
-| Lesson Plans | `desks/lesson-plans` | https://silverleaf-lesson-plans.vercel.app | http://localhost:3300 |
+| Lesson Plans | `desks/lesson-plans` | https://silverleaf-lesson-plans-main.vercel.app | http://localhost:3300 |
 | MEL Dashboard | live only | https://silverleafmeldashboard-production.up.railway.app/#overview | http://localhost:3400 |
 | Ops | `desks/ops` | https://ops-transport-system.vercel.app | http://localhost:3020 |
 | Uniforms | `desks/uniforms` | https://school-uniforms-lyart.vercel.app | http://localhost:3010 |

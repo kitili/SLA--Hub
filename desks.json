@@ -105,7 +105,7 @@
       "port": 3300,
       "cwd": ".",
       "dev": "npx next dev --port 3300",
-      "liveUrl": "https://silverleaf-lesson-plans.vercel.app",
+      "liveUrl": "https://silverleaf-lesson-plans-main.vercel.app",
       "fallback": "/home/kiki/Downloads/silverleaf-lesson-plans-main"
     },
     {

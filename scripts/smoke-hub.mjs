@@ -6,7 +6,7 @@
 
 const BASE = process.env.SMOKE_BASE || "http://127.0.0.1:3100";
 const WORKBOARD_LIVE = process.env.SMOKE_WORKBOARD_URL || "https://silverleaf-tasks.vercel.app";
-const LESSON_PLANS_LIVE = process.env.SMOKE_LESSON_PLANS_URL || "https://silverleaf-lesson-plans.vercel.app";
+const LESSON_PLANS_LIVE = process.env.SMOKE_LESSON_PLANS_URL || "https://silverleaf-lesson-plans-main.vercel.app";
 const MEL_LIVE =
   process.env.SMOKE_MEL_URL || "https://silverleafmeldashboard-production.up.railway.app";
 
