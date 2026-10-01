@@ -4,6 +4,7 @@
     "subtitle": "Usimamizi wa maudhui na ufuatiliaji wa wanachama",
     "nav": {
       "members": "Wanachama",
+      "workplace": "Kila mtu",
       "sections": "Sehemu",
       "quizzes": "Maswali",
       "materials": "Nyenzo",
@@ -49,6 +50,10 @@
       "swahiliLabel": "Kiswahili (SW)",
       "optional": "si lazima",
       "required": "lazima"
+    },
+    "workplace": {
+      "heading": "Kila mtu kazini",
+      "description": "Watu walio tumia Onboarding, Ops, Data & Tech, Workboard, au Marketing. Wanachama wa onboarding wanaendelea kuonekana kwenye Wanachama."
     },
     "members": {
       "heading": "Ufuatiliaji wa wanachama",

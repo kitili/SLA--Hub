@@ -43,7 +43,12 @@ export async function runMigrations(
   const ownerUrl = process.env.DATABASE_URL?.trim();
 
   if (ownerUrl) {
-    const sql = postgres(ownerUrl, { prepare: false, max: 1 });
+    const searchPath = process.env.DATABASE_SEARCH_PATH?.trim();
+    const sql = postgres(ownerUrl, {
+      prepare: false,
+      max: 1,
+      connection: searchPath ? { search_path: searchPath } : undefined,
+    });
     try {
       const ownerDb = drizzlePostgres(sql, { schema });
       await migratePostgres(ownerDb, { migrationsFolder: folder });

@@ -73,7 +73,13 @@ function createSingleton(): DbSingleton {
   if (databaseUrl) {
     // Real Postgres. `prepare: false` is the safe default for transaction-mode
     // poolers (e.g. PgBouncer / Vercel Postgres) which reject prepared stmts.
-    const sql = wrapSqlWithRls(postgres(databaseUrl, { prepare: false }));
+    const searchPath = process.env.DATABASE_SEARCH_PATH?.trim();
+    const sql = wrapSqlWithRls(
+      postgres(databaseUrl, {
+        prepare: false,
+        connection: searchPath ? { search_path: searchPath } : undefined,
+      }),
+    );
     const db = drizzlePostgres(sql, { schema });
     return { db, sql, driver: "postgres-js" };
   }
@@ -113,4 +119,9 @@ export const db: Database = new Proxy({} as Database, {
 /** Which driver is active. Lazily resolved — does not initialise at import. */
 export function getDbDriver(): "pglite" | "postgres-js" {
   return getSingleton().driver;
+}
+
+/** Owner postgres-js client when DATABASE_URL is set. */
+export function getPostgresSql() {
+  return getSingleton().sql;
 }

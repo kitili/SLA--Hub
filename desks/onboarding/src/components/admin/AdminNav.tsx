@@ -29,6 +29,7 @@ export default function AdminNav() {
       label: t("onboardingGroup"),
       links: [
         { href: "/admin/members", label: t("members"), exact: false },
+        { href: "/admin/workplace", label: t("workplace"), exact: false },
         { href: "/admin/sections", label: t("sections"), exact: false },
         { href: "/admin/quizzes", label: t("quizzes"), exact: false },
         { href: "/admin/materials", label: t("materials"), exact: false },

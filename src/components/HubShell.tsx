@@ -66,11 +66,21 @@ export default function HubShell({
         Hub home
       </Link>
       {user.isAdmin ? (
-        <Link href="/activity" data-active={pathname === "/activity" || pathname.startsWith("/activity/")}>
-          <ActivityIcon />
-          Who entered
-        </Link>
+        <>
+          <Link href="/activity" data-active={pathname === "/activity" || pathname.startsWith("/activity/")}>
+            <ActivityIcon />
+            Who entered
+          </Link>
+          <Link href="/people" data-active={pathname === "/people"}>
+            <ActivityIcon />
+            Everyone
+          </Link>
+        </>
       ) : null}
+      <Link href="/systems" data-active={pathname === "/systems"}>
+        <ActivityIcon />
+        Systems
+      </Link>
       <p className={styles.sectionLabel}>Desks</p>
       {departments.map((department) => {
         const href = hubEntryHref(department);

@@ -4,6 +4,7 @@
     "subtitle": "Content management & member monitoring",
     "nav": {
       "members": "Members",
+      "workplace": "Everyone",
       "sections": "Sections",
       "quizzes": "Quizzes",
       "materials": "Materials",
@@ -49,6 +50,10 @@
       "swahiliLabel": "Swahili (SW)",
       "optional": "optional",
       "required": "required"
+    },
+    "workplace": {
+      "heading": "Everyone in the workplace",
+      "description": "People who have used Onboarding, Ops, Data & Tech, Workboard, or Marketing. Onboarding members keep their own progress below in Members."
     },
     "members": {
       "heading": "Member monitoring",

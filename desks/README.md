@@ -1,20 +1,27 @@
-# Department systems in this repository
+# Workplace systems in this repository
 
-Each folder is a **copy of that department’s source**. The original GitHub repos and live Vercel/Railway sites are not changed from here. Hub cards still open the live URLs.
+Every Silverleaf system lives in this one repo, grouped by desk. Live Vercel and Railway sites are unchanged. Hub cards still open the live URLs.
 
-| Folder | System | Live site | Original repo (do not push from here) |
+| Lane | Folder | Supabase schema | Live site |
 |---|---|---|---|
-| `onboarding` | Onboarding | https://onboarding.silverleaf.co.tz | https://github.com/kitili/SLA-Onboarding-hub.git |
-| `talent-academy` | Talent Academy | https://talent-academy-sla.vercel.app | https://github.com/kitili/SLA-Talent-Academy.git |
-| `lesson-plans` | Lesson Plans | https://silverleaf-lesson-plans-main.vercel.app | https://github.com/kitili/silverleaf-lesson-plans.git |
-| `workboard-tasks` | Workboard Tasks | https://silverleaf-tasks.vercel.app | https://github.com/kitili/workboard-tasks.git |
-| `mel-dashboard` | MEL Dashboard | https://silverleafmeldashboard-production.up.railway.app/#overview | source not available to copy |
-| `ops` | Ops | https://ops-transport-system.vercel.app | https://github.com/kitili/OPS_SYSTEM.git |
-| `uniforms` | Uniforms | https://school-uniforms-lyart.vercel.app | https://github.com/kitili/school_uniforms.git |
-| `marketing` | Marketing | https://sla-marketing-web.vercel.app | https://github.com/kitili/SLA-Marketing-S.E.git |
-| `data-tech` | Data & Tech | https://dataandtech.silverleaf.co.tz | https://github.com/kitili/silverleaf-data-and-tech.git |
-| `visitors` | Visitors | https://v-isitors.vercel.app | https://github.com/kitili/SLA.git |
+| CODE | `src/` | `shared` | https://sla-hub-nu.vercel.app |
+| OPS | `desks/ops` | `public` | https://ops-transport-system.vercel.app |
+| ONBOARDING | `desks/onboarding` | `onboarding` | https://onboarding.silverleaf.co.tz |
+| MARKETING | `desks/marketing` | `marketing` | https://sla-marketing-web.vercel.app |
+| DATA & TECH | `desks/data-tech` | `data_tech` | https://dataandtech.silverleaf.co.tz |
+| TALENT ACADEMY | `desks/talent-academy` | `talent` | https://talent-academy-sla.vercel.app |
+| UNIFORMS | `desks/uniforms` | `uniforms` | https://school-uniforms-lyart.vercel.app |
+| VISITORS | `desks/visitors` | `visitors` | https://v-isitors.vercel.app |
+| WORKBOARD | `desks/workboard-tasks` | `workboard` | https://silverleaf-tasks.vercel.app |
+| LESSON PLANS | `desks/lesson-plans` | `lesson_plans` | https://silverleaf-lesson-plans-main.vercel.app |
+| MEL | `desks/mel-dashboard` | `mel` | https://silverleafmeldashboard-production.up.railway.app/#overview |
 
-Open `SOURCE.md` in a folder for the snapshot SHA and live URL.
+Open `SOURCE.md` in a folder for the snapshot SHA. Do not push a desk folder to that system’s original GitHub repo.
 
-Work on production still happens in each system’s own repo. This tree is the combined workplace copy.
+Hub HR **Systems** (`/systems`) is the visual map: each cell is one lane, one folder, one schema.
+
+## One Ops database, labeled lanes
+
+One Supabase project. Ops live data stays in `public`. Every other system has its own schema. The catalog is `shared.systems`. Apply labels with `desks/ops/supabase/LABEL_WORKPLACE_SCHEMAS.sql`.
+
+Do not point hub or onboarding at Ops `public` without `DATABASE_SEARCH_PATH`.

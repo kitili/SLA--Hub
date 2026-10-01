@@ -4,7 +4,7 @@
   "private": true,
   "description": "Silverleaf Academy Staff Onboarding Hub — Next.js (App Router) migration",
   "scripts": {
-    "dev": "DATABASE_URL= npm run db:migrate && DATABASE_URL= next dev",
+    "dev": "next dev",
     "build": "next build",
     "vercel-build": "npm run db:migrate && next build",
     "start": "next start",

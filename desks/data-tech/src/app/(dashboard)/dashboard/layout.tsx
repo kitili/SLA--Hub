@@ -30,6 +30,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
         { href: "/dashboard", label: "Today" },
         { href: teamHref, label: "Team", match: "/dashboard/desks" },
         { href: "/dashboard/snapshot", label: "Week" },
+        { href: "/dashboard/workplace", label: "Everyone" },
       ],
     },
     {
