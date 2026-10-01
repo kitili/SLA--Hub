@@ -58,6 +58,9 @@ export default function HubHome({
           <div className={styles.heroMeta}>
             <span>{today || "Tanzania"}</span>
             <span>Signed in</span>
+            <Link href="/systems" className={styles.heroLink}>
+              Systems
+            </Link>
             {isAdmin ? (
               <Link href="/activity" className={styles.heroLink}>
                 Who entered
