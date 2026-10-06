@@ -13,7 +13,7 @@ import {
 import { noteDeskOpen } from "@/lib/access-client";
 import { signOutAction } from "@/lib/actions/auth";
 import BrandLogo from "@/components/BrandLogo";
-import { ActivityIcon, CloseIcon, DepartmentIcon, MenuIcon, PeopleIcon, StatusIcon } from "@/components/icons";
+import { ActivityIcon, CloseIcon, DepartmentIcon, HomeIcon, MenuIcon, PeopleIcon, StatusIcon } from "@/components/icons";
 import styles from "./HubShell.module.css";
 
 function initials(name: string, email: string) {
@@ -85,6 +85,10 @@ export default function HubShell({
       <Link href="/systems" data-active={pathname === "/systems"}>
         <StatusIcon />
         Desk status
+      </Link>
+      <Link href="/parents" data-active={pathname === "/parents" || pathname.startsWith("/parents/")}>
+        <HomeIcon />
+        Parents
       </Link>
       {user.isAdmin ? (
         <Link href="/activity" data-active={pathname === "/activity" || pathname.startsWith("/activity/")}>
