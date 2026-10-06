@@ -101,6 +101,27 @@
   color: white;
 }
 
+.progressBtn {
+  background: var(--gold) !important;
+  color: var(--navy-dark) !important;
+  font-weight: 800 !important;
+  margin: 0.15rem 0 0.35rem;
+}
+
+.progressBtn svg {
+  opacity: 1;
+}
+
+.progressBtn:hover {
+  background: #ffd56f !important;
+  color: var(--navy-dark) !important;
+}
+
+.progressBtn[data-active="true"] {
+  background: #ffd56f !important;
+  color: var(--navy-dark) !important;
+}
+
 .nav a[data-active="true"] {
   background: rgba(255, 201, 82, 0.18);
   color: var(--gold);

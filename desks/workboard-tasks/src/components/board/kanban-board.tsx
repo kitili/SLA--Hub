@@ -148,7 +148,7 @@ export function KanbanBoard({ initialTasks, users, currentUserId, mine = false }
       <div className="mb-5 flex flex-wrap items-end justify-between gap-4">
         <div>
           <h2 className="text-2xl font-semibold">
-            {personFilter !== "all" && personFilter === currentUserId ? "My board" : "Silverleaf Tasks"}
+            {personFilter !== "all" && personFilter === currentUserId ? "My board" : "1–5’s"}
           </h2>
           <p className="mt-1 text-sm text-zinc-500">
             {personFilter !== "all" && personFilter === currentUserId

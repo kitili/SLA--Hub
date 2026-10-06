@@ -29,7 +29,7 @@ export default function HubShell({
   departments = defaultDepartments,
 }: {
   children: React.ReactNode;
-  user: { fullName: string; email: string; isAdmin?: boolean };
+  user: { fullName: string; email: string; isAdmin?: boolean; isSuperAdmin?: boolean };
   departments?: Department[];
 }) {
   const pathname = usePathname();
@@ -65,6 +65,16 @@ export default function HubShell({
         <DepartmentIcon id="home" />
         Hub home
       </Link>
+      {user.isSuperAdmin ? (
+        <Link
+          href="/progress"
+          className={styles.progressBtn}
+          data-active={pathname === "/progress" || pathname.startsWith("/progress")}
+        >
+          <ActivityIcon />
+          Progress
+        </Link>
+      ) : null}
       {user.isAdmin ? (
         <>
           <Link href="/activity" data-active={pathname === "/activity" || pathname.startsWith("/activity/")}>
@@ -127,7 +137,7 @@ export default function HubShell({
         </span>
         <div>
           <p>{user.fullName || "Silverleaf staff"}</p>
-          <span>{user.email}</span>
+          <span>{user.isSuperAdmin ? "Super admin · " : user.isAdmin ? "Admin · " : ""}{user.email}</span>
         </div>
       </div>
       <button type="button" className={styles.signOut} onClick={handleSignOut}>

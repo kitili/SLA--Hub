@@ -6,7 +6,7 @@ const APP_LABEL: Record<string, string> = {
   onboarding: "Onboarding",
   ops: "Ops",
   data_tech: "Data & Tech",
-  workboard: "Workboard",
+  workboard: "1–5’s",
   uniforms: "Uniforms",
   marketing: "Marketing",
   talent: "Talent Academy",
@@ -23,7 +23,7 @@ export default async function WorkplacePeoplePage() {
       <div>
         <h1 className="text-xl font-medium text-navy">Workplace people</h1>
         <p className="mt-1 text-sm text-black/55">
-          Everyone who has used Onboarding, Ops, Data & Tech, Workboard, or Marketing. {people.length}{" "}
+          Everyone who has used Onboarding, Ops, Data & Tech, 1–5’s, or Marketing. {people.length}{" "}
           people. This reads the shared Ops database; live department sites are unchanged.
         </p>
       </div>

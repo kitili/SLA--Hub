@@ -29,7 +29,7 @@ export function formatDailyPlanSummary(
     });
 
   return [
-    `📋 *Daily 5 — ${name}*`,
+    `📋 *1–5’s — ${name}*`,
     `📅 ${format(planDate, "EEE d MMM yyyy")}`,
     `Progress: ${completed}/5 done${blocked ? ` | ${blocked} blocked` : ""}`,
     "",

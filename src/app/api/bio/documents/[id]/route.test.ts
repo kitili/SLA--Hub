@@ -41,6 +41,7 @@ function user(id: string, isAdmin = false): CurrentUser {
     email: `${id}@silverleaf.co.tz`,
     fullName: id,
     isAdmin,
+    isSuperAdmin: false,
     roles: isAdmin ? ["admin"] : [],
     campus: null,
     jobTitle: null,

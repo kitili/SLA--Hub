@@ -1,0 +1,278 @@
+.page {
+  max-width: 1520px;
+}
+
+.header {
+  margin-bottom: 1rem;
+}
+
+.kicker {
+  font-family: var(--font-display);
+  color: var(--electric-blue);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.header h1 {
+  margin: 0.3rem 0 0.35rem;
+  font-size: clamp(1.55rem, 2.8vw, 2.05rem);
+}
+
+.header p {
+  color: var(--ink-muted);
+  max-width: 46rem;
+}
+
+.intake {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.intake article {
+  background:
+    radial-gradient(180px 80px at 100% 0%, rgba(128, 191, 236, 0.22), transparent 70%),
+    var(--card);
+  border: 1px solid var(--card-border);
+  border-top: 4px solid var(--gold);
+  border-radius: 16px;
+  padding: 0.95rem 1rem;
+  box-shadow: var(--shadow);
+}
+
+.intake strong {
+  display: block;
+  font-size: 1.7rem;
+  color: var(--navy);
+  letter-spacing: -0.03em;
+}
+
+.intake span {
+  color: var(--ink-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+
+.cardMain {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  height: 100%;
+  padding: 1rem 1.05rem 0.95rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card:hover {
+  border-color: var(--gold);
+}
+
+.icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(255, 201, 82, 0.2);
+  color: var(--navy);
+  display: grid;
+  place-items: center;
+}
+
+.icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.lane {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--electric-blue);
+}
+
+.card h2,
+.deep h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 1.2rem;
+}
+
+.card p,
+.deepHead p,
+.note,
+.stamp {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+.card ul {
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.35rem 0 0.55rem;
+}
+
+.card li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.7rem;
+  font-size: 0.82rem;
+}
+
+.card li b {
+  color: var(--navy);
+}
+
+.card li span {
+  color: var(--ink-muted);
+}
+
+.card footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 0.55rem;
+}
+
+.card footer em,
+.deep em {
+  font-style: normal;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 0.18rem 0.55rem;
+}
+
+.card footer em[data-ok="true"],
+.icon[data-ok="true"] {
+  background: #e8f7ee;
+  color: #0f6b38;
+}
+
+.card footer em[data-ok="false"] {
+  background: #fdecea;
+  color: #9b1c1c;
+}
+
+.card footer strong,
+.score {
+  color: var(--electric-blue);
+  font-size: 1.15rem;
+}
+
+.deep {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 1.1rem 1.15rem 1.05rem;
+  box-shadow: var(--shadow);
+}
+
+.deepHead {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.85rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.metrics article {
+  background: var(--app-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 0.8rem 0.9rem;
+}
+
+.metrics strong {
+  display: block;
+  color: var(--navy);
+  font-size: 1.2rem;
+}
+
+.metrics span {
+  display: block;
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.metrics em {
+  display: block;
+  margin-top: 0.28rem;
+  padding: 0;
+  color: var(--ink-faint);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.note {
+  margin-top: 0.95rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 0.85rem;
+}
+
+.actions a {
+  color: var(--electric-blue);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.actions a:hover {
+  text-decoration: underline;
+}
+
+.stamp {
+  margin-top: 1.1rem;
+  font-size: 0.78rem;
+}
+
+@media (max-width: 1080px) {
+  .intake,
+  .metrics,
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .intake,
+  .metrics,
+  .grid,
+  .deepHead {
+    grid-template-columns: 1fr;
+  }
+}

@@ -14,7 +14,7 @@ const APP_LABEL: Record<string, string> = {
   onboarding: "Onboarding",
   ops: "Ops",
   data_tech: "Data & Tech",
-  workboard: "Workboard",
+  workboard: "1–5’s",
   uniforms: "Uniforms",
   marketing: "Marketing",
   talent: "Talent Academy",

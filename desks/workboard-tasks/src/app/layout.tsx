@@ -9,8 +9,8 @@ import { countUnreadUpdates } from "@/lib/services/updates";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Silverleaf Tasks",
-  description: "Silverleaf Academy daily tasks",
+  title: "1–5’s · Silverleaf",
+  description: "Silverleaf Academy daily 1–5’s",
   icons: { icon: [{ url: "/favicon.svg", type: "image/svg+xml" }] },
 };
 

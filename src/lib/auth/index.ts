@@ -11,6 +11,7 @@ export {
   getCurrentUser,
   requireUser,
   requireAdmin,
+  requireSuperAdmin,
   requireRole,
   signIn,
   signOut,

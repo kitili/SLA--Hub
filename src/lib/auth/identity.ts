@@ -91,6 +91,15 @@ export async function requireAdmin(): Promise<CurrentUser> {
   return user;
 }
 
+/** Super admin sees every department’s KPI dashboard. */
+export async function requireSuperAdmin(): Promise<CurrentUser> {
+  const user = await requireUser();
+  if (!user.isSuperAdmin) {
+    redirect("/hub");
+  }
+  return user;
+}
+
 /**
  * Return the CurrentUser, or redirect if not authenticated / missing the role.
  *

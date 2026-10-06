@@ -35,6 +35,7 @@ const MEMBER: CurrentUser = {
   email: "member@silverleaf.co.tz",
   fullName: "Test Member",
   isAdmin: false,
+  isSuperAdmin: false,
   roles: [],
   campus: null,
   jobTitle: null,

@@ -18,7 +18,7 @@ async function ensureWorkProject(organizationId: string) {
   return db.project.create({
     data: {
       organizationId,
-      name: "Silverleaf Tasks",
+      name: "1–5’s",
       key: "D5",
       description: "Silverleaf Academy staff tasks",
     },

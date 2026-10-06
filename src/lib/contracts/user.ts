@@ -9,6 +9,8 @@ export interface CurrentUser {
   email: string;
   fullName: string | null;
   isAdmin: boolean;
+  /** One workplace operator who can see every department’s progress. */
+  isSuperAdmin: boolean;
   /** Fine-grained permission tags, e.g. ["content-editor", "campus-lead"] */
   roles: string[];
   /** e.g. "Nairobi", "Mombasa" — null if not yet assigned */

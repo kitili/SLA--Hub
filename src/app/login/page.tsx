@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth";
-import { isOtpSignInAvailable } from "@/lib/auth/otp-mail";
-import EmailOtpForm from "@/components/EmailOtpForm";
+import EdAdminSignIn from "@/components/EdAdminSignIn";
 
 export const dynamic = "force-dynamic";
 
@@ -13,5 +12,5 @@ export const metadata: Metadata = {
 export default async function LoginPage() {
   const user = await getCurrentUser();
   if (user) redirect("/hub");
-  return <EmailOtpForm deliveryConfigured={isOtpSignInAvailable()} />;
+  return <EdAdminSignIn />;
 }

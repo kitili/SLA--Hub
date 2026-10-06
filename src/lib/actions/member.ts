@@ -89,13 +89,8 @@ export interface SignInResult {
 
 /**
  * Sign a staff member in by verifying their work email + ed-admin Staff ID
- * against the ed-admin directory. This is the SOLE sign-in gate: every user —
- * admins included — must be an active ed-admin staff member.
- *
- * Admin privilege (`/admin` access) is still granted to `HR_ADMIN_EMAILS`
- * addresses by the email provider, but only AFTER they pass this check — so an
- * admin email must ALSO be an active ed-admin staff member. The display name is
- * taken from ed-admin (not free-typed).
+ * against the ed-admin directory. This is the sole sign-in gate: every user,
+ * including workplace super admins, must pass it. Names come from Ed Admin.
  */
 export async function signInMemberAction(input: {
   email: string;
@@ -108,7 +103,6 @@ export async function signInMemberAction(input: {
   }
   const email = normalizeStaffEmail(parsed.data.email);
   const staffId = parsed.data.staffId?.trim() ?? "";
-  const adminPassword = parsed.data.adminPassword ?? "";
   if (!email) {
     return { ok: false, error: "invalid-input" };
   }
@@ -118,21 +112,12 @@ export async function signInMemberAction(input: {
   }
 
   try {
-    const isAdminEmail = isHrAdminEmail(email);
-    if (!isAdminEmail && !staffId) {
+    if (!staffId) {
       return { ok: false, error: "invalid-input" };
     }
-    const verdict = isAdminEmail
-      ? await verifyAdminSignIn(email, adminPassword, staffId)
-      : await verifyEdAdminStaff(email, staffId);
+    const verdict = await verifyEdAdminStaff(email, staffId);
 
     if (!verdict.ok) {
-      if (verdict.reason === "admin-password-required") {
-        return { ok: false, error: "admin-password-required" };
-      }
-      if (verdict.reason === "admin-password-invalid") {
-        return { ok: false, error: "admin-password-invalid" };
-      }
       if (verdict.reason === "inactive") return { ok: false, error: "inactive" };
       if (verdict.reason === "api-error") {
         return { ok: false, error: "directory-unavailable" };

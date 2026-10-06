@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { getCurrentUser } from "@/lib/auth";
 import { getWorkplaceMap } from "@/lib/workplace-map";
+import DepartmentFilter, { isDepartmentId } from "@/components/DepartmentFilter";
 import styles from "@/components/WorkplaceMap.module.css";
 
 export const metadata: Metadata = {
@@ -11,32 +12,35 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default async function WorkplaceSystemsPage() {
+export default async function WorkplaceSystemsPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const user = await getCurrentUser();
   if (!user) redirect("/login");
+  const params = await searchParams;
+  const dept = typeof params.dept === "string" && isDepartmentId(params.dept) ? params.dept : null;
   const systems = await getWorkplaceMap();
-  const live = systems.filter((system) => system.smoke.ok).length;
-  const tables = systems.reduce((sum, system) => sum + system.tableCount, 0);
+  const visible = dept ? systems.filter((system) => system.id === dept) : systems;
+  const live = visible.filter((system) => system.smoke.ok).length;
+  const tables = visible.reduce((sum, system) => sum + system.tableCount, 0);
 
   return (
     <div className={styles.page}>
       <header className={styles.header}>
         <p className={styles.kicker}>One repository · one Supabase</p>
-        <h1>Every system has its own lane</h1>
+        <h1>{dept ? `${visible[0]?.name ?? "This desk"} lane` : "Every system has its own lane"}</h1>
         <p>
           Code is grouped under desks/ and src/. Data is grouped by schema. Ops
           live tables stay in public. Nothing else is allowed there.
         </p>
-        <div className={styles.lanes}>
-          {["CODE", "OPS", "ONBOARDING", "MARKETING", "DATA & TECH", "TALENT ACADEMY", "UNIFORMS", "VISITORS", "1–5’S", "LESSON PLANS", "MEL"].map((lane) => (
-            <span key={lane}>{lane}</span>
-          ))}
-        </div>
       </header>
+      <DepartmentFilter base="/systems" current={dept} />
       <div className={styles.stats}>
         <div>
-          <strong>{systems.length}</strong>
-          <span>systems in this repo</span>
+          <strong>{visible.length}</strong>
+          <span>{dept ? "system in this filter" : "systems in this repo"}</span>
         </div>
         <div>
           <strong>{live}</strong>
@@ -52,7 +56,7 @@ export default async function WorkplaceSystemsPage() {
         </div>
       </div>
       <div className={styles.grid}>
-        {systems.map((system) => (
+        {visible.map((system) => (
           <article key={system.id} className={styles.cell} data-lane={system.lane}>
             <p className={styles.lane}>{system.lane}</p>
             <h2>{system.name}</h2>
@@ -91,6 +95,8 @@ export default async function WorkplaceSystemsPage() {
         ))}
       </div>
       <p className={styles.back}>
+        <Link href="/progress">Progress</Link>
+        {" · "}
         <Link href="/people">Everyone</Link>
         {" · "}
         <Link href="/hub">Back to hub</Link>

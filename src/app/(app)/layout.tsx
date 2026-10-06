@@ -21,7 +21,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         },
       }}
     >
-      <HubShell user={{ fullName: user.fullName ?? "", email: user.email, isAdmin: user.isAdmin }} departments={resolveDepartments()}>
+      <HubShell user={{ fullName: user.fullName ?? "", email: user.email, isAdmin: user.isAdmin, isSuperAdmin: user.isSuperAdmin }} departments={resolveDepartments()}>
         <IdleLogout />
         {children}
       </HubShell>

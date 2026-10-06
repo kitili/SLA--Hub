@@ -19,6 +19,7 @@ function isPublicPath(pathname: string) {
     pathname.startsWith("/assets/") ||
     pathname.startsWith("/policy-briefings/") ||
     pathname.startsWith("/api/health") ||
+    pathname.startsWith("/api/v1") ||
     pathname.startsWith("/api/hiring/apply") ||
     pathname.startsWith("/api/hiring/onboarding") ||
     pathname.startsWith("/api/hiring/applications") ||
@@ -38,6 +39,9 @@ function isHubPath(pathname: string) {
   return (
     pathname === "/" ||
     pathname.startsWith("/hub") ||
+    pathname.startsWith("/progress") ||
+    pathname.startsWith("/people") ||
+    pathname.startsWith("/systems") ||
     pathname.startsWith("/activity") ||
     pathname.startsWith("/departments") ||
     pathname.startsWith("/login")
@@ -48,6 +52,9 @@ function rateLimitApi(request: NextRequest): NextResponse | null {
   const path = request.nextUrl.pathname;
   if (path === "/api/health") {
     return enforceIpRateLimit(request, "health", 60, 60_000);
+  }
+  if (path.startsWith("/api/v1")) {
+    return enforceIpRateLimit(request, "hub-api", 60, 60_000);
   }
   if (path === "/api/hiring/apply") {
     return enforceIpRateLimit(request, "apply", 8, 15 * 60_000);

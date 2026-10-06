@@ -1,93 +1,97 @@
 {
-  "syncedAt": "2026-09-26T03:00:13.900750+00:00",
+  "syncedAt": "2026-10-04T03:00:01.697474+00:00",
   "desks": {
     "onboarding": {
       "repo": "https://github.com/kitili/SLA-Onboarding-hub.git",
       "branch": "main",
-      "sha": "37ab6b248a58296d088c97b3f20cd4241ec54953",
+      "sha": "657a8960585d191c1997cff8317143643ceb3047",
       "path": "desks/onboarding",
       "port": 3000,
       "liveUrl": "https://onboarding.silverleaf.co.tz",
-      "status": "updated",
-      "syncedAt": "2026-09-26T03:00:04.758338+00:00"
+      "status": "copied",
+      "syncedAt": "2026-10-04T03:00:01.583058+00:00"
     },
     "talent-academy": {
       "repo": "https://github.com/kitili/SLA-Talent-Academy.git",
       "branch": "main",
-      "sha": "3ded2fd6e337b89ea576fa060177cc9c768ad538",
+      "sha": "657a8960585d191c1997cff8317143643ceb3047",
       "path": "desks/talent-academy",
       "port": 8765,
       "liveUrl": "https://talent-academy-sla.vercel.app",
       "status": "copied",
-      "syncedAt": "2026-09-26T03:00:04.764326+00:00"
+      "syncedAt": "2026-10-04T03:00:01.589805+00:00"
     },
     "ops": {
       "repo": "https://github.com/kitili/OPS_SYSTEM.git",
       "branch": "main",
-      "sha": "073194c66e40cedc86fda20abb53a5ab2406eec2",
+      "sha": "657a8960585d191c1997cff8317143643ceb3047",
       "path": "desks/ops",
       "port": 3020,
       "liveUrl": "https://ops-transport-system.vercel.app",
-      "status": "updated",
-      "syncedAt": "2026-09-26T03:00:07.626771+00:00"
+      "status": "copied",
+      "syncedAt": "2026-10-04T03:00:01.594991+00:00"
     },
     "uniforms": {
       "repo": "https://github.com/kitili/school_uniforms.git",
       "branch": "main",
-      "sha": "773547f123d38a44c7c2ec817489c5b7fe6dcc39",
+      "sha": "657a8960585d191c1997cff8317143643ceb3047",
       "path": "desks/uniforms",
       "port": 3010,
       "liveUrl": "https://school-uniforms-lyart.vercel.app",
-      "status": "updated",
-      "syncedAt": "2026-09-26T03:00:09.337748+00:00"
+      "status": "copied",
+      "syncedAt": "2026-10-04T03:00:01.599774+00:00"
     },
     "marketing": {
       "repo": "https://github.com/kitili/SLA-Marketing-S.E.git",
       "branch": "marketing",
-      "sha": "ce9ca701ebe112d49cc422754ef5176724a8fcef",
+      "sha": "657a8960585d191c1997cff8317143643ceb3047",
       "path": "desks/marketing",
       "port": 3180,
       "liveUrl": "https://sla-marketing-web.vercel.app",
-      "status": "updated",
-      "syncedAt": "2026-09-26T03:00:11.036483+00:00"
+      "status": "copied",
+      "syncedAt": "2026-10-04T03:00:01.604761+00:00"
     },
     "data-tech": {
       "repo": "https://github.com/kitili/silverleaf-data-and-tech.git",
       "branch": "main",
-      "sha": "63bf52bea9f0726480ebc438a0489fa620533901",
-      "status": "dirty"
+      "sha": "657a8960585d191c1997cff8317143643ceb3047",
+      "path": "desks/data-tech",
+      "port": 4050,
+      "liveUrl": "https://dataandtech.silverleaf.co.tz",
+      "status": "copied",
+      "syncedAt": "2026-10-04T03:00:01.609820+00:00"
     },
     "visitors": {
       "repo": "https://github.com/kitili/SLA.git",
       "branch": "main",
-      "sha": "3ded2fd6e337b89ea576fa060177cc9c768ad538",
+      "sha": "657a8960585d191c1997cff8317143643ceb3047",
       "path": "desks/visitors",
       "port": 3108,
       "liveUrl": "https://v-isitors.vercel.app",
       "status": "copied",
-      "syncedAt": "2026-09-26T03:00:12.315534+00:00",
+      "syncedAt": "2026-10-04T03:00:01.614041+00:00",
       "visits": 66,
       "photos": 23
     },
     "workboard-tasks": {
       "repo": "https://github.com/kitili/workboard-tasks.git",
       "branch": "main",
-      "sha": "55178bd6dca5691017d0c105f2c0e406828a884e",
+      "sha": "657a8960585d191c1997cff8317143643ceb3047",
       "path": "desks/workboard-tasks",
       "port": 3200,
       "liveUrl": "https://silverleaf-tasks.vercel.app",
-      "status": "updated",
-      "syncedAt": "2026-09-26T03:00:13.895716+00:00"
+      "status": "copied",
+      "syncedAt": "2026-10-04T03:00:01.689346+00:00"
     },
     "lesson-plans": {
       "repo": "https://github.com/kitili/silverleaf-lesson-plans.git",
       "branch": "main",
-      "sha": "3ded2fd6e337b89ea576fa060177cc9c768ad538",
+      "sha": "657a8960585d191c1997cff8317143643ceb3047",
       "path": "desks/lesson-plans",
       "port": 3300,
       "liveUrl": "https://silverleaf-lesson-plans-main.vercel.app",
       "status": "copied",
-      "syncedAt": "2026-09-26T03:00:13.900657+00:00"
+      "syncedAt": "2026-10-04T03:00:01.695009+00:00"
     },
     "mel-dashboard": {
       "repo": "https://github.com/kitili/silverleaf-mel-dashboard.git",
@@ -97,7 +101,7 @@
       "port": 3400,
       "liveUrl": "https://silverleafmeldashboard-production.up.railway.app/#overview",
       "status": "hosted",
-      "syncedAt": "2026-09-26T03:00:13.900741+00:00"
+      "syncedAt": "2026-10-04T03:00:01.697459+00:00"
     }
   }
 }

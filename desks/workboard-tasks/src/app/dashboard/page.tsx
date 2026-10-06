@@ -12,9 +12,9 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-2xl font-semibold">Operations dashboard</h2>
+        <h2 className="text-2xl font-semibold">1–5’s dashboard</h2>
         <p className="mt-1 text-zinc-600">
-          {org ? `${org.name} — live task and chat activity` : "No organization seeded yet"}
+          {org ? `${org.name} — today’s 1–5’s and board activity` : "No organization seeded yet"}
         </p>
       </div>
 

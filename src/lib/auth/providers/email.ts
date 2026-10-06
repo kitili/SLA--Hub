@@ -14,7 +14,7 @@ import { cookies } from "next/headers";
 
 import type { CurrentUser } from "@/lib/contracts";
 import { accessRepo, staffRepo } from "@/lib/db/repositories";
-import { isHrAdminEmail } from "@/lib/env";
+import { isHrAdminEmail, isSuperAdminEmail } from "@/lib/env";
 import { normalizeStaffEmail } from "@/lib/email";
 import type { AuthProvider } from "../provider";
 import {
@@ -80,14 +80,19 @@ export const emailProvider: AuthProvider = {
     }
     if (!staffRow) return null;
 
-    const isAdmin = staffRow.isAdmin;
-    const roles: string[] = isAdmin ? ["admin"] : [];
+    const isSuperAdmin = isSuperAdminEmail(staffRow.email);
+    const isAdmin = staffRow.isAdmin || isSuperAdmin;
+    const roles: string[] = [
+      ...(isAdmin ? ["admin"] : []),
+      ...(isSuperAdmin ? ["super-admin"] : []),
+    ];
 
     return {
       id: staffRow.id,
       email: staffRow.email,
       fullName: staffRow.fullName,
       isAdmin,
+      isSuperAdmin,
       roles,
       campus: staffRow.campus ?? null,
       jobTitle: staffRow.jobTitle ?? null,
@@ -100,7 +105,7 @@ export const emailProvider: AuthProvider = {
     extras?: { jobTitle?: string; edAdminStaffId?: string },
   ): Promise<CurrentUser> {
     const normalizedEmail = staffRepo.normalizeEmail(normalizeStaffEmail(email));
-    const isAdminByPolicy = isHrAdminEmail(normalizedEmail);
+    const isAdminByPolicy = isHrAdminEmail(normalizedEmail) || isSuperAdminEmail(normalizedEmail);
 
     // Sign-in eligibility (ed-admin directory membership) is enforced upstream
     // in `signInMemberAction`; the provider no longer gates on email domain.
@@ -129,13 +134,18 @@ export const emailProvider: AuthProvider = {
       }
     }
 
-    const roles: string[] = staffRow.isAdmin ? ["admin"] : [];
+    const isSuperAdmin = isSuperAdminEmail(staffRow.email);
+    const roles: string[] = [
+      ...(staffRow.isAdmin || isSuperAdmin ? ["admin"] : []),
+      ...(isSuperAdmin ? ["super-admin"] : []),
+    ];
 
     return {
       id: staffRow.id,
       email: staffRow.email,
       fullName: staffRow.fullName,
-      isAdmin: staffRow.isAdmin,
+      isAdmin: staffRow.isAdmin || isSuperAdmin,
+      isSuperAdmin,
       roles,
       campus: staffRow.campus ?? null,
       jobTitle: staffRow.jobTitle ?? null,

@@ -1,9 +1,18 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+
+vi.mock("./ed-admin", () => ({
+  verifyEdAdminStaffByEmail: vi.fn(async (email: string) => {
+    if (email.endsWith("@silverleaf.co.tz") || email.endsWith("@silverleaf.ac.tz")) {
+      return { ok: true, fullName: "Staff", staffId: "1", jobTitle: "Staff" };
+    }
+    return { ok: false, reason: "not-found" };
+  }),
+}));
 
 import { assertOtpEligibleEmail } from "./otp-eligibility";
 
 describe("assertOtpEligibleEmail", () => {
-  it("accepts any active Silverleaf work email", async () => {
+  it("accepts a Silverleaf work email that Ed Admin knows", async () => {
     await expect(assertOtpEligibleEmail("maureen@silverleaf.co.tz")).resolves.toEqual({
       ok: true,
       email: "maureen@silverleaf.co.tz",

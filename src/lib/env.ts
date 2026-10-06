@@ -47,6 +47,12 @@ const envSchema = z.object({
   HR_ADMIN_EMAILS: optionalNonEmptyString,
 
   /**
+   * One workplace super admin (or a short list). Sees every department’s
+   * progress dashboard. Also treated as an HR admin.
+   */
+  SUPER_ADMIN_EMAILS: optionalNonEmptyString,
+
+  /**
    * Password/PIN required when an HR admin signs in from the staff sign-in form.
    * The email must still be listed in HR_ADMIN_EMAILS and active in ed-admin.
    */
@@ -143,6 +149,15 @@ const envSchema = z.object({
   TURNSTILE_SECRET_KEY: optionalNonEmptyString,
 
   /**
+   * Bearer token for /api/v1 (ShuleOne and other machine clients).
+   * Min 32 characters. Absent → those routes return 503.
+   */
+  HUB_API_KEY: optionalNonEmptyString,
+
+  /** Optional browser origin allowed to call /api/v1. Server-to-server does not need this. */
+  HUB_API_CORS_ORIGIN: optionalUrl("HUB_API_CORS_ORIGIN must be a valid URL."),
+
+  /**
    * Standard Next.js env — "development" | "production" | "test"
    */
   NODE_ENV: z
@@ -163,6 +178,7 @@ export const env: Env = envSchema.parse({
   DATABASE_URL: process.env["DATABASE_URL"],
   DATABASE_PUBLIC_URL: process.env["DATABASE_PUBLIC_URL"],
   HR_ADMIN_EMAILS: process.env["HR_ADMIN_EMAILS"],
+  SUPER_ADMIN_EMAILS: process.env["SUPER_ADMIN_EMAILS"],
   ADMIN_PIN: process.env["ADMIN_PIN"],
   ADMIN_PASSWORDS: process.env["ADMIN_PASSWORDS"],
   ADMIN_ALLOW_LOCAL_DIRECTORY_FALLBACK:
@@ -176,6 +192,8 @@ export const env: Env = envSchema.parse({
   OPENAI_MODEL: process.env["OPENAI_MODEL"],
   DATA_ENCRYPTION_KEY: process.env["DATA_ENCRYPTION_KEY"],
   TURNSTILE_SECRET_KEY: process.env["TURNSTILE_SECRET_KEY"],
+  HUB_API_KEY: process.env["HUB_API_KEY"],
+  HUB_API_CORS_ORIGIN: process.env["HUB_API_CORS_ORIGIN"],
   NODE_ENV: process.env["NODE_ENV"],
 });
 
@@ -195,7 +213,30 @@ export function getHrAdminEmails(): string[] {
  */
 export function isHrAdminEmail(email: string | null | undefined): boolean {
   if (!email) return false;
-  return getHrAdminEmails().includes(email.trim().toLowerCase());
+  const normalized = email.trim().toLowerCase();
+  return getHrAdminEmails().includes(normalized) || isSuperAdminEmail(normalized);
+}
+
+function splitEmails(value: string | undefined) {
+  if (!value) return [];
+  return value
+    .split(",")
+    .map((entry) => entry.trim().toLowerCase())
+    .filter(Boolean);
+}
+
+/** Workplace super-admin emails. Krupa and Nelly unless env overrides. */
+export function getSuperAdminEmails(): string[] {
+  const listed = splitEmails(env.SUPER_ADMIN_EMAILS);
+  if (listed.length > 0) return listed;
+  const hr = getHrAdminEmails();
+  if (hr.length > 0) return hr;
+  return ["krupa@silverleaf.co.tz", "nelly@silverleaf.co.tz"];
+}
+
+export function isSuperAdminEmail(email: string | null | undefined): boolean {
+  if (!email) return false;
+  return getSuperAdminEmails().includes(email.trim().toLowerCase());
 }
 
 /** Local/dev: allow password-verified admins missing from ed-admin. */

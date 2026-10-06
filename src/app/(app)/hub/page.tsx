@@ -23,6 +23,7 @@ export default async function HubPage() {
       firstName={firstName}
       departments={resolveDepartments()}
       isAdmin={user?.isAdmin === true}
+      isSuperAdmin={user?.isSuperAdmin === true}
       recentAccess={recent.map((event) => ({
         id: event.id,
         name: event.fullName,
