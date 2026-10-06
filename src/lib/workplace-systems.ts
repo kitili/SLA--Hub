@@ -97,12 +97,12 @@ export const workplaceSystems: WorkplaceSystem[] = [
   },
   {
     id: "workboard-tasks",
-    name: "Workboard Tasks",
-    lane: "WORKBOARD",
+    name: "1–5’s",
+    lane: "1–5’S",
     schemaName: "workboard",
     repoFolder: "desks/workboard-tasks",
     liveUrl: "https://silverleaf-tasks.vercel.app",
-    notes: "Daily 5, boards, tasks.",
+    notes: "Today’s 1–5’s, boards, and WhatsApp updates.",
   },
   {
     id: "lesson-plans",

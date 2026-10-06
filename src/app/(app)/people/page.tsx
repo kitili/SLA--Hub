@@ -15,7 +15,7 @@ const APP_LABEL: Record<string, string> = {
   onboarding: "Onboarding",
   ops: "Ops",
   data_tech: "Data & Tech",
-  workboard: "Workboard",
+  workboard: "1–5’s",
   uniforms: "Uniforms",
   marketing: "Marketing",
   talent: "Talent Academy",
@@ -35,7 +35,7 @@ export default async function WorkplacePeoplePage() {
         <p className={styles.kicker}>All systems</p>
         <h1>Everyone who has used a Silverleaf app</h1>
         <p>
-          {people.length} people, pulled from Onboarding, Ops, Data & Tech, Workboard, and Marketing.
+          {people.length} people, pulled from Onboarding, Ops, Data & Tech, 1–5’s, and Marketing.
           Live department sites still keep their own databases until each one is cut over.
         </p>
       </header>

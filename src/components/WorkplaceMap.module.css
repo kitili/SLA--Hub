@@ -105,7 +105,7 @@
 }
 
 .cell[data-lane="DATA & TECH"],
-.cell[data-lane="WORKBOARD"],
+.cell[data-lane="1–5’S"],
 .cell[data-lane="MEL"] {
   border-left-color: var(--electric-blue);
 }

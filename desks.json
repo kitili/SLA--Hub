@@ -87,7 +87,7 @@
     },
     {
       "id": "workboard-tasks",
-      "name": "Workboard Tasks",
+      "name": "1–5’s",
       "path": "desks/workboard-tasks",
       "repo": "https://github.com/kitili/workboard-tasks.git",
       "branch": "main",

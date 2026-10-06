@@ -18,7 +18,7 @@ const DESKS = [
   { id: "marketing", name: "Marketing", location: /^https:\/\/sla-marketing-web\.vercel\.app/ },
   { id: "data-tech", name: "Data & Tech", location: /^https:\/\/dataandtech\.silverleaf\.co\.tz/ },
   { id: "visitors", name: "Visitors", location: /^https:\/\/v-isitors\.vercel\.app/ },
-  { id: "workboard-tasks", name: "Workboard Tasks", location: /^https:\/\/silverleaf-tasks\.vercel\.app/ },
+  { id: "workboard-tasks", name: "1–5’s", location: /^https:\/\/silverleaf-tasks\.vercel\.app/ },
   { id: "lesson-plans", name: "Lesson Plans", location: /^https:\/\/silverleaf-lesson-plans-main\.vercel\.app/ },
   {
     id: "mel-dashboard",
@@ -120,7 +120,7 @@ async function main() {
 
   const afterDesk = await req("/activity", { headers: { cookie } });
   assert(/Onboarding|Visitors|Workboard|Opened hub/i.test(afterDesk.text), "activity log did not record a desk");
-  assert(/Workboard/i.test(afterDesk.text), "activity log did not record Workboard Tasks");
+  assert(/1–5|Workboard/i.test(afterDesk.text), "activity log did not record 1–5’s");
   checks.push("desk recorded");
 
   const adminActivity = await req("/en/admin/activity", { headers: { cookie } });

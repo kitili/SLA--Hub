@@ -38,12 +38,13 @@ export default function HubHome({
   }, []);
 
   const filtered = useMemo(() => {
-    const needle = query.trim().toLowerCase();
+    const needle = query.trim().toLowerCase().replace(/[–’']/g, "-");
     if (!needle) return departments;
     return departments.filter((department) => {
-      const haystack = [department.name, department.kicker, department.summary, ...department.desks]
+      const haystack = [department.name, department.kicker, department.summary, department.id, ...department.desks]
         .join(" ")
-        .toLowerCase();
+        .toLowerCase()
+        .replace(/[–’']/g, "-");
       return haystack.includes(needle);
     });
   }, [departments, query]);
@@ -86,11 +87,17 @@ export default function HubHome({
       ) : (
         <div id="desks" className={styles.grid}>
           {filtered.map((department) => (
-            <article key={department.id} className={styles.card} data-accent={department.accent}>
+            <article
+              key={department.id}
+              className={styles.card}
+              data-accent={department.accent}
+              data-desk={department.id}
+            >
               <DeskLink department={department} className={styles.cardMain}>
                 <span className={styles.cardIcon}>
                   <DepartmentIcon id={department.id} />
                 </span>
+                <p className={styles.cardKicker}>{department.kicker}</p>
                 <h2>{department.name}</h2>
                 <p>{department.summary}</p>
                 <ul className={styles.cardDesks}>

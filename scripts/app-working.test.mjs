@@ -20,7 +20,7 @@ const EXPECTED_DESKS = [
   { id: "marketing", name: "Marketing", port: 3180, live: "sla-marketing-web.vercel.app" },
   { id: "data-tech", name: "Data & Tech", port: 4050, live: "dataandtech.silverleaf.co.tz" },
   { id: "visitors", name: "Visitors", port: 3108, live: "v-isitors.vercel.app" },
-  { id: "workboard-tasks", name: "Workboard Tasks", port: 3200, live: "silverleaf-tasks.vercel.app" },
+  { id: "workboard-tasks", name: "1–5’s", port: 3200, live: "silverleaf-tasks.vercel.app" },
   { id: "lesson-plans", name: "Lesson Plans", port: 3300, live: "silverleaf-lesson-plans-main.vercel.app" },
   { id: "mel-dashboard", name: "MEL Dashboard", port: 3400, live: "silverleafmeldashboard-production.up.railway.app" },
 ];
@@ -53,7 +53,7 @@ test("desks.json lists every workplace desk on a unique port", () => {
   assert.equal(workboard.path, "desks/workboard-tasks");
 });
 
-test("departments catalog includes Workboard Tasks and every other desk", () => {
+test("departments catalog includes 1–5’s and every other desk", () => {
   const source = read("src/lib/departments.ts");
 
   for (const expected of EXPECTED_DESKS) {
@@ -67,7 +67,7 @@ test("departments catalog includes Workboard Tasks and every other desk", () => 
 
   assert.match(source, /WORKPLACE_WORKBOARD_TASKS_URL/);
   assert.match(source, /WORKPLACE_WORKBOARD_TASKS_LOCAL_URL/);
-  assert.match(source, /Workboard Tasks/);
+  assert.match(source, /1–5’s/);
   assert.match(source, /WORKPLACE_LESSON_PLANS_URL/);
   assert.match(source, /Lesson Plans/);
   assert.match(source, /WORKPLACE_MEL_DASHBOARD_URL/);

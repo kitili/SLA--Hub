@@ -273,6 +273,23 @@
   border-top: 3px solid var(--electric-blue-50);
 }
 
+.card[data-desk="workboard-tasks"] .cardIcon {
+  width: 52px;
+  height: 52px;
+  background: var(--navy);
+  color: var(--gold);
+}
+
+.card[data-desk="workboard-tasks"] .cardIcon svg {
+  width: 34px;
+  height: 34px;
+}
+
+.card[data-desk="workboard-tasks"] h2 {
+  font-size: 1.55rem;
+  letter-spacing: -0.04em;
+}
+
 .cardMain {
   display: flex;
   flex-direction: column;

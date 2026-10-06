@@ -148,11 +148,30 @@ export function DepartmentIcon({
   }
   if (id === "workboard-tasks") {
     return (
-      <Svg className={className}>
-        <rect x="4" y="4" width="7" height="16" rx="1.2" />
-        <rect x="13" y="4" width="7" height="10" rx="1.2" />
-        <path d="M6 8h3M6 12h3M15 8h3" />
-      </Svg>
+      <svg
+        className={className}
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+      >
+        <text
+          x="12"
+          y="14.2"
+          textAnchor="middle"
+          fill="currentColor"
+          fontSize="8.2"
+          fontWeight="800"
+          fontFamily="Montserrat, Bai Jamjuree, sans-serif"
+        >
+          1–5
+        </text>
+        <path
+          d="M5 18.2h14"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+        />
+      </svg>
     );
   }
   if (id === "lesson-plans") {

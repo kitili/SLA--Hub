@@ -28,7 +28,7 @@ export default async function WorkplaceSystemsPage() {
           live tables stay in public. Nothing else is allowed there.
         </p>
         <div className={styles.lanes}>
-          {["CODE", "OPS", "ONBOARDING", "MARKETING", "DATA & TECH", "TALENT ACADEMY", "UNIFORMS", "VISITORS", "WORKBOARD", "LESSON PLANS", "MEL"].map((lane) => (
+          {["CODE", "OPS", "ONBOARDING", "MARKETING", "DATA & TECH", "TALENT ACADEMY", "UNIFORMS", "VISITORS", "1–5’S", "LESSON PLANS", "MEL"].map((lane) => (
             <span key={lane}>{lane}</span>
           ))}
         </div>
