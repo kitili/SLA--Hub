@@ -1,11 +1,8 @@
 .row {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 0.4rem;
-  margin: 0.15rem 0 0.35rem;
-  overflow-x: auto;
-  padding-bottom: 0.2rem;
-  scrollbar-width: thin;
+  margin: 0 0 0.2rem;
 }
 
 .chip {

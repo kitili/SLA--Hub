@@ -96,8 +96,7 @@ export default function EdAdminSignIn() {
           </button>
         </form>
         <p className={styles.note}>
-          Super admins (Krupa Patel and Nelly Zablon) see Progress for every
-          desk after they sign in here.
+          Everyone signs in through Ed Admin. Staff ID, not an email code.
         </p>
       </div>
     </div>

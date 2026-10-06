@@ -27,7 +27,6 @@ export default function HubHome({
   }>;
 }) {
   const [query, setQuery] = useState("");
-  const [desk, setDesk] = useState("all");
   const [today, setToday] = useState("");
 
   useEffect(() => {
@@ -42,16 +41,15 @@ export default function HubHome({
 
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase().replace(/[–’']/g, "-");
+    if (!needle) return departments;
     return departments.filter((department) => {
-      if (desk !== "all" && department.id !== desk) return false;
-      if (!needle) return true;
       const haystack = [department.name, department.kicker, department.summary, department.id, ...department.desks]
         .join(" ")
         .toLowerCase()
         .replace(/[–’']/g, "-");
       return haystack.includes(needle);
     });
-  }, [departments, query, desk]);
+  }, [departments, query]);
 
   return (
     <div className={styles.page}>
@@ -91,24 +89,8 @@ export default function HubHome({
         </label>
       </section>
 
-      <div className={styles.deptFilters} role="tablist" aria-label="Filter departments">
-        <button type="button" data-active={desk === "all"} onClick={() => setDesk("all")}>
-          All departments
-        </button>
-        {departments.map((department) => (
-          <button
-            key={department.id}
-            type="button"
-            data-active={desk === department.id}
-            onClick={() => setDesk(department.id)}
-          >
-            {department.name}
-          </button>
-        ))}
-      </div>
-
       {filtered.length === 0 ? (
-        <p className={styles.empty}>No desk matches “{query || desk}”.</p>
+        <p className={styles.empty}>No desk matches “{query}”.</p>
       ) : (
         <div id="desks" className={styles.grid}>
           {filtered.map((department) => (

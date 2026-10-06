@@ -1,7 +1,8 @@
 import Link from "next/link";
 import DepartmentFilter, { isDepartmentId } from "@/components/DepartmentFilter";
-import { DepartmentIcon } from "@/components/icons";
+import { ArrowIcon, DepartmentIcon } from "@/components/icons";
 import type { WorkplaceKpis } from "@/lib/workplace-kpis";
+import hub from "./hub.module.css";
 import styles from "./ProgressDashboard.module.css";
 
 function fmtWhen(iso: string | null) {
@@ -24,21 +25,28 @@ export default function ProgressDashboard({
   const focus = selected ? rows[0] : null;
 
   return (
-    <div className={styles.page}>
-      <section className={styles.hero}>
-        <p className={styles.kicker}>Krupa Patel · Nelly Zablon</p>
-        <h1>{focus ? focus.name : "Workplace progress"}</h1>
-        <p>
-          {focus
-            ? focus.headline
-            : "One view of every desk. Filter a department to go deeper. Sign-in is Ed Admin."}
-        </p>
-        <div className={styles.heroMeta}>
-          <span>
-            {kpis.liveSystems}/{kpis.totalSystems} live
-          </span>
-          <span>{kpis.people} people</span>
-          <span>{kpis.signIns24h} hub sign-ins today</span>
+    <div className={hub.page}>
+      <section className={hub.hero}>
+        <div className={hub.heroCopy}>
+          <p className={hub.heroKicker}>All desks · Ed Admin</p>
+          <h1 className={hub.heroTitle}>{focus ? focus.name : "Workplace progress"}</h1>
+          <p className={hub.heroBody}>
+            {focus
+              ? focus.headline
+              : "One intake of every live desk, then a deep dive when you pick a department."}
+          </p>
+          <div className={hub.heroMeta}>
+            <span>
+              {kpis.liveSystems}/{kpis.totalSystems} live
+            </span>
+            <span>{kpis.people} people</span>
+            <span>{kpis.signIns24h} hub sign-ins today</span>
+            {focus ? (
+              <Link href="/progress" className={hub.heroLink}>
+                All departments
+              </Link>
+            ) : null}
+          </div>
         </div>
       </section>
 
@@ -47,7 +55,7 @@ export default function ProgressDashboard({
       {focus ? (
         <section className={styles.deep}>
           <div className={styles.deepHead}>
-            <span className={styles.icon} data-ok={focus.liveOk}>
+            <span className={hub.cardIcon} data-ok={focus.liveOk}>
               <DepartmentIcon id={focus.id} />
             </span>
             <div>
@@ -80,36 +88,31 @@ export default function ProgressDashboard({
             </a>
             <Link href="/people">Everyone</Link>
             <Link href="/systems">Systems</Link>
-            <Link href="/progress">All departments</Link>
           </p>
         </section>
       ) : (
-        <section className={styles.grid}>
+        <div className={hub.grid}>
           {rows.map((row) => (
-            <article key={row.id} className={styles.card} data-ok={row.liveOk}>
-              <Link href={`/progress?dept=${row.id}`} className={styles.cardMain}>
-                <span className={styles.icon}>
+            <article key={row.id} className={hub.card} data-accent="gold" data-desk={row.id}>
+              <Link href={`/progress?dept=${row.id}`} className={hub.cardMain}>
+                <span className={hub.cardIcon}>
                   <DepartmentIcon id={row.id} />
                 </span>
-                <p className={styles.lane}>{row.lane}</p>
+                <p className={hub.cardKicker}>{row.lane}</p>
                 <h2>{row.name}</h2>
                 <p>{row.headline}</p>
-                <ul>
-                  {row.metrics.slice(0, 2).map((metric) => (
-                    <li key={metric.label}>
-                      <b>{metric.value}</b>
-                      <span>{metric.label}</span>
-                    </li>
+                <ul className={hub.cardDesks}>
+                  {row.metrics.slice(0, 3).map((metric) => (
+                    <li key={metric.label}>{metric.value}</li>
                   ))}
                 </ul>
-                <footer>
-                  <em data-ok={row.liveOk}>{row.liveOk ? "Live" : "No answer"}</em>
-                  <span>Open</span>
-                </footer>
+                <span className={hub.cardOpen}>
+                  Deep dive <ArrowIcon />
+                </span>
               </Link>
             </article>
           ))}
-        </section>
+        </div>
       )}
     </div>
   );
