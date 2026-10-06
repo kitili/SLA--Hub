@@ -1,7 +1,7 @@
 import "server-only";
 
 import { getPostgresSql } from "@/lib/db/client";
-import { workplaceSystems } from "@/lib/workplace-systems";
+import { workplaceSystems, type WorkplaceSystem } from "@/lib/workplace-systems";
 
 export type SystemSmoke = {
   ok: boolean;
