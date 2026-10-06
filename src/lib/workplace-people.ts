@@ -31,6 +31,16 @@ export type WorkplacePeopleFilter = {
 export async function listWorkplacePeople(
   filter: WorkplacePeopleFilter = {},
 ): Promise<WorkplacePerson[]> {
+  try {
+    return await listWorkplacePeopleUnsafe(filter);
+  } catch {
+    return [];
+  }
+}
+
+async function listWorkplacePeopleUnsafe(
+  filter: WorkplacePeopleFilter = {},
+): Promise<WorkplacePerson[]> {
   const sql = getPostgresSql();
   if (!sql) return [];
   const campus = filter.campus?.trim();

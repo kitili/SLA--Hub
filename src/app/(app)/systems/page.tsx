@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 30;
 
 export default async function WorkplaceSystemsPage() {
   const user = await getCurrentUser();
@@ -27,8 +28,7 @@ export default async function WorkplaceSystemsPage() {
         <h1>Desk status</h1>
         <p>
           Which department sites are answering right now.
-          {user.isSuperAdmin ? " Work numbers are on Progress." : ""}
-          {user.isAdmin ? " The staff list is on People." : ""}
+          {user.isAdmin ? " Work numbers are on Progress. The staff list is on People." : ""}
         </p>
       </header>
       <div className={styles.stats}>
@@ -91,7 +91,7 @@ export default async function WorkplaceSystemsPage() {
         </table>
       </div>
       <p className={styles.back}>
-        {user.isSuperAdmin ? (
+        {user.isAdmin ? (
           <>
             <Link href="/progress">Progress</Link>
             {" · "}

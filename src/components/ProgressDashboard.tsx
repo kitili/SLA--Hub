@@ -1,7 +1,8 @@
 import Link from "next/link";
+import DepartmentFilter, { isDepartmentId } from "@/components/DepartmentFilter";
 import { ArrowIcon, DepartmentIcon } from "@/components/icons";
-import { formatWhen } from "@/lib/format-when";
-import type { WorkplaceKpis } from "@/lib/workplace-kpis";
+import type { DepartmentId } from "@/lib/departments";
+import type { WorkplaceKpis } from "@/lib/workplace-kpi-types";
 import hub from "./hub.module.css";
 import styles from "./ProgressDashboard.module.css";
 
@@ -12,47 +13,46 @@ export default function ProgressDashboard({
   kpis: WorkplaceKpis;
   dept?: string | null;
 }) {
-  const focus = kpis.departments.find((row) => row.id === dept) ?? null;
+  const selected = isDepartmentId(dept) ? dept : null;
+  const rows = selected ? kpis.departments.filter((row) => row.id === selected) : kpis.departments;
+  const focus = selected ? rows[0] : null;
 
   return (
     <div className={hub.page}>
       <section className={hub.hero}>
         <div className={hub.heroCopy}>
-          <p className={hub.heroKicker}>{focus ? focus.name : "How work is going"}</p>
-          <h1 className={hub.heroTitle}>{focus ? "The numbers" : "Progress"}</h1>
+          <p className={hub.heroKicker}>{focus ? focus.name : "Every dashboard"}</p>
+          <h1 className={hub.heroTitle}>{focus ? "Department numbers" : "Progress"}</h1>
           <p className={hub.heroBody}>
             {focus
               ? focus.headline
-              : "One scoreboard for every desk. Open Numbers on a row when you want the counts."}
+              : "KPIs from every desk. Filter by department when you want one view."}
           </p>
           <div className={hub.heroMeta}>
-            <span>
-              {kpis.liveSystems}/{kpis.totalSystems} desks live
-            </span>
+            <span>{kpis.totalSystems} desks</span>
             <span>{kpis.people} people</span>
             <span>{kpis.signIns24h} hub sign-ins today</span>
             {focus ? (
               <Link href="/progress" className={hub.heroLink}>
-                All desks
+                All departments
               </Link>
             ) : null}
           </div>
         </div>
       </section>
 
+      <DepartmentFilter base="/progress" current={selected} />
+
       {focus ? (
         <section className={styles.deep}>
           <div className={styles.deepHead}>
-            <span className={hub.cardIcon} data-ok={focus.liveOk}>
-              <DepartmentIcon id={focus.id} />
+            <span className={hub.cardIcon}>
+              <DepartmentIcon id={focus.id as DepartmentId} />
             </span>
             <div>
               <h2>{focus.name}</h2>
               <p>{focus.headline}</p>
             </div>
-            <em className={styles.live} data-ok={focus.liveOk}>
-              {focus.liveOk ? "Live" : "Down"}
-            </em>
           </div>
           <div className={styles.metrics}>
             {focus.metrics.map((metric) => (
@@ -65,7 +65,6 @@ export default function ProgressDashboard({
             <article>
               <strong>{focus.people}</strong>
               <span>People on this desk</span>
-              <em>{formatWhen(focus.lastSeen, "No activity yet")}</em>
             </article>
           </div>
           <p className={styles.note}>{focus.note}</p>
@@ -74,53 +73,39 @@ export default function ProgressDashboard({
               Open live {focus.name}
             </a>
             <Link href={`/people?dept=${focus.id}`}>People on this desk</Link>
-            <Link href="/systems">Desk status</Link>
           </p>
         </section>
       ) : (
-        <div className={styles.board}>
-          <table>
-            <thead>
-              <tr>
-                <th>Desk</th>
-                <th>Site</th>
-                <th>What’s happening</th>
-                <th>People</th>
-                <th>
-                  <span className={styles.srOnly}>Actions</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {kpis.departments.map((row) => (
-                <tr key={row.id}>
-                  <td>
-                    <span className={styles.desk}>
-                      <span className={styles.deskIcon}>
-                        <DepartmentIcon id={row.id} />
-                      </span>
-                      <strong>{row.name}</strong>
-                    </span>
-                  </td>
-                  <td>
-                    <em className={styles.live} data-ok={row.liveOk}>
-                      {row.liveOk ? "Live" : "Down"}
-                    </em>
-                  </td>
-                  <td>{row.headline}</td>
-                  <td>{row.people}</td>
-                  <td className={styles.rowActions}>
-                    <Link href={`/progress?dept=${row.id}`}>
-                      Numbers <ArrowIcon />
-                    </Link>
-                    <a href={row.liveUrl} target="_blank" rel="noreferrer">
-                      Open
-                    </a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className={styles.kpiGrid}>
+          {rows.map((row) => (
+            <article key={row.id} className={styles.kpiCard}>
+              <header>
+                <span className={styles.deskIcon}>
+                  <DepartmentIcon id={row.id as DepartmentId} />
+                </span>
+                <div>
+                  <h2>{row.name}</h2>
+                  <p>{row.headline}</p>
+                </div>
+              </header>
+              <ul>
+                {row.metrics.slice(0, 4).map((metric) => (
+                  <li key={metric.label}>
+                    <span>{metric.label}</span>
+                    <b>{metric.value}</b>
+                  </li>
+                ))}
+              </ul>
+              <footer>
+                <Link href={`/progress?dept=${row.id}`}>
+                  More numbers <ArrowIcon />
+                </Link>
+                <a href={row.liveUrl} target="_blank" rel="noreferrer">
+                  Open desk
+                </a>
+              </footer>
+            </article>
+          ))}
         </div>
       )}
     </div>

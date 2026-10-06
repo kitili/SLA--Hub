@@ -3,6 +3,7 @@ import { recordCurrentAccess } from "@/lib/access";
 import { resolveDepartments } from "@/lib/departments";
 import { getCurrentUser } from "@/lib/auth";
 import { listAccessEvents } from "@/lib/db/repositories/access";
+import { getWorkplaceKpis } from "@/lib/workplace-kpis";
 import HubHome from "@/components/HubHome";
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default async function HubPage() {
   await recordCurrentAccess({ action: "opened_hub", path: "/hub" });
 
   const recent = user?.isAdmin ? await listAccessEvents(8) : [];
+  const kpis = user?.isAdmin ? await getWorkplaceKpis() : null;
 
   return (
     <HubHome
@@ -24,6 +26,7 @@ export default async function HubPage() {
       departments={resolveDepartments()}
       isAdmin={user?.isAdmin === true}
       isSuperAdmin={user?.isSuperAdmin === true}
+      deskKpis={kpis?.departments ?? []}
       recentAccess={recent.map((event) => ({
         id: event.id,
         name: event.fullName,

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { getWorkplaceKpis } from "@/lib/workplace-kpis";
-import { requireSuperAdmin } from "@/lib/auth";
+import { getCurrentUser } from "@/lib/auth";
 import ProgressDashboard from "@/components/ProgressDashboard";
 
 export const metadata: Metadata = {
@@ -8,13 +9,15 @@ export const metadata: Metadata = {
 };
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 30;
 
 export default async function ProgressPage({
   searchParams,
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  await requireSuperAdmin();
+  const user = await getCurrentUser();
+  if (!user?.isAdmin) redirect("/hub");
   const params = await searchParams;
   const dept = typeof params.dept === "string" ? params.dept : null;
   const kpis = await getWorkplaceKpis();

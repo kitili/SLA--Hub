@@ -5,18 +5,20 @@ import Link from "next/link";
 import { hubEntryHref, isExternalUrl, type Department } from "@/lib/departments";
 import { noteDeskOpen } from "@/lib/access-client";
 import { ArrowIcon, DepartmentIcon, ExternalIcon, SearchIcon } from "@/components/icons";
+import type { DepartmentKpi } from "@/lib/workplace-kpi-types";
 import styles from "./hub.module.css";
 
 export default function HubHome({
   firstName,
   departments,
   isAdmin = false,
-  isSuperAdmin = false,
+  deskKpis = [],
 }: {
   firstName?: string;
   departments: Department[];
   isAdmin?: boolean;
   isSuperAdmin?: boolean;
+  deskKpis?: DepartmentKpi[];
   recentAccess?: Array<{
     id: string;
     name: string;
@@ -51,6 +53,11 @@ export default function HubHome({
     });
   }, [departments, query]);
 
+  const kpiByDesk = useMemo(() => {
+    const map = new Map(deskKpis.map((row) => [row.id, row]));
+    return map;
+  }, [deskKpis]);
+
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
@@ -64,7 +71,7 @@ export default function HubHome({
             <Link href="/systems" className={styles.heroLink}>
               Desk status
             </Link>
-            {isSuperAdmin ? (
+            {isAdmin ? (
               <Link href="/progress" className={styles.heroLink}>
                 Progress
               </Link>
@@ -106,11 +113,21 @@ export default function HubHome({
                 </span>
                 <p className={styles.cardKicker}>{department.kicker}</p>
                 <h2>{department.name}</h2>
-                <p>{department.summary}</p>
+                <p>{kpiByDesk.get(department.id)?.headline ?? department.summary}</p>
                 <ul className={styles.cardDesks}>
-                  {department.desks.slice(0, 3).map((desk) => (
-                    <li key={desk}>{desk}</li>
-                  ))}
+                  {(kpiByDesk.get(department.id)?.metrics.slice(0, 3) ?? department.desks.slice(0, 3).map((desk) => ({ label: desk, value: "" }))).map(
+                    (item) => (
+                      <li key={item.label}>
+                        {item.value ? (
+                          <>
+                            <b>{item.value}</b> {item.label}
+                          </>
+                        ) : (
+                          item.label
+                        )}
+                      </li>
+                    ),
+                  )}
                 </ul>
                 <span className={styles.cardOpen}>
                   Open {isExternalUrl(hubEntryHref(department)) ? <ExternalIcon /> : <ArrowIcon />}

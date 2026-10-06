@@ -3,42 +3,15 @@ import "server-only";
 import { getPostgresSql } from "@/lib/db/client";
 import { countRecentSignIns } from "@/lib/db/repositories/access";
 import { departments, type DepartmentId } from "@/lib/departments";
+import { formatWhen } from "@/lib/format-when";
 import { DEPARTMENT_APP } from "@/lib/workplace-lanes";
-import { getWorkplaceMap } from "@/lib/workplace-map";
 import { listWorkplacePeople } from "@/lib/workplace-people";
-import { workplaceSystems } from "@/lib/workplace-systems";
+import type { DepartmentKpi, KpiMetric, WorkplaceKpis } from "@/lib/workplace-kpi-types";
 
-export type KpiMetric = {
-  label: string;
-  value: string;
-  hint?: string;
-};
-
-export type DepartmentKpi = {
-  id: DepartmentId;
-  name: string;
-  lane: string;
-  liveUrl: string;
-  liveOk: boolean;
-  people: number;
-  lastSeen: string | null;
-  score: number;
-  headline: string;
-  metrics: KpiMetric[];
-  note: string;
-};
-
-export type WorkplaceKpis = {
-  generatedAt: string;
-  people: number;
-  liveSystems: number;
-  totalSystems: number;
-  signIns24h: number;
-  overallScore: number;
-  departments: DepartmentKpi[];
-};
+export type { DepartmentKpi, KpiMetric, WorkplaceKpis };
 
 type Sql = NonNullable<ReturnType<typeof getPostgresSql>>;
+type Deep = { metrics: KpiMetric[]; data: number; movement: number; headline: string };
 
 async function n(sql: Sql, query: string): Promise<number> {
   try {
@@ -55,20 +28,23 @@ function pct(part: number, whole: number) {
   return Math.round((part / whole) * 100);
 }
 
-function scoreOf(liveOk: boolean, people: number, data: number, movement: number) {
-  return (
-    (liveOk ? 40 : 0) +
-    (people > 0 ? 20 : 0) +
-    (data > 0 ? 20 : 0) +
-    (movement > 0 ? 20 : 0)
-  );
-}
-
 function fmt(value: number) {
   return new Intl.NumberFormat("en-TZ").format(value);
 }
 
-async function onboardingMetrics(sql: Sql): Promise<{ metrics: KpiMetric[]; data: number; movement: number; headline: string }> {
+function peopleOnly(name: string, people: number, lastSeen: string | null, summary: string): Deep {
+  return {
+    data: people,
+    movement: people > 0 ? 1 : 0,
+    headline: people > 0 ? `${fmt(people)} people on ${name}` : summary,
+    metrics: [
+      { label: "People on this desk", value: fmt(people) },
+      { label: "Last seen", value: formatWhen(lastSeen, "No activity yet") },
+    ],
+  };
+}
+
+async function onboardingMetrics(sql: Sql): Promise<Deep> {
   const [staff, started, reads, signatures, checkpoints, sections, published] = await Promise.all([
     n(sql, "select count(*)::int as n from onboarding.staff"),
     n(sql, "select count(*)::int as n from onboarding.staff where started_at is not null"),
@@ -93,8 +69,8 @@ async function onboardingMetrics(sql: Sql): Promise<{ metrics: KpiMetric[]; data
   };
 }
 
-async function opsMetrics(sql: Sql): Promise<{ metrics: KpiMetric[]; data: number; movement: number; headline: string }> {
-  const [students, activeStudents, buses, trips, openTrips, incidents, issues, openIssues, profiles] = await Promise.all([
+async function opsMetrics(sql: Sql): Promise<Deep> {
+  const [students, activeStudents, buses, trips, openTrips, incidents, issues, openIssues] = await Promise.all([
     n(sql, "select count(*)::int as n from public.students"),
     n(sql, "select count(*)::int as n from public.students where active = true"),
     n(sql, "select count(*)::int as n from public.buses"),
@@ -103,7 +79,6 @@ async function opsMetrics(sql: Sql): Promise<{ metrics: KpiMetric[]; data: numbe
     n(sql, "select count(*)::int as n from public.incidents where created_at >= now() - interval '30 days'"),
     n(sql, "select count(*)::int as n from public.facilities_issues"),
     n(sql, `select count(*)::int as n from public.facilities_issues where coalesce(status, '') not ilike '%resolved%' and resolved_date is null`),
-    n(sql, "select count(*)::int as n from public.profiles"),
   ]);
   return {
     data: students + buses + trips,
@@ -115,12 +90,11 @@ async function opsMetrics(sql: Sql): Promise<{ metrics: KpiMetric[]; data: numbe
       { label: "Trips logged", value: fmt(trips), hint: `${fmt(openTrips)} still open` },
       { label: "Incidents (30 days)", value: fmt(incidents) },
       { label: "Open facilities issues", value: `${fmt(openIssues)} / ${fmt(issues)}` },
-      { label: "Ops profiles", value: fmt(profiles) },
     ],
   };
 }
 
-async function dataTechMetrics(sql: Sql): Promise<{ metrics: KpiMetric[]; data: number; movement: number; headline: string }> {
+async function dataTechMetrics(sql: Sql): Promise<Deep> {
   const [users, tickets, openTickets, tasks, openTasks, fives, fivesToday] = await Promise.all([
     n(sql, "select count(*)::int as n from data_tech.users"),
     n(sql, "select count(*)::int as n from data_tech.tickets"),
@@ -143,7 +117,7 @@ async function dataTechMetrics(sql: Sql): Promise<{ metrics: KpiMetric[]; data: 
   };
 }
 
-async function workboardMetrics(sql: Sql): Promise<{ metrics: KpiMetric[]; data: number; movement: number; headline: string }> {
+async function workboardMetrics(sql: Sql): Promise<Deep> {
   const [users, plans, items, doneItems, tasks, doneTasks] = await Promise.all([
     n(sql, `select count(*)::int as n from workboard."User"`),
     n(sql, `select count(*)::int as n from workboard."DailyPlan"`),
@@ -166,7 +140,7 @@ async function workboardMetrics(sql: Sql): Promise<{ metrics: KpiMetric[]; data:
   };
 }
 
-async function visitorsMetrics(sql: Sql): Promise<{ metrics: KpiMetric[]; data: number; movement: number; headline: string }> {
+async function visitorsMetrics(sql: Sql): Promise<Deep> {
   const [visits, openVisits, today, campuses] = await Promise.all([
     n(sql, "select count(*)::int as n from visitors.visits"),
     n(sql, "select count(*)::int as n from visitors.visits where signed_out_at is null"),
@@ -186,90 +160,180 @@ async function visitorsMetrics(sql: Sql): Promise<{ metrics: KpiMetric[]; data: 
   };
 }
 
-function reserved(name: string, liveOk: boolean) {
+async function uniformsMetrics(sql: Sql): Promise<Deep> {
+  const [orders, users, campuses, jobs] = await Promise.all([
+    n(sql, `select count(*)::int as n from uniforms."ParentOrder"`),
+    n(sql, `select count(*)::int as n from uniforms."User"`),
+    n(sql, `select count(*)::int as n from uniforms."Campus"`),
+    n(sql, `select count(*)::int as n from uniforms."SewingJob"`),
+  ]);
   return {
+    data: orders + users + campuses + jobs,
+    movement: orders + jobs,
+    headline: `${fmt(orders)} parent orders · ${fmt(jobs)} sewing jobs`,
     metrics: [
-      {
-        label: "Numbers in the hub",
-        value: liveOk ? "On that site" : "Not loaded",
-        hint: liveOk
-          ? `Open ${name} to see the live figures. They still live on that desk.`
-          : `${name} is not answering right now.`,
-      },
+      { label: "Parent orders", value: fmt(orders) },
+      { label: "Sewing jobs", value: fmt(jobs) },
+      { label: "Campuses", value: fmt(campuses) },
+      { label: "Users", value: fmt(users) },
     ],
-    data: 0,
-    movement: liveOk ? 1 : 0,
-    headline: liveOk ? `Open ${name} for the live numbers` : `${name} is not answering`,
+  };
+}
+
+async function marketingMetrics(sql: Sql): Promise<Deep> {
+  const [leads, students, tours, campaigns] = await Promise.all([
+    n(sql, "select count(*)::int as n from marketing.marketing_leads"),
+    n(sql, "select count(*)::int as n from marketing.students"),
+    n(sql, "select count(*)::int as n from marketing.tour_bookings"),
+    n(sql, "select count(*)::int as n from marketing.marketing_campaigns"),
+  ]);
+  return {
+    data: leads + students + tours + campaigns,
+    movement: leads + tours,
+    headline: `${fmt(leads)} leads · ${fmt(tours)} tours`,
+    metrics: [
+      { label: "Leads", value: fmt(leads) },
+      { label: "Students", value: fmt(students) },
+      { label: "Tour bookings", value: fmt(tours) },
+      { label: "Campaigns", value: fmt(campaigns) },
+    ],
+  };
+}
+
+async function talentMetrics(sql: Sql): Promise<Deep> {
+  const [teachers, fellows, courses, certificates] = await Promise.all([
+    n(sql, "select count(*)::int as n from talent.teachers"),
+    n(sql, "select count(*)::int as n from talent.users"),
+    n(sql, "select count(*)::int as n from talent.courses"),
+    n(sql, "select count(*)::int as n from talent.teacher_certificates"),
+  ]);
+  return {
+    data: teachers + fellows + courses + certificates,
+    movement: teachers + certificates,
+    headline: `${fmt(teachers)} teachers · ${fmt(certificates)} certificates`,
+    metrics: [
+      { label: "Teachers", value: fmt(teachers) },
+      { label: "Users", value: fmt(fellows) },
+      { label: "Courses", value: fmt(courses) },
+      { label: "Certificates", value: fmt(certificates) },
+    ],
+  };
+}
+
+async function lessonPlanMetrics(sql: Sql): Promise<Deep> {
+  const [plans, schemes, staff, textbooks] = await Promise.all([
+    n(sql, "select count(*)::int as n from lesson_plans.lesson_plans"),
+    n(sql, "select count(*)::int as n from lesson_plans.schemes_of_work"),
+    n(sql, "select count(*)::int as n from lesson_plans.staff"),
+    n(sql, "select count(*)::int as n from lesson_plans.textbooks"),
+  ]);
+  return {
+    data: plans + schemes + staff + textbooks,
+    movement: plans + schemes,
+    headline: `${fmt(plans)} lesson plans · ${fmt(schemes)} schemes`,
+    metrics: [
+      { label: "Lesson plans", value: fmt(plans) },
+      { label: "Schemes of work", value: fmt(schemes) },
+      { label: "Staff", value: fmt(staff) },
+      { label: "Textbooks", value: fmt(textbooks) },
+    ],
+  };
+}
+
+async function melMetrics(sql: Sql): Promise<Deep> {
+  const [rows] = await Promise.all([
+    n(sql, "select count(*)::int as n from mel.indicators"),
+  ]);
+  return {
+    data: rows,
+    movement: rows,
+    headline: `${fmt(rows)} MEL indicators`,
+    metrics: [{ label: "Indicators", value: fmt(rows) }],
+  };
+}
+
+function emptyKpis(): WorkplaceKpis {
+  return {
+    generatedAt: new Date().toISOString(),
+    people: 0,
+    totalSystems: departments.length,
+    signIns24h: 0,
+    departments: departments.map((department) => ({
+      id: department.id,
+      name: department.name,
+      liveUrl: department.liveUrl,
+      people: 0,
+      lastSeen: null,
+      headline: department.summary,
+      metrics: [],
+      note: department.summary,
+    })),
   };
 }
 
 export async function getWorkplaceKpis(): Promise<WorkplaceKpis> {
-  const sql = getPostgresSql();
-  const [map, people, signIns24h] = await Promise.all([
-    getWorkplaceMap(),
-    listWorkplacePeople({ limit: 500 }),
-    countRecentSignIns(24),
-  ]);
+  try {
+    const sql = getPostgresSql();
+    const [people, signIns24h] = await Promise.all([
+      listWorkplacePeople({ limit: 500 }),
+      countRecentSignIns(24),
+    ]);
 
-  const peopleByApp = new Map<string, { count: number; lastSeen: string | null }>();
-  for (const person of people) {
-    for (const app of person.apps) {
-      const current = peopleByApp.get(app) ?? { count: 0, lastSeen: null };
-      current.count += 1;
-      if (person.lastSeen && (!current.lastSeen || person.lastSeen > current.lastSeen)) {
-        current.lastSeen = person.lastSeen;
+    const peopleByApp = new Map<string, { count: number; lastSeen: string | null }>();
+    for (const person of people) {
+      for (const app of person.apps ?? []) {
+        const current = peopleByApp.get(app) ?? { count: 0, lastSeen: null };
+        current.count += 1;
+        if (person.lastSeen && (!current.lastSeen || person.lastSeen > current.lastSeen)) {
+          current.lastSeen = person.lastSeen;
+        }
+        peopleByApp.set(app, current);
       }
-      peopleByApp.set(app, current);
     }
-  }
 
-  const extra = sql
-    ? {
-        onboarding: await onboardingMetrics(sql),
-        ops: await opsMetrics(sql),
-        "data-tech": await dataTechMetrics(sql),
-        "workboard-tasks": await workboardMetrics(sql),
-        visitors: await visitorsMetrics(sql),
-      }
-    : {};
+    const extra: Partial<Record<DepartmentId, Deep>> = sql
+      ? {
+          onboarding: await onboardingMetrics(sql),
+          ops: await opsMetrics(sql),
+          "data-tech": await dataTechMetrics(sql),
+          "workboard-tasks": await workboardMetrics(sql),
+          visitors: await visitorsMetrics(sql),
+          uniforms: await uniformsMetrics(sql),
+          marketing: await marketingMetrics(sql),
+          "talent-academy": await talentMetrics(sql),
+          "lesson-plans": await lessonPlanMetrics(sql),
+          "mel-dashboard": await melMetrics(sql),
+        }
+      : {};
 
-  const departmentKpis: DepartmentKpi[] = departments.map((department) => {
-    const system = workplaceSystems.find((row) => row.id === department.id);
-    const smoke = map.find((row) => row.id === department.id)?.smoke;
-    const liveOk = smoke?.ok === true;
-    const app = DEPARTMENT_APP[department.id];
-    const crowd = peopleByApp.get(app);
-    const deep =
-      extra[department.id as keyof typeof extra] ??
-      reserved(department.name, liveOk);
-    const score = scoreOf(liveOk, crowd?.count ?? 0, deep.data, deep.movement);
+    const departmentKpis: DepartmentKpi[] = departments.map((department) => {
+      const app = DEPARTMENT_APP[department.id];
+      const crowd = peopleByApp.get(app);
+      const loaded = extra[department.id];
+      const deep =
+        loaded && loaded.data > 0
+          ? loaded
+          : peopleOnly(department.name, crowd?.count ?? 0, crowd?.lastSeen ?? null, department.summary);
+      return {
+        id: department.id,
+        name: department.name,
+        liveUrl: department.liveUrl,
+        people: crowd?.count ?? 0,
+        lastSeen: crowd?.lastSeen ?? null,
+        headline: deep.headline,
+        metrics: deep.metrics,
+        note: department.summary,
+      };
+    });
+
     return {
-      id: department.id,
-      name: department.name,
-      lane: system?.lane ?? department.name.toUpperCase(),
-      liveUrl: department.liveUrl,
-      liveOk,
-      people: crowd?.count ?? 0,
-      lastSeen: crowd?.lastSeen ?? null,
-      score,
-      headline: deep.headline,
-      metrics: deep.metrics,
-      note: department.summary,
+      generatedAt: new Date().toISOString(),
+      people: people.length,
+      totalSystems: departments.length,
+      signIns24h,
+      departments: departmentKpis,
     };
-  });
-
-  const overallScore =
-    departmentKpis.length === 0
-      ? 0
-      : Math.round(departmentKpis.reduce((sum, row) => sum + row.score, 0) / departmentKpis.length);
-
-  return {
-    generatedAt: new Date().toISOString(),
-    people: people.length,
-    liveSystems: map.filter((row) => row.id !== "hub" && row.smoke.ok).length,
-    totalSystems: departments.length,
-    signIns24h,
-    overallScore,
-    departments: departmentKpis,
-  };
+  } catch {
+    return emptyKpis();
+  }
 }

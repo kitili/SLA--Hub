@@ -118,7 +118,7 @@ export default async function WorkplacePeoplePage({
         </div>
       )}
       <p className={styles.back}>
-        {user.isSuperAdmin ? (
+        {user.isAdmin ? (
           <>
             <Link href="/progress">Progress</Link>
             {" · "}

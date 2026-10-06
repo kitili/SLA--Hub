@@ -66,7 +66,7 @@ export default function HubShell({
         Hub home
       </Link>
       <p className={styles.sectionLabel}>Overview</p>
-      {user.isSuperAdmin ? (
+      {user.isAdmin ? (
         <Link
           href="/progress"
           className={styles.progressBtn}
