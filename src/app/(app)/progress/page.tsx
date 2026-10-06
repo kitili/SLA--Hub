@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+import { getCurrentUser } from "@/lib/auth";
 import { getWorkplaceCharts } from "@/lib/workplace-charts";
 import { getWorkplaceKpis } from "@/lib/workplace-kpis";
-import { getCurrentUser } from "@/lib/auth";
 import ProgressDashboard from "@/components/ProgressDashboard";
 
 export const metadata: Metadata = {

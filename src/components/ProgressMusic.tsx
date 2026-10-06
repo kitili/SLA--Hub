@@ -9,7 +9,7 @@ function Spark({ values }: { values: number[] }) {
   const max = Math.max(...values, 1);
   const points = values
     .map((value, index) => {
-      const x = values.length === 1 ? width / 2 : (index / (values.length - 1)) * width;
+      const x = values.length <= 1 ? width / 2 : (index / (values.length - 1)) * width;
       const y = height - (value / max) * (height - 4) - 2;
       return `${x},${y}`;
     })
@@ -31,7 +31,7 @@ function PulseChart({ pulse }: { pulse: PulsePoint[] }) {
 
   function coords(values: number[]) {
     return values.map((value, index) => {
-      const x = pad.left + (pulse.length === 1 ? innerW / 2 : (index / (pulse.length - 1)) * innerW);
+      const x = pad.left + (pulse.length <= 1 ? innerW / 2 : (index / (pulse.length - 1)) * innerW);
       const y = pad.top + innerH - (value / max) * innerH;
       return { x, y };
     });
@@ -50,7 +50,7 @@ function PulseChart({ pulse }: { pulse: PulsePoint[] }) {
       <polyline className={styles.pulseWork} fill="none" strokeWidth="2.5" points={workLine} />
       {pulse.map((point, index) =>
         index % 2 === 0 || index === pulse.length - 1 ? (
-          <text key={point.day} x={hub[index].x} y={height - 8} textAnchor="middle">
+          <text key={point.day} x={hub[index]?.x ?? 0} y={height - 8} textAnchor="middle">
             {point.label}
           </text>
         ) : null,
@@ -68,7 +68,10 @@ export default function ProgressMusic({
   hours: HourBeat[];
   departments: DepartmentKpi[];
 }) {
-  const loudest = hours.reduce((best, beat) => (beat.count > best.count ? beat : best), hours[0] ?? { hour: 0, label: "—", count: 0 });
+  const loudest = hours.reduce(
+    (best, beat) => (beat.count > best.count ? beat : best),
+    hours[0] ?? { hour: 0, label: "—", count: 0 },
+  );
   const hourMax = Math.max(...hours.map((beat) => beat.count), 1);
   const peopleMax = Math.max(...departments.map((row) => row.people), 1);
   const hubTotal = pulse.reduce((sum, point) => sum + point.hub, 0);
@@ -81,7 +84,7 @@ export default function ProgressMusic({
           <p>Last 14 days</p>
           <h2>How work has been moving</h2>
           <span>
-            Gold is hub traffic · Blue is trips, visits, 1–5s, and onboarding starts ({hubTotal} hub · {workTotal} work)
+            Gold is hub traffic. Blue is trips, visits, 1–5s, and onboarding starts ({hubTotal} hub · {workTotal} work).
           </span>
         </div>
         <PulseChart pulse={pulse} />

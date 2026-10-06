@@ -7,6 +7,17 @@ import type { HourBeat, PulsePoint, WorkplaceKpis } from "@/lib/workplace-kpi-ty
 import hub from "./hub.module.css";
 import styles from "./ProgressDashboard.module.css";
 
+function sparkPoints(values: number[]) {
+  const max = Math.max(...values, 1);
+  return values
+    .map((value, index) => {
+      const x = values.length > 1 ? (index / (values.length - 1)) * 120 : 60;
+      const y = 26 - (value / max) * 22;
+      return `${x},${y}`;
+    })
+    .join(" ");
+}
+
 export default function ProgressDashboard({
   kpis,
   pulse,
@@ -97,19 +108,7 @@ export default function ProgressDashboard({
               </header>
               {row.spark ? (
                 <svg className={styles.spark} viewBox="0 0 120 28" aria-hidden="true">
-                  <polyline
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    points={row.spark
-                      .map((value, index) => {
-                        const max = Math.max(...(row.spark ?? [1]), 1);
-                        const x = row.spark && row.spark.length > 1 ? (index / (row.spark.length - 1)) * 120 : 60;
-                        const y = 26 - (value / max) * 22;
-                        return `${x},${y}`;
-                      })
-                      .join(" ")}
-                  />
+                  <polyline fill="none" stroke="currentColor" strokeWidth="2" points={sparkPoints(row.spark)} />
                 </svg>
               ) : null}
               <ul>
