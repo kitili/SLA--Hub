@@ -201,3 +201,193 @@
     grid-template-columns: 1fr;
   }
 }
+
+.stage {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 1rem;
+  margin: 0.2rem 0 0.35rem;
+}
+
+.stage > :first-child {
+  grid-column: 1 / -1;
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1rem 1.05rem 0.85rem;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+
+.panelHead p {
+  margin: 0;
+  font-family: var(--font-display);
+  color: var(--electric-blue);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.panelHead h2 {
+  margin: 0.2rem 0 0.25rem;
+  color: var(--navy);
+  font-size: 1.15rem;
+}
+
+.panelHead span {
+  display: block;
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+  margin-bottom: 0.7rem;
+}
+
+.pulseSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pulseFill {
+  fill: rgba(255, 201, 82, 0.22);
+}
+
+.pulseHub {
+  stroke: var(--gold);
+}
+
+.pulseWork {
+  stroke: var(--electric-blue);
+}
+
+.pulseSvg text {
+  fill: var(--ink-faint);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.equalizer {
+  display: flex;
+  align-items: stretch;
+  height: 148px;
+  gap: 0.18rem;
+}
+
+.beatCol {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.beat {
+  width: 100%;
+  max-width: 16px;
+  border-radius: 4px 4px 1px 1px;
+  background: linear-gradient(180deg, var(--gold) 0%, var(--electric-blue) 100%);
+  transform-origin: bottom;
+  animation: eq 1.55s ease-in-out infinite;
+}
+
+.beatCol em {
+  min-height: 1rem;
+  font-style: normal;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+@keyframes eq {
+  0%,
+  100% {
+    transform: scaleY(0.68);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.bars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.bars li {
+  display: grid;
+  grid-template-columns: 7.2rem minmax(0, 1fr) 2rem auto;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.bars span {
+  color: var(--navy);
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.barTrack {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--app-bg);
+  overflow: hidden;
+}
+
+.barTrack i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--navy), var(--electric-blue));
+}
+
+.bars b {
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.82rem;
+  text-align: right;
+}
+
+.spark {
+  width: 72px;
+  height: 22px;
+  color: var(--electric-blue);
+}
+
+.kpiCard .spark {
+  width: 100%;
+  height: 28px;
+  color: var(--gold);
+  margin-top: 0.15rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beat {
+    animation: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .stage {
+    grid-template-columns: 1fr;
+  }
+
+  .bars li {
+    grid-template-columns: 6rem minmax(0, 1fr) 2rem;
+  }
+
+  .bars .spark {
+    display: none;
+  }
+}

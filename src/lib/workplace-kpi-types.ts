@@ -4,6 +4,19 @@ export type KpiMetric = {
   hint?: string;
 };
 
+export type PulsePoint = {
+  day: string;
+  label: string;
+  hub: number;
+  work: number;
+};
+
+export type HourBeat = {
+  hour: number;
+  label: string;
+  count: number;
+};
+
 export type DepartmentKpi = {
   id: string;
   name: string;
@@ -13,6 +26,7 @@ export type DepartmentKpi = {
   headline: string;
   metrics: KpiMetric[];
   note: string;
+  spark?: number[];
 };
 
 export type WorkplaceKpis = {

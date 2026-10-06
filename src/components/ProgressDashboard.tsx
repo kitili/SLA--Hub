@@ -1,16 +1,21 @@
 import Link from "next/link";
 import DepartmentFilter, { isDepartmentId } from "@/components/DepartmentFilter";
+import ProgressMusic from "@/components/ProgressMusic";
 import { ArrowIcon, DepartmentIcon } from "@/components/icons";
 import type { DepartmentId } from "@/lib/departments";
-import type { WorkplaceKpis } from "@/lib/workplace-kpi-types";
+import type { HourBeat, PulsePoint, WorkplaceKpis } from "@/lib/workplace-kpi-types";
 import hub from "./hub.module.css";
 import styles from "./ProgressDashboard.module.css";
 
 export default function ProgressDashboard({
   kpis,
+  pulse,
+  hours,
   dept,
 }: {
   kpis: WorkplaceKpis;
+  pulse: PulsePoint[];
+  hours: HourBeat[];
   dept?: string | null;
 }) {
   const selected = isDepartmentId(dept) ? dept : null;
@@ -26,7 +31,7 @@ export default function ProgressDashboard({
           <p className={hub.heroBody}>
             {focus
               ? focus.headline
-              : "KPIs from every desk. Filter by department when you want one view."}
+              : "Graphs of the last two weeks, the day’s rhythm, then every desk."}
           </p>
           <div className={hub.heroMeta}>
             <span>{kpis.totalSystems} desks</span>
@@ -42,6 +47,8 @@ export default function ProgressDashboard({
       </section>
 
       <DepartmentFilter base="/progress" current={selected} />
+
+      <ProgressMusic pulse={pulse} hours={hours} departments={rows} />
 
       {focus ? (
         <section className={styles.deep}>
@@ -88,6 +95,23 @@ export default function ProgressDashboard({
                   <p>{row.headline}</p>
                 </div>
               </header>
+              {row.spark ? (
+                <svg className={styles.spark} viewBox="0 0 120 28" aria-hidden="true">
+                  <polyline
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    points={row.spark
+                      .map((value, index) => {
+                        const max = Math.max(...(row.spark ?? [1]), 1);
+                        const x = row.spark && row.spark.length > 1 ? (index / (row.spark.length - 1)) * 120 : 60;
+                        const y = 26 - (value / max) * 22;
+                        return `${x},${y}`;
+                      })
+                      .join(" ")}
+                  />
+                </svg>
+              ) : null}
               <ul>
                 {row.metrics.slice(0, 4).map((metric) => (
                   <li key={metric.label}>
