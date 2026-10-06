@@ -62,7 +62,7 @@ export default function HubHome({
             <span>{today || "Tanzania"}</span>
             <span>Signed in</span>
             <Link href="/systems" className={styles.heroLink}>
-              Systems
+              Desk status
             </Link>
             {isSuperAdmin ? (
               <Link href="/progress" className={styles.heroLink}>
@@ -70,8 +70,8 @@ export default function HubHome({
               </Link>
             ) : null}
             {isAdmin ? (
-              <Link href="/activity" className={styles.heroLink}>
-                Who entered
+              <Link href="/people" className={styles.heroLink}>
+                People
               </Link>
             ) : null}
           </div>

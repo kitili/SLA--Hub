@@ -13,7 +13,7 @@ import {
 import { noteDeskOpen } from "@/lib/access-client";
 import { signOutAction } from "@/lib/actions/auth";
 import BrandLogo from "@/components/BrandLogo";
-import { ActivityIcon, CloseIcon, DepartmentIcon, MenuIcon } from "@/components/icons";
+import { ActivityIcon, CloseIcon, DepartmentIcon, MenuIcon, PeopleIcon, StatusIcon } from "@/components/icons";
 import styles from "./HubShell.module.css";
 
 function initials(name: string, email: string) {
@@ -65,6 +65,7 @@ export default function HubShell({
         <DepartmentIcon id="home" />
         Hub home
       </Link>
+      <p className={styles.sectionLabel}>Overview</p>
       {user.isSuperAdmin ? (
         <Link
           href="/progress"
@@ -76,21 +77,21 @@ export default function HubShell({
         </Link>
       ) : null}
       {user.isAdmin ? (
-        <>
-          <Link href="/activity" data-active={pathname === "/activity" || pathname.startsWith("/activity/")}>
-            <ActivityIcon />
-            Who entered
-          </Link>
-          <Link href="/people" data-active={pathname === "/people"}>
-            <ActivityIcon />
-            Everyone
-          </Link>
-        </>
+        <Link href="/people" data-active={pathname === "/people" || pathname.startsWith("/people")}>
+          <PeopleIcon />
+          People
+        </Link>
       ) : null}
       <Link href="/systems" data-active={pathname === "/systems"}>
-        <ActivityIcon />
-        Systems
+        <StatusIcon />
+        Desk status
       </Link>
+      {user.isAdmin ? (
+        <Link href="/activity" data-active={pathname === "/activity" || pathname.startsWith("/activity/")}>
+          <ActivityIcon />
+          Who entered
+        </Link>
+      ) : null}
       <p className={styles.sectionLabel}>Desks</p>
       {departments.map((department) => {
         const href = hubEntryHref(department);

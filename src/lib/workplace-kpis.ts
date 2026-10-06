@@ -190,16 +190,16 @@ function reserved(name: string, liveOk: boolean) {
   return {
     metrics: [
       {
-        label: "Lane in this Supabase",
-        value: "Reserved",
+        label: "Numbers in the hub",
+        value: liveOk ? "On that site" : "Not loaded",
         hint: liveOk
-          ? `${name} is live. Counts still live on that site’s own database.`
-          : `${name} lane is reserved until data is loaded here.`,
+          ? `Open ${name} to see the live figures. They still live on that desk.`
+          : `${name} is not answering right now.`,
       },
     ],
     data: 0,
     movement: liveOk ? 1 : 0,
-    headline: liveOk ? `${name} is live on its own database` : `${name} lane is reserved`,
+    headline: liveOk ? `Open ${name} for the live numbers` : `${name} is not answering`,
   };
 }
 
@@ -254,7 +254,7 @@ export async function getWorkplaceKpis(): Promise<WorkplaceKpis> {
       score,
       headline: deep.headline,
       metrics: deep.metrics,
-      note: system?.notes ?? department.summary,
+      note: department.summary,
     };
   });
 

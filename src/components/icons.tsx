@@ -31,6 +31,27 @@ export function ActivityIcon(props: IconProps) {
   );
 }
 
+export function PeopleIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <circle cx="9" cy="8" r="3" />
+      <path d="M4 19c.6-3 2.6-4.5 5-4.5s4.4 1.5 5 4.5" />
+      <circle cx="16.5" cy="9" r="2.2" />
+      <path d="M15 19c.4-2 1.7-3.2 3.5-3.4" />
+    </Svg>
+  );
+}
+
+export function StatusIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <circle cx="12" cy="12" r="8" />
+      <path d="M12 8v5" />
+      <path d="M12 16h.01" />
+    </Svg>
+  );
+}
+
 export function HomeIcon(props: IconProps) {
   return (
     <Svg {...props}>

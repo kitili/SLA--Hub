@@ -4,7 +4,7 @@ import { requireSuperAdmin } from "@/lib/auth";
 import ProgressDashboard from "@/components/ProgressDashboard";
 
 export const metadata: Metadata = {
-  title: "Workplace progress",
+  title: "Progress",
 };
 
 export const dynamic = "force-dynamic";

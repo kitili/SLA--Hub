@@ -2,6 +2,10 @@
   max-width: 1080px;
 }
 
+.wide {
+  max-width: 1520px;
+}
+
 .srOnly {
   position: absolute;
   width: 1px;
@@ -85,6 +89,14 @@
   padding: 0.62rem 0.95rem;
   font-weight: 800;
   white-space: nowrap;
+}
+
+.filtersCompact {
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr) auto;
+}
+
+.statsCompact {
+  grid-template-columns: minmax(0, 16rem);
 }
 
 .stats {
@@ -275,6 +287,20 @@
   margin-top: 0.15rem;
 }
 
+.table td .visitWho {
+  display: grid;
+  color: inherit;
+  font-size: inherit;
+  margin-top: 0;
+}
+
+.table td .visitDesks {
+  display: flex;
+  color: inherit;
+  font-size: inherit;
+  margin-top: 0;
+}
+
 .pager {
   display: flex;
   align-items: center;
@@ -320,7 +346,8 @@
 }
 
 @media (max-width: 980px) {
-  .filters {
+  .filters,
+  .filtersCompact {
     grid-template-columns: 1fr 1fr;
   }
 
