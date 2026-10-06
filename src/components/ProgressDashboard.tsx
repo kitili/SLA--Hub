@@ -25,35 +25,22 @@ export default function ProgressDashboard({
 
   return (
     <div className={styles.page}>
-      <header className={styles.header}>
-        <p className={styles.kicker}>Super admin · all systems</p>
-        <h1>{focus ? `${focus.name} deep dive` : "Workplace progress"}</h1>
+      <section className={styles.hero}>
+        <p className={styles.kicker}>Krupa Patel · Nelly Zablon</p>
+        <h1>{focus ? focus.name : "Workplace progress"}</h1>
         <p>
-          High intake first: how the academy is moving across desks. Filter a
-          department for the numbers behind it. Live sites keep their own logins.
+          {focus
+            ? focus.headline
+            : "One view of every desk. Filter a department to go deeper. Sign-in is Ed Admin."}
         </p>
-      </header>
-
-      <div className={styles.intake}>
-        <article>
-          <strong>{kpis.overallScore}%</strong>
-          <span>Overall health</span>
-        </article>
-        <article>
-          <strong>
-            {kpis.liveSystems}/{kpis.totalSystems}
-          </strong>
-          <span>Live desks answering</span>
-        </article>
-        <article>
-          <strong>{kpis.people}</strong>
-          <span>People across apps</span>
-        </article>
-        <article>
-          <strong>{kpis.signIns24h}</strong>
-          <span>Hub sign-ins, 24h</span>
-        </article>
-      </div>
+        <div className={styles.heroMeta}>
+          <span>
+            {kpis.liveSystems}/{kpis.totalSystems} live
+          </span>
+          <span>{kpis.people} people</span>
+          <span>{kpis.signIns24h} hub sign-ins today</span>
+        </div>
+      </section>
 
       <DepartmentFilter base="/progress" current={selected} />
 
@@ -68,7 +55,9 @@ export default function ProgressDashboard({
               <h2>{focus.name}</h2>
               <p>{focus.headline}</p>
             </div>
-            <em className={styles.score}>{focus.score}%</em>
+            <em className={styles.live} data-ok={focus.liveOk}>
+              {focus.liveOk ? "Live" : "No answer"}
+            </em>
           </div>
           <div className={styles.metrics}>
             {focus.metrics.map((metric) => (
@@ -83,11 +72,6 @@ export default function ProgressDashboard({
               <span>People in this app</span>
               <em>{fmtWhen(focus.lastSeen)}</em>
             </article>
-            <article>
-              <strong>{focus.liveOk ? "Live" : "Quiet"}</strong>
-              <span>Hosted site</span>
-              <em>{focus.liveOk ? "Answered this check" : "No answer on the last check"}</em>
-            </article>
           </div>
           <p className={styles.note}>{focus.note}</p>
           <p className={styles.actions}>
@@ -96,6 +80,7 @@ export default function ProgressDashboard({
             </a>
             <Link href="/people">Everyone</Link>
             <Link href="/systems">Systems</Link>
+            <Link href="/progress">All departments</Link>
           </p>
         </section>
       ) : (
@@ -110,7 +95,7 @@ export default function ProgressDashboard({
                 <h2>{row.name}</h2>
                 <p>{row.headline}</p>
                 <ul>
-                  {row.metrics.slice(0, 3).map((metric) => (
+                  {row.metrics.slice(0, 2).map((metric) => (
                     <li key={metric.label}>
                       <b>{metric.value}</b>
                       <span>{metric.label}</span>
@@ -119,18 +104,13 @@ export default function ProgressDashboard({
                 </ul>
                 <footer>
                   <em data-ok={row.liveOk}>{row.liveOk ? "Live" : "No answer"}</em>
-                  <strong>{row.score}%</strong>
+                  <span>Open</span>
                 </footer>
               </Link>
             </article>
           ))}
         </section>
       )}
-
-      <p className={styles.stamp}>
-        Snapshot {fmtWhen(kpis.generatedAt)}. Ops numbers are read from the Ops
-        schema without writing to it.
-      </p>
     </div>
   );
 }

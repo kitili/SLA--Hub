@@ -44,25 +44,25 @@ export default function EdAdminSignIn() {
         <p className={styles.tagline}>The Future Starts Here</p>
         <h2>One workplace for every Silverleaf desk</h2>
         <p>
-          Sign in with your Ed Admin work email and Staff ID. Krupa Patel and
-          Nelly Zablon are the workplace super admins.
+          Sign in with your Ed Admin work email and Staff ID — the same account
+          you already use at school.
         </p>
         <div className={styles.points}>
           <span>
-            <i className={styles.dot} /> Ed Admin is the sign-in gate
+            <i className={styles.dot} /> Ed Admin is the only sign-in gate
           </span>
           <span>
-            <i className={styles.dot} /> Same Staff ID you already use at school
+            <i className={styles.dot} /> Staff ID, not an email code
           </span>
           <span>
-            <i className={styles.dot} /> Click a desk to open that live system
+            <i className={styles.dot} /> One click opens each live desk
           </span>
         </div>
       </div>
       <div className={styles.card}>
         <BrandLogo variant="logomark" width={72} height={72} className={styles.logo} priority />
         <h1>Sign in to Silverleaf Hub</h1>
-        <p className={styles.sub}>Use your work email and Ed Admin Staff ID. No one-time code.</p>
+        <p className={styles.sub}>Work email and Ed Admin Staff ID. No one-time code.</p>
         <form onSubmit={handleSubmit} className={styles.form}>
           <label>
             Work email
@@ -96,8 +96,8 @@ export default function EdAdminSignIn() {
           </button>
         </form>
         <p className={styles.note}>
-          Each live desk may still ask you to sign in once on its own site. Super
-          admins open Progress from the hub navbar.
+          Super admins (Krupa Patel and Nelly Zablon) see Progress for every
+          desk after they sign in here.
         </p>
       </div>
     </div>

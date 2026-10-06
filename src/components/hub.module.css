@@ -218,8 +218,11 @@
 
 .deptFilters {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.4rem;
+  overflow-x: auto;
+  padding-bottom: 0.15rem;
+  scrollbar-width: thin;
 }
 
 .deptFilters button {
@@ -230,6 +233,8 @@
   border: 1px solid var(--card-border);
   border-radius: 999px;
   padding: 0.32rem 0.75rem;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 .deptFilters button:hover {
@@ -260,7 +265,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 1.1rem;
   align-content: start;
 }
@@ -707,7 +712,7 @@
 
 .skelRow {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 0.85rem;
 }
 
@@ -724,12 +729,6 @@
   }
 }
 
-@media (max-width: 1280px) {
-  .grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 1180px) {
   .hero {
     flex-direction: column;
@@ -739,16 +738,6 @@
   .hero .search {
     width: 100%;
     flex-basis: auto;
-  }
-
-  .grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 800px) {
-  .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
