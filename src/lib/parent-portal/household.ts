@@ -12,6 +12,7 @@ export type PortalChild = {
   name: string;
   grade: string;
   school: string;
+  active: boolean;
   boarding: string;
   fee: string;
   uniforms: PortalUniform[];
@@ -21,9 +22,12 @@ export type PortalHousehold = {
   children: PortalChild[];
 };
 
+/** Last 9 digits of the Tanzanian number, after +255 and a leading 0 are removed. */
 export function phoneKey(raw: string): string | null {
-  const digits = raw.replace(/\D/g, "");
-  if (digits.length < 9 || digits.length > 15) return null;
+  let digits = raw.replace(/\D/g, "");
+  if (digits.startsWith("255") && digits.length >= 12) digits = digits.slice(3);
+  while (digits.startsWith("0")) digits = digits.slice(1);
+  if (digits.length < 9) return null;
   return digits.slice(-9);
 }
 
@@ -34,6 +38,7 @@ type ChildRow = {
   last_name: string;
   class_name: string | null;
   school: string | null;
+  active: boolean;
 };
 type BoardRow = {
   student_id: string;
@@ -73,7 +78,15 @@ export async function findParentIds(key: string): Promise<string[] | null> {
   const rows = await sql<ParentRow[]>`
     select id::text as id
     from public.parents
-    where right(regexp_replace(phone, '[^0-9]', '', 'g'), 9) = ${key}
+    where right(
+      case
+        when regexp_replace(phone, '[^0-9]', '', 'g') like '255%'
+          and length(regexp_replace(phone, '[^0-9]', '', 'g')) >= 12
+          then regexp_replace(substring(regexp_replace(phone, '[^0-9]', '', 'g') from 4), '^0+', '')
+        else regexp_replace(regexp_replace(phone, '[^0-9]', '', 'g'), '^0+', '')
+      end,
+      9
+    ) = ${key}
     limit 5
   `;
   return rows.map((row) => row.id);
@@ -88,13 +101,13 @@ export async function loadHousehold(parentIds: string[]): Promise<PortalHousehol
            s.first_name,
            s.last_name,
            s.class_name,
-           sc.name as school
+           sc.name as school,
+           s.active
     from public.student_parents sp
     join public.students s on s.id = sp.student_id
     join public.schools sc on sc.id = s.school_id
     where sp.parent_id::text in ${sql(parentIds)}
-      and s.active = true
-    order by s.first_name, s.last_name
+    order by s.active desc, s.first_name, s.last_name
   `;
 
   if (children.length === 0) return { children: [] };
@@ -131,6 +144,7 @@ export async function loadHousehold(parentIds: string[]): Promise<PortalHousehol
         name,
         grade: child.class_name?.trim() || "Class not recorded",
         school: child.school?.trim() || "Silverleaf",
+        active: child.active,
         boarding: boardingLine(boarding.filter((row) => row.student_id === child.id)),
         fee: fee ? money(fee.balance, fee.currency) : "No fee record yet.",
         uniforms: uniforms

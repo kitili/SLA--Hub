@@ -16,13 +16,13 @@ export type ParentSignInResult =
 export async function signInParentAction(phone: string): Promise<ParentSignInResult> {
   const headerList = await headers();
   const ip = headerList.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
-  if (!takeToken(`parent-signin:${ip}`, 8, 15 * 60_000)) {
+  if (!takeToken(`parent-signin:${ip}`, 40, 15 * 60_000)) {
     return { ok: false, error: "rate-limited" };
   }
 
   const key = phoneKey(phone);
   if (!key) return { ok: false, error: "invalid" };
-  if (!takeToken(`parent-phone:${key}`, 5, 15 * 60_000)) {
+  if (!takeToken(`parent-phone:${key}`, 15, 15 * 60_000)) {
     return { ok: false, error: "rate-limited" };
   }
 

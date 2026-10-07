@@ -9,7 +9,7 @@ import styles from "./ParentPortal.module.css";
 
 const ERRORS = {
   invalid: "Enter the mobile number the school has for this family.",
-  "not-found": "That number is not on a pupil record.",
+  "not-found": "That number is not on the family list. Enter it as 07… or +255…, using the mobile number saved for the parent.",
   "rate-limited": "Too many tries. Wait a few minutes and try again.",
   unavailable: "The family register is not answering. Try again shortly.",
 };
@@ -25,11 +25,12 @@ function SignIn() {
   const [error, setError] = useState("");
   const [pending, startTransition] = useTransition();
 
-  function submit(event: React.FormEvent) {
+  function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const entered = String(new FormData(event.currentTarget).get("phone") ?? phone);
     setError("");
     startTransition(async () => {
-      const result = await signInParentAction(phone);
+      const result = await signInParentAction(entered);
       if (result.ok) {
         router.refresh();
         return;
@@ -48,15 +49,16 @@ function SignIn() {
       </section>
       <form className={styles.card} onSubmit={submit}>
         <h2>Sign in</h2>
-        <p>Use the mobile number the school has on the pupil record.</p>
+        <p>Use the mobile number saved for the parent. 07… and +255… are the same number.</p>
         <label>
           Mobile number
           <input
+            name="phone"
             inputMode="tel"
             autoComplete="tel"
             value={phone}
             onChange={(event) => setPhone(event.target.value)}
-            placeholder="07…"
+            placeholder="07… or +255…"
             required
             disabled={pending}
           />
@@ -112,6 +114,7 @@ function Home({ household }: { household: PortalHousehold }) {
                 <strong>{item.name}</strong>
                 <span>
                   {item.grade} · {item.school}
+                  {item.active ? "" : " · not current"}
                 </span>
               </button>
             ))}
