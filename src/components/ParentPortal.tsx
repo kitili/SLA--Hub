@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import BrandLogo from "@/components/BrandLogo";
-import { signInParentAction, signOutParentAction } from "@/lib/actions/parent-portal";
+import { signInParentAction, signInTestParentAction, signOutParentAction } from "@/lib/actions/parent-portal";
 import type { PortalHousehold } from "@/lib/parent-portal/household";
 import styles from "./ParentPortal.module.css";
 
@@ -67,6 +67,24 @@ function SignIn() {
         <button type="submit" disabled={pending}>
           {pending ? "Checking…" : "Open my children"}
         </button>
+        <button
+          type="button"
+          className={styles.secondary}
+          disabled={pending}
+          onClick={() => {
+            setError("");
+            startTransition(async () => {
+              const result = await signInTestParentAction();
+              if (result.ok) {
+                router.refresh();
+                return;
+              }
+              setError(ERRORS[result.error]);
+            });
+          }}
+        >
+          Enter as a test user
+        </button>
       </form>
     </main>
   );
@@ -90,12 +108,16 @@ function Home({ household }: { household: PortalHousehold }) {
       <header className={styles.top}>
         <div>
           <p className={styles.kicker}>Silverleaf</p>
-          <h1>Your children</h1>
+          <h1>{household.demo ? "Test family" : "Your children"}</h1>
         </div>
         <button type="button" className={styles.textButton} onClick={signOut} disabled={pending}>
           Sign out
         </button>
       </header>
+
+      {household.demo ? (
+        <p className={styles.note}>Sample figures for a test family. This is not a real pupil.</p>
+      ) : null}
 
       {household.children.length === 0 ? (
         <p className={styles.note}>This number is on file, and no active pupil is linked to it yet.</p>

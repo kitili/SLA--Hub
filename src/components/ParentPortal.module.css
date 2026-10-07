@@ -92,6 +92,12 @@
   opacity: 0.6;
 }
 
+.secondary {
+  background: transparent;
+  color: var(--electric-blue);
+  border: 1px solid var(--card-border);
+}
+
 .error {
   color: #8d1d1d;
   background: #fde8e8;

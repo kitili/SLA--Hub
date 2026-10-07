@@ -3,6 +3,7 @@
 import { cookies, headers } from "next/headers";
 import { takeToken } from "@/lib/security/rate-limit";
 import {
+  encodeDemoParentSession,
   encodeParentSession,
   parentCookieName,
   parentCookieOptions,
@@ -39,6 +40,17 @@ export async function signInParentAction(phone: string): Promise<ParentSignInRes
 
   const jar = await cookies();
   jar.set(parentCookieName(), await encodeParentSession(parentIds), parentCookieOptions());
+  return { ok: true };
+}
+
+export async function signInTestParentAction(): Promise<ParentSignInResult> {
+  const headerList = await headers();
+  const ip = headerList.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  if (!takeToken(`parent-test:${ip}`, 30, 15 * 60_000)) {
+    return { ok: false, error: "rate-limited" };
+  }
+  const jar = await cookies();
+  jar.set(parentCookieName(), await encodeDemoParentSession(), parentCookieOptions());
   return { ok: true };
 }
 

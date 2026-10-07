@@ -3,6 +3,7 @@ const DEV_FALLBACK_SECRET = "dev-secret-change-me-in-production";
 
 export type ParentSession = {
   parentIds: string[];
+  demo?: boolean;
   iat: number;
   exp: number;
 };
@@ -44,8 +45,16 @@ async function signingKey() {
   );
 }
 
+export async function encodeDemoParentSession(now = Date.now()): Promise<string> {
+  return signPayload({ parentIds: [], demo: true, iat: now, exp: now + TTL_MS });
+}
+
 export async function encodeParentSession(parentIds: string[], now = Date.now()): Promise<string> {
   const payload: ParentSession = { parentIds, iat: now, exp: now + TTL_MS };
+  return signPayload(payload);
+}
+
+async function signPayload(payload: ParentSession): Promise<string> {
   const json = Buffer.from(JSON.stringify(payload)).toString("base64url");
   const sig = Buffer.from(
     await crypto.subtle.sign("HMAC", await signingKey(), new TextEncoder().encode(json)),
@@ -68,13 +77,15 @@ export async function decodeParentSession(raw: string | undefined | null): Promi
   if (!valid) return null;
   try {
     const parsed = JSON.parse(Buffer.from(json, "base64url").toString("utf8")) as Partial<ParentSession>;
+    if (typeof parsed.exp !== "number" || Date.now() > parsed.exp) return null;
+    const iat = typeof parsed.iat === "number" ? parsed.iat : 0;
+    if (parsed.demo === true) return { parentIds: [], demo: true, iat, exp: parsed.exp };
     const ids = parsed.parentIds;
     const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
     if (!Array.isArray(ids) || ids.length === 0 || ids.length > 5 || ids.some((id) => typeof id !== "string" || !uuid.test(id))) {
       return null;
     }
-    if (typeof parsed.exp !== "number" || Date.now() > parsed.exp) return null;
-    return { parentIds: ids, iat: typeof parsed.iat === "number" ? parsed.iat : 0, exp: parsed.exp };
+    return { parentIds: ids, iat, exp: parsed.exp };
   } catch {
     return null;
   }

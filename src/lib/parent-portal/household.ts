@@ -20,7 +20,27 @@ export type PortalChild = {
 
 export type PortalHousehold = {
   children: PortalChild[];
+  demo?: boolean;
 };
+
+/** Sample family for the public test entry. Not a pupil on the register. */
+export function testHousehold(): PortalHousehold {
+  return {
+    demo: true,
+    children: [
+      {
+        id: "test-child",
+        name: "Amina Example",
+        grade: "Grade 2",
+        school: "Arusha Modern Campus",
+        active: true,
+        boarding: "Boarded morning · Test bus · 7:10",
+        fee: "TZS 150,000 still on the fee record.",
+        uniforms: [{ ref: "SL-TEST", status: "Ready for collection" }],
+      },
+    ],
+  };
+}
 
 /** Last 9 digits of the Tanzanian number, after +255 and a leading 0 are removed. */
 export function phoneKey(raw: string): string | null {
