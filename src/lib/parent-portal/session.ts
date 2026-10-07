@@ -4,6 +4,8 @@ const DEV_FALLBACK_SECRET = "dev-secret-change-me-in-production";
 export type ParentSession = {
   parentIds: string[];
   demo?: boolean;
+  /** Staff test entry opened on a real register row. */
+  preview?: boolean;
   iat: number;
   exp: number;
 };
@@ -49,6 +51,10 @@ export async function encodeDemoParentSession(now = Date.now()): Promise<string>
   return signPayload({ parentIds: [], demo: true, iat: now, exp: now + TTL_MS });
 }
 
+export async function encodePreviewParentSession(parentIds: string[], now = Date.now()): Promise<string> {
+  return signPayload({ parentIds, preview: true, iat: now, exp: now + TTL_MS });
+}
+
 export async function encodeParentSession(parentIds: string[], now = Date.now()): Promise<string> {
   const payload: ParentSession = { parentIds, iat: now, exp: now + TTL_MS };
   return signPayload(payload);
@@ -85,7 +91,7 @@ export async function decodeParentSession(raw: string | undefined | null): Promi
     if (!Array.isArray(ids) || ids.length === 0 || ids.length > 5 || ids.some((id) => typeof id !== "string" || !uuid.test(id))) {
       return null;
     }
-    return { parentIds: ids, iat, exp: parsed.exp };
+    return { parentIds: ids, preview: parsed.preview === true, iat, exp: parsed.exp };
   } catch {
     return null;
   }

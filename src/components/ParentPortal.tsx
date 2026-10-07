@@ -115,34 +115,38 @@ function initials(name: string) {
   return (parts[0]?.[0] ?? "") + (parts[1]?.[0] ?? "");
 }
 
-function momentsFor(child: PortalChild): DayMoment[] {
-  if (child.moments?.length) return child.moments;
-  const boarded = /boarded/i.test(child.boarding);
-  const dropped = /dropped/i.test(child.boarding);
-  return [
-    {
-      label: "Morning",
-      detail: boarded || dropped ? "Bus recorded" : "Waiting for the bus",
-      state: boarded || dropped ? "done" : "now",
-    },
-    {
-      label: "School",
-      detail: child.grade,
-      state: boarded && !dropped ? "now" : dropped ? "done" : "later",
-    },
-    {
-      label: "Home",
-      detail: dropped ? "Dropped off" : "Afternoon still ahead",
-      state: dropped ? "now" : "later",
-    },
-  ];
-}
-
-function lineFor(child: PortalChild) {
-  if (child.line) return child.line;
-  if (/boarded/i.test(child.boarding)) return `${firstName(child.name)} is at school. ${child.boarding}`;
-  if (/dropped/i.test(child.boarding)) return `${firstName(child.name)} is on the way home. ${child.boarding}`;
-  return `${firstName(child.name)}'s day is quiet so far. ${child.boarding}`;
+function dayOf(child: PortalChild): { line: string; moments: DayMoment[] } {
+  if (child.line && child.moments?.length) return { line: child.line, moments: child.moments };
+  const name = firstName(child.name);
+  const scan = child.scan;
+  if (scan?.droppedOff) {
+    return {
+      line: `${name} was dropped off at ${scan.when} on ${scan.bus}.`,
+      moments: [
+        { label: "Morning", detail: "Bus recorded", state: "done" },
+        { label: "Class", detail: child.grade, state: "done" },
+        { label: "Home", detail: scan.when, state: "now" },
+      ],
+    };
+  }
+  if (scan?.morningBoarded) {
+    return {
+      line: `${name} boarded ${scan.bus} at ${scan.when}. No afternoon scan yet.`,
+      moments: [
+        { label: "Morning", detail: `${scan.bus} · ${scan.when}`, state: "now" },
+        { label: "Class", detail: child.grade, state: "later" },
+        { label: "Home", detail: "No afternoon scan", state: "later" },
+      ],
+    };
+  }
+  return {
+    line: `${name} has no bus scan today. Class and fees below are from the register.`,
+    moments: [
+      { label: "Morning", detail: "No scan today", state: "now" },
+      { label: "Class", detail: child.grade, state: "later" },
+      { label: "Home", detail: "No afternoon scan", state: "later" },
+    ],
+  };
 }
 
 function feeFace(fee: string) {
@@ -182,6 +186,9 @@ function Home({ household }: { household: PortalHousehold }) {
       </header>
 
       {household.demo ? <p className={styles.chip}>Test family · a sample day, not a real pupil</p> : null}
+      {household.preview ? (
+        <p className={styles.chip}>From the family register. The bus scan, class, and fee are this child’s records.</p>
+      ) : null}
 
       {household.children.length === 0 ? (
         <p className={styles.note}>This number is on file, and no pupil is linked to it yet.</p>
@@ -215,10 +222,10 @@ function Home({ household }: { household: PortalHousehold }) {
           {child ? (
             <section className={styles.stage} key={child.id} aria-live="polite">
               <article className={styles.today}>
-                <p className={styles.nowLabel}>Right now</p>
-                <h2>{lineFor(child)}</h2>
+                <p className={styles.nowLabel}>From the register</p>
+                <h2>{dayOf(child).line}</h2>
                 <ol className={styles.track}>
-                  {momentsFor(child).map((moment) => (
+                  {dayOf(child).moments.map((moment) => (
                     <li key={moment.label} data-state={moment.state}>
                       <span className={styles.dot} />
                       <span>

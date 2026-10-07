@@ -5,11 +5,12 @@ import { takeToken } from "@/lib/security/rate-limit";
 import {
   encodeDemoParentSession,
   encodeParentSession,
+  encodePreviewParentSession,
   parentCookieName,
   parentCookieOptions,
 } from "@/lib/parent-portal/session";
 import { familyRegisterError } from "@/lib/parent-portal/db";
-import { findParentIds, phoneKey } from "@/lib/parent-portal/household";
+import { findParentIds, findPreviewParentId, phoneKey } from "@/lib/parent-portal/household";
 
 export type ParentSignInResult =
   | { ok: true }
@@ -50,6 +51,15 @@ export async function signInTestParentAction(): Promise<ParentSignInResult> {
     return { ok: false, error: "rate-limited" };
   }
   const jar = await cookies();
+  try {
+    const parentId = await findPreviewParentId();
+    if (parentId) {
+      jar.set(parentCookieName(), await encodePreviewParentSession([parentId]), parentCookieOptions());
+      return { ok: true };
+    }
+  } catch (error) {
+    console.error("[parents] preview lookup failed:", familyRegisterError(error));
+  }
   jar.set(parentCookieName(), await encodeDemoParentSession(), parentCookieOptions());
   return { ok: true };
 }

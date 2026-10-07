@@ -22,14 +22,24 @@ export type PortalChild = {
   boarding: string;
   fee: string;
   uniforms: PortalUniform[];
+  /** Today's bus scan, when the register has one. */
+  scan?: PortalScan | null;
   /** A sentence about this moment. Real records leave this empty and the page writes one. */
   line?: string;
   moments?: DayMoment[];
 };
 
+export type PortalScan = {
+  bus: string;
+  when: string;
+  morningBoarded: boolean;
+  droppedOff: boolean;
+};
+
 export type PortalHousehold = {
   children: PortalChild[];
   demo?: boolean;
+  preview?: boolean;
 };
 
 /** Sample family for the public test entry. Not a pupil on the register. */
@@ -99,7 +109,7 @@ type BoardRow = {
   scanned_at: string;
 };
 type FeeRow = { student_id: string; balance: string; currency: string };
-type UniformRow = { ref: string; status: string; student_name: string };
+type UniformRow = { ref: string; status: string; student_id: string };
 
 function money(balance: string, currency: string) {
   const amount = Number(balance);
@@ -121,6 +131,25 @@ function boardingLine(rows: BoardRow[]) {
   const verb = latest.event_type === "in" ? "Boarded" : "Dropped off";
   const bus = latest.bus ? ` · ${latest.bus}` : "";
   return `${verb} ${way}${bus} · ${when}`;
+}
+
+/** One parent whose child boarded this morning, so the test entry can show the register. */
+export async function findPreviewParentId(): Promise<string | null> {
+  const sql = getFamilySql();
+  if (!sql) return null;
+  const rows = await sql<{ id: string }[]>`
+    select sp.parent_id::text as id
+    from public.boarding_events e
+    join public.trips t on t.id = e.trip_id
+    join public.student_parents sp on sp.student_id = e.student_id
+    join public.students s on s.id = e.student_id and s.active
+    where t.trip_date = (now() at time zone 'Africa/Nairobi')::date
+      and t.direction = 'am'
+      and e.event_type = 'in'
+    order by e.scanned_at desc
+    limit 1
+  `;
+  return rows[0]?.id ?? null;
 }
 
 export async function findParentIds(key: string): Promise<string[] | null> {
@@ -199,23 +228,54 @@ export async function loadHousehold(parentIds: string[]): Promise<PortalHousehol
         boarding: boardingLine(boarding.filter((row) => row.student_id === child.id)),
         fee: fee ? money(fee.balance, fee.currency) : "No fee record yet.",
         uniforms: uniforms
-          .filter((row) => row.student_name.trim().toLowerCase() === name.toLowerCase())
+          .filter((row) => row.student_id === child.id)
           .slice(0, 3)
-          .map((row) => ({ ref: row.ref, status: row.status })),
+          .map((row) => ({ ref: row.ref, status: uniformStatus(row.status) })),
+        scan: scanFor(boarding.filter((row) => row.student_id === child.id)),
       };
     }),
   };
 }
 
+function uniformStatus(status: string) {
+  const known: Record<string, string> = {
+    ORDERED: "Ordered",
+    PAID: "Paid",
+    PARTIAL: "Partly paid",
+    READY: "Ready for collection",
+  };
+  return known[status] ?? status;
+}
+
+function scanFor(rows: BoardRow[]): PortalScan | null {
+  if (rows.length === 0) return null;
+  const latest = rows[0];
+  const when = new Intl.DateTimeFormat("en-TZ", {
+    timeZone: "Africa/Nairobi",
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(new Date(latest.scanned_at));
+  return {
+    bus: latest.bus?.trim() || "Bus",
+    when,
+    morningBoarded: rows.some((row) => row.direction === "am" && row.event_type === "in"),
+    droppedOff: rows.some((row) => row.event_type === "out" || row.direction === "pm"),
+  };
+}
+
 async function loadUniforms(children: ChildRow[]): Promise<UniformRow[]> {
   const sql = getFamilySql();
-  if (!sql) return [];
-  const names = children.map((child) => `${child.first_name} ${child.last_name}`.trim());
+  if (!sql || children.length === 0) return [];
+  const ids = children.map((child) => child.id);
   return sql<UniformRow[]>`
-    select ref, status, "studentName" as student_name
-    from uniforms."ParentOrder"
-    where lower("studentName") in ${sql(names.map((name) => name.toLowerCase()))}
-    order by "orderedAt" desc
+    select o.ref, o.status, s.id::text as student_id
+    from uniforms."ParentOrder" o
+    join public.students s on s.id::text in ${sql(ids)}
+    where length(s.first_name) > 2
+      and length(s.last_name) > 2
+      and lower(o."studentName") like '%' || lower(s.first_name) || '%'
+      and lower(o."studentName") like '%' || lower(s.last_name) || '%'
+    order by o."orderedAt" desc
     limit 12
   `;
 }

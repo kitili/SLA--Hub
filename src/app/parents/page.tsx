@@ -13,10 +13,12 @@ export const dynamic = "force-dynamic";
 export default async function ParentsPage() {
   const jar = await cookies();
   const session = await decodeParentSession(jar.get(parentCookieName())?.value);
+  const loaded =
+    session && !session.demo ? await loadHousehold(session.parentIds).catch(() => null) : null;
   const household = session?.demo
     ? testHousehold()
-    : session
-      ? await loadHousehold(session.parentIds).catch(() => null)
+    : loaded
+      ? { ...loaded, preview: session?.preview === true }
       : null;
   return <ParentPortal household={session && household ? household : null} />;
 }
