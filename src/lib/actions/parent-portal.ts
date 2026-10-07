@@ -7,6 +7,7 @@ import {
   parentCookieName,
   parentCookieOptions,
 } from "@/lib/parent-portal/session";
+import { familyRegisterError } from "@/lib/parent-portal/db";
 import { findParentIds, phoneKey } from "@/lib/parent-portal/household";
 
 export type ParentSignInResult =
@@ -29,7 +30,8 @@ export async function signInParentAction(phone: string): Promise<ParentSignInRes
   let parentIds: string[] | null;
   try {
     parentIds = await findParentIds(key);
-  } catch {
+  } catch (error) {
+    console.error("[parents] register lookup failed:", familyRegisterError(error));
     return { ok: false, error: "unavailable" };
   }
   if (parentIds === null) return { ok: false, error: "unavailable" };

@@ -12,6 +12,7 @@ import { sql } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
 import { db } from "@/lib/db";
+import { familyRegisterError, getFamilySql } from "@/lib/parent-portal/db";
 
 export const dynamic = "force-dynamic";
 
@@ -25,5 +26,16 @@ export async function GET(): Promise<NextResponse> {
     // Intentionally swallowed: health route reports status but never fails.
   }
 
-  return NextResponse.json({ status: "ok", database });
+  let family = false;
+  try {
+    const register = getFamilySql();
+    if (register) {
+      await register`select 1 from public.parents limit 1`;
+      family = true;
+    }
+  } catch (error) {
+    console.error("[parents] family register unreachable:", familyRegisterError(error));
+  }
+
+  return NextResponse.json({ status: "ok", database, family });
 }

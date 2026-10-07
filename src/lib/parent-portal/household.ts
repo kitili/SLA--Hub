@@ -1,6 +1,6 @@
 import "server-only";
 
-import { getPostgresSql } from "@/lib/db/client";
+import { getFamilySql } from "@/lib/parent-portal/db";
 
 export type PortalUniform = {
   ref: string;
@@ -73,7 +73,7 @@ function boardingLine(rows: BoardRow[]) {
 }
 
 export async function findParentIds(key: string): Promise<string[] | null> {
-  const sql = getPostgresSql();
+  const sql = getFamilySql();
   if (!sql) return null;
   const rows = await sql<ParentRow[]>`
     select id::text as id
@@ -93,7 +93,7 @@ export async function findParentIds(key: string): Promise<string[] | null> {
 }
 
 export async function loadHousehold(parentIds: string[]): Promise<PortalHousehold | null> {
-  const sql = getPostgresSql();
+  const sql = getFamilySql();
   if (!sql || parentIds.length === 0) return null;
 
   const children = await sql<ChildRow[]>`
@@ -157,7 +157,7 @@ export async function loadHousehold(parentIds: string[]): Promise<PortalHousehol
 }
 
 async function loadUniforms(children: ChildRow[]): Promise<UniformRow[]> {
-  const sql = getPostgresSql();
+  const sql = getFamilySql();
   if (!sql) return [];
   const names = children.map((child) => `${child.first_name} ${child.last_name}`.trim());
   return sql<UniformRow[]>`
