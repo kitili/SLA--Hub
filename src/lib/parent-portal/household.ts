@@ -7,6 +7,12 @@ export type PortalUniform = {
   status: string;
 };
 
+export type DayMoment = {
+  label: string;
+  detail: string;
+  state: "done" | "now" | "later";
+};
+
 export type PortalChild = {
   id: string;
   name: string;
@@ -16,6 +22,9 @@ export type PortalChild = {
   boarding: string;
   fee: string;
   uniforms: PortalUniform[];
+  /** A sentence about this moment. Real records leave this empty and the page writes one. */
+  line?: string;
+  moments?: DayMoment[];
 };
 
 export type PortalHousehold = {
@@ -29,14 +38,36 @@ export function testHousehold(): PortalHousehold {
     demo: true,
     children: [
       {
-        id: "test-child",
+        id: "test-amina",
         name: "Amina Example",
         grade: "Grade 2",
         school: "Arusha Modern Campus",
         active: true,
-        boarding: "Boarded morning · Test bus · 7:10",
+        boarding: "Boarded the morning bus at 7:10. She is on campus.",
         fee: "TZS 150,000 still on the fee record.",
-        uniforms: [{ ref: "SL-TEST", status: "Ready for collection" }],
+        uniforms: [{ ref: "House shirt", status: "Ready at the uniform desk" }],
+        line: "Amina is in class. Literacy first, then break under the trees.",
+        moments: [
+          { label: "Morning", detail: "Test bus · 7:10", state: "done" },
+          { label: "School", detail: "In class now", state: "now" },
+          { label: "Home", detail: "Pickup · 3:40", state: "later" },
+        ],
+      },
+      {
+        id: "test-juma",
+        name: "Juma Example",
+        grade: "KG1",
+        school: "Arusha Modern Campus",
+        active: true,
+        boarding: "Still on the morning bus, a few minutes from the gate.",
+        fee: "Nothing outstanding on the fee record.",
+        uniforms: [{ ref: "Sports kit", status: "Being sewn" }],
+        line: "Juma is on the bus. The gate will see him shortly.",
+        moments: [
+          { label: "Morning", detail: "On the bus now", state: "now" },
+          { label: "School", detail: "KG1 classroom", state: "later" },
+          { label: "Home", detail: "Pickup · 12:30", state: "later" },
+        ],
       },
     ],
   };

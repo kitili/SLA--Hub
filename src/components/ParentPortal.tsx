@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import BrandLogo from "@/components/BrandLogo";
 import { signInParentAction, signInTestParentAction, signOutParentAction } from "@/lib/actions/parent-portal";
-import type { PortalHousehold } from "@/lib/parent-portal/household";
+import type { DayMoment, PortalChild, PortalHousehold } from "@/lib/parent-portal/household";
 import styles from "./ParentPortal.module.css";
 
 const ERRORS = {
@@ -90,10 +90,73 @@ function SignIn() {
   );
 }
 
+function nairobiNow(date = new Date()) {
+  const hour = Number(
+    new Intl.DateTimeFormat("en-GB", { timeZone: "Africa/Nairobi", hour: "numeric", hourCycle: "h23" }).format(date),
+  );
+  const greeting = hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening";
+  const clock = new Intl.DateTimeFormat("en-TZ", {
+    timeZone: "Africa/Nairobi",
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(date);
+  return { greeting, clock };
+}
+
+function firstName(name: string) {
+  return name.trim().split(/\s+/)[0] || name;
+}
+
+function initials(name: string) {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  return (parts[0]?.[0] ?? "") + (parts[1]?.[0] ?? "");
+}
+
+function momentsFor(child: PortalChild): DayMoment[] {
+  if (child.moments?.length) return child.moments;
+  const boarded = /boarded/i.test(child.boarding);
+  const dropped = /dropped/i.test(child.boarding);
+  return [
+    {
+      label: "Morning",
+      detail: boarded || dropped ? "Bus recorded" : "Waiting for the bus",
+      state: boarded || dropped ? "done" : "now",
+    },
+    {
+      label: "School",
+      detail: child.grade,
+      state: boarded && !dropped ? "now" : dropped ? "done" : "later",
+    },
+    {
+      label: "Home",
+      detail: dropped ? "Dropped off" : "Afternoon still ahead",
+      state: dropped ? "now" : "later",
+    },
+  ];
+}
+
+function lineFor(child: PortalChild) {
+  if (child.line) return child.line;
+  if (/boarded/i.test(child.boarding)) return `${firstName(child.name)} is at school. ${child.boarding}`;
+  if (/dropped/i.test(child.boarding)) return `${firstName(child.name)} is on the way home. ${child.boarding}`;
+  return `${firstName(child.name)}'s day is quiet so far. ${child.boarding}`;
+}
+
+function feeFace(fee: string) {
+  if (/nothing outstanding/i.test(fee)) return { title: "Clear", detail: "Nothing left on the fee record." };
+  const amount = fee.match(/[A-Z]{3}\s[\d,]+/);
+  if (amount) return { title: amount[0], detail: "Still on the fee record." };
+  return { title: "Not in yet", detail: fee };
+}
+
 function Home({ household }: { household: PortalHousehold }) {
   const router = useRouter();
   const [childId, setChildId] = useState(household.children[0]?.id ?? "");
   const [pending, startTransition] = useTransition();
+  const [now, setNow] = useState(() => nairobiNow());
   const child = household.children.find((item) => item.id === childId) ?? household.children[0];
 
   function signOut() {
@@ -105,78 +168,115 @@ function Home({ household }: { household: PortalHousehold }) {
 
   return (
     <main className={styles.home}>
-      <header className={styles.top}>
-        <div>
-          <p className={styles.kicker}>Silverleaf</p>
-          <h1>{household.demo ? "Test family" : "Your children"}</h1>
+      <Clock onTick={setNow} />
+      <header className={styles.sky}>
+        <div className={styles.sun} aria-hidden="true" />
+        <div className={styles.skyCopy}>
+          <p className={styles.kicker}>{child ? `${now.greeting}, ${firstName(child.name)}` : now.greeting}</p>
+          <h1>{child ? child.school : "Your children"}</h1>
+          <p className={styles.when}>{now.clock}</p>
         </div>
         <button type="button" className={styles.textButton} onClick={signOut} disabled={pending}>
           Sign out
         </button>
       </header>
 
-      {household.demo ? (
-        <p className={styles.note}>Sample figures for a test family. This is not a real pupil.</p>
-      ) : null}
+      {household.demo ? <p className={styles.chip}>Test family · a sample day, not a real pupil</p> : null}
 
       {household.children.length === 0 ? (
-        <p className={styles.note}>This number is on file, and no active pupil is linked to it yet.</p>
+        <p className={styles.note}>This number is on file, and no pupil is linked to it yet.</p>
       ) : (
         <>
-          <div className={styles.children}>
+          <div className={styles.family} role="tablist" aria-label="Children">
             {household.children.map((item) => (
               <button
                 key={item.id}
                 type="button"
+                role="tab"
                 className={styles.child}
                 data-active={item.id === child?.id}
-                aria-pressed={item.id === child?.id}
+                aria-selected={item.id === child?.id}
                 onClick={() => setChildId(item.id)}
               >
-                <strong>{item.name}</strong>
+                <span className={styles.face} aria-hidden="true">
+                  {initials(item.name).toUpperCase()}
+                </span>
                 <span>
-                  {item.grade} · {item.school}
-                  {item.active ? "" : " · not current"}
+                  <strong>{item.name}</strong>
+                  <span>
+                    {item.grade}
+                    {item.active ? "" : " · not current"}
+                  </span>
                 </span>
               </button>
             ))}
           </div>
+
           {child ? (
-            <section className={styles.facts} aria-live="polite">
-              <article>
-                <h2>Bus</h2>
-                <p>{child.boarding}</p>
+            <section className={styles.stage} key={child.id} aria-live="polite">
+              <article className={styles.today}>
+                <p className={styles.nowLabel}>Right now</p>
+                <h2>{lineFor(child)}</h2>
+                <ol className={styles.track}>
+                  {momentsFor(child).map((moment) => (
+                    <li key={moment.label} data-state={moment.state}>
+                      <span className={styles.dot} />
+                      <span>
+                        <strong>{moment.label}</strong>
+                        <span>{moment.detail}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ol>
               </article>
-              <article>
-                <h2>Fees</h2>
-                <p>{child.fee}</p>
-              </article>
-              <article>
-                <h2>Uniforms</h2>
-                {child.uniforms.length === 0 ? (
-                  <p>No uniform order is on file for this child.</p>
-                ) : (
-                  <ul>
-                    {child.uniforms.map((order) => (
-                      <li key={order.ref}>
-                        {order.ref} · {order.status}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </article>
-              <article>
-                <h2>School</h2>
-                <p>
-                  Term dates are on the school calendar. A serious incident is sent by text. This page does not
-                  show other children.
-                </p>
-                <a href="https://sla-marketing-web.vercel.app/calendar">Open the calendar</a>
-              </article>
+
+              <div className={styles.stack}>
+                <article className={styles.bus}>
+                  <h2>Bus</h2>
+                  <div className={styles.route} aria-hidden="true">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                  <p>{child.boarding}</p>
+                </article>
+                <article className={styles.fee} data-clear={/nothing outstanding/i.test(child.fee)}>
+                  <h2>Fees</h2>
+                  <p className={styles.amount}>{feeFace(child.fee).title}</p>
+                  <p>{feeFace(child.fee).detail}</p>
+                </article>
+                <article>
+                  <h2>Uniforms</h2>
+                  {child.uniforms.length === 0 ? (
+                    <p>No uniform order is on file for this child.</p>
+                  ) : (
+                    <ul className={styles.orders}>
+                      {child.uniforms.map((order) => (
+                        <li key={order.ref}>
+                          <strong>{order.ref}</strong>
+                          <span>{order.status}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </article>
+                <a className={styles.calendar} href="https://sla-marketing-web.vercel.app/calendar">
+                  <span>School calendar</span>
+                  <strong>Term dates and what is coming</strong>
+                </a>
+              </div>
             </section>
           ) : null}
         </>
       )}
     </main>
   );
+}
+
+function Clock({ onTick }: { onTick: (value: { greeting: string; clock: string }) => void }) {
+  useEffect(() => {
+    const id = window.setInterval(() => onTick(nairobiNow()), 30_000);
+    return () => window.clearInterval(id);
+  }, [onTick]);
+  return null;
 }
