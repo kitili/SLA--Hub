@@ -15,6 +15,8 @@ function isPublicPath(pathname: string) {
   return (
     pathname === "/login" ||
     pathname.startsWith("/login/") ||
+    pathname === "/parents" ||
+    pathname.startsWith("/parents/") ||
     pathname.startsWith("/favicon") ||
     pathname.startsWith("/assets/") ||
     pathname.startsWith("/policy-briefings/") ||
@@ -44,7 +46,8 @@ function isHubPath(pathname: string) {
     pathname.startsWith("/systems") ||
     pathname.startsWith("/activity") ||
     pathname.startsWith("/departments") ||
-    pathname.startsWith("/login")
+    pathname.startsWith("/login") ||
+    pathname.startsWith("/parents")
   );
 }
 

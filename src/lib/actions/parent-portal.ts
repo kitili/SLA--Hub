@@ -1,0 +1,46 @@
+"use server";
+
+import { cookies, headers } from "next/headers";
+import { takeToken } from "@/lib/security/rate-limit";
+import {
+  encodeParentSession,
+  parentCookieName,
+  parentCookieOptions,
+} from "@/lib/parent-portal/session";
+import { findParentIds, phoneKey } from "@/lib/parent-portal/household";
+
+export type ParentSignInResult =
+  | { ok: true }
+  | { ok: false; error: "invalid" | "not-found" | "rate-limited" | "unavailable" };
+
+export async function signInParentAction(phone: string): Promise<ParentSignInResult> {
+  const headerList = await headers();
+  const ip = headerList.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  if (!takeToken(`parent-signin:${ip}`, 8, 15 * 60_000)) {
+    return { ok: false, error: "rate-limited" };
+  }
+
+  const key = phoneKey(phone);
+  if (!key) return { ok: false, error: "invalid" };
+  if (!takeToken(`parent-phone:${key}`, 5, 15 * 60_000)) {
+    return { ok: false, error: "rate-limited" };
+  }
+
+  let parentIds: string[] | null;
+  try {
+    parentIds = await findParentIds(key);
+  } catch {
+    return { ok: false, error: "unavailable" };
+  }
+  if (parentIds === null) return { ok: false, error: "unavailable" };
+  if (parentIds.length === 0) return { ok: false, error: "not-found" };
+
+  const jar = await cookies();
+  jar.set(parentCookieName(), await encodeParentSession(parentIds), parentCookieOptions());
+  return { ok: true };
+}
+
+export async function signOutParentAction() {
+  const jar = await cookies();
+  jar.set(parentCookieName(), "", { ...parentCookieOptions(), maxAge: 0 });
+}
