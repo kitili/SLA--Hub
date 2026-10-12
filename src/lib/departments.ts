@@ -113,11 +113,11 @@ export const departments: Department[] = [
   },
   {
     id: "lesson-plans",
-    name: "Lesson Plans",
+    name: "Academics",
     kicker: "Curriculum",
     summary: "Search lesson plans, schemes of work, and the AI studio.",
     phase: 1,
-    phaseNote: "Always opens the live Lesson Plans dashboard.",
+    phaseNote: "Always opens the live Academics dashboard.",
     href: "https://silverleaf-lesson-plans-main.vercel.app",
     liveUrl: "https://silverleaf-lesson-plans-main.vercel.app",
     localUrl: "http://localhost:3300",
@@ -335,7 +335,7 @@ export const hubPhases = [
   {
     id: 3,
     title: "Aligned desks",
-    body: "Ops, Uniforms, Marketing, Data & Tech, Talent Academy, Visitors, 1–5’s, Lesson Plans, and MEL Dashboard live in desks/ and pull from origin every day.",
+    body: "Ops, Uniforms, Marketing, Data & Tech, Talent Academy, Visitors, 1–5’s, Academics, and MEL Dashboard live in desks/ and pull from origin every day.",
     current: true,
   },
   {

@@ -19,7 +19,7 @@ const DESKS = [
   { id: "data-tech", name: "Data & Tech", location: /^https:\/\/dataandtech\.silverleaf\.co\.tz/ },
   { id: "visitors", name: "Visitors", location: /^https:\/\/v-isitors\.vercel\.app/ },
   { id: "workboard-tasks", name: "1–5’s", location: /^https:\/\/silverleaf-tasks\.vercel\.app/ },
-  { id: "lesson-plans", name: "Lesson Plans", location: /^https:\/\/silverleaf-lesson-plans-main\.vercel\.app/ },
+  { id: "lesson-plans", name: "Academics", location: /^https:\/\/silverleaf-lesson-plans-main\.vercel\.app/ },
   {
     id: "mel-dashboard",
     name: "MEL Dashboard",

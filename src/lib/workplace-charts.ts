@@ -76,70 +76,79 @@ export async function getWorkplaceCharts(dept?: string | null): Promise<Workplac
 
   const desk = departments.some((department) => department.id === dept) ? dept : null;
   const deskFilter = desk ? `and department_id = '${desk}'` : "";
+  const since = `(now() at time zone '${ZONE}')::date - ${DAYS}`;
+  const want = (id: string) => !desk || desk === id;
 
-  const [hubDays, tripDays, visitDays, fiveDays, startDays, hourRows, sparkRows] = await Promise.all([
+  const workSeries: Array<{ id: string; query: string }> = [
+    {
+      id: "ops",
+      query: `select trip_date::date as d, count(*)::int as n from public.trips where trip_date >= ${since} group by 1`,
+    },
+    {
+      id: "visitors",
+      query: `select date as d, count(*)::int as n from visitors.visits where date >= to_char(${since}, 'YYYY-MM-DD') group by 1`,
+    },
+    {
+      id: "data-tech",
+      query: `select work_date as d, count(*)::int as n from data_tech.one_to_fives where work_date >= ${since} group by 1`,
+    },
+    {
+      id: "workboard-tasks",
+      query: `select "planDate"::date as d, count(*)::int as n from workboard."DailyPlan" where "planDate" >= ${since} group by 1`,
+    },
+    {
+      id: "onboarding",
+      query: `select (started_at at time zone '${ZONE}')::date as d, count(*)::int as n from onboarding.staff where started_at >= now() - interval '${DAYS} days' group by 1`,
+    },
+    {
+      id: "marketing",
+      query: `select (created_at at time zone '${ZONE}')::date as d, count(*)::int as n from marketing.marketing_leads where created_at >= now() - interval '${DAYS} days' group by 1`,
+    },
+    {
+      id: "talent-academy",
+      query: `select (created_at at time zone '${ZONE}')::date as d, count(*)::int as n from talent.teachers where created_at >= now() - interval '${DAYS} days' group by 1`,
+    },
+    {
+      id: "uniforms",
+      query: `select ("orderedAt" at time zone '${ZONE}')::date as d, count(*)::int as n from uniforms."ParentOrder" where "orderedAt" >= now() - interval '${DAYS} days' group by 1`,
+    },
+    {
+      id: "lesson-plans",
+      query: `select (created_at at time zone '${ZONE}')::date as d, count(*)::int as n from lesson_plans.lesson_plans where created_at >= now() - interval '${DAYS} days' group by 1`,
+    },
+  ];
+
+  const [hubDays, hourRows, sparkRows, ...deskDays] = await Promise.all([
     rows<{ d: unknown; n: number }>(
       sql,
       `select (created_at at time zone '${ZONE}')::date as d, count(*)::int as n
-       from access_events
+       from onboarding.access_events
        where created_at >= now() - interval '${DAYS} days' ${deskFilter}
        group by 1`,
     ),
-    dept && dept !== "ops"
-      ? Promise.resolve([])
-      : rows<{ d: unknown; n: number }>(
-          sql,
-          `select trip_date::date as d, count(*)::int as n
-           from public.trips
-           where trip_date >= (now() at time zone '${ZONE}')::date - ${DAYS}
-           group by 1`,
-        ),
-    dept && dept !== "visitors"
-      ? Promise.resolve([])
-      : rows<{ d: unknown; n: number }>(
-          sql,
-          `select date as d, count(*)::int as n
-           from visitors.visits
-           where date >= to_char((now() at time zone '${ZONE}')::date - ${DAYS}, 'YYYY-MM-DD')
-           group by 1`,
-        ),
-    dept && dept !== "data-tech" && dept !== "workboard-tasks"
-      ? Promise.resolve([])
-      : rows<{ d: unknown; n: number }>(
-          sql,
-          `select work_date as d, count(*)::int as n
-           from data_tech.one_to_fives
-           where work_date >= (now() at time zone '${ZONE}')::date - ${DAYS}
-           group by 1`,
-        ),
-    dept && dept !== "onboarding"
-      ? Promise.resolve([])
-      : rows<{ d: unknown; n: number }>(
-          sql,
-          `select (started_at at time zone '${ZONE}')::date as d, count(*)::int as n
-           from onboarding.staff
-           where started_at >= now() - interval '${DAYS} days'
-           group by 1`,
-        ),
     rows<{ h: number; n: number }>(
       sql,
       `select extract(hour from created_at at time zone '${ZONE}')::int as h, count(*)::int as n
-       from access_events
+       from onboarding.access_events
        where created_at >= now() - interval '${DAYS} days' ${deskFilter}
        group by 1`,
     ),
     rows<{ department_id: string | null; d: unknown; n: number }>(
       sql,
       `select department_id, (created_at at time zone '${ZONE}')::date as d, count(*)::int as n
-       from access_events
+       from onboarding.access_events
        where created_at >= now() - interval '${DAYS} days'
          and department_id is not null
        group by 1, 2`,
     ),
+    ...workSeries.map((series) =>
+      want(series.id) ? rows<{ d: unknown; n: number }>(sql, series.query) : Promise.resolve([]),
+    ),
   ]);
 
   const hub = asCounts(hubDays);
-  const work = asCounts([...tripDays, ...visitDays, ...fiveDays, ...startDays]);
+  const work = asCounts(deskDays.flat());
+  const nativeByDesk = new Map(workSeries.map((series, index) => [series.id, asCounts(deskDays[index] ?? [])]));
   const days = lastDays();
   const pulse = days.map((day) => ({
     day,
@@ -157,8 +166,9 @@ export async function getWorkplaceCharts(dept?: string | null): Promise<Workplac
 
   const sparks: Record<string, number[]> = {};
   for (const department of departments) {
-    const byDay = asCounts(sparkRows.filter((row) => row.department_id === department.id));
-    sparks[department.id] = days.map((day) => byDay.get(day) ?? 0);
+    const opened = asCounts(sparkRows.filter((row) => row.department_id === department.id));
+    const native = nativeByDesk.get(department.id);
+    sparks[department.id] = days.map((day) => (native?.get(day) ?? 0) + (opened.get(day) ?? 0));
   }
 
   return { pulse, hours, sparks };

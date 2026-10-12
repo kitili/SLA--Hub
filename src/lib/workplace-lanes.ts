@@ -23,7 +23,7 @@ export const APP_LABEL: Record<string, string> = {
   marketing: "Marketing",
   talent: "Talent Academy",
   visitors: "Visitors",
-  lesson_plans: "Lesson Plans",
+  lesson_plans: "Academics",
   mel: "MEL",
 };
 

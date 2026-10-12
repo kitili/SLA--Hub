@@ -1,0 +1,413 @@
+{
+  "sections": [
+    {
+      "id": "welcome",
+      "number": 1,
+      "title": "Welcome & About Us",
+      "icon": "\ud83d\udc4b",
+      "description": "Get to know Silverleaf Academy \u2014 our people, purpose, and structure.",
+      "items": [
+        {
+          "id": "1-2",
+          "title": "CEO introduction video",
+          "files": [
+            "00 \u2014 Start Here/WELCOME VIDEO.mp4"
+          ],
+          "type": "video"
+        },
+        {
+          "id": "1-3",
+          "title": "Company history and founding story",
+          "note": "Watch the same welcome video to hear how Silverleaf began and why we exist.",
+          "files": [
+            "00 \u2014 Start Here/WELCOME VIDEO.mp4"
+          ],
+          "type": "video"
+        },
+        {
+          "id": "1-4",
+          "title": "Central Team",
+          "note": "Meet the central leadership team. Open the directory, then pick a person to watch.",
+          "files": [
+            "01 \u2014 About Us/Central Team .pdf",
+            "01 \u2014 About Us/Central Team/Aloyce Shirima.MP4",
+            "01 \u2014 About Us/Central Team/Grace Kambona.MP4",
+            "01 \u2014 About Us/Central Team/Julius Kimani.MP4",
+            "01 \u2014 About Us/Central Team/Lilian Kimaro.mp4",
+            "01 \u2014 About Us/Central Team/Ludwigy Bwana.MP4",
+            "01 \u2014 About Us/Central Team/Neema Emmanuel.MP4",
+            "01 \u2014 About Us/Central Team/Paul Victor.MP4"
+          ]
+        },
+        {
+          "id": "1-5",
+          "title": "Organizational chain of command chart",
+          "files": [
+            "01 \u2014 About Us/Organization Chart.pdf"
+          ]
+        },
+        {
+          "id": "1-6",
+          "title": "Silverleaf vision, mission & values",
+          "files": [
+            "01 \u2014 About Us/Silverleaf_Vision_Mission_Values.pdf"
+          ]
+        },
+        {
+          "id": "1-7",
+          "title": "Leadership contact details",
+          "files": [
+            "05\u2014 Support & Contacts/Leaders Contact List.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "policies",
+      "number": 2,
+      "title": "Policies & Compliance",
+      "icon": "\ud83d\udccb",
+      "description": "Essential policies every staff member must read and follow.",
+      "items": [
+        {
+          "id": "2-1",
+          "title": "Staff handbook",
+          "note": "Watch the briefing video first, then open the full handbook.",
+          "files": [
+            "02 \u2014 Policies & Compliance/Silverleaf Employee Handbook.pdf",
+            "2025 Silverleaf Employee Handbook current.docx"
+          ]
+        },
+        {
+          "id": "2-2",
+          "title": "HR policy manual",
+          "note": "Watch the briefing video, then open the full HR policy manual.",
+          "files": [
+            "02 \u2014 Policies & Compliance/Silverleaf - HR Policy - V1.0 - 15.06.2026.docx.pdf"
+          ]
+        },
+        {
+          "id": "2-3",
+          "title": "Uniform policy",
+          "note": "Watch the briefing video, then open the Uniform Policy.",
+          "files": [
+            "02 \u2014 Policies & Compliance/2026 - Unform policy .pdf"
+          ]
+        },
+        {
+          "id": "2-4",
+          "title": "No cash policy",
+          "note": "Watch the briefing video, then open the No Cash Policy.",
+          "files": [
+            "02 \u2014 Policies & Compliance/NO CASH POLICY.docx.pdf"
+          ]
+        },
+        {
+          "id": "2-5",
+          "title": "Child protection policy",
+          "note": "Watch the briefing video, then read the Child Protection Policy carefully.",
+          "files": [
+            "02 \u2014 Policies & Compliance/Child Protection Staff Code of Conduct at Silverleaf Academy .docx.pdf"
+          ]
+        },
+        {
+          "id": "2-6",
+          "title": "ICT use policy (Tech Policy)",
+          "note": "Watch the briefing video, then open the Tech Policy.",
+          "files": [
+            "02 \u2014 Policies & Compliance/SILVERLEAF ACADEMY TECH POLICY_ 2025 (1).pdf"
+          ]
+        },
+        {
+          "id": "2-7",
+          "title": "Data privacy policy",
+          "note": "Watch the briefing video, then open the Data Protection policy.",
+          "files": [
+            "02 \u2014 Policies & Compliance/Data Protection and Confidentiality Policy.pdf"
+          ]
+        },
+        {
+          "id": "2-8",
+          "title": "Child Protection \u2014 Staff Code of Conduct",
+          "note": "Watch the briefing video, then open the Staff Code of Conduct.",
+          "files": [
+            "02 \u2014 Policies & Compliance/ Staff Code of Conduct at Silverleaf Academy .docx",
+            "02 \u2014 Policies & Compliance/Child Protection Staff Code of Conduct at Silverleaf Academy .docx.pdf"
+          ]
+        },
+        {
+          "id": "2-18",
+          "title": "Confidentiality / non-disclosure agreement",
+          "note": "Watch the briefing video, open the NDA, then complete the section declaration.",
+          "files": [
+            "02 \u2014 Policies & Compliance/Non-Disclosure and confidentiality.docx"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "digital-tools",
+      "number": 3,
+      "title": "Digital Tools",
+      "icon": "\ud83d\udcbb",
+      "description": "Set up your accounts and learn the tools you will use every day.",
+      "items": [
+        {
+          "id": "4-1",
+          "title": "Google account setup guide",
+          "files": [
+            "04 \u2014 Digital Tools/files/1_Google_Account_Setup_Guide.docx"
+          ]
+        },
+        {
+          "id": "4-3",
+          "title": "School email setup guide",
+          "files": [
+            "04 \u2014 Digital Tools/files/2_School_Email_Setup_Guide.docx"
+          ]
+        },
+        {
+          "id": "4-4",
+          "title": "Your first week checklist",
+          "files": [
+            "00 \u2014 Start Here/Onboarding checklist/Silverleaf_First_Week_Checklist.docx"
+          ]
+        },
+        {
+          "id": "4-5",
+          "title": "Google Classroom setup guide",
+          "files": [
+            "04 \u2014 Digital Tools/files/5_Google_Classroom_Setup_Guide.docx"
+          ]
+        },
+        {
+          "id": "4-6",
+          "title": "Claude orientation for management",
+          "files": [
+            "04 \u2014 Digital Tools/files/3_Claude_Orientation_for_Management.docx"
+          ]
+        },
+        {
+          "id": "4-7",
+          "title": "Slack setup and migration guidance",
+          "files": [
+            "04 \u2014 Digital Tools/files/4_Slack_Setup_and_Migration_Guide.docx"
+          ]
+        },
+        {
+          "id": "4-8",
+          "title": "Google Workspace tutorial",
+          "files": [
+            "04 \u2014 Digital Tools/files/6_Google_Workspace_Tutorial.docx"
+          ]
+        },
+        {
+          "id": "4-9",
+          "title": "Google Calendar & shared calendars guide",
+          "files": [
+            "04 \u2014 Digital Tools/SLA_Google_Calendar_Guide.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branding",
+      "number": 4,
+      "title": "Branding & Communication Guidelines",
+      "icon": "\ud83c\udfa8",
+      "description": "Official brand assets, templates, and communication standards.",
+      "items": [
+        {
+          "id": "3-1",
+          "title": "Brand guidelines",
+          "files": [
+            "03 \u2014 Marketing &branding/Copy of Silverleaf Academy Brand Guidelines - March 2023.pdf"
+          ]
+        },
+        {
+          "id": "3-2",
+          "title": "Logo files",
+          "files": [
+            "03 \u2014 Marketing &branding/Logo Package-20260609T183818Z-3-001/Logo Package/Logomark/Best for Digital/SVG/Copy of Silverleaf Logomark - Electric Blue.svg"
+          ],
+          "note": "Full logo package available in branding folder"
+        },
+        {
+          "id": "3-4",
+          "title": "Letterhead templates",
+          "files": [
+            "03 \u2014 Marketing &branding/Copy of Letterhead Template 2023.docx"
+          ]
+        },
+        {
+          "id": "3-5",
+          "title": "Presentation templates",
+          "files": [
+            "03 \u2014 Marketing &branding/PPT design 3.pptx",
+            "03 \u2014 Marketing &branding/Copy of Tech & Data Presentation.pptx"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faqs",
+      "number": 5,
+      "title": "Support & Contacts",
+      "icon": "\ud83d\udcde",
+      "description": "Who to contact and where to find help.",
+      "items": [
+        {
+          "id": "8-1",
+          "title": "Email signatures",
+          "files": [
+            "05\u2014 Support & Contacts/Mourine.pdf"
+          ]
+        },
+        {
+          "id": "8-2",
+          "title": "Staff contact numbers \u2014 Sheet",
+          "files": [
+            "05\u2014 Support & Contacts/Leaders Contact List.pdf"
+          ]
+        },
+        {
+          "id": "8-3",
+          "title": "FAQs for new staff",
+          "files": [
+            "02 \u2014 Policies & Compliance/FAQs for New Staff (1).pdf"
+          ]
+        },
+        {
+          "id": "8-5",
+          "title": "HR support contacts & who to ask",
+          "files": [
+            "05\u2014 Support & Contacts/Leaders Contact List.pdf"
+          ]
+        },
+        {
+          "id": "8-6",
+          "title": "How to use this hub",
+          "files": [
+            "00 \u2014 Start Here/How to use this hub/Silverleaf_How_To_Use_This_Hub.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "marketing",
+      "number": 6,
+      "title": "Marketing & Social Media",
+      "icon": "\ud83d\udcf1",
+      "description": "How we represent Silverleaf online and in the community.",
+      "items": [
+        {
+          "id": "5-1",
+          "title": "Links to official media pages",
+          "files": [
+            "03 \u2014 Marketing &branding/Social Media Links.docx"
+          ]
+        },
+        {
+          "id": "5-2",
+          "title": "Social media policy",
+          "files": [
+            "02 \u2014 Policies & Compliance/Silverleaf Academy Social Media Policy.pdf"
+          ]
+        },
+        {
+          "id": "5-3",
+          "title": "Content creation guidelines",
+          "files": [
+            "03 \u2014 Marketing &branding/Silverleaf_Academy_Marketing_Event_SOP.docx.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "health-safety",
+      "number": 7,
+      "title": "Health, Safety & Emergency",
+      "icon": "\ud83c\udfe5",
+      "description": "Health, safety, and emergency procedures for all staff.",
+      "items": []
+    },
+    {
+      "id": "safeguarding",
+      "number": 8,
+      "title": "Safeguarding & Child Protection",
+      "icon": "\ud83d\udee1\ufe0f",
+      "description": "Critical training and procedures for keeping children safe.",
+      "items": [
+        {
+          "id": "10-7",
+          "title": "Staff code of conduct (safeguarding)",
+          "files": [
+            "02 \u2014 Policies & Compliance/Child Protection Staff Code of Conduct at Silverleaf Academy .docx.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "statutory-payroll",
+      "number": 9,
+      "title": "Statutory & Payroll",
+      "icon": "\ud83d\udcbc",
+      "description": "Payroll, contracts, and statutory requirements.",
+      "items": []
+    },
+    {
+      "id": "templates-resources",
+      "number": 10,
+      "title": "Templates & Resources",
+      "icon": "\ud83d\udcc1",
+      "description": "Shared templates and resources for daily work.",
+      "items": []
+    },
+    {
+      "id": "teaching-academic",
+      "number": 11,
+      "title": "Teaching & Academic",
+      "icon": "\ud83d\udcda",
+      "description": "Curriculum, teaching standards, and academic expectations.",
+      "items": [
+        {
+          "id": "11-1",
+          "title": "Dashboard Walkthrough Guide",
+          "files": [
+            "11 \u2014 Teaching & Academic/Dashboard Walkthrough Guide.pdf"
+          ]
+        },
+        {
+          "id": "11-2",
+          "title": "SLA 2026 Annual Calendar",
+          "files": [
+            "11 \u2014 Teaching & Academic/SLA 2026 Annual Calendar.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "training",
+      "number": 12,
+      "title": "Training & Professional Development",
+      "icon": "\ud83c\udf93",
+      "description": "Courses and programmes to help you grow at Silverleaf.",
+      "items": [
+        {
+          "id": "7-2",
+          "title": "Customer service training",
+          "files": [
+            "11-Training&professional development/_Customer Service Training Silverleaf.pdf"
+          ]
+        },
+        {
+          "id": "7-7",
+          "title": "Professional development overview",
+          "files": [
+            "11-Training&professional development/Professional_Development_Training_Silverleaf.pdf"
+          ]
+        }
+      ]
+    }
+  ]
+}

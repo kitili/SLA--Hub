@@ -98,7 +98,7 @@
     },
     {
       "id": "lesson-plans",
-      "name": "Lesson Plans",
+      "name": "Academics",
       "path": "desks/lesson-plans",
       "repo": "https://github.com/kitili/silverleaf-lesson-plans.git",
       "branch": "main",

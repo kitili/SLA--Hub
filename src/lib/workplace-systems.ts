@@ -106,8 +106,8 @@ export const workplaceSystems: WorkplaceSystem[] = [
   },
   {
     id: "lesson-plans",
-    name: "Lesson Plans",
-    lane: "LESSON PLANS",
+    name: "Academics",
+    lane: "ACADEMICS",
     schemaName: "lesson_plans",
     repoFolder: "desks/lesson-plans",
     liveUrl: "https://silverleaf-lesson-plans-main.vercel.app",
