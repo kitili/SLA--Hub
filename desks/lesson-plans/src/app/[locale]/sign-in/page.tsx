@@ -10,7 +10,7 @@ import StaffRegistration from "@/components/StaffRegistration";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Sign in — Silverleaf Lesson Plans",
+  title: "Sign in — Silverleaf Academics",
 };
 
 /**

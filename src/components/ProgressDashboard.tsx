@@ -3,6 +3,7 @@ import DepartmentFilter, { isDepartmentId } from "@/components/DepartmentFilter"
 import ProgressMusic from "@/components/ProgressMusic";
 import { ArrowIcon, DepartmentIcon } from "@/components/icons";
 import type { DepartmentId } from "@/lib/departments";
+import DeskOpen from "@/components/DeskOpen";
 import type { HourBeat, PulsePoint, WorkplaceKpis } from "@/lib/workplace-kpi-types";
 import hub from "./hub.module.css";
 import styles from "./ProgressDashboard.module.css";
@@ -87,9 +88,7 @@ export default function ProgressDashboard({
           </div>
           <p className={styles.note}>{focus.note}</p>
           <p className={styles.actions}>
-            <a href={focus.liveUrl} target="_blank" rel="noreferrer">
-              Open live {focus.name}
-            </a>
+            <DeskOpen id={focus.id} liveUrl={focus.liveUrl} label={`Open ${focus.name}`} />
             <Link href={`/people?dept=${focus.id}`}>People on this desk</Link>
           </p>
         </section>
@@ -123,9 +122,7 @@ export default function ProgressDashboard({
                 <Link href={`/progress?dept=${row.id}`}>
                   More numbers <ArrowIcon />
                 </Link>
-                <a href={row.liveUrl} target="_blank" rel="noreferrer">
-                  Open desk
-                </a>
+                <DeskOpen id={row.id} liveUrl={row.liveUrl} label="Open desk" />
               </footer>
             </article>
           ))}

@@ -230,12 +230,11 @@ async function lessonPlanMetrics(sql: Sql): Promise<Deep> {
   return {
     data: plans + schemes + staff + textbooks,
     movement: plans + schemes,
-    headline: `${fmt(plans)} lesson plans · ${fmt(schemes)} schemes`,
+    headline: "Lesson plans, curriculum, and feedback.",
     metrics: [
       { label: "Lesson plans", value: fmt(plans) },
-      { label: "Schemes of work", value: fmt(schemes) },
-      { label: "Staff", value: fmt(staff) },
-      { label: "Textbooks", value: fmt(textbooks) },
+      { label: "Curriculum", value: "" },
+      { label: "Feedback", value: "" },
     ],
   };
 }

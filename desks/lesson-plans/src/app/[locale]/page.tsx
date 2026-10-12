@@ -1,27 +1,16 @@
 import { setRequestLocale } from "next-intl/server";
 
-import { getCurrentUser } from "@/lib/auth";
-import { signInMemberAction } from "@/lib/actions/member";
-import { getHrAdminEmails } from "@/lib/env";
-import { isFeedbackHour } from "@/lib/time/eat";
-import StaffRegistration from "@/components/StaffRegistration";
-import FeedbackHourHome from "@/components/lesson/FeedbackHourHome";
-import NormalHome from "@/components/lesson/NormalHome";
+import styles from "./boards.module.css";
 
-/**
- * Teacher home.
- *
- * - Unauthenticated → the StaffRegistration sign-in overlay.
- * - Authenticated during the daily Feedback Hour (15:00–17:00 EAT) →
- *   <FeedbackHourHome /> (Feedback vertical).
- * - Authenticated otherwise → <NormalHome /> (search + your next lessons).
- *
- * Dynamic: reads the session cookie and the server clock, so it must render
- * per-request (never prerendered or cached).
- */
 export const dynamic = "force-dynamic";
 
-export default async function HomePage({
+const boards = [
+  { name: "Lesson plans", path: "lesson-plans" },
+  { name: "Silverleaf Feedback", path: "feedback" },
+  { name: "Silverleaf Curriculum", path: "curriculum" },
+];
+
+export default async function AcademicsBoardsPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -29,15 +18,14 @@ export default async function HomePage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const user = await getCurrentUser();
-  if (!user) {
-    return (
-      <StaffRegistration
-        onSubmit={signInMemberAction}
-        adminEmails={getHrAdminEmails()}
-      />
-    );
-  }
-
-  return isFeedbackHour() ? <FeedbackHourHome /> : <NormalHome />;
+  return (
+    <main className={styles.shell}>
+      {boards.map((board) => (
+        <section key={board.name} className={styles.card}>
+          <h1>{board.name}</h1>
+          <iframe title={board.name} src={`/${locale}/${board.path}`} />
+        </section>
+      ))}
+    </main>
+  );
 }

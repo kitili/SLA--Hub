@@ -111,7 +111,7 @@ export const workplaceSystems: WorkplaceSystem[] = [
     schemaName: "lesson_plans",
     repoFolder: "desks/lesson-plans",
     liveUrl: "https://silverleaf-lesson-plans-main.vercel.app",
-    notes: "Plans, schemes, AI studio.",
+    notes: "Academics holds the lesson plans, curriculum, and feedback dashboards. More can follow.",
   },
   {
     id: "mel-dashboard",

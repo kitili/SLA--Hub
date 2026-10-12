@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import { recordDeskOpen } from "@/lib/access";
-import { entryUrl, getDepartment, resolveDepartment } from "@/lib/departments";
+import { entryUrl, getDepartment, hubEntryHref, resolveDepartment } from "@/lib/departments";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -29,5 +29,5 @@ export default async function DepartmentPage({
 
   const department = resolveDepartment(found);
   await recordDeskOpen(department.id, `/departments/${department.id}`);
-  redirect(entryUrl(department));
+  redirect(hubEntryHref(department));
 }

@@ -29,7 +29,7 @@ export default async function AdminLayout({
 
   const user = await getCurrentUser();
   if (!user || !user.isAdmin) {
-    redirect({ href: "/", locale });
+    redirect({ href: "/lesson-plans", locale });
   }
   // `redirect` throws, so control only reaches here for an authenticated admin;
   // assert non-null since the i18n redirect isn't typed as `never`.

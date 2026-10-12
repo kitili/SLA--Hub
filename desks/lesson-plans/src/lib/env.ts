@@ -39,6 +39,12 @@ const envSchema = z.object({
   DATABASE_URL: z.url({ error: "DATABASE_URL must be a valid URL." }).optional(),
 
   /**
+   * Neon database shared by curriculum feedback and the curriculum dashboard.
+   * Separate from the lesson-plan library database.
+   */
+  CURRICULUM_DATABASE_URL: z.string().optional(),
+
+  /**
    * Comma-separated list of email addresses that are granted admin access
    * automatically at sign-in / registration.
    * Example: "alice@school.edu,bob@school.edu"
@@ -153,6 +159,7 @@ export type Env = z.infer<typeof envSchema>;
  */
 export const env: Env = envSchema.parse({
   DATABASE_URL: process.env["DATABASE_URL"],
+  CURRICULUM_DATABASE_URL: process.env["CURRICULUM_DATABASE_URL"],
   HR_ADMIN_EMAILS: process.env["HR_ADMIN_EMAILS"],
   ADMIN_PIN: process.env["ADMIN_PIN"],
   ADMIN_PASSWORDS: process.env["ADMIN_PASSWORDS"],

@@ -22,15 +22,15 @@ import styles from "./AdminSidebar.module.css";
 
 interface NavItem {
   href: string;
-  labelKey: "dashboard" | "aiStudio" | "plans" | "feedback";
+  labelKey: "dashboard" | "aiStudio" | "plans" | "feedback" | "curriculumFeedback" | "curriculumCoverage";
   icon: IconName;
 }
 
 const ITEMS: NavItem[] = [
   { href: "/admin", labelKey: "dashboard", icon: "dashboard" },
-  { href: "/admin/ai-studio", labelKey: "aiStudio", icon: "aiStudio" },
   { href: "/admin/plans", labelKey: "plans", icon: "plans" },
   { href: "/admin/feedback", labelKey: "feedback", icon: "feedback" },
+  { href: "/admin/ai-studio", labelKey: "aiStudio", icon: "aiStudio" },
 ];
 
 function isActive(pathname: string, href: string): boolean {
@@ -69,7 +69,7 @@ export default function AdminSidebar({
         <span className={styles.mark} aria-hidden="true">
           S
         </span>
-        <span className={styles.wordmark}>Silverleaf</span>
+        <span className={styles.wordmark}>Academics</span>
       </div>
 
       <ul className={styles.list}>

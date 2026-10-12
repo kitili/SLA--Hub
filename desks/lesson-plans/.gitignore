@@ -46,6 +46,7 @@ silverleaf-lesson-plans-antoine/
 # data layer (F2): embedded PGlite dev database + local file storage
 .pglite/
 .storage/
+.curriculum-cache/
 
 # e2e: seeded staff ids captured by global-setup (forged-session fixtures)
 e2e/.non-admin-session.json

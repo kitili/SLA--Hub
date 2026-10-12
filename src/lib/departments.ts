@@ -30,6 +30,8 @@ export interface Department {
   deskPath: string;
   /** False when the desk only runs on this computer and is not on Vercel yet. */
   hosted?: boolean;
+  /** Hub page that lists the dashboards inside this system, before any desk sign-in. */
+  chooserPath?: string;
 }
 
 /** Documented env names. Hosted desks ignore these so a laptop .env cannot retarget live sites. */
@@ -115,14 +117,14 @@ export const departments: Department[] = [
     id: "lesson-plans",
     name: "Academics",
     kicker: "Curriculum",
-    summary: "Search lesson plans, schemes of work, and the AI studio.",
+    summary: "Lesson plans, curriculum, and feedback. More dashboards can follow.",
     phase: 1,
-    phaseNote: "Always opens the live Academics dashboard.",
+    phaseNote: "Opens Academics on three boards: Lesson plans, Silverleaf Feedback, and Silverleaf Curriculum.",
     href: "https://silverleaf-lesson-plans-main.vercel.app",
     liveUrl: "https://silverleaf-lesson-plans-main.vercel.app",
     localUrl: "http://localhost:3300",
     localPort: 3300,
-    desks: ["Dashboard", "Search", "Plans", "AI Studio"],
+    desks: ["Lesson plans", "Curriculum", "Feedback"],
     accent: "gold",
     repo: "https://github.com/kitili/silverleaf-lesson-plans.git",
     branch: "main",
@@ -258,8 +260,9 @@ export function isInHubApp(_department: Department) {
   return false;
 }
 
-/** One click from the hub: hosted live site, or local only if not hosted yet. */
+/** One click from the hub. Academics opens its three boards first. */
 export function hubEntryHref(department: Department) {
+  if (department.chooserPath) return department.chooserPath;
   return entryUrl(department);
 }
 
@@ -311,6 +314,12 @@ export function getLocalUrl(department: Department): string {
 }
 
 export function isDepartmentPath(pathname: string, department: Department) {
+  if (
+    department.chooserPath &&
+    (pathname === department.chooserPath || pathname.startsWith(`${department.chooserPath}/`))
+  ) {
+    return true;
+  }
   return pathname === department.href || pathname.startsWith(`${department.href}/`);
 }
 

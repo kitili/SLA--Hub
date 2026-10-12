@@ -9,6 +9,7 @@ import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { getCurrentUser } from "@/lib/auth";
 import { brand } from "@/lib/brand";
+import { AcademicsHomeLink, HideOnBoards } from "@/components/BoardChrome";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
 import LogoutButton from "@/components/LogoutButton";
 import AdminNavLink from "@/components/AdminNavLink";
@@ -29,8 +30,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Silverleaf Lesson Plans",
-  description: "Silverleaf Academy — find and manage lesson plans",
+  title: "Silverleaf Academics",
+  description: "Silverleaf Academy — lesson plans, curriculum, and feedback",
 };
 
 /**
@@ -80,27 +81,29 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           {/* Site-wide nav — Silverleaf brandmark links home; links live to
               its right. */}
-          <nav className="site-nav">
-            <Link href="/" className="site-nav__brand" aria-label={brand.name}>
-              <Image
-                src={brand.logos.brandmarkElectricBlue}
-                alt={brand.name}
-                width={118}
-                height={52}
-                priority
-                /* SVG is vector — skip the optimizer (which 400s on SVG
-                   unless images.dangerouslyAllowSVG is enabled). */
-                unoptimized
-              />
-            </Link>
-            <div className="site-nav__links">
-              <Link href="/">{t("dashboard")}</Link>
-              {user && <Link href="/search">{t("search")}</Link>}
-              <AdminNavLink isAdmin={Boolean(user?.isAdmin)} />
-              <LocaleSwitcher />
-              {user && <LogoutButton />}
-            </div>
-          </nav>
+          <HideOnBoards>
+            <nav className="site-nav">
+              <AcademicsHomeLink className="site-nav__brand" ariaLabel={brand.name}>
+                <Image
+                  src={brand.logos.brandmarkElectricBlue}
+                  alt={brand.name}
+                  width={118}
+                  height={52}
+                  priority
+                  /* SVG is vector — skip the optimizer (which 400s on SVG
+                     unless images.dangerouslyAllowSVG is enabled). */
+                  unoptimized
+                />
+              </AcademicsHomeLink>
+              <div className="site-nav__links">
+                <Link href="/lesson-plans">{t("dashboard")}</Link>
+                {user && <Link href="/search">{t("search")}</Link>}
+                <AdminNavLink isAdmin={Boolean(user?.isAdmin)} />
+                <LocaleSwitcher />
+                {user && <LogoutButton />}
+              </div>
+            </nav>
+          </HideOnBoards>
           {children}
         </NextIntlClientProvider>
       </body>

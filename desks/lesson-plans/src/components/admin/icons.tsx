@@ -15,6 +15,8 @@ export type IconName =
   | "aiStudio"
   | "plans"
   | "feedback"
+  | "library"
+  | "coverage"
   | "menu"
   | "close"
   | "collapse"
@@ -52,6 +54,18 @@ const PATHS: Record<IconName, React.ReactNode> = {
       <path d="M4 5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5z" />
       <path d="M13 3v5h5" />
       <path d="M8 13h7M8 17h5" />
+    </>
+  ),
+  library: (
+    <>
+      <path d="M4 19V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14" />
+      <path d="M4 19h14" />
+      <path d="M8 7h6M8 11h6" />
+    </>
+  ),
+  coverage: (
+    <>
+      <path d="M4 19V9M10 19V5M16 19v-7M20 19H3" />
     </>
   ),
   feedback: (

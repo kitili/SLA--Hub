@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
 
 export const metadata: Metadata = {
-  title: "Access Restricted — Silverleaf Lesson Plans",
+  title: "Access Restricted — Silverleaf Academics",
 };
 
 /**

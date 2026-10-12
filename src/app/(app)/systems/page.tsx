@@ -5,6 +5,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { getWorkplaceMap } from "@/lib/workplace-map";
 import { DepartmentIcon } from "@/components/icons";
 import type { DepartmentId } from "@/lib/departments";
+import DeskOpen from "@/components/DeskOpen";
 import styles from "@/components/WorkplaceMap.module.css";
 
 export const metadata: Metadata = {
@@ -81,9 +82,7 @@ export default async function WorkplaceSystemsPage() {
                       : "No answer"}
                 </td>
                 <td>
-                  <a href={system.liveUrl} target="_blank" rel="noreferrer">
-                    Open live
-                  </a>
+                  <DeskOpen id={system.id} liveUrl={system.liveUrl} />
                 </td>
               </tr>
             ))}

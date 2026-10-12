@@ -19,7 +19,8 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
-import { Link, usePathname } from "@/i18n/navigation";
+import { usePathname } from "@/i18n/navigation";
+import { AcademicsHomeLink } from "@/components/BoardChrome";
 import AdminSidebar from "./AdminSidebar";
 import Icon from "./icons";
 import styles from "./AdminShell.module.css";
@@ -29,9 +30,11 @@ const COLLAPSE_KEY = "admin:sidebar-collapsed";
 /** Which top-level section is the active route in? Drives the top-bar title. */
 function sectionKey(
   pathname: string,
-): "dashboard" | "aiStudio" | "plans" | "feedback" {
+): "dashboard" | "aiStudio" | "plans" | "feedback" | "curriculumFeedback" | "curriculumCoverage" {
   if (pathname.startsWith("/admin/ai-studio")) return "aiStudio";
   if (pathname.startsWith("/admin/plans")) return "plans";
+  if (pathname.startsWith("/admin/curriculum-feedback")) return "curriculumFeedback";
+  if (pathname.startsWith("/admin/curriculum-coverage")) return "curriculumCoverage";
   if (pathname.startsWith("/admin/feedback")) return "feedback";
   return "dashboard";
 }
@@ -145,10 +148,10 @@ export default function AdminShell({
             <span className={styles.title}>{title}</span>
           </div>
 
-          <Link href="/" className={styles.hub}>
+          <AcademicsHomeLink className={styles.hub}>
             <Icon name="back" size={16} />
             <span>{tAdmin("nav.backToHub")}</span>
-          </Link>
+          </AcademicsHomeLink>
         </header>
 
         <main className={styles.main}>{children}</main>
