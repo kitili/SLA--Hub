@@ -19,7 +19,7 @@ export default async function NormalHome() {
   const t = await getTranslations("lpHome");
 
   // Prefer the first name for a friendlier greeting; fall back gracefully.
-  const firstName = user.fullName?.trim().split(/\s+/)[0] ?? null;
+  const firstName = user?.fullName?.trim().split(/\s+/)[0] ?? null;
 
   return (
     <main className={styles.home}>
