@@ -10,7 +10,9 @@ export function HideOnBoards({ children }: { children: ReactNode }) {
   if (
     pathname === "/" ||
     pathname.startsWith("/feedback") ||
-    pathname.startsWith("/curriculum")
+    pathname.startsWith("/curriculum") ||
+    pathname.startsWith("/kg") ||
+    pathname.startsWith("/assessment")
   ) {
     return null;
   }

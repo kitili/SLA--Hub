@@ -1,0 +1,157 @@
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+  color: #16202f;
+}
+
+.header h1 {
+  margin: 0;
+  color: #002368;
+  font-size: 1.45rem;
+}
+
+.header p {
+  margin: 0.35rem 0 0;
+  color: #4a5566;
+}
+
+.note {
+  margin: 0.85rem 0 0;
+  padding: 0.7rem 0.85rem;
+  background: #fff4d9;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin: 1rem 0;
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #7a8494;
+}
+
+.filters select {
+  min-width: 10rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid #e3e7ee;
+  border-radius: 8px;
+  background: #fff;
+  color: #16202f;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.tile {
+  padding: 0.9rem 1rem;
+  background: #fff;
+  border: 1px solid #e3e7ee;
+  border-radius: 12px;
+}
+
+.tile span {
+  display: block;
+  color: #4a5566;
+  font-size: 0.8rem;
+}
+
+.tile strong {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 1.7rem;
+  line-height: 1.1;
+}
+
+.card {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid #e3e7ee;
+  border-radius: 12px;
+}
+
+.card h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+}
+
+.card p {
+  margin: 0 0 0.75rem;
+  color: #4a5566;
+  font-size: 0.88rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.table th,
+.table td {
+  padding: 0.45rem 0.4rem;
+  border-bottom: 1px solid #eef1f5;
+  text-align: left;
+}
+
+.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.bar {
+  display: flex;
+  height: 14px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #e6eef8;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+}
+
+.empty {
+  padding: 1.5rem 0.5rem;
+  color: #7a8494;
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.tabs button {
+  border: 1px solid #c3c2b7;
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tabs button[aria-pressed="true"] {
+  background: #002368;
+  border-color: #002368;
+  color: #fff;
+}
