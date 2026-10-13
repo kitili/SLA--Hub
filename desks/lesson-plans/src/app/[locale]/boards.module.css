@@ -1,54 +1,42 @@
-.shell {
-  position: fixed;
-  inset: 0;
-  z-index: 20;
+.page {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 3.5rem 1.25rem 4rem;
+}
+
+.page h1 {
+  margin: 0 0 1.25rem;
+  font-size: 1.6rem;
+}
+
+.grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  padding: 12px;
-  background: #e7ecf6;
+  gap: 1rem;
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  min-height: 0;
+  display: block;
+  padding: 1.35rem 1.15rem;
   background: #fff;
   border: 1px solid rgba(15, 41, 100, 0.12);
   border-top: 4px solid #c98a35;
   border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px -14px rgba(15, 41, 100, 0.35);
-}
-
-.card h1 {
-  margin: 0;
-  padding: 14px 16px 12px;
+  box-shadow: 0 8px 24px -16px rgba(15, 41, 100, 0.45);
   color: #0f2964;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
+  font-weight: 700;
   letter-spacing: -0.02em;
+  text-decoration: none;
 }
 
-.card iframe {
-  flex: 1;
-  width: 100%;
-  border: 0;
-  background: #fff;
+.card:hover {
+  border-color: #c98a35;
+  transform: translateY(-2px);
 }
 
-@media (max-width: 980px) {
-  .shell {
-    position: static;
-    height: auto;
+@media (max-width: 720px) {
+  .grid {
     grid-template-columns: 1fr;
-  }
-
-  .card {
-    min-height: 85dvh;
-  }
-
-  .card iframe {
-    min-height: 75dvh;
   }
 }
