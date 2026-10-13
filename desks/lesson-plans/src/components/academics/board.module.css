@@ -16,12 +16,17 @@
   color: #4a5566;
 }
 
-.note {
+.note,
+.banner {
   margin: 0.85rem 0 0;
   padding: 0.7rem 0.85rem;
   background: #fff4d9;
   border-radius: 8px;
   font-size: 0.9rem;
+}
+
+.banner {
+  margin: 0 0 0.85rem;
 }
 
 .filters {

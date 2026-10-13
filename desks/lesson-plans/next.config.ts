@@ -42,6 +42,13 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        source: "/academics-offline.js",
+        headers: [
+          { key: "Cache-Control", value: "no-cache" },
+          { key: "Service-Worker-Allowed", value: "/" },
+        ],
+      },
+      {
         source: "/(.*)",
         headers: [
           {

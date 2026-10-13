@@ -1,17 +1,21 @@
+import { connection } from "next/server";
 import { setRequestLocale } from "next-intl/server";
 
+import BoardOffline from "@/components/academics/BoardOffline";
 import KgBoard, { type KgBoardStudent } from "@/components/kg/KgBoard";
 import { getCurrentUser } from "@/lib/auth";
 import { loadKgSnapshot } from "@/lib/kg/load";
 import { KG_CAMPUSES, KG_CLASSES, KG_DOMAINS, TOTAL_ITEMS } from "@/lib/kg/score";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default async function KgChecklistPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
+  await connection();
   const { locale } = await params;
   setRequestLocale(locale);
   const user = await getCurrentUser();
@@ -39,7 +43,9 @@ export default async function KgChecklistPage({
     const devices = snapshot?.devices ?? [];
     const hasRecords = students.length > 0 || devices.length > 0;
     return (
-      <KgBoard
+      <>
+        <BoardOffline />
+        <KgBoard
         students={students}
         devices={devices}
         campuses={snapshot?.campuses ?? KG_CAMPUSES}
@@ -49,6 +55,7 @@ export default async function KgChecklistPage({
         admin={admin}
         source={!loaded || !hasRecords ? "empty" : loaded.source}
       />
+      </>
     );
   } catch (error) {
     console.error("[kg]", error instanceof Error ? error.name : "error");

@@ -1,4 +1,4 @@
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdtemp, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
@@ -30,6 +30,14 @@ describe("curriculum offline copy", () => {
       throw new Error("fetch failed");
     });
     expect(loaded).toEqual({ data: [{ id: "a" }], source: "offline" });
+  });
+
+  it("returns the live rows when the copy cannot be written", async () => {
+    const blocked = path.join(dir, "not-a-directory");
+    await writeFile(blocked, "x");
+    process.env.CURRICULUM_CACHE_DIR = blocked;
+    const loaded = await withOfflineCache("rows.json", async () => [{ id: "live" }]);
+    expect(loaded).toEqual({ data: [{ id: "live" }], source: "live" });
   });
 
   it("reads the local copy when no live database is configured", async () => {

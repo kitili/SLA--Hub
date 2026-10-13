@@ -1,17 +1,21 @@
 import "@/components/curriculum/feedback.css";
+import { connection } from "next/server";
 import { setRequestLocale } from "next-intl/server";
 
+import BoardOffline from "@/components/academics/BoardOffline";
 import CoverageBoard from "@/components/curriculum/CoverageBoard";
 import { loadCoverage } from "@/lib/curriculum-coverage/load";
 import { buildCoverageModel } from "@/lib/curriculum-coverage/model";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default async function CurriculumPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
+  await connection();
   const { locale } = await params;
   setRequestLocale(locale);
 
@@ -20,6 +24,7 @@ export default async function CurriculumPage({
     if (!loaded) {
       return (
         <section className="cfa">
+          <BoardOffline />
           <header className="top">
             <div className="htext">
               <span className="hsup">Silverleaf Academy</span>
@@ -27,15 +32,17 @@ export default async function CurriculumPage({
             </div>
           </header>
           <p>
-            The coverage snapshot is not in the shared database yet, and there is no copy saved on
-            this computer. The Google Sheets stay private to the school account.
+            The coverage snapshot is not in the shared database yet. Open this page while you are
+            online and this device keeps a copy for when you are offline. The Google Sheets stay
+            private to the school account.
           </p>
         </section>
       );
     }
     return (
       <>
-        {loaded.source === "offline" ? <p>Showing the copy saved on this computer.</p> : null}
+        <BoardOffline />
+        {loaded.source === "offline" ? <p>Showing the last copy saved on this server. It refreshes when the database is reachable.</p> : null}
         <CoverageBoard model={buildCoverageModel(loaded.data)} />
       </>
     );
