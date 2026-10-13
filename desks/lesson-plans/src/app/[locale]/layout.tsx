@@ -97,10 +97,10 @@ export default async function LocaleLayout({
               </AcademicsHomeLink>
               <div className="site-nav__links">
                 <Link href="/lesson-plans">{t("dashboard")}</Link>
-                {user && <Link href="/search">{t("search")}</Link>}
+                <Link href="/search">{t("search")}</Link>
                 <AdminNavLink isAdmin={Boolean(user?.isAdmin)} />
                 <LocaleSwitcher />
-                {user && <LogoutButton />}
+                {user ? <LogoutButton /> : <Link href="/sign-in">{t("signIn")}</Link>}
               </div>
             </nav>
           </HideOnBoards>

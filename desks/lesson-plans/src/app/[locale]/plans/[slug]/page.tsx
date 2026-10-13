@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { eq, and } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 
-import { requireUser } from "@/lib/auth";
+import { getCurrentUser } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { lessonPlans, planFeedback } from "@/lib/db/schema";
 import { logUsage } from "@/lib/usage";
@@ -20,9 +20,10 @@ import styles from "./plan.module.css";
 /**
  * Plan detail.
  *
- * Loads a single PUBLISHED lesson plan by slug (404 otherwise), logs an "open"
- * usage event for the current teacher, and renders the title, a meta line, the
- * objectives, and the lesson body. The body markdown is rendered with the
+ * Loads a single PUBLISHED lesson plan by slug (404 otherwise). Anyone can
+ * read it. A signed-in teacher also gets an "open" usage event. The page
+ * renders the title, a meta line, the objectives, and the lesson body. The
+ * body markdown is rendered with the
  * small, dependency-free `markdownToReact` transform (NO
  * dangerouslySetInnerHTML), so untrusted content can never inject markup.
  *
@@ -45,7 +46,7 @@ export default async function PlanDetailPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const user = await requireUser();
+  const user = await getCurrentUser();
   const t = await getTranslations("lpPlan");
   const tc = await getTranslations("common");
 
@@ -60,18 +61,22 @@ export default async function PlanDetailPage({
   }
 
   // Best-effort: logUsage never throws (see lib/usage.ts).
-  await logUsage(user.id, plan.id, "open");
+  if (user) {
+    await logUsage(user.id, plan.id, "open");
+  }
 
-  const [fb] = await db
-    .select()
-    .from(planFeedback)
-    .where(
-      and(
-        eq(planFeedback.staffId, user.id),
-        eq(planFeedback.planId, plan.id),
-      ),
-    )
-    .limit(1);
+  const [fb] = user
+    ? await db
+        .select()
+        .from(planFeedback)
+        .where(
+          and(
+            eq(planFeedback.staffId, user.id),
+            eq(planFeedback.planId, plan.id),
+          ),
+        )
+        .limit(1)
+    : [];
 
   const objectives = toStringArray(plan.objectives);
 
@@ -140,16 +145,18 @@ export default async function PlanDetailPage({
         </section>
       </article>
 
-      <section className={styles.feedback} aria-labelledby="feedback-heading">
-        <h2 id="feedback-heading" className={styles.sectionHeading}>
-          {t("feedbackHeading")}
-        </h2>
-        <FeedbackForm
-          planId={plan.id}
-          initialRating={fb?.rating ?? null}
-          initialComment={fb?.comment ?? null}
-        />
-      </section>
+      {user ? (
+        <section className={styles.feedback} aria-labelledby="feedback-heading">
+          <h2 id="feedback-heading" className={styles.sectionHeading}>
+            {t("feedbackHeading")}
+          </h2>
+          <FeedbackForm
+            planId={plan.id}
+            initialRating={fb?.rating ?? null}
+            initialComment={fb?.comment ?? null}
+          />
+        </section>
+      ) : null}
     </main>
   );
 }

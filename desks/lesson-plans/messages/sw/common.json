@@ -14,7 +14,8 @@
     "dashboard": "Dashibodi",
     "search": "Tafuta",
     "admin": "Msimamizi",
-    "signOut": "Toka"
+    "signOut": "Toka",
+    "signIn": "Ingia"
   },
   "adminGate": {
     "title": "Eneo la wasimamizi pekee",

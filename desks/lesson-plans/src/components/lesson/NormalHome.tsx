@@ -4,19 +4,18 @@
  * A warm welcome, a prominent search entry (tap-through plus a quick search
  * box that GETs to /search), and the teacher's "next lessons" list.
  *
- * Default-export async Server Component, no props: it resolves the current
- * user itself via requireUser() (redirects to sign-in when unauthenticated).
- * Mobile-first.
+ * Default-export async Server Component, no props. Anyone can read it.
+ * A signed-in teacher also sees their next lessons. Mobile-first.
  */
 import { getTranslations } from "next-intl/server";
 
-import { requireUser } from "@/lib/auth";
+import { getCurrentUser } from "@/lib/auth";
 import { Link } from "@/i18n/navigation";
 import UpcomingLessons from "@/components/lesson/UpcomingLessons";
 import styles from "./NormalHome.module.css";
 
 export default async function NormalHome() {
-  const user = await requireUser();
+  const user = await getCurrentUser();
   const t = await getTranslations("lpHome");
 
   // Prefer the first name for a friendlier greeting; fall back gracefully.
@@ -57,7 +56,7 @@ export default async function NormalHome() {
         </Link>
       </section>
 
-      <UpcomingLessons />
+      {user ? <UpcomingLessons /> : null}
     </main>
   );
 }

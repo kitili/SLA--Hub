@@ -9,14 +9,14 @@
  */
 import { getTranslations } from "next-intl/server";
 
-import { requireUser } from "@/lib/auth";
+import { getCurrentUser } from "@/lib/auth";
 import { searchLessonPlans, type SearchSort } from "@/lib/search/lessonSearch";
 import { getFacetCounts } from "@/lib/search/facets";
 import SearchFilters from "@/components/lesson/SearchFilters";
 import PlanResultList from "@/components/lesson/PlanResultList";
 import styles from "./page.module.css";
 
-/** Live, authenticated data — render on demand (never prerender/cache). */
+/** Live catalogue — public to read, rendered on demand (never prerender/cache). */
 export const dynamic = "force-dynamic";
 
 interface SearchPageProps {
@@ -49,7 +49,7 @@ function toPage(value: string | undefined): number {
 }
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
-  const user = await requireUser();
+  const user = await getCurrentUser();
   const sp = await searchParams;
   const t = await getTranslations("lpSearch");
 
@@ -74,7 +74,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       ...filterParams,
       sort,
       page,
-      staffId: user.id,
+      staffId: user?.id,
     }),
     getFacetCounts(filterParams),
   ]);

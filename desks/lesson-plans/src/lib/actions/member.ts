@@ -1,9 +1,9 @@
 "use server";
 
 /**
- * Member server actions — sign-in / sign-out entry points for the teacher
- * experience. Matches onboarding hub: ed-admin Staff ID for staff, admin
- * password for HR_ADMIN_EMAILS addresses.
+ * Member server actions — sign-in / sign-out entry points.
+ * Staff ID signs everyone in. Emails in HR_ADMIN_EMAILS become admins.
+ * A configured admin password remains an optional second path.
  */
 import { redirect } from "next/navigation";
 import { z } from "zod";
@@ -114,12 +114,24 @@ export async function signInMemberAction(input: {
   try {
     if (env.ED_ADMIN_API_TOKEN) {
       const isAdminEmail = isHrAdminEmail(email);
-      if (!isAdminEmail && !staffId) {
+      if (!staffId && !adminPassword && !isAdminEmail) {
         return { ok: false, error: "invalid-input" };
       }
-      const verdict = isAdminEmail
-        ? await verifyAdminSignIn(email, adminPassword)
-        : await verifyEdAdminStaff(email, staffId);
+      // Listed admins may sign in with Staff ID, a configured password, or
+      // email alone when Ed Admin has one active record for that address.
+      let verdict;
+      if (adminPassword && isAdminEmail) {
+        verdict = await verifyAdminSignIn(email, adminPassword);
+      } else if (staffId) {
+        verdict = await verifyEdAdminStaff(email, staffId);
+        if (!verdict.ok && isAdminEmail && verdict.reason === "not-found") {
+          verdict = await verifyEdAdminStaffByEmail(email);
+        }
+      } else if (isAdminEmail) {
+        verdict = await verifyEdAdminStaffByEmail(email);
+      } else {
+        return { ok: false, error: "invalid-input" };
+      }
 
       if (!verdict.ok) {
         if (verdict.reason === "admin-password-required") {

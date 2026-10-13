@@ -3,8 +3,9 @@
 /**
  * StaffRegistration — full-screen overlay for staff sign-in (onboarding parity).
  *
- * Staff: work email + ed-admin Staff ID. HR admins in HR_ADMIN_EMAILS: email +
- * admin password. Verified server-side in `signInMemberAction`.
+ * Staff and admins both sign in with a work email and ed-admin Staff ID.
+ * Admin is granted from HR_ADMIN_EMAILS after that sign-in. A configured
+ * admin password is only used when the server asks for one.
  */
 
 import { useEffect, useState } from "react";
@@ -54,8 +55,8 @@ export default function StaffRegistration({
   const [submitting, setSubmitting] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const normalizedEmail = email.trim().toLowerCase();
-  const isAdminMode =
-    forceAdminMode || adminEmails.includes(normalizedEmail);
+  const isListedAdmin = adminEmails.includes(normalizedEmail);
+  const isAdminMode = forceAdminMode;
 
   useEffect(() => {
     setHydrated(true);
@@ -163,7 +164,7 @@ export default function StaffRegistration({
                 value={staffId}
                 onChange={(e) => setStaffId(e.target.value)}
                 placeholder={t("register.idPlaceholder")}
-                required
+                required={!isListedAdmin}
               />
             </label>
           )}
