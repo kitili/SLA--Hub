@@ -22,6 +22,8 @@
     "test": "node --test scripts/app-working.test.mjs scripts/shuleone-pull.test.mjs",
     "smoke": "node scripts/smoke-hub.mjs",
     "hub-api:smoke": "node scripts/hub-api-smoke.mjs",
+    "hub-api:verify": "node scripts/verify-hub-api.mjs",
+    "hub-api:seed-fixtures": "tsx --conditions=react-server --import ./src/lib/db/scripts/ts-resolve.mjs scripts/seed-hub-api-fixtures.ts",
     "shuleone:pull": "node scripts/shuleone-pull.mjs",
     "marketing:export-live": "python3 scripts/export-marketing-live.py"
   },

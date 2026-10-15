@@ -5,7 +5,7 @@
 **Base URL (Vercel alias):** `https://sla-hub-nu.vercel.app`  
 **Base URL (local):** `http://localhost:3100`  
 **Version:** v1  
-**Verified:** 2 October 2026 — 11 of 11 checks passed against the live local hub
+**Verified:** see [`SLA-HUB-API-VERIFIED.md`](./SLA-HUB-API-VERIFIED.md) — live HTTP results from `npm run hub-api:verify`
 
 This API is **read-only**. It feeds workplace people and system metadata out of SLA Hub. It does not accept writes, and it never returns passwords, OTP codes, session secrets, or documents.
 
@@ -93,10 +93,11 @@ Suggested ShuleOne sync loop:
 
 Do not call hub admin, hiring, or bio routes. Those are for the hub UI, not for ShuleOne.
 
-Local smoke (hub running with the key set):
+Local smoke / full verified report (hub running with the key set):
 
 ```bash
 HUB_API_KEY=… npm run hub-api:smoke
+HUB_API_KEY=… npm run hub-api:verify   # writes docs/SLA-HUB-API-VERIFIED.md
 ```
 
 ---

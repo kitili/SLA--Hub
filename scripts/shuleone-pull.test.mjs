@@ -26,6 +26,7 @@ test("shuleone puller probes both production hosts and upserts on email", () => 
 test("package.json exposes shuleone pull and hub-api smoke scripts", () => {
   assert.equal(pkg.scripts["shuleone:pull"], "node scripts/shuleone-pull.mjs");
   assert.equal(pkg.scripts["hub-api:smoke"], "node scripts/hub-api-smoke.mjs");
+  assert.equal(pkg.scripts["hub-api:verify"], "node scripts/verify-hub-api.mjs");
   assert.match(pkg.scripts.test, /shuleone-pull\.test\.mjs/);
 });
 
