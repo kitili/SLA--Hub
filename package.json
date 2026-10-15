@@ -19,8 +19,10 @@
     "desks:sync:daily": "bash scripts/install-daily-sync.sh",
     "visitors:sync": "python3 scripts/sync-visitor-data.py",
     "visitors:sync:watch": "python3 scripts/sync-visitor-data.py --watch",
-    "test": "node --test scripts/app-working.test.mjs",
+    "test": "node --test scripts/app-working.test.mjs scripts/shuleone-pull.test.mjs",
     "smoke": "node scripts/smoke-hub.mjs",
+    "hub-api:smoke": "node scripts/hub-api-smoke.mjs",
+    "shuleone:pull": "node scripts/shuleone-pull.mjs",
     "marketing:export-live": "python3 scripts/export-marketing-live.py"
   },
   "dependencies": {

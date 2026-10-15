@@ -3,15 +3,17 @@
  *
  * Liveness probe. Always returns HTTP 200 so load-balancers / uptime monitors
  * can reach it. The `database` flag tells you whether the Drizzle/PGlite
- * connection is reachable at the time of the request.
+ * connection is reachable at the time of the request. `hubApi` is true when
+ * HUB_API_KEY is set so ShuleOne can pull /api/v1 (never returns the key).
  *
- * Response shape: { status: "ok"; database: boolean }
+ * Response shape: { status: "ok"; database: boolean; family: boolean; hubApi: boolean }
  * Intentionally omits directory probes and any secret-bearing config.
  */
 import { sql } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
 import { db } from "@/lib/db";
+import { isHubApiConfigured } from "@/lib/hub-api/auth";
 import { familyRegisterError, getFamilySql } from "@/lib/parent-portal/db";
 
 export const dynamic = "force-dynamic";
@@ -37,5 +39,10 @@ export async function GET(): Promise<NextResponse> {
     console.error("[parents] family register unreachable:", familyRegisterError(error));
   }
 
-  return NextResponse.json({ status: "ok", database, family });
+  return NextResponse.json({
+    status: "ok",
+    database,
+    family,
+    hubApi: isHubApiConfigured(),
+  });
 }

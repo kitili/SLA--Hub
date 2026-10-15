@@ -32,13 +32,14 @@ export async function listWorkplacePeople(
   filter: WorkplacePeopleFilter = {},
 ): Promise<WorkplacePerson[]> {
   try {
-    return await listWorkplacePeopleUnsafe(filter);
+    return await listWorkplacePeopleStrict(filter);
   } catch {
     return [];
   }
 }
 
-async function listWorkplacePeopleUnsafe(
+/** Same as listWorkplacePeople, but surfaces database failures to API callers. */
+export async function listWorkplacePeopleStrict(
   filter: WorkplacePeopleFilter = {},
 ): Promise<WorkplacePerson[]> {
   const sql = getPostgresSql();

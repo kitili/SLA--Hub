@@ -1,12 +1,46 @@
 # Silverleaf Hub API
 
 **For:** ShuleOne and other machine clients  
-**Base URL (production):** `https://sla-hub-nu.vercel.app`  
+**Base URL (production):** `https://hub.silverleaf.co.tz`  
+**Base URL (Vercel alias):** `https://sla-hub-nu.vercel.app`  
 **Base URL (local):** `http://localhost:3100`  
 **Version:** v1  
 **Verified:** 2 October 2026 — 11 of 11 checks passed against the live local hub
 
 This API is **read-only**. It feeds workplace people and system metadata out of SLA Hub. It does not accept writes, and it never returns passwords, OTP codes, session secrets, or documents.
+
+---
+
+## Turn the API on (fixes HTTP 503)
+
+ShuleOne cannot pull until **the hub** has `HUB_API_KEY` set. A key that exists only on ShuleOne is not enough — both sides need the **same** secret.
+
+If you see:
+
+```text
+The key can't fetch data yet. Both hosts returned HTTP 503 with Hub API is not configured. Set HUB_API_KEY.
+https://hub.silverleaf.co.tz/api/v1/people?limit=1 returned 503
+```
+
+do this once:
+
+```bash
+# 1) Generate a long random key (printed once — store in a password manager)
+npm run shuleone:pull -- --generate-key
+
+# 2) On the Hub Vercel project (Production + Preview), set:
+#    HUB_API_KEY=<the key>
+#    then redeploy Production.
+
+# 3) On the ShuleOne server, set the same:
+#    HUB_API_KEY=<the key>
+#    HUB_API_BASE=https://hub.silverleaf.co.tz
+
+# 4) Verify from this repo (or any machine with the key)
+HUB_API_KEY=<the key> npm run shuleone:pull -- --verify
+```
+
+`GET /api/health` reports `"hubApi": true` when the hub key is configured (it never returns the key).
 
 ---
 
@@ -27,6 +61,43 @@ Ask Silverleaf for `HUB_API_KEY`. Do not put it in git, tickets, or this documen
 | Too many requests (60 / minute / IP) | 429 | `{ "error": "Too many requests" }` |
 
 `GET /api/health` is public and does not use the key.
+
+---
+
+## Perfect pull (ShuleOne)
+
+From this repository (or copy `scripts/shuleone-pull.mjs` into ShuleOne):
+
+```bash
+# Probe both production hosts
+HUB_API_KEY=… npm run shuleone:pull -- --verify
+
+# Full people directory (paginated). Upsert each row on email.
+HUB_API_KEY=… npm run shuleone:pull -- --out=people.json
+
+# Incremental after the first full pull
+HUB_API_KEY=… npm run shuleone:pull -- --since=2026-10-01T00:00:00.000Z --out=people-delta.json
+
+# Onboarding staff (includes startedAt)
+HUB_API_KEY=… npm run shuleone:pull -- --staff --out=staff.json
+```
+
+Suggested ShuleOne sync loop:
+
+1. Store `HUB_API_KEY` only on the ShuleOne server (and on Hub Vercel).
+2. Prefer `https://hub.silverleaf.co.tz`; fall back to `https://sla-hub-nu.vercel.app`.
+3. Poll `GET /api/v1/people` (optionally `?since=` after the first full pull).
+4. Upsert each row on `email` (always lowercase).
+5. Map `jobTitle` and `campus` onto ShuleOne staff fields.
+6. Use `/staff` when you need onboarding `startedAt`.
+
+Do not call hub admin, hiring, or bio routes. Those are for the hub UI, not for ShuleOne.
+
+Local smoke (hub running with the key set):
+
+```bash
+HUB_API_KEY=… npm run hub-api:smoke
+```
 
 ---
 
@@ -59,10 +130,11 @@ Liveness. No key.
 **200**
 
 ```json
-{ "status": "ok", "database": true }
+{ "status": "ok", "database": true, "family": true, "hubApi": true }
 ```
 
-`database` is `true` when the hub can reach Postgres.
+`database` is `true` when the hub can reach Postgres.  
+`hubApi` is `true` when `HUB_API_KEY` is set (≥ 32 characters).
 
 ---
 
@@ -89,7 +161,7 @@ Everyone who has used a Silverleaf workplace app and has a work email.
 
 ```bash
 curl -H "Authorization: Bearer $HUB_API_KEY" \
-  "https://sla-hub-nu.vercel.app/api/v1/people?app=onboarding&limit=200"
+  "https://hub.silverleaf.co.tz/api/v1/people?app=onboarding&limit=200"
 ```
 
 **200 — one item in `data`**
@@ -171,7 +243,7 @@ Workplace systems the hub knows about. Use `id` when you filter `/people?app=`.
 
 | id | Name | Live site |
 |---|---|---|
-| `hub` | Hub / Code | https://sla-hub-nu.vercel.app |
+| `hub` | Hub / Code | https://hub.silverleaf.co.tz |
 | `ops` | Ops | https://ops-transport-system.vercel.app |
 | `onboarding` | Onboarding | https://onboarding.silverleaf.co.tz |
 | `marketing` | Marketing | https://sla-marketing-web.vercel.app |
@@ -199,18 +271,6 @@ Workplace systems the hub knows about. Use `id` when you filter `/people?app=`.
 
 ---
 
-## Suggested ShuleOne sync
-
-1. Store `HUB_API_KEY` only on the ShuleOne server.
-2. Poll `GET /api/v1/people` (optionally `?since=` after the first full pull).
-3. Upsert each row on `email`.
-4. Map `jobTitle` and `campus` onto ShuleOne staff fields.
-5. Ignore `/api/health` except for uptime.
-
-Do not call hub admin, hiring, or bio routes. Those are for the hub UI, not for ShuleOne.
-
----
-
 ## Verification (2 October 2026)
 
 Checked against `http://127.0.0.1:3100` with a valid local key.
@@ -229,4 +289,4 @@ Checked against `http://127.0.0.1:3100` with a valid local key.
 | `GET /api/v1/campuses` | 200 |
 | `GET /api/v1/systems` | 200, 11 systems |
 
-Production (`https://sla-hub-nu.vercel.app`) needs the same `HUB_API_KEY` set on the sla-hub Vercel project before ShuleOne can call it there.
+Production (`https://hub.silverleaf.co.tz` and the Vercel alias) needs `HUB_API_KEY` set on the sla-hub Vercel project before ShuleOne can call it there.

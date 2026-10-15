@@ -11,6 +11,11 @@ function configuredKey() {
   return process.env.HUB_API_KEY?.trim() ?? "";
 }
 
+/** True when the hub can serve /api/v1 (key present and long enough). */
+export function isHubApiConfigured() {
+  return configuredKey().length >= MIN_KEY_LENGTH;
+}
+
 export function hubApiHeaders() {
   const origin = process.env.HUB_API_CORS_ORIGIN?.trim();
   const headers: Record<string, string> = { "Cache-Control": "no-store" };

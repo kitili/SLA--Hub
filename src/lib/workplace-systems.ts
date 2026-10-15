@@ -29,8 +29,8 @@ export const workplaceSystems: WorkplaceSystem[] = [
     lane: "CODE",
     schemaName: "shared",
     repoFolder: "src/",
-    liveUrl: "https://sla-hub-nu.vercel.app",
-    notes: "Front door. Hub code only. People directory is shared.people. Do not put Ops or desk tables here.",
+    liveUrl: "https://hub.silverleaf.co.tz",
+    notes: "Front door. Hub code only. People directory is shared.people. Do not put Ops or desk tables here. Vercel alias: sla-hub-nu.vercel.app.",
   },
   {
     id: "ops",
