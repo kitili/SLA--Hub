@@ -28,22 +28,28 @@ export async function GET(request: Request) {
     if (match) filters.push(match);
   }
 
-  const rows = await db
-    .select({
-      id: staff.id,
-      email: staff.email,
-      fullName: staff.fullName,
-      campus: staff.campus,
-      jobTitle: staff.jobTitle,
-      lastActiveAt: staff.lastActiveAt,
-      startedAt: staff.startedAt,
-      createdAt: staff.createdAt,
-    })
-    .from(staff)
-    .where(filters.length ? and(...filters) : undefined)
-    .orderBy(asc(staff.fullName), asc(staff.email))
-    .limit(limit)
-    .offset(offset);
+  let rows;
+  try {
+    rows = await db
+      .select({
+        id: staff.id,
+        email: staff.email,
+        fullName: staff.fullName,
+        campus: staff.campus,
+        jobTitle: staff.jobTitle,
+        lastActiveAt: staff.lastActiveAt,
+        startedAt: staff.startedAt,
+        createdAt: staff.createdAt,
+      })
+      .from(staff)
+      .where(filters.length ? and(...filters) : undefined)
+      .orderBy(asc(staff.fullName), asc(staff.email))
+      .limit(limit)
+      .offset(offset);
+  } catch (err) {
+    console.error("hub-api staff", err);
+    return hubApiJson({ ok: false, error: "Staff directory is unavailable right now." }, 502);
+  }
 
   return hubApiJson({
     ok: true,
