@@ -11,7 +11,14 @@ export async function GET(request: Request) {
   const denied = requireHubApiKey(request);
   if (denied) return denied;
 
-  const campuses = await listWorkplaceCampuses();
+  let campuses;
+  try {
+    campuses = await listWorkplaceCampuses();
+  } catch (err) {
+    console.error("hub-api campuses", err);
+    return hubApiJson({ ok: false, error: "Workplace campuses are unavailable right now." }, 502);
+  }
+
   return hubApiJson({
     ok: true,
     source: "sla-hub",

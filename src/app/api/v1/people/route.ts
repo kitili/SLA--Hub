@@ -1,4 +1,4 @@
-import { listWorkplacePeople } from "@/lib/workplace-people";
+import { listWorkplacePeopleStrict } from "@/lib/workplace-people";
 import { hubApiJson, hubApiOptions, requireHubApiKey } from "@/lib/hub-api/auth";
 import { readLimit, readOffset, readSince } from "@/lib/hub-api/query";
 
@@ -15,7 +15,7 @@ export async function GET(request: Request) {
   const search = new URL(request.url).searchParams;
   let people;
   try {
-    people = await listWorkplacePeople({
+    people = await listWorkplacePeopleStrict({
       campus: search.get("campus") ?? undefined,
       app: search.get("app") ?? undefined,
       q: search.get("q") ?? undefined,

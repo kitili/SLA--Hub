@@ -4,7 +4,7 @@ Every Silverleaf system lives in this one repo, grouped by desk. Live Vercel and
 
 | Lane | Folder | Supabase schema | Live site |
 |---|---|---|---|
-| CODE | `src/` | `shared` | https://sla-hub-nu.vercel.app |
+| CODE | `src/` | `shared` | https://hub.silverleaf.co.tz |
 | OPS | `desks/ops` | `public` | https://ops-transport-system.vercel.app |
 | ONBOARDING | `desks/onboarding` | `onboarding` | https://onboarding.silverleaf.co.tz |
 | MARKETING | `desks/marketing` | `marketing` | https://sla-marketing-web.vercel.app |

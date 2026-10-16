@@ -41,6 +41,22 @@ export function GET(request: Request) {
       },
       { method: "GET", path: "/api/v1/campuses", description: "Campuses found on people records" },
       { method: "GET", path: "/api/v1/systems", description: "Workplace systems ShuleOne can map to" },
+      {
+        method: "GET",
+        path: "/api/v1/journey",
+        description: "Onboarding progress, bio status, sign-off, and feedback",
+      },
+      {
+        method: "GET",
+        path: "/api/v1/hiring",
+        description: "Candidates with stage names and work email when hired",
+      },
+      { method: "GET", path: "/api/v1/tickets", description: "Open SLA-bot alarms and questions" },
+      {
+        method: "GET",
+        path: "/api/v1/catalog",
+        description: "Course sections, items, PDFs, and videos",
+      },
     ],
     systems: workplaceSystems.map((system) => system.id),
   });
