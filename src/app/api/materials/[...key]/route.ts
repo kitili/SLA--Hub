@@ -24,6 +24,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { getCurrentUser } from "@/lib/auth";
+import { bearerMatchesHubApiKey } from "@/lib/hub-api/auth";
 import { getStorage } from "@/lib/storage";
 import { contentTypeForName, dispositionForType } from "@/lib/storage/http-headers";
 import {
@@ -101,7 +102,7 @@ export async function GET(
   // Members-only: middleware excludes /api, so this route enforces auth itself.
   // Return 404 (not 401) so we don't confirm key existence to anonymous callers.
   const user = await getCurrentUser();
-  if (!user) {
+  if (!user && !bearerMatchesHubApiKey(req)) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 

@@ -6,7 +6,32 @@
 **Signed-in check:** local hub `http://127.0.0.1:3100` as an admin  
 **Result:** 9 pages opened, 2 missing-record APIs answered
 
-These are Onboarding screens. They are not on `/api/v1`. `HUB_API_KEY` does not open them. An admin signs in with a work email first.
+The admin screens still need a signed-in session. The same four feeds are also on `/api/v1`, and those accept `Authorization: Bearer $HUB_API_KEY`.
+
+Checked locally on 16 October 2026 with a hub key:
+
+| Request | Result |
+|---|---|
+| `GET /api/v1/journey` with no key | 401 |
+| `GET /api/v1/journey` with the key | 200, count 2 |
+| `GET /api/v1/hiring` with the key | 200, 10 stage names |
+| `GET /api/v1/tickets` with the key | 200 |
+| `GET /api/v1/catalog` with the key | 200 |
+
+```bash
+curl -H "Authorization: Bearer $HUB_API_KEY" \
+  https://hub.silverleaf.co.tz/api/v1/journey
+curl -H "Authorization: Bearer $HUB_API_KEY" \
+  https://hub.silverleaf.co.tz/api/v1/hiring
+curl -H "Authorization: Bearer $HUB_API_KEY" \
+  https://hub.silverleaf.co.tz/api/v1/tickets
+curl -H "Authorization: Bearer $HUB_API_KEY" \
+  https://hub.silverleaf.co.tz/api/v1/catalog
+```
+
+Production serves these only after this change is deployed. File downloads use the same header on `GET /api/materials/{key}`.
+
+Journey bio on this API is status only: submitted, name, position, and work station. Identification numbers, bank details, and conduct records stay off the feed. Hiring omits pipeline tokens.
 
 On the live site, a request with no session returns **307** to `/en` (sign-in). That was checked for hiring, SLA-bot, sections, and bio.
 

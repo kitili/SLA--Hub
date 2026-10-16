@@ -68,6 +68,15 @@ async function main() {
   assert(systems.body?.ok === true, "systems not ok");
   checks.push("systems");
 
+  for (const path of ["/api/v1/journey", "/api/v1/hiring", "/api/v1/tickets", "/api/v1/catalog"]) {
+    const feed = await req(path, { key: KEY, expectStatus: 200 });
+    assert(feed.body?.ok === true, `${path} not ok`);
+    checks.push(path);
+  }
+  const hiring = await req("/api/v1/hiring", { key: KEY, expectStatus: 200 });
+  assert(Array.isArray(hiring.body?.stages) && hiring.body.stages.length >= 10, "hiring stages missing");
+  checks.push("hiring stages");
+
   console.log(`hub-api smoke ok  ${BASE}`);
   for (const name of checks) console.log(`  pass  ${name}`);
 }

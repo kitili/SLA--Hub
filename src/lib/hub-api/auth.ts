@@ -35,6 +35,15 @@ export function hubApiOptions() {
   return new NextResponse(null, { status: 204, headers: hubApiHeaders() });
 }
 
+/** True when the request carries the configured Hub API bearer token. */
+export function bearerMatchesHubApiKey(request: Request): boolean {
+  const key = configuredKey();
+  if (key.length < MIN_KEY_LENGTH) return false;
+  const auth = request.headers.get("authorization") || "";
+  const token = auth.startsWith("Bearer ") ? auth.slice(7).trim() : "";
+  return Boolean(token) && secretsEqual(token, key);
+}
+
 /** Returns a 401/503 response, or null when the Bearer key is valid. */
 export function requireHubApiKey(request: Request): NextResponse | null {
   const key = configuredKey();
