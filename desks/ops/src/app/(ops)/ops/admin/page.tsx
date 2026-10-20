@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { FromOtherDesks } from "@/components/ops/FromOtherDesks";
 import { SuperAdminOverviewPanel } from "@/components/ops/SuperAdminOverview";
 import {
   canAccessOpsCommandCenter,
@@ -43,6 +44,7 @@ export default async function OpsCommandCenterPage() {
         </h1>
         <p className="mt-2 max-w-2xl text-sm text-ink-muted">{heading.blurb}</p>
       </header>
+      <FromOtherDesks to="ops" />
       <SuperAdminOverviewPanel
         data={overview}
         ceoKpis={ceo?.kpis}

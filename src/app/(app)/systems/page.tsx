@@ -7,6 +7,7 @@ import { DepartmentIcon } from "@/components/icons";
 import type { DepartmentId } from "@/lib/departments";
 import DeskOpen from "@/components/DeskOpen";
 import styles from "@/components/WorkplaceMap.module.css";
+import { getSystemBridge } from "@/lib/system-bridge";
 
 export const metadata: Metadata = {
   title: "Desk status",
@@ -18,7 +19,9 @@ export const maxDuration = 30;
 export default async function WorkplaceSystemsPage() {
   const user = await getCurrentUser();
   if (!user) redirect("/login");
-  const systems = (await getWorkplaceMap()).filter((system) => system.id !== "hub");
+  const [map, bridge] = await Promise.all([getWorkplaceMap(), getSystemBridge()]);
+  const systems = map.filter((system) => system.id !== "hub");
+  const handoffs = bridge.filter((row) => row.available);
   const live = systems.filter((system) => system.smoke.ok).length;
   const down = systems.length - live;
 
@@ -89,6 +92,28 @@ export default async function WorkplaceSystemsPage() {
           </tbody>
         </table>
       </div>
+      <section className={styles.bridge}>
+        <p className={styles.kicker}>Already on file</p>
+        <h2>What the desks can read from each other</h2>
+        <p>These are counts and statuses from records that already exist. Names and phone numbers stay in the desk that collected them.</p>
+        {handoffs.length === 0 ? (
+          <p>None of the shared desks answered from this database yet.</p>
+        ) : (
+          <div className={styles.links}>
+            {handoffs.map((row) => (
+              <article key={row.id} className={styles.link}>
+                <strong>{row.from} → {row.title}</strong>
+                <p>{row.summary}</p>
+                <ul>
+                  {row.facts.map((fact) => (
+                    <li key={fact.label}>{fact.label}: {fact.value}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        )}
+      </section>
       <p className={styles.back}>
         {user.isAdmin ? (
           <>

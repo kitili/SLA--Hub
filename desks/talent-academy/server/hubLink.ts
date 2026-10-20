@@ -48,6 +48,37 @@ export async function publishTrainingInsights(
   }
 }
 
+export async function readDeskBridge(): Promise<
+  Array<{ id: string; from: string; title: string; summary: string; facts: Array<{ label: string; value: string }> }>
+> {
+  const key = hubKey();
+  if (!key) return [];
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 4000);
+  try {
+    const response = await fetch(`${HUB_URL}/api/v1/bridge?to=talent-academy`, {
+      headers: { Authorization: `Bearer ${key}` },
+      signal: controller.signal,
+    });
+    if (!response.ok) return [];
+    const body = (await response.json()) as {
+      handoffs?: Array<{ id: string; from: string; title: string; summary: string; facts?: Array<{ label: string; value: string }> }>;
+    };
+    return (body.handoffs ?? []).map((row) => ({
+      id: row.id,
+      from: row.from,
+      title: row.title,
+      summary: row.summary,
+      facts: row.facts ?? [],
+    }));
+  } catch (error) {
+    console.error("[talent-hub]", error instanceof Error ? error.name : "error");
+    return [];
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 export async function readPdInsights(): Promise<
   Array<{
     topic: string;

@@ -26,6 +26,34 @@ function scopeWhere(scope, alias = '') {
     : { where: `WHERE ${a}campus_id = $1`, params: [scope.campusId] };
 }
 
+function flattenOpsBehaviour(rows) {
+  const seen = new Set();
+  const out = [];
+  for (const row of rows) {
+    const reports = Array.isArray(row?.payload?.reports) ? row.payload.reports : [row?.payload || {}];
+    const history = Array.isArray(row?.payload?.reports);
+    for (const report of reports) {
+      const id = String(report?.id || row?.id || "");
+      if (id && seen.has(id)) continue;
+      if (id) seen.add(id);
+      const severity = String(report?.severity || "").trim();
+      out.push({
+        id: id || String(row?.id || out.length),
+        summary: history
+          ? `${severity || "Behaviour"} report from the matron`
+          : String(row?.summary || "Behaviour report from the matron"),
+        payload: {
+          notes: String(report?.notes || ""),
+          severity,
+          tripId: String(report?.tripId || ""),
+        },
+        createdAt: report?.occurredAt || row?.createdAt || null,
+      });
+    }
+  }
+  return out;
+}
+
 // Behaviour reports the matron files in Ops. Student Experience reads them here.
 router.get('/from-ops', async (_req, res) => {
   const key = process.env.HUB_API_KEY?.trim();
@@ -40,7 +68,7 @@ router.get('/from-ops', async (_req, res) => {
     });
     if (!response.ok) return res.json([]);
     const body = await response.json();
-    res.json(Array.isArray(body.data) ? body.data : []);
+    res.json(flattenOpsBehaviour(Array.isArray(body.data) ? body.data : []));
   } catch (error) {
     console.error('[se-hub]', error instanceof Error ? error.name : 'error');
     res.json([]);

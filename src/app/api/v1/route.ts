@@ -68,6 +68,12 @@ export function GET(request: Request) {
         path: "/api/v1/links",
         description: "Send one insight. kind is ops.behaviour, academics.pd, or talent.training",
       },
+      {
+        method: "GET",
+        path: "/api/v1/bridge",
+        description: "Facts already on file that one desk can read from another",
+        query: ["to"],
+      },
     ],
     systems: workplaceSystems.map((system) => system.id),
   });

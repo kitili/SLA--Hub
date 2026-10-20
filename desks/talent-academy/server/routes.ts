@@ -16,7 +16,7 @@ import * as mammoth from "mammoth";
 import { db } from "./db";
 import { eq, and, or, sql, asc } from "drizzle-orm";
 import { applyModuleLocks, moduleIsComplete } from "./progressLogic";
-import { publishTrainingInsights, readPdInsights } from "./hubLink";
+import { publishTrainingInsights, readDeskBridge, readPdInsights } from "./hubLink";
 
 const execAsync = promisify(exec);
 
@@ -4724,8 +4724,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const overview = await storage.getCourseCompletionOverview();
       await publishTrainingInsights(overview);
-      const topics = await readPdInsights();
-      res.json({ topics });
+      const [topics, handoffs] = await Promise.all([readPdInsights(), readDeskBridge()]);
+      res.json({ topics, handoffs });
     } catch (error) {
       console.error("Error reading Academics insights:", error);
       res.status(500).json({ error: "Internal server error" });

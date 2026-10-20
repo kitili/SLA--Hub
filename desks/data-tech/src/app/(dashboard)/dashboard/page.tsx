@@ -10,6 +10,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { OneToFiveForm } from "@/components/one-to-fives/one-to-five-form";
 import { WorkList } from "@/components/desk/work-list";
+import { readHubHandoffs } from "@/lib/hub-bridge";
 
 export default async function DashboardOverviewPage() {
   const { session } = await requireLoginPage("one_to_fives");
@@ -53,6 +54,7 @@ export default async function DashboardOverviewPage() {
         (task.assigneeId === session.user.id || myWork.some((item) => item.id === task.id)),
     )
     .slice(0, 4);
+  const fromOtherDesks = await readHubHandoffs("data-tech");
   const deadlinePassed = !isBeforeDeadline(new Date(), workDate);
   const sent = Boolean(mine.todayRow?.submittedAt && mine.todayRow.status !== "missed");
   const closed = Boolean(mine.todayRow?.closedAt);
@@ -60,6 +62,16 @@ export default async function DashboardOverviewPage() {
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-6">
+      {fromOtherDesks.length > 0 ? (
+        <section className="rounded-2xl border border-black/10 bg-white p-4">
+          <h2 className="text-sm font-medium text-navy">From other desks</h2>
+          {fromOtherDesks.map((row) => (
+            <p key={row.id} className="mt-2 text-sm text-black/70">
+              <span className="font-medium text-navy">{row.from}: {row.title}.</span> {row.facts.map((fact) => `${fact.label} ${fact.value}`).join(" · ")}
+            </p>
+          ))}
+        </section>
+      ) : null}
       <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-navy px-6 py-6 text-white shadow-[0_24px_50px_-32px_rgba(0,35,104,0.9)]">
         <div
           className="pointer-events-none absolute inset-0 opacity-80"

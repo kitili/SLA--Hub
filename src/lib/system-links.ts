@@ -28,7 +28,20 @@ export type LinkInput = {
   mode: "append" | "replace";
 };
 
-const SOURCES = new Set(["ops", "academics", "talent-academy", "student-experience"]);
+const SOURCES = new Set([
+  "ops",
+  "ops-history",
+  "academics",
+  "talent-academy",
+  "student-experience",
+  "onboarding",
+  "marketing",
+  "data-tech",
+  "uniforms",
+  "visitors",
+  "workboard",
+  "mel",
+]);
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);

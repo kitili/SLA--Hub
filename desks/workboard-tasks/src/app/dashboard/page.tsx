@@ -2,12 +2,16 @@ import { formatDistanceToNow } from "date-fns";
 import { StatCard } from "@/components/stat-card";
 import { StatusBadge } from "@/components/status-badge";
 import { getDashboardStats, getDefaultOrganization } from "@/lib/data/dashboard";
+import { readHubHandoffs } from "@/lib/hub-bridge";
 
 export const dynamic = "force-dynamic";
 
 export default async function DashboardPage() {
   const org = await getDefaultOrganization();
-  const { counts, recentActivity } = await getDashboardStats(org?.id);
+  const [{ counts, recentActivity }, fromOtherDesks] = await Promise.all([
+    getDashboardStats(org?.id),
+    readHubHandoffs("workboard-tasks"),
+  ]);
 
   return (
     <div className="space-y-8">
@@ -17,6 +21,17 @@ export default async function DashboardPage() {
           {org ? `${org.name} — today’s 1–5’s and board activity` : "No organization seeded yet"}
         </p>
       </div>
+
+      {fromOtherDesks.length > 0 ? (
+        <section className="rounded-xl border border-zinc-200 bg-white px-5 py-4">
+          <h3 className="font-semibold">From other desks</h3>
+          {fromOtherDesks.map((row) => (
+            <p key={row.id} className="mt-2 text-sm text-zinc-600">
+              {row.from}: {row.title}. {row.facts.map((fact) => `${fact.label} ${fact.value}`).join(" · ")}
+            </p>
+          ))}
+        </section>
+      ) : null}
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard label="Active users" value={counts.users} />

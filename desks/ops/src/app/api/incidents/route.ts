@@ -3,7 +3,7 @@ import { requireUser } from "@/lib/api/require-user";
 import { createClient } from "@/lib/supabase/server";
 import { createIncident } from "@/lib/db/queries";
 import { notifyIncidentAlert } from "@/lib/messaging/notify-incident-alert";
-import { sendBehaviourToStudentExperience } from "@/lib/hub-link";
+import { publishBehaviourHistory, sendBehaviourToStudentExperience } from "@/lib/hub-link";
 import type { IncidentSeverity, IncidentType } from "@/types/database";
 
 const TYPES: IncidentType[] = [
@@ -75,6 +75,18 @@ export async function GET(request: Request) {
     const bus = Array.isArray(buses) ? buses[0] : buses;
     return { ...rest, school_id: bus?.school_id ?? null };
   });
+
+  const history = incidents
+    .filter((row) => row.type === "behavior")
+    .slice(0, 40)
+    .map((row) => ({
+      id: String(row.id),
+      tripId: String(row.trip_id ?? ""),
+      severity: String(row.severity ?? ""),
+      notes: typeof row.notes === "string" ? row.notes : null,
+      occurredAt: row.created_at ? String(row.created_at) : null,
+    }));
+  await publishBehaviourHistory(history);
 
   return NextResponse.json({ incidents });
 }

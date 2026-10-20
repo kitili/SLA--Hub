@@ -151,6 +151,42 @@
   text-decoration: underline;
 }
 
+.bridge {
+  margin: 1.4rem 0 0.4rem;
+}
+
+.bridge h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+}
+
+.links {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 0.8rem;
+}
+
+.link {
+  border: 1px solid var(--card-border, rgba(0, 0, 0, 0.08));
+  border-radius: var(--radius, 12px);
+  background: var(--card, #fff);
+  padding: 0.85rem 1rem;
+}
+
+.link strong {
+  display: block;
+}
+
+.link p {
+  margin: 0.25rem 0 0.45rem;
+  color: var(--ink-muted);
+}
+
+.link ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
 .back {
   margin-top: 1.1rem;
 }

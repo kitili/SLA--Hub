@@ -90,6 +90,20 @@ export type TrainingInsight = {
   completionPercentage: number | null;
 };
 
+export async function readDeskBridge(): Promise<Array<{ id: string; from: string; title: string; facts: Array<{ label: string; value: string }> }>> {
+  const response = await hubFetch("/api/v1/bridge?to=lesson-plans");
+  if (!response?.ok) return [];
+  const body = (await response.json()) as {
+    handoffs?: Array<{ id: string; from: string; title: string; facts?: Array<{ label: string; value: string }> }>;
+  };
+  return (body.handoffs ?? []).map((row) => ({
+    id: row.id,
+    from: row.from,
+    title: row.title,
+    facts: row.facts ?? [],
+  }));
+}
+
 export async function readTrainingInsights(): Promise<TrainingInsight[]> {
   const response = await hubFetch("/api/v1/links?kind=talent.training");
   if (!response?.ok) return [];
