@@ -267,14 +267,13 @@ export default async function StudentsPage({
                       })()}
                     </div>
                   </div>
-                  <div className="flex shrink-0 items-center self-end sm:self-center">
+                  <div className="flex shrink-0 flex-col items-end gap-2 self-end sm:self-center">
                     <span className="rounded-full bg-light-blue-30 px-2.5 py-1 text-xs font-semibold text-electric-blue">
                       {(() => {
                         const bus = busByStudent(student.id);
                         return bus ? bus.label : "No bus";
                       })()}
                     </span>
-                  <div className="flex shrink-0 flex-col items-end gap-2 self-end sm:self-center">
                     <StudentEditDialog student={student} />
                     <div className="flex items-center gap-4">
                     <div className="text-right">
