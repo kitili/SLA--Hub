@@ -275,19 +275,6 @@ export default async function StudentsPage({
                       })()}
                     </span>
                     <StudentEditDialog student={student} />
-                    <div className="flex items-center gap-4">
-                    <div className="text-right">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-ink-muted">
-                        QR code
-                      </p>
-                      <p className="mt-0.5 font-mono text-sm font-semibold text-electric-blue">
-                        {student.qr_code ?? "—"}
-                      </p>
-                    </div>
-                    {student.qr_code ? (
-                      <QrDisplay value={student.qr_code} />
-                    ) : null}
-                    </div>
                   </div>
                 </li>
               ))}
