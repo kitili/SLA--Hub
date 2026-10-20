@@ -5,6 +5,7 @@ import { setRequestLocale } from "next-intl/server";
 import BoardOffline from "@/components/academics/BoardOffline";
 import Dashboard from "@/components/curriculum/Dashboard";
 import { listCurriculumFeedback, listPdFeedback } from "@/lib/curriculum-feedback/queries";
+import { publishPdInsights, readTrainingInsights } from "@/lib/hub-link";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -32,10 +33,26 @@ export default async function FeedbackPage({
       );
     }
     const offline = curriculum.source === "offline" || pd.source === "offline";
+    if (!offline) await publishPdInsights(pd.data);
+    const training = await readTrainingInsights();
     return (
       <div className="cfa">
         <BoardOffline />
         {offline ? <p className="norm-hint">Showing the last copy saved on this server. It refreshes when the database is reachable.</p> : null}
+        {training.length > 0 ? (
+          <section className="norm-hint">
+            <p>From Talent Academy</p>
+            <ul>
+              {training.map((course) => (
+                <li key={`${course.batchName}-${course.courseName}`}>
+                  {course.courseName}
+                  {course.batchName ? ` (${course.batchName})` : ""}: {course.completedCount} of {course.enrolled} completed
+                  {course.completionPercentage != null ? ` (${course.completionPercentage}%)` : ""}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
         <Dashboard curriculum={curriculum.data} pd={pd.data} now={Date.now()} signedIn={false} />
       </div>
     );

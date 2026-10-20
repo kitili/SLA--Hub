@@ -26,6 +26,29 @@ function scopeWhere(scope, alias = '') {
     : { where: `WHERE ${a}campus_id = $1`, params: [scope.campusId] };
 }
 
+// Behaviour reports the matron files in Ops. Student Experience reads them here.
+router.get('/from-ops', async (_req, res) => {
+  const key = process.env.HUB_API_KEY?.trim();
+  if (!key) return res.json([]);
+  const base = (process.env.HUB_API_URL || 'https://hub.silverleaf.co.tz').replace(/\/$/, '');
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 4000);
+  try {
+    const response = await fetch(`${base}/api/v1/links?kind=ops.behaviour`, {
+      headers: { Authorization: `Bearer ${key}` },
+      signal: controller.signal,
+    });
+    if (!response.ok) return res.json([]);
+    const body = await response.json();
+    res.json(Array.isArray(body.data) ? body.data : []);
+  } catch (error) {
+    console.error('[se-hub]', error instanceof Error ? error.name : 'error');
+    res.json([]);
+  } finally {
+    clearTimeout(timer);
+  }
+});
+
 // ── DASHBOARD ────────────────────────────────────────────────
 router.get('/dashboard', async (req, res) => {
   const { scope } = req;

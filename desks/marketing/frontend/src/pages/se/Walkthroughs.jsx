@@ -147,11 +147,15 @@ export function Walkthroughs() {
 export function Behaviour() {
   const { user } = useAuthStore();
   const [records, setRecords] = useState([]);
+  const [fromOps, setFromOps] = useState([]);
   const [loading, setLoading] = useState(true);
   const [addOpen, setAddOpen] = useState(false);
   const [form, setForm] = useState({ campus_id:'', student_id:'', setting:'classroom', behaviour_categories:[], description:'', frequency:'first_time', trigger_identified:false, intervention:'verbal_warning', parent_contacted:false, escalated:false });
 
-  useEffect(() => { api.get('/se/behaviour').then(r => { setRecords(r.data); setLoading(false); }); }, []);
+  useEffect(() => {
+    api.get('/se/behaviour').then(r => { setRecords(r.data); setLoading(false); });
+    api.get('/se/from-ops').then(r => setFromOps(Array.isArray(r.data) ? r.data : [])).catch(() => setFromOps([]));
+  }, []);
 
   async function save(e) {
     e.preventDefault();
@@ -178,6 +182,17 @@ export function Behaviour() {
   return (
     <Layout module="se">
       <PageHeader title="Behavioural Walkthroughs" sub={`${records.length} records`} action={<Btn onClick={() => setAddOpen(true)}><Plus size={15}/>Log Behaviour</Btn>}/>
+      {fromOps.length > 0 && (
+        <div style={{ background: 'white', borderRadius: 12, boxShadow: '0 1px 4px rgba(0,0,0,0.07)', padding: 16, marginBottom: 16 }}>
+          <h2 style={{ fontSize: 15, margin: '0 0 8px' }}>From the matron</h2>
+          {fromOps.map((item) => (
+            <p key={item.id} style={{ margin: '0 0 8px', fontSize: 13 }}>
+              {item.summary}
+              {item.payload?.notes ? ` — ${item.payload.notes}` : ''}
+            </p>
+          ))}
+        </div>
+      )}
       <div style={{ background: 'white', borderRadius: 12, boxShadow: '0 1px 4px rgba(0,0,0,0.07)', overflow: 'hidden' }}>
         <Table cols={cols} rows={records} keyFn={r=>r.id}/>
       </div>

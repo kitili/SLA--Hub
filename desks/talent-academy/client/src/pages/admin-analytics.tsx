@@ -20,6 +20,7 @@ import { apiRequest, queryClient } from "@/lib/queryClient";
 import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/ui/chart";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, PieChart, Pie, Cell, LineChart, Line, ResponsiveContainer, Legend, Tooltip } from "recharts";
 import { FileQuizEditDialog } from "@/components/FileQuizEditDialog";
+import { AcademicsInsights } from "@/components/AcademicsInsights";
 
 interface BatchAnalytics {
   batch: { id: string; name: string };
@@ -824,6 +825,7 @@ export default function AdminAnalytics() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8">
+        <AcademicsInsights />
         {/* Main Tabs */}
         <Tabs defaultValue="overview" className="w-full">
           <TabsList className="flex w-full overflow-x-auto mb-8 sm:grid sm:grid-cols-7">

@@ -3,6 +3,7 @@ import { requireUser } from "@/lib/api/require-user";
 import { createClient } from "@/lib/supabase/server";
 import { createIncident } from "@/lib/db/queries";
 import { notifyIncidentAlert } from "@/lib/messaging/notify-incident-alert";
+import { sendBehaviourToStudentExperience } from "@/lib/hub-link";
 import type { IncidentSeverity, IncidentType } from "@/types/database";
 
 const TYPES: IncidentType[] = [
@@ -148,6 +149,16 @@ export async function POST(request: Request) {
       { error: outcome.error, code: outcome.code },
       { status },
     );
+  }
+
+  if (body.type === "behavior") {
+    await sendBehaviourToStudentExperience({
+      tripId: body.tripId.trim(),
+      severity,
+      notes: body.notes ?? null,
+      occurredAt,
+      late: Boolean(body.late),
+    });
   }
 
   let admin_alert = null;

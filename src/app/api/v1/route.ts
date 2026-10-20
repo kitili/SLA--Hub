@@ -23,7 +23,7 @@ export function GET(request: Request) {
     ok: true,
     source: "sla-hub",
     generatedAt: new Date().toISOString(),
-    purpose: "Read-only workplace data for ShuleOne. Email is the stable person key.",
+    purpose: "Workplace data for ShuleOne. Email is the stable person key. /api/v1/links is the mailbox Academics, Talent Academy, Ops, and Student Experience use to exchange insights.",
     endpoints: [
       { method: "GET", path: "/api/v1", description: "This catalog" },
       {
@@ -56,6 +56,17 @@ export function GET(request: Request) {
         method: "GET",
         path: "/api/v1/catalog",
         description: "Course sections, items, PDFs, and videos",
+      },
+      {
+        method: "GET",
+        path: "/api/v1/links",
+        description: "Insights passed between systems",
+        query: ["kind"],
+      },
+      {
+        method: "POST",
+        path: "/api/v1/links",
+        description: "Send one insight. kind is ops.behaviour, academics.pd, or talent.training",
       },
     ],
     systems: workplaceSystems.map((system) => system.id),
