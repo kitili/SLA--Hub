@@ -20,6 +20,7 @@
  * (plain Node via the resolver hook), but it must never be imported into a
  * Client Component.
  */
+import { structuredLessonPlanSchema } from "@/lib/ai/lessonPlan/structuredSchema";
 import { buildSearchText } from "@/lib/lesson/searchText";
 import { parse } from "@/lib/naming/parse";
 
@@ -34,6 +35,8 @@ export interface ImportManifestEntry {
   durationMinutes?: number;
   objectives?: string[];
   contentMarkdown?: string;
+  /** Structured lesson body. Stored only when it matches the plan schema. */
+  contentJson?: unknown;
   blobUrl?: string;
 }
 
@@ -102,6 +105,8 @@ export async function importFromManifest(
     const topic = entry.topic?.trim() || null;
     const objectives = entry.objectives ?? null;
     const contentMarkdown = entry.contentMarkdown ?? "";
+    const parsedJson = structuredLessonPlanSchema.safeParse(entry.contentJson);
+    const contentJson = parsedJson.success ? parsedJson.data : null;
 
     const searchText = buildSearchText({
       subject,
@@ -128,6 +133,7 @@ export async function importFromManifest(
       objectives,
       durationMinutes: entry.durationMinutes ?? null,
       contentMarkdown,
+      contentJson,
       status: "published",
       source: "import",
       blobUrl: entry.blobUrl ?? null,

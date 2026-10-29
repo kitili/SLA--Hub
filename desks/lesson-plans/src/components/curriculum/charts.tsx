@@ -38,25 +38,13 @@ export function groupedBars(groups: Group[], series: Series[]) {
 export function rankedBars(items: { name: string; value: number | null; n: number }[]) {
   if (!items.length) return '<p class="empty">No data for this selection yet.</p>';
   const sorted = items.slice().sort((a, b) => (a.value == null ? 1 : b.value == null ? -1 : a.value - b.value));
-  const rowH = 30, padR = 52, labelW = 176, W = 680, H = sorted.length * rowH + 16;
-  const plotW = W - labelW - padR;
-  const refX = labelW + (3.25 / 5) * plotW;
-  let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Ranked averages">`;
-  svg += `<line x1="${refX}" y1="4" x2="${refX}" y2="${H - 12}" stroke="var(--grid)" stroke-width="1" stroke-dasharray="3 3"/>`;
-  svg += `<text x="${refX}" y="${H - 2}" text-anchor="middle" font-size="9" fill="var(--muted)">3.25</text>`;
-  sorted.forEach((it, i) => {
-    const y = 8 + i * rowH, cy = y + rowH / 2 - 4;
-    const name = it.name.length > 26 ? it.name.slice(0, 25) + "…" : it.name;
-    svg += `<text x="${labelW - 8}" y="${cy + 3}" text-anchor="end" font-size="11.5" fill="var(--ink)">${esc(name)}</text>`;
-    if (it.value != null) {
-      const w = Math.max(2, (it.value / 5) * plotW), b = band(it.value);
-      svg += `<rect x="${labelW}" y="${cy - 8}" width="${w.toFixed(1)}" height="16" rx="4" fill="${b.color}"><title>${esc(it.name)}: ${fmt(it.value)} (n=${it.n}) — ${b.name}</title></rect>`;
-      svg += `<text x="${labelW + w + 6}" y="${cy + 4}" font-size="11" font-weight="700" fill="var(--ink2)">${fmt(it.value)} <tspan fill="var(--muted)" font-weight="400">·n${it.n}</tspan></text>`;
-    } else {
-      svg += `<text x="${labelW + 4}" y="${cy + 4}" font-size="10" fill="var(--muted)">no ratings</text>`;
-    }
-  });
-  return svg + "</svg>";
+  const rows = sorted.map((it) => {
+    const width = it.value == null ? 0 : Math.max(2, (it.value / 5) * 100);
+    const tone = it.value == null ? "var(--muted)" : band(it.value).color;
+    const score = it.value == null ? "no ratings" : `${fmt(it.value)} · n${it.n}`;
+    return `<div class="rank-row"><span class="rank-name">${esc(it.name)}</span><span class="rank-val">${score}</span><span class="rank-track" aria-hidden="true"><i class="rank-mark"></i><i class="rank-fill" style="width:${width.toFixed(1)}%;background:${tone}"></i></span></div>`;
+  }).join("");
+  return `<div class="rank-list" role="img" aria-label="Ranked averages">${rows}</div>`;
 }
 
 export function lineChart(weeks: ({ label: string } & Record<string, number | null | string | undefined>)[], series: Series[]) {

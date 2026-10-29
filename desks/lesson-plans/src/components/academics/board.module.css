@@ -5,15 +5,36 @@
   color: #16202f;
 }
 
+.header {
+  padding: 16px 18px;
+  background: linear-gradient(180deg, #002d84, #001743);
+  border-radius: var(--radius-lg);
+  color: #fff;
+}
+
+.home {
+  color: var(--light-blue);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.home:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
 .header h1 {
-  margin: 0;
-  color: #002368;
+  margin: 4px 0 0;
+  color: #fff;
   font-size: 1.45rem;
 }
 
 .header p {
   margin: 0.35rem 0 0;
-  color: #4a5566;
+  color: rgba(255, 255, 255, 0.84);
 }
 
 .note,
@@ -86,6 +107,7 @@
 .card {
   margin-bottom: 1rem;
   padding: 1rem;
+  overflow-x: auto;
   background: #fff;
   border: 1px solid #e3e7ee;
   border-radius: 12px;

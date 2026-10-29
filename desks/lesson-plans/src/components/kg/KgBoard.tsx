@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 
+import { AcademicsHomeLink } from "@/components/BoardChrome";
 import styles from "@/components/academics/board.module.css";
 
 export type KgBoardRound = {
@@ -104,16 +105,17 @@ export default function KgBoard({
   return (
     <main className={styles.page}>
       <header className={styles.header}>
+        <AcademicsHomeLink className={styles.home}>Academics</AcademicsHomeLink>
         <h1>KG Development Checklist</h1>
         <p>Leadership view of synced kindergarten assessments. Scores use the same age bands and index as the teacher checklist.</p>
-        {source === "offline" ? <p className={styles.note}>Showing the copy saved on this computer.</p> : null}
-        {source === "empty" ? (
-          <p className={styles.note}>No checklist records are in the shared database yet. Teacher phones still hold their records until they sync.</p>
-        ) : null}
-        {!admin ? (
-          <p className={styles.note}>Names and follow-up reasons stay with Academics admins. This page shows campus and class totals only.</p>
-        ) : null}
       </header>
+      {source === "offline" ? <p className={styles.note}>Showing the copy saved on this computer.</p> : null}
+      {source === "empty" ? (
+        <p className={styles.note}>No checklist records are in the shared database yet. Teacher phones still hold their records until they sync.</p>
+      ) : null}
+      {!admin ? (
+        <p className={styles.note}>Names and follow-up reasons stay with Academics admins. This page shows campus and class totals only.</p>
+      ) : null}
 
       <div className={styles.filters}>
         <label>Round

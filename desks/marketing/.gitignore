@@ -37,3 +37,4 @@ devops/backups/
 # Parent-level lead extracts (phones and names — generate locally)
 backend/data/leads-tracker-2026.json
 backend/data/leads-tracker-2026.xlsx
+.vercel

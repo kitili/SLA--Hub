@@ -272,13 +272,16 @@ export default function Dashboard({
               return (
                 <div className="dist-row" key={s.key}>
                   <span className="dist-name">{s.label}</span>
-                  <span className="dist-bar">
+                  <span className="dist-bar" aria-hidden="true">
                     {counts.map((c, i) => {
                       if (!c || !total) return null;
                       const b = band(i + 1);
                       const w = (c / total) * 100;
-                      return <i key={i} style={{ width: `${w}%`, background: b.hex, color: b.ink }} title={`${i + 1}: ${c} of ${total}`}>{w >= 9 ? c : ""}</i>;
+                      return <i key={i} style={{ width: `${w}%`, background: b.hex }} title={`${i + 1}: ${c} of ${total}`} />;
                     })}
+                  </span>
+                  <span className="dist-counts">
+                    {counts.map((c, i) => (c ? <span key={i}>{i + 1}: {c}</span> : null))}
                   </span>
                 </div>
               );

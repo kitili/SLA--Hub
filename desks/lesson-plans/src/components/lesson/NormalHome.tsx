@@ -12,6 +12,8 @@ import { getTranslations } from "next-intl/server";
 import { getCurrentUser } from "@/lib/auth";
 import { Link } from "@/i18n/navigation";
 import UpcomingLessons from "@/components/lesson/UpcomingLessons";
+import PlanResultList from "@/components/lesson/PlanResultList";
+import { searchLessonPlans } from "@/lib/search/lessonSearch";
 import styles from "./NormalHome.module.css";
 
 export default async function NormalHome() {
@@ -20,6 +22,7 @@ export default async function NormalHome() {
 
   // Prefer the first name for a friendlier greeting; fall back gracefully.
   const firstName = user?.fullName?.trim().split(/\s+/)[0] ?? null;
+  const { rows, total } = await searchLessonPlans({ sort: "naming", page: 1, pageSize: 20 });
 
   return (
     <main className={styles.home}>
@@ -55,6 +58,8 @@ export default async function NormalHome() {
           {t("browseAll")}
         </Link>
       </section>
+
+      <PlanResultList rows={rows} total={total} />
 
       {user ? <UpcomingLessons /> : null}
     </main>

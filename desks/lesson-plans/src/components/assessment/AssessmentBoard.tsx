@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 
 import { mean } from "@/lib/assessment/metrics";
+import { AcademicsHomeLink } from "@/components/BoardChrome";
 import styles from "@/components/academics/board.module.css";
 
 export type AssessmentBoardPoint = {
@@ -46,14 +47,15 @@ export default function AssessmentBoard({
   return (
     <main className={styles.page}>
       <header className={styles.header}>
+        <AcademicsHomeLink className={styles.home}>Academics</AcademicsHomeLink>
         <h1>Assessment dashboard</h1>
         <p>EGRA, EGMA and social-emotional results, read the same way as the live leadership dashboard.</p>
-        {source === "offline" ? <p className={styles.note}>Showing the copy saved on this computer.</p> : null}
-        {source === "empty" ? (
-          <p className={styles.note}>No assessment records are in the shared database yet.</p>
-        ) : null}
-        {!admin ? <p className={styles.note}>Pupil references stay with Academics admins. This page shows school and grade totals.</p> : null}
       </header>
+      {source === "offline" ? <p className={styles.note}>Showing the copy saved on this computer.</p> : null}
+      {source === "empty" ? (
+        <p className={styles.note}>No assessment records are in the shared database yet.</p>
+      ) : null}
+      {!admin ? <p className={styles.note}>Pupil references stay with Academics admins. This page shows school and grade totals.</p> : null}
 
       <div className={styles.filters}>
         <label>School
