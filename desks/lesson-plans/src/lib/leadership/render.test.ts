@@ -25,6 +25,15 @@ describe("leadership page", () => {
     expect(html).toContain("window.__LOGO__");
   });
 
+  it("treats an empty database as waiting for the first push, not as a failure", () => {
+    expect(html).toContain("window.__ildStatusText(err)");
+    expect(html).toContain("empty.empty = true");
+    // The empty message must not be prefixed with "could not load".
+    const start = html.indexOf("window.__ildStatusText = function");
+    const body = html.slice(start, html.indexOf("};", start));
+    expect(body).toContain("if (err && err.empty) return err.message;");
+  });
+
   it("is noindex and drops the Apps Script-only wording", () => {
     expect(html).toContain('name="robots" content="noindex, nofollow"');
     expect(html).not.toContain("Re-reading both trackers");
