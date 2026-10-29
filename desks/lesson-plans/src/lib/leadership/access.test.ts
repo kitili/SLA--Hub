@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { canViewLeadership, checkIngestAuth } from "./access";
+import { canViewLeadership, checkIngestAuth, leadershipViewerEmails } from "./access";
 
 const KEY = "k".repeat(40);
 
@@ -32,5 +32,16 @@ describe("canViewLeadership", () => {
     expect(canViewLeadership({ isAdmin: false, roles: ["campus-lead"] })).toBe(false);
     expect(canViewLeadership({ isAdmin: false, roles: [] })).toBe(false);
     expect(canViewLeadership(null)).toBe(false);
+  });
+
+  it("lets listed viewers in by email, case-insensitively, and nobody else", () => {
+    const viewers = leadershipViewerEmails(" Principal@Silverleaf.co.tz , ,coach@silverleaf.co.tz");
+    expect(viewers).toEqual(["principal@silverleaf.co.tz", "coach@silverleaf.co.tz"]);
+    const staff = { isAdmin: false, roles: [] as string[] };
+    expect(canViewLeadership({ ...staff, email: "PRINCIPAL@silverleaf.co.tz " }, viewers)).toBe(true);
+    expect(canViewLeadership({ ...staff, email: "teacher@silverleaf.co.tz" }, viewers)).toBe(false);
+    expect(canViewLeadership({ ...staff, email: "" }, [""])).toBe(false);
+    expect(canViewLeadership({ ...staff, email: null }, viewers)).toBe(false);
+    expect(canViewLeadership(staff, viewers)).toBe(false);
   });
 });

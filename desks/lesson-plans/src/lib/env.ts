@@ -53,6 +53,13 @@ const envSchema = z.object({
   ILD_INGEST_KEY: z.string().optional(),
 
   /**
+   * Comma-separated emails that may open the Instructional Leadership board
+   * without being Academics admins (principals, coaches, heads of academics).
+   * Example: "principal.usariver@silverleaf.co.tz,coach@silverleaf.co.tz"
+   */
+  ILD_VIEWER_EMAILS: z.string().optional(),
+
+  /**
    * Comma-separated list of email addresses that are granted admin access
    * automatically at sign-in / registration.
    * Example: "alice@school.edu,bob@school.edu"
@@ -169,6 +176,7 @@ export const env: Env = envSchema.parse({
   DATABASE_URL: process.env["DATABASE_URL"],
   CURRICULUM_DATABASE_URL: process.env["CURRICULUM_DATABASE_URL"],
   ILD_INGEST_KEY: process.env["ILD_INGEST_KEY"],
+  ILD_VIEWER_EMAILS: process.env["ILD_VIEWER_EMAILS"],
   HR_ADMIN_EMAILS: process.env["HR_ADMIN_EMAILS"],
   ADMIN_PIN: process.env["ADMIN_PIN"],
   ADMIN_PASSWORDS: process.env["ADMIN_PASSWORDS"],

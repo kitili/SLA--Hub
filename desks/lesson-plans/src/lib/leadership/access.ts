@@ -5,14 +5,29 @@ import { createHash, timingSafeEqual } from "node:crypto";
 import type { CurrentUser } from "@/lib/contracts";
 import { env } from "@/lib/env";
 
+/** ILD_VIEWER_EMAILS as a normalised list. */
+export function leadershipViewerEmails(raw = env.ILD_VIEWER_EMAILS): string[] {
+  return (raw ?? "")
+    .split(",")
+    .map((email) => email.trim().toLowerCase())
+    .filter(Boolean);
+}
+
 /**
  * The dashboard names teachers and carries observation notes, so it is for
- * Academics admins and anyone tagged `instructional-leader`; other staff and
- * signed-out visitors never get the page or the figures.
+ * Academics admins, anyone tagged `instructional-leader`, and the emails in
+ * ILD_VIEWER_EMAILS (principals and coaches who are not admins: sign-in only
+ * ever grants the `admin` role). Other staff and signed-out visitors never get
+ * the page or the figures.
  */
-export function canViewLeadership(user: Pick<CurrentUser, "isAdmin" | "roles"> | null): boolean {
+export function canViewLeadership(
+  user: Pick<CurrentUser, "isAdmin" | "roles"> & { email?: string | null } | null,
+  viewers: string[] = leadershipViewerEmails(),
+): boolean {
   if (!user) return false;
-  return user.isAdmin || user.roles.includes("instructional-leader");
+  if (user.isAdmin || user.roles.includes("instructional-leader")) return true;
+  const email = user.email?.trim().toLowerCase();
+  return !!email && viewers.includes(email);
 }
 
 export const MIN_INGEST_KEY_LENGTH = 32;

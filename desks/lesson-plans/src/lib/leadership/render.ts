@@ -4,7 +4,7 @@ export const LEADERSHIP_DATA_URL = "/api/leadership/data";
 const LOGO_URL = "/assets/branding/brandmark-electric-blue.svg";
 
 const EMPTY_MESSAGE =
-  "No figures yet. The walkthrough and observation figures have not been sent from the Google trackers. An Academics admin needs to run the first push from the Apps Script project (steps in docs/instructional-leadership.md). Then press Refresh.";
+  "No figures yet. The walkthrough and observation figures have not been sent from the Google trackers. An Academics admin needs to connect the trackers once (run pushToHub in the dashboard's Apps Script project). Then press Refresh.";
 
 /**
  * Stands in for Google's `google.script.run`, which the page was written
@@ -21,7 +21,7 @@ const SHIM = `<script>
       getDashboardData: function (force) {
         fetch(${JSON.stringify(LEADERSHIP_DATA_URL)} + (force ? '?refresh=1' : ''), { credentials: 'same-origin', cache: 'no-store' })
           .then(function (r) {
-            if (r.status === 401 || r.status === 403) throw new Error('Sign in with an Academics admin account to see this dashboard');
+            if (r.status === 401 || r.status === 403) throw new Error('This account cannot see the leadership dashboard. Ask an Academics admin to add you');
             if (!r.ok) throw new Error('The dashboard data could not be read (' + r.status + ')');
             return r.json();
           })
