@@ -74,6 +74,10 @@ That installs a 06:00 crontab that runs `npm run desks:sync`. Run it now any tim
 
 Production changes still belong in each system’s own GitHub repo. The copies in `desks/` are for reading and combining in this workplace repository.
 
+## Academics boards
+
+Academics (`desks/lesson-plans`) opens six boards: Lesson plans, Feedback, Curriculum, KG checklist, Assessments, and **Instructional leadership** (campus walkthroughs and teacher observations, admin-only). Board data lives in the Academics Neon database (`CURRICULUM_DATABASE_URL`). Leadership figures arrive from the Google trackers through the Apps Script in `desks/lesson-plans/integrations/instructional-leadership`. See `desks/lesson-plans/docs/instructional-leadership.md`.
+
 ## Auth
 
 OTP is the same pattern as the Onboarding Hub: work email → 6-digit code → httpOnly cookie on this device (8 hours). Many people can be signed in at once; each browser has its own cookie.

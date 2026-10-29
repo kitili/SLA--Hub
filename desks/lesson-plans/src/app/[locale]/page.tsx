@@ -21,6 +21,7 @@ export default async function AcademicsBoardsPage({
     { name: "Curriculum", href: CURRICULUM_SITE },
     { name: "KG checklist", href: `/${locale}/kg` },
     { name: "Assessments", href: `/${locale}/assessment` },
+    { name: "Instructional leadership", href: `/${locale}/leadership` },
   ];
 
   return (

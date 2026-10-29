@@ -5,7 +5,7 @@
  */
 
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
 import { fileURLToPath } from "node:url";
@@ -96,4 +96,37 @@ test("env example points Workboard Tasks, Lesson Plans, and MEL at the live apps
     /WORKPLACE_MEL_DASHBOARD_URL=https:\/\/silverleafmeldashboard-production\.up\.railway\.app\/#overview/,
   );
   assert.match(env, /WORKPLACE_MEL_DASHBOARD_LOCAL_URL=http:\/\/localhost:3400/);
+});
+
+test("Academics lists Instructional leadership and ships its integration, tables, and security checks", () => {
+  const departments = read("src/lib/departments.ts");
+  assert.match(departments, /"Instructional leadership"/);
+
+  const base = "desks/lesson-plans";
+  for (const file of [
+    "integrations/instructional-leadership/Code.gs",
+    "integrations/instructional-leadership/Index.html",
+    "integrations/instructional-leadership/PushToHub.gs",
+    "db/neon/0001_instructional_leadership.sql",
+    "src/app/[locale]/leadership/route.ts",
+    "src/app/api/leadership/data/route.ts",
+    "src/app/api/leadership/ingest/route.ts",
+    "scripts/smoke-leadership.mjs",
+  ]) {
+    assert.ok(existsSync(join(root, base, file)), `missing ${base}/${file}`);
+  }
+
+  const sql = read(`${base}/db/neon/0001_instructional_leadership.sql`);
+  for (const table of ["ild_walkthroughs", "ild_observations", "ild_config", "ild_sync_log"]) {
+    assert.match(sql, new RegExp(`CREATE TABLE IF NOT EXISTS ${table}`));
+  }
+
+  // The push key never sits in source; it is read from Script properties.
+  const push = read(`${base}/integrations/instructional-leadership/PushToHub.gs`);
+  assert.match(push, /getProperty\('HUB_INGEST_KEY'\)/);
+  assert.doesNotMatch(push, /Bearer [A-Za-z0-9]{20,}/);
+
+  // The ingest route checks the bearer key before it reads the body.
+  const ingest = read(`${base}/src/app/api/leadership/ingest/route.ts`);
+  assert.ok(ingest.indexOf("checkIngestAuth") < ingest.indexOf("request.text()"));
 });

@@ -45,6 +45,14 @@ const envSchema = z.object({
   CURRICULUM_DATABASE_URL: z.string().optional(),
 
   /**
+   * Shared secret the Instructional Leadership Apps Script sends as a Bearer
+   * token to POST /api/leadership/ingest. At least 32 characters; absent or
+   * shorter → the endpoint answers 503 and accepts nothing.
+   * Generate: `openssl rand -hex 32`.
+   */
+  ILD_INGEST_KEY: z.string().optional(),
+
+  /**
    * Comma-separated list of email addresses that are granted admin access
    * automatically at sign-in / registration.
    * Example: "alice@school.edu,bob@school.edu"
@@ -160,6 +168,7 @@ export type Env = z.infer<typeof envSchema>;
 export const env: Env = envSchema.parse({
   DATABASE_URL: process.env["DATABASE_URL"],
   CURRICULUM_DATABASE_URL: process.env["CURRICULUM_DATABASE_URL"],
+  ILD_INGEST_KEY: process.env["ILD_INGEST_KEY"],
   HR_ADMIN_EMAILS: process.env["HR_ADMIN_EMAILS"],
   ADMIN_PIN: process.env["ADMIN_PIN"],
   ADMIN_PASSWORDS: process.env["ADMIN_PASSWORDS"],

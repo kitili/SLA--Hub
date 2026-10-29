@@ -111,7 +111,7 @@ export const workplaceSystems: WorkplaceSystem[] = [
     schemaName: "lesson_plans",
     repoFolder: "desks/lesson-plans",
     liveUrl: "https://silverleaf-lesson-plans-main.vercel.app",
-    notes: "Academics holds the lesson plans, curriculum, and feedback dashboards. More can follow.",
+    notes: "Academics holds the lesson plans, curriculum, feedback, and instructional leadership dashboards. Board data (KG, assessments, leadership) lives in the Academics Neon database. More can follow.",
   },
   {
     id: "mel-dashboard",
